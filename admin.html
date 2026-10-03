@@ -1,0 +1,2809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Founder Command Center | IKAZE DIGITAL</title>
+<meta name="description" content="Private administrative workspace for IKAZE DIGITAL." />
+<meta name="robots" content="noindex,nofollow" />
+<meta name="theme-color" content="#080A0F" />
+<link rel="canonical" href="https://ikaze-digital.vercel.app/admin.html" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><path d='M6 40 24 6l18 34-9-6-9-14-9 14z' fill='%23f2a33a'/><path d='M24 6 42 40l-9-6z' fill='%23c8553d'/><circle cx='24' cy='6' r='4' fill='%23FAD201'/></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --bg:#080A0F; --bg2:#0B1017; --bg3:#10151D;
+  --ink:#f4efe8; --mut:#a9a39b;
+  --amb:#f2a33a; --ter:#c8553d;
+  --blue:#00A1DE; --grn:#20603D; --yel:#FAD201;
+  --card:rgba(255,255,255,.04);
+  --card2:rgba(255,255,255,.06);
+  --line:rgba(255,255,255,.10);
+  --line2:rgba(255,255,255,.16);
+  --radius:14px;
+  --radius-lg:20px;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sidebar-w:260px;
+  --bottom-nav-h:62px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.55;
+  overflow-x:hidden;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  font-size:14px;
+}
+body.lock{overflow:hidden}
+input,textarea,select,button{-webkit-user-select:text;user-select:text}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+button{font:inherit;cursor:pointer}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px;font-size:.88em;font-family:var(--mono)}
+
+/* ============================================================
+   BACKGROUND LAYERS
+   ============================================================ */
+#bg{
+  position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(60% 50% at 20% 15%,rgba(0,161,222,.16),transparent 70%),
+    radial-gradient(50% 45% at 85% 80%,rgba(32,96,61,.14),transparent 70%),
+    linear-gradient(#0B1017,#080A0F);
+}
+.aurora{position:fixed;border-radius:50%;filter:blur(100px);opacity:.32;mix-blend-mode:screen;pointer-events:none;z-index:-1}
+.aurora-1{width:520px;height:520px;top:-140px;left:-100px;background:radial-gradient(circle,var(--blue),transparent 70%);animation:float1 24s ease-in-out infinite}
+.aurora-2{width:600px;height:600px;bottom:-200px;right:-120px;background:radial-gradient(circle,var(--grn),transparent 70%);animation:float2 28s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(60px,50px) scale(1.12)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-60px,-70px) scale(1.15)}}
+
+/* ============================================================
+   DEVTOOLS TOAST
+   ============================================================ */
+.devtools-warning{
+  position:fixed;top:0;left:50%;transform:translate(-50%,-140%);
+  z-index:9999;padding:.75rem 1.2rem;
+  background:linear-gradient(120deg,rgba(200,85,61,.95),rgba(150,40,20,.95));
+  color:#fff;font-weight:600;font-size:.85rem;
+  border-radius:0 0 14px 14px;letter-spacing:.03em;
+  box-shadow:0 14px 40px -10px rgba(200,85,61,.6);
+  display:flex;align-items:center;gap:.6rem;
+  transition:transform .5s cubic-bezier(.2,.7,.2,1);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  max-width:calc(100% - 24px);pointer-events:none;
+}
+.devtools-warning.is-visible{transform:translate(-50%,0)}
+.devtools-warning__icon{
+  width:20px;height:20px;border-radius:50%;
+  background:rgba(255,255,255,.18);
+  display:grid;place-items:center;font-size:12px;flex-shrink:0;
+}
+@media (max-width:620px){.devtools-warning{font-size:.75rem;padding:.65rem .9rem}}
+
+/* ============================================================
+   LOADER
+   ============================================================ */
+#loader{
+  position:fixed;inset:0;z-index:8000;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:var(--bg);gap:22px;
+  transition:opacity .4s ease,visibility .4s;
+}
+#loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-spinner{
+  width:52px;height:52px;border-radius:50%;
+  border:3px solid rgba(255,255,255,.1);
+  border-top-color:var(--blue);
+  border-right-color:var(--yel);
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loader-text{
+  color:var(--mut);font-size:.82rem;letter-spacing:.35em;
+  text-transform:uppercase;font-weight:500;text-align:center;padding:0 20px;
+}
+
+/* ============================================================
+   AUTH GATE
+   ============================================================ */
+#authGate{
+  position:fixed;inset:0;z-index:7000;
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;background:rgba(8,10,15,.92);
+  backdrop-filter:blur(14px);overflow-y:auto;
+}
+#authGate.hidden{display:none}
+.auth-card{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius-lg);padding:36px 32px;
+  max-width:440px;width:100%;
+  backdrop-filter:blur(12px);
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+}
+.auth-card__logo{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.auth-card__logo img{height:46px;width:auto}
+.auth-card__logo strong{font-size:14px;letter-spacing:.08em;font-weight:800;display:block}
+.auth-card__logo small{display:block;font-size:10px;color:var(--mut);font-weight:500;letter-spacing:0}
+.auth-card h1{font-size:1.5rem;margin:0 0 6px;letter-spacing:-.01em}
+.auth-card__sub{color:var(--mut);font-size:.9rem;margin:0 0 24px}
+.auth-form{display:grid;gap:14px}
+.auth-form .field{display:grid;gap:6px}
+.auth-form label{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.1em}
+.auth-form input{
+  width:100%;padding:13px 16px;border-radius:10px;
+  border:1px solid var(--line);background:rgba(255,255,255,.04);
+  color:var(--ink);font-size:14px;min-height:48px;
+}
+.auth-form input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,161,222,.12)}
+.auth-submit{
+  width:100%;padding:14px;border-radius:10px;
+  background:var(--blue);color:#fff;border:0;
+  font-weight:700;font-size:14px;min-height:48px;
+  transition:transform .2s,box-shadow .2s;
+}
+.auth-submit:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,161,222,.35)}
+.auth-submit:disabled{opacity:.5;cursor:not-allowed}
+.auth-divider{
+  display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--mut);font-size:11px;
+  text-transform:uppercase;letter-spacing:.15em;
+}
+.auth-divider::before,.auth-divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.auth-google{
+  width:100%;padding:13px;border-radius:10px;
+  background:rgba(255,255,255,.05);border:1px solid var(--line);
+  color:var(--ink);font-weight:600;font-size:14px;min-height:48px;
+  display:flex;align-items:center;justify-content:center;gap:10px;transition:all .2s;
+}
+.auth-google:hover{border-color:var(--blue);color:var(--blue)}
+.auth-google svg{width:18px;height:18px}
+.auth-message{padding:12px 14px;border-radius:10px;font-size:.85rem;margin-top:14px;display:none}
+.auth-message.err{display:block;background:rgba(200,85,61,.12);border:1px solid rgba(200,85,61,.35);color:#ffb3a3}
+.auth-message.ok{display:block;background:rgba(61,220,132,.1);border:1px solid rgba(61,220,132,.3);color:#8ee9b5}
+.auth-message.warn{display:block;background:rgba(242,163,58,.1);border:1px solid rgba(242,163,58,.3);color:#f5c78a}
+.auth-footer{text-align:center;margin-top:22px;font-size:.82rem;color:var(--mut)}
+.auth-footer a{color:var(--blue);text-decoration:underline}
+
+/* Access denied card */
+.denied-card{
+  background:linear-gradient(135deg,rgba(200,85,61,.10),rgba(150,40,20,.05));
+  border:1px solid rgba(200,85,61,.4);
+  border-radius:var(--radius-lg);padding:32px 28px;
+  max-width:560px;width:100%;
+  text-align:center;
+}
+.denied-card h2{color:var(--ter);margin:0 0 10px;font-size:1.25rem}
+.denied-card p{color:var(--mut);font-size:.9rem;margin:0 0 14px;line-height:1.7}
+.denied-card code{background:rgba(0,0,0,.35);padding:3px 8px;border-radius:6px;font-family:var(--mono);font-size:12px;color:var(--amb)}
+.denied-card__uid{background:rgba(0,0,0,.35);padding:12px;border-radius:10px;margin:14px 0;font-family:var(--mono);font-size:12px;word-break:break-all;color:var(--amb)}
+
+/* Setup card */
+.setup-card{
+  background:linear-gradient(135deg,rgba(242,163,58,.08),rgba(200,85,61,.04));
+  border:1px solid rgba(242,163,58,.32);
+  border-radius:var(--radius-lg);padding:30px 28px;
+  max-width:620px;width:100%;
+}
+.setup-card h2{color:var(--amb);margin:0 0 10px;font-size:1.2rem}
+.setup-card p{color:var(--mut);font-size:.9rem;margin:0 0 14px;line-height:1.65}
+.setup-card ol{padding-left:22px;margin:14px 0;color:var(--mut);font-size:.88rem;line-height:1.9}
+.setup-card ol li{margin-bottom:4px}
+.setup-card code{background:rgba(0,0,0,.35);padding:3px 8px;border-radius:6px;font-family:var(--mono);font-size:12px;color:var(--amb)}
+.setup-card__actions{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 18px;border-radius:10px;
+  background:var(--blue);color:#fff;font-weight:600;
+  border:0;font-size:13.5px;
+  transition:transform .2s,box-shadow .2s;
+  min-height:40px;white-space:nowrap;
+}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,161,222,.3)}
+.btn.o{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.o:hover{border-color:var(--blue);color:var(--blue);box-shadow:none}
+.btn.amb{background:var(--amb);color:#1a0f05}
+.btn.amb:hover{box-shadow:0 6px 20px rgba(242,163,58,.3)}
+.btn.sm{padding:8px 14px;font-size:12.5px;min-height:34px}
+.btn.danger{background:rgba(200,85,61,.15);color:#ffb3a3;border:1px solid rgba(200,85,61,.4)}
+.btn.danger:hover{background:rgba(200,85,61,.25);box-shadow:none}
+.btn.ghost{background:transparent;color:var(--mut);border:0;padding:8px 12px}
+.btn.ghost:hover{color:var(--ink);box-shadow:none}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+
+:focus-visible{outline:2px solid var(--yel);outline-offset:2px;border-radius:6px}
+
+/* ============================================================
+   PORTAL SHELL
+   ============================================================ */
+#portal{display:none}
+#portal.ready{display:block}
+
+/* Mobile header */
+.mobile-header{
+  position:sticky;top:0;z-index:30;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 16px;
+  background:rgba(8,10,15,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+  min-height:58px;
+}
+.mobile-header__brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.08em;font-size:12px}
+.mobile-header__brand img{height:34px;width:auto}
+.mobile-header__actions{display:flex;align-items:center;gap:8px}
+.icon-btn{
+  width:38px;height:38px;border-radius:10px;
+  background:var(--card);border:1px solid var(--line);
+  color:var(--ink);display:grid;place-items:center;
+  position:relative;font-size:16px;
+}
+.icon-btn:hover{border-color:var(--blue);color:var(--blue)}
+.icon-btn__badge{
+  position:absolute;top:-4px;right:-4px;
+  min-width:18px;height:18px;padding:0 5px;
+  border-radius:99px;background:var(--ter);color:#fff;
+  font-size:10px;font-weight:700;display:grid;place-items:center;
+  border:2px solid var(--bg);
+}
+
+/* Desktop sidebar */
+.sidebar{
+  position:fixed;top:0;left:0;bottom:0;width:var(--sidebar-w);
+  background:rgba(11,16,23,.92);
+  border-right:1px solid var(--line);
+  backdrop-filter:blur(14px);
+  display:none;flex-direction:column;
+  z-index:40;padding:18px 0;
+  overflow-y:auto;
+}
+@media(min-width:960px){.sidebar{display:flex}.mobile-header{display:none}}
+.sidebar__brand{
+  display:flex;align-items:center;gap:10px;
+  padding:0 20px 18px;border-bottom:1px solid var(--line);
+  margin-bottom:14px;
+}
+.sidebar__brand img{height:38px;width:auto}
+.sidebar__brand strong{font-size:12.5px;letter-spacing:.08em;display:block;font-weight:800}
+.sidebar__brand small{font-size:9.5px;color:var(--mut);font-weight:500;display:block}
+
+.sidebar__nav{flex:1;padding:0 10px}
+.nav-item{
+  display:flex;align-items:center;gap:12px;
+  padding:10px 14px;border-radius:10px;
+  color:var(--mut);font-size:13px;font-weight:500;
+  transition:all .15s;width:100%;
+  background:transparent;border:0;text-align:left;cursor:pointer;
+  margin-bottom:2px;
+}
+.nav-item:hover{background:rgba(255,255,255,.04);color:var(--ink)}
+.nav-item.on{background:rgba(0,161,222,.12);color:var(--blue);font-weight:600}
+.nav-item__icon{width:20px;height:20px;display:grid;place-items:center;flex-shrink:0;color:inherit;font-size:14px}
+.nav-item__badge{
+  margin-left:auto;min-width:20px;height:20px;padding:0 6px;
+  border-radius:99px;background:var(--ter);color:#fff;
+  font-size:10px;font-weight:700;display:grid;place-items:center;
+}
+.nav-group{margin:14px 14px 6px;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--mut);font-weight:700}
+.nav-divider{height:1px;background:var(--line);margin:12px 14px}
+
+.sidebar__footer{padding:14px 10px 0;border-top:1px solid var(--line);margin-top:14px}
+.user-chip{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;border-radius:10px;
+  background:rgba(255,255,255,.03);border:1px solid var(--line);
+  width:100%;text-align:left;color:var(--ink);
+}
+.user-chip:hover{border-color:var(--blue)}
+.user-chip__avatar{
+  width:34px;height:34px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--grn));
+  display:grid;place-items:center;color:#fff;font-weight:700;font-size:13px;flex-shrink:0;
+}
+.user-chip__info{flex:1;min-width:0}
+.user-chip__info b{display:block;font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.user-chip__info small{display:block;font-size:10.5px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* Main */
+.main{min-height:100vh;padding-bottom:calc(var(--bottom-nav-h) + 16px)}
+@media(min-width:960px){.main{margin-left:var(--sidebar-w);padding-bottom:32px}}
+.main-inner{max-width:1340px;margin:0 auto;padding:20px 16px}
+@media(min-width:640px){.main-inner{padding:26px 24px}}
+@media(min-width:960px){.main-inner{padding:32px 36px}}
+
+/* Bottom mobile nav */
+.bottom-nav{
+  position:fixed;bottom:0;left:0;right:0;
+  z-index:35;display:flex;
+  background:rgba(8,10,15,.95);
+  backdrop-filter:blur(14px);
+  border-top:1px solid var(--line);
+  height:var(--bottom-nav-h);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media(min-width:960px){.bottom-nav{display:none}}
+.bottom-nav__item{
+  flex:1;background:transparent;border:0;
+  color:var(--mut);font-size:10px;font-weight:500;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:3px;padding:6px;position:relative;cursor:pointer;
+}
+.bottom-nav__item.on{color:var(--blue)}
+.bottom-nav__item.on::before{content:"";position:absolute;top:0;left:20%;right:20%;height:2px;border-radius:2px;background:var(--blue)}
+.bottom-nav__icon{font-size:17px;line-height:1}
+.bottom-nav__item__badge{
+  position:absolute;top:4px;right:calc(50% - 20px);
+  min-width:16px;height:16px;padding:0 4px;
+  border-radius:99px;background:var(--ter);color:#fff;
+  font-size:9px;font-weight:700;display:grid;place-items:center;
+  border:2px solid var(--bg);
+}
+
+/* Drawer (mobile menu) */
+.drawer{
+  position:fixed;inset:0;z-index:9000;
+  display:none;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);
+  overflow-y:auto;
+}
+.drawer.open{display:block}
+.drawer__panel{
+  background:var(--bg2);border-right:1px solid var(--line);
+  max-width:340px;width:90%;min-height:100vh;padding:22px 0;
+  animation:slideRight .25s ease;
+}
+@keyframes slideRight{from{transform:translateX(-30px);opacity:0}to{transform:none;opacity:1}}
+.drawer__head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 20px 18px;border-bottom:1px solid var(--line);margin-bottom:14px;
+}
+.drawer__head strong{font-size:13px;letter-spacing:.06em;font-weight:800}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+.section{display:none;animation:fadeIn .25s ease}
+.section.on{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.section-head{
+  display:flex;flex-wrap:wrap;align-items:flex-end;
+  justify-content:space-between;gap:14px;margin-bottom:22px;
+}
+.section-head h1{font-size:1.5rem;margin:0;letter-spacing:-.01em}
+@media(min-width:640px){.section-head h1{font-size:1.85rem}}
+.section-head p{color:var(--mut);margin:4px 0 0;font-size:.9rem}
+
+/* Cards */
+.card{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius);padding:20px;
+  backdrop-filter:blur(8px);
+  transition:border-color .2s;
+}
+.card:hover{border-color:var(--line2)}
+.card h3{margin:0 0 10px;font-size:1rem;letter-spacing:-.005em}
+.card__head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+
+/* Stat tiles */
+.stat-grid{
+  display:grid;gap:12px;margin-bottom:24px;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));
+}
+.stat{
+  padding:16px;border-radius:var(--radius);
+  background:var(--card);border:1px solid var(--line);
+  position:relative;overflow:hidden;
+  transition:transform .2s,border-color .2s;
+}
+.stat:hover{transform:translateY(-2px);border-color:var(--line2)}
+.stat__icon{position:absolute;top:12px;right:12px;font-size:20px;opacity:.28;color:var(--blue)}
+.stat__label{font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);margin-bottom:6px;font-weight:600}
+.stat__value{font-size:1.6rem;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1}
+.stat__value.muted{font-size:1.1rem;color:var(--mut);font-weight:600}
+.stat__sub{font-size:11.5px;color:var(--mut);margin-top:4px}
+
+/* Toolbar */
+.toolbar{
+  display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+  margin-bottom:18px;
+}
+.toolbar__search{
+  flex:1;min-width:200px;position:relative;
+}
+.toolbar__search input{
+  width:100%;padding:11px 16px 11px 42px;border-radius:10px;
+  border:1px solid var(--line);background:var(--card);
+  color:var(--ink);font-size:14px;min-height:42px;
+}
+.toolbar__search input::placeholder{color:var(--mut)}
+.toolbar__search input:focus{outline:none;border-color:var(--blue)}
+.toolbar__search::before{content:"⌕";position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--mut);font-size:17px;pointer-events:none}
+
+/* Data list */
+.data-list{display:grid;gap:10px}
+.data-item{
+  padding:16px;border-radius:var(--radius);
+  background:var(--card);border:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:12px;align-items:flex-start;
+  transition:border-color .2s,transform .2s;
+}
+.data-item:hover{border-color:var(--line2);transform:translateY(-1px)}
+.data-item__icon{
+  width:40px;height:40px;border-radius:10px;
+  display:grid;place-items:center;
+  background:rgba(0,161,222,.1);color:var(--blue);
+  font-size:18px;flex-shrink:0;
+}
+.data-item__body{flex:1;min-width:0}
+.data-item__title{font-weight:600;font-size:.95rem;margin:0 0 4px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.data-item__meta{font-size:11.5px;color:var(--mut);display:flex;flex-wrap:wrap;gap:10px}
+.data-item__actions{display:flex;gap:6px;flex-wrap:wrap;align-self:center}
+
+/* Badges */
+.badge{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:3px 9px;border-radius:99px;border:1px solid;white-space:nowrap;
+}
+.badge::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}
+.badge--active{color:#3ddc84;border-color:rgba(61,220,132,.4);background:rgba(61,220,132,.08)}
+.badge--progress{color:#00A1DE;border-color:rgba(0,161,222,.4);background:rgba(0,161,222,.08)}
+.badge--waiting{color:#f2a33a;border-color:rgba(242,163,58,.4);background:rgba(242,163,58,.08)}
+.badge--urgent{color:#c8553d;border-color:rgba(200,85,61,.5);background:rgba(200,85,61,.12)}
+.badge--muted{color:#9aa0a6;border-color:rgba(154,160,166,.3);background:rgba(154,160,166,.06)}
+.badge--founder{color:var(--yel);border-color:rgba(250,210,1,.45);background:rgba(250,210,1,.1)}
+
+/* Empty */
+.empty{
+  padding:52px 24px;text-align:center;
+  border:1px dashed var(--line);border-radius:var(--radius);margin-top:16px;
+}
+.empty__icon{
+  width:56px;height:56px;border-radius:50%;
+  background:rgba(0,161,222,.08);color:var(--blue);
+  display:grid;place-items:center;margin:0 auto 14px;font-size:22px;
+}
+.empty h3{margin:0 0 6px;font-size:1.02rem}
+.empty p{color:var(--mut);font-size:.9rem;margin:0 0 18px;max-width:460px;margin-inline:auto}
+
+/* Skeleton */
+.skeleton{padding:16px;border-radius:var(--radius);background:var(--card);border:1px solid var(--line)}
+.sk-line{
+  height:12px;border-radius:6px;
+  background:linear-gradient(90deg,rgba(255,255,255,.04),rgba(255,255,255,.09),rgba(255,255,255,.04));
+  background-size:200% 100%;animation:shimmer 1.4s linear infinite;margin-bottom:10px;
+}
+.sk-line.w40{width:40%}.sk-line.w60{width:60%}.sk-line.w80{width:80%}
+.sk-line.h20{height:20px}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+.modal{
+  position:fixed;inset:0;z-index:9100;
+  display:none;align-items:flex-start;justify-content:center;
+  padding:20px;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);
+  overflow-y:auto;
+}
+.modal.open{display:flex}
+.modal__box{
+  background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius-lg);
+  max-width:640px;width:100%;padding:26px;position:relative;
+  box-shadow:0 30px 80px rgba(0,0,0,.7);margin:auto;
+}
+.modal__box.wide{max-width:900px}
+.modal__close{
+  position:absolute;top:14px;right:14px;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,.05);border:1px solid var(--line);
+  color:var(--ink);display:grid;place-items:center;font-size:16px;
+}
+.modal__close:hover{background:rgba(0,161,222,.15);color:var(--blue)}
+.modal h3{margin:0 0 6px;font-size:1.2rem;padding-right:44px}
+.modal__sub{color:var(--mut);font-size:.88rem;margin:0 0 20px}
+.modal__form{display:grid;gap:12px}
+.modal__form label{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em}
+.modal__form input,.modal__form textarea,.modal__form select{
+  width:100%;padding:12px 14px;border-radius:10px;
+  border:1px solid var(--line);background:rgba(255,255,255,.04);
+  color:var(--ink);font-size:14px;min-height:44px;
+}
+.modal__form input:focus,.modal__form textarea:focus,.modal__form select:focus{
+  outline:none;border-color:var(--blue);
+}
+.modal__form textarea{min-height:100px;resize:vertical;font-family:inherit}
+.modal__actions{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.modal__form .row{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+@media(max-width:520px){.modal__form .row{grid-template-columns:1fr}}
+
+/* ============================================================
+   TOASTS
+   ============================================================ */
+.toast-wrap{
+  position:fixed;bottom:calc(var(--bottom-nav-h) + 20px);right:16px;
+  z-index:9500;display:grid;gap:10px;max-width:400px;
+}
+@media(min-width:960px){.toast-wrap{bottom:24px;right:24px}}
+.toast{
+  padding:14px 18px;border-radius:12px;
+  background:rgba(11,16,23,.97);
+  border:1px solid var(--line);
+  backdrop-filter:blur(10px);
+  box-shadow:0 14px 40px rgba(0,0,0,.5);
+  font-size:.9rem;
+  display:flex;gap:10px;align-items:flex-start;
+  animation:toastIn .3s ease;
+}
+@keyframes toastIn{from{transform:translateX(20px);opacity:0}to{transform:none;opacity:1}}
+.toast.ok{border-color:rgba(61,220,132,.4)}
+.toast.err{border-color:rgba(200,85,61,.5)}
+.toast.warn{border-color:rgba(242,163,58,.4)}
+.toast__icon{flex-shrink:0;font-size:16px}
+.toast.ok .toast__icon{color:#3ddc84}
+.toast.err .toast__icon{color:var(--ter)}
+.toast.warn .toast__icon{color:var(--amb)}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .aurora{display:none}
+}
+</style>
+</head>
+<body class="lock">
+
+<div id="bg" aria-hidden="true"></div>
+<div class="aurora aurora-1" aria-hidden="true"></div>
+<div class="aurora aurora-2" aria-hidden="true"></div>
+
+<!-- ============================================================
+     LOADER
+     ============================================================ -->
+<div id="loader">
+  <div class="loader-spinner"></div>
+  <div class="loader-text">IKAZE DIGITAL<br>Founder Command Center</div>
+</div>
+
+<!-- ============================================================
+     AUTH GATE
+     ============================================================ -->
+<div id="authGate" class="hidden" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <div id="authContent"></div>
+</div>
+
+<!-- ============================================================
+     PORTAL SHELL
+     ============================================================ -->
+<div id="portal">
+
+  <!-- Mobile header -->
+  <div class="mobile-header">
+    <div class="mobile-header__brand">
+      <img src="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png" alt="" />
+      <span>COMMAND CENTER</span>
+    </div>
+    <div class="mobile-header__actions">
+      <button class="icon-btn" id="openDrawer" aria-label="Open menu">
+        <span aria-hidden="true">☰</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Desktop sidebar -->
+  <aside class="sidebar" aria-label="Command center navigation">
+    <div class="sidebar__brand">
+      <img src="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png" alt="" />
+      <div>
+        <strong>IKAZE DIGITAL</strong>
+        <small>Founder Command Center</small>
+      </div>
+    </div>
+
+    <nav class="sidebar__nav" aria-label="Sections">
+      <div class="nav-group">Command</div>
+      <button class="nav-item" data-section="overview"><span class="nav-item__icon">◈</span><span>Overview</span></button>
+      <button class="nav-item" data-section="activity"><span class="nav-item__icon">◐</span><span>Live Activity</span></button>
+
+      <div class="nav-group">Website</div>
+      <button class="nav-item" data-section="content"><span class="nav-item__icon">▤</span><span>Site Content</span></button>
+      <button class="nav-item" data-section="media"><span class="nav-item__icon">▧</span><span>Media Library</span></button>
+      <button class="nav-item" data-section="announcements"><span class="nav-item__icon">✦</span><span>Announcements</span></button>
+
+      <div class="nav-group">Business</div>
+      <button class="nav-item" data-section="services"><span class="nav-item__icon">◇</span><span>Services</span></button>
+      <button class="nav-item" data-section="portfolio"><span class="nav-item__icon">▣</span><span>Portfolio</span></button>
+      <button class="nav-item" data-section="requests"><span class="nav-item__icon">⌘</span><span>Project Requests</span><span class="nav-item__badge" data-badge="requests" hidden>0</span></button>
+      <button class="nav-item" data-section="projects"><span class="nav-item__icon">⚙</span><span>Projects</span></button>
+      <button class="nav-item" data-section="clients"><span class="nav-item__icon">◎</span><span>Clients</span></button>
+      <button class="nav-item" data-section="messages"><span class="nav-item__icon">✎</span><span>Contact Messages</span></button>
+
+      <div class="nav-group">Ecosystem</div>
+      <button class="nav-item" data-section="products"><span class="nav-item__icon">◆</span><span>Products</span></button>
+      <button class="nav-item" data-section="opportunities"><span class="nav-item__icon">★</span><span>Opportunities</span><span class="nav-item__badge" data-badge="opportunities" hidden>0</span></button>
+      <button class="nav-item" data-section="tools"><span class="nav-item__icon">✎</span><span>Tools</span></button>
+
+      <div class="nav-group">People</div>
+      <button class="nav-item" data-section="users"><span class="nav-item__icon">◉</span><span>Users</span></button>
+      <button class="nav-item" data-section="admins"><span class="nav-item__icon">⚿</span><span>Administrators</span></button>
+
+      <div class="nav-group">Finance</div>
+      <button class="nav-item" data-section="billing"><span class="nav-item__icon">◇</span><span>Billing</span></button>
+
+      <div class="nav-group">Support</div>
+      <button class="nav-item" data-section="support"><span class="nav-item__icon">✱</span><span>Support Tickets</span><span class="nav-item__badge" data-badge="support" hidden>0</span></button>
+
+      <div class="nav-group">Security</div>
+      <button class="nav-item" data-section="security"><span class="nav-item__icon">🛡</span><span>Security Center</span></button>
+      <button class="nav-item" data-section="audit"><span class="nav-item__icon">▦</span><span>Audit Logs</span></button>
+
+      <div class="nav-group">System</div>
+      <button class="nav-item" data-section="settings"><span class="nav-item__icon">⚙</span><span>Settings</span></button>
+    </nav>
+
+    <div class="sidebar__footer">
+      <button class="user-chip" id="userChip" aria-label="Account menu">
+        <span class="user-chip__avatar" id="userAvatar">—</span>
+        <span class="user-chip__info">
+          <b id="userName">Loading…</b>
+          <small id="userEmail">—</small>
+        </span>
+        <span aria-hidden="true" style="color:var(--mut)">▾</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Drawer (mobile) -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer__panel">
+      <div class="drawer__head">
+        <strong>COMMAND CENTER</strong>
+        <button class="icon-btn" id="closeDrawer" aria-label="Close menu">✕</button>
+      </div>
+      <nav class="sidebar__nav" aria-label="Mobile sections" id="drawerNav"></nav>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <main class="main" id="portalMain">
+    <div class="main-inner" id="sectionRoot">
+
+      <!-- OVERVIEW -->
+      <section class="section on" data-section="overview" aria-labelledby="sOverTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sOverTitle">Welcome, <span id="firstName">Founder</span>.</h1>
+            <p id="roleLine">Command center — everything about IKAZE DIGITAL at a glance.</p>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn o sm" data-action="new-service">+ Service</button>
+            <button class="btn o sm" data-action="new-project">+ Project</button>
+            <button class="btn sm" data-action="new-announcement">Post Announcement</button>
+          </div>
+        </div>
+
+        <div class="stat-grid" id="overviewStats">
+          <div class="skeleton"><div class="sk-line w60"></div><div class="sk-line h20 w40"></div></div>
+          <div class="skeleton"><div class="sk-line w60"></div><div class="sk-line h20 w40"></div></div>
+          <div class="skeleton"><div class="sk-line w60"></div><div class="sk-line h20 w40"></div></div>
+          <div class="skeleton"><div class="sk-line w60"></div><div class="sk-line h20 w40"></div></div>
+        </div>
+
+        <div id="overviewAlerts"></div>
+
+        <div style="display:grid;gap:20px;grid-template-columns:1fr;margin-top:16px" id="overviewGrid">
+          <div class="card">
+            <div class="card__head">
+              <h3>Recent Contact Messages</h3>
+              <button class="btn ghost sm" data-nav="messages">View all →</button>
+            </div>
+            <div class="data-list" id="overviewMessages"></div>
+          </div>
+          <div class="card">
+            <div class="card__head">
+              <h3>Recent Support Tickets</h3>
+              <button class="btn ghost sm" data-nav="support">View all →</button>
+            </div>
+            <div class="data-list" id="overviewSupport"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ACTIVITY -->
+      <section class="section" data-section="activity" aria-labelledby="sActTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sActTitle">Live Activity</h1>
+            <p>Recent administrative and platform events.</p>
+          </div>
+        </div>
+        <div class="data-list" id="activityList"></div>
+      </section>
+
+      <!-- CONTENT -->
+      <section class="section" data-section="content" aria-labelledby="sContentTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sContentTitle">Site Content</h1>
+            <p>Manage homepage, pages and SEO metadata.</p>
+          </div>
+        </div>
+        <div class="card" style="margin-bottom:20px">
+          <div class="card__head">
+            <h3>Homepage</h3>
+            <button class="btn sm" data-action="edit-homepage">Edit homepage</button>
+          </div>
+          <div id="homepageStatus" class="data-list"></div>
+        </div>
+        <div class="card">
+          <div class="card__head">
+            <h3>Site Pages</h3>
+            <button class="btn o sm" data-action="detect-pages">Detect pages</button>
+          </div>
+          <div class="data-list" id="pagesList"></div>
+        </div>
+      </section>
+
+      <!-- MEDIA -->
+      <section class="section" data-section="media" aria-labelledby="sMediaTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sMediaTitle">Media Library</h1>
+            <p>Logos, images, documents and brand assets.</p>
+          </div>
+          <button class="btn sm" data-action="upload-media">Upload</button>
+        </div>
+        <div class="data-list" id="mediaList"></div>
+      </section>
+
+      <!-- ANNOUNCEMENTS -->
+      <section class="section" data-section="announcements" aria-labelledby="sAnnTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sAnnTitle">Announcements</h1>
+            <p>Homepage notices and internal messages.</p>
+          </div>
+          <button class="btn sm" data-action="new-announcement">+ New Announcement</button>
+        </div>
+        <div class="data-list" id="announcementsList"></div>
+      </section>
+
+      <!-- SERVICES -->
+      <section class="section" data-section="services" aria-labelledby="sSvcTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sSvcTitle">Services</h1>
+            <p>Public service catalogue.</p>
+          </div>
+          <button class="btn sm" data-action="new-service">+ New Service</button>
+        </div>
+        <div class="toolbar">
+          <div class="toolbar__search"><input type="search" id="servicesSearch" placeholder="Search services…" aria-label="Search services" /></div>
+        </div>
+        <div class="data-list" id="servicesList"></div>
+      </section>
+
+      <!-- PORTFOLIO -->
+      <section class="section" data-section="portfolio" aria-labelledby="sPortTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sPortTitle">Portfolio</h1>
+            <p>Projects and case studies shown publicly.</p>
+          </div>
+          <button class="btn sm" data-action="new-portfolio">+ New Project</button>
+        </div>
+        <div class="data-list" id="portfolioList"></div>
+      </section>
+
+      <!-- REQUESTS -->
+      <section class="section" data-section="requests" aria-labelledby="sReqTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sReqTitle">Project Requests</h1>
+            <p>Inbound project and consultation requests.</p>
+          </div>
+        </div>
+        <div class="data-list" id="requestsList"></div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="section" data-section="projects" aria-labelledby="sProjTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sProjTitle">Active Projects</h1>
+            <p>Projects in progress across all clients.</p>
+          </div>
+          <button class="btn sm" data-action="new-project">+ New Project</button>
+        </div>
+        <div class="data-list" id="projectsList"></div>
+      </section>
+
+      <!-- CLIENTS -->
+      <section class="section" data-section="clients" aria-labelledby="sClientTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sClientTitle">Clients</h1>
+            <p>Client records and relationships.</p>
+          </div>
+          <button class="btn sm" data-action="new-client">+ New Client</button>
+        </div>
+        <div class="data-list" id="clientsList"></div>
+      </section>
+
+      <!-- MESSAGES -->
+      <section class="section" data-section="messages" aria-labelledby="sMsgTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sMsgTitle">Contact Messages</h1>
+            <p>Messages from the public contact form.</p>
+          </div>
+        </div>
+        <div class="data-list" id="messagesList"></div>
+      </section>
+
+      <!-- PRODUCTS -->
+      <section class="section" data-section="products" aria-labelledby="sProdTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sProdTitle">Ecosystem Products</h1>
+            <p>IKAZE products and their status.</p>
+          </div>
+          <button class="btn sm" data-action="new-product">+ New Product</button>
+        </div>
+        <div class="data-list" id="productsList"></div>
+      </section>
+
+      <!-- OPPORTUNITIES -->
+      <section class="section" data-section="opportunities" aria-labelledby="sOppTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sOppTitle">Opportunities</h1>
+            <p>Job, scholarship and grant listings.</p>
+          </div>
+          <button class="btn sm" data-action="new-opportunity">+ New Listing</button>
+        </div>
+        <div class="data-list" id="opportunitiesList"></div>
+      </section>
+
+      <!-- TOOLS -->
+      <section class="section" data-section="tools" aria-labelledby="sToolsTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sToolsTitle">Tools</h1>
+            <p>Free tools shown on the public site.</p>
+          </div>
+        </div>
+        <div class="data-list" id="toolsList"></div>
+      </section>
+
+      <!-- USERS -->
+      <section class="section" data-section="users" aria-labelledby="sUsersTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sUsersTitle">Users</h1>
+            <p>Registered accounts across the platform.</p>
+          </div>
+        </div>
+        <div class="toolbar">
+          <div class="toolbar__search"><input type="search" id="usersSearch" placeholder="Search by name or email…" aria-label="Search users" /></div>
+        </div>
+        <div class="data-list" id="usersList"></div>
+      </section>
+
+      <!-- ADMINS -->
+      <section class="section" data-section="admins" aria-labelledby="sAdminsTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sAdminsTitle">Administrators</h1>
+            <p>Delegated administrators and their roles.</p>
+          </div>
+          <button class="btn sm" data-action="invite-admin">+ Invite Administrator</button>
+        </div>
+        <div class="card" style="margin-bottom:20px">
+          <p style="margin:0;color:var(--mut);font-size:.9rem">
+            Administrator privileges are enforced by Firebase custom claims. To grant or revoke
+            admin access, use the trusted provisioning function or the Firebase Admin SDK — never
+            the browser.
+          </p>
+        </div>
+        <div class="data-list" id="adminsList"></div>
+      </section>
+
+      <!-- BILLING -->
+      <section class="section" data-section="billing" aria-labelledby="sBillTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sBillTitle">Billing</h1>
+            <p>Invoices, payments and financial overview.</p>
+          </div>
+        </div>
+        <div class="data-list" id="billingList"></div>
+      </section>
+
+      <!-- SUPPORT -->
+      <section class="section" data-section="support" aria-labelledby="sSupTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sSupTitle">Support Tickets</h1>
+            <p>Ticket queue and admin response.</p>
+          </div>
+        </div>
+        <div class="data-list" id="supportList"></div>
+      </section>
+
+      <!-- SECURITY -->
+      <section class="section" data-section="security" aria-labelledby="sSecTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sSecTitle">Security Center</h1>
+            <p>Your account security and platform configuration.</p>
+          </div>
+        </div>
+        <div class="card" style="max-width:720px;margin-bottom:16px">
+          <h3>Your Account</h3>
+          <div class="data-list">
+            <div class="data-item"><div class="data-item__icon">◉</div><div class="data-item__body"><div class="data-item__title">Email</div><div class="data-item__meta" id="secEmail">—</div></div></div>
+            <div class="data-item"><div class="data-item__icon">⚿</div><div class="data-item__body"><div class="data-item__title">Sign-in method</div><div class="data-item__meta" id="secSignIn">—</div></div></div>
+            <div class="data-item"><div class="data-item__icon">★</div><div class="data-item__body"><div class="data-item__title">Role</div><div class="data-item__meta" id="secRole">—</div></div></div>
+            <div class="data-item"><div class="data-item__icon">✓</div><div class="data-item__body"><div class="data-item__title">Email verified</div><div class="data-item__meta" id="secVerified">—</div></div></div>
+            <div class="data-item"><div class="data-item__icon">◐</div><div class="data-item__body"><div class="data-item__title">Last sign-in</div><div class="data-item__meta" id="secLast">—</div></div></div>
+            <div class="data-item"><div class="data-item__icon">◎</div><div class="data-item__body"><div class="data-item__title">UID</div><div class="data-item__meta" id="secUid" style="font-family:var(--mono);word-break:break-all">—</div></div></div>
+          </div>
+          <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn o sm" id="resetPasswordBtn">Reset Password</button>
+            <button class="btn danger sm" id="signOutBtn">Sign Out</button>
+          </div>
+        </div>
+        <div class="card" style="max-width:720px">
+          <h3>Platform Configuration</h3>
+          <div class="data-list" id="configHealth"></div>
+        </div>
+      </section>
+
+      <!-- AUDIT -->
+      <section class="section" data-section="audit" aria-labelledby="sAuditTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sAuditTitle">Audit Logs</h1>
+            <p>Chronological record of administrative actions.</p>
+          </div>
+        </div>
+        <div class="data-list" id="auditList"></div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="section" data-section="settings" aria-labelledby="sSetTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sSetTitle">Settings</h1>
+            <p>Site-wide settings, branding and feature flags.</p>
+          </div>
+        </div>
+        <div class="card" style="max-width:760px;margin-bottom:16px">
+          <h3>Site Settings</h3>
+          <form id="settingsForm" class="modal__form" style="margin-top:12px">
+            <div class="row">
+              <div><label for="sitename">Site name</label><input id="sitename" type="text" placeholder="IKAZE DIGITAL" /></div>
+              <div><label for="tagline">Tagline</label><input id="tagline" type="text" placeholder="Building Africa's Digital Future" /></div>
+            </div>
+            <div class="row">
+              <div><label for="contactEmail">Contact email</label><input id="contactEmail" type="email" placeholder="theonosteniyibigira6@gmail.com" /></div>
+              <div><label for="contactPhone">Contact phone</label><input id="contactPhone" type="tel" placeholder="+250 794 204 258" /></div>
+            </div>
+            <div style="display:flex;justify-content:flex-end;margin-top:6px">
+              <button class="btn" type="submit">Save Settings</button>
+            </div>
+            <p class="form-status" id="settingsStatus" role="status" aria-live="polite" style="font-size:.85rem"></p>
+          </form>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Bottom mobile nav -->
+  <nav class="bottom-nav" aria-label="Primary">
+    <button class="bottom-nav__item" data-section="overview">
+      <span class="bottom-nav__icon">◈</span><span>Home</span>
+    </button>
+    <button class="bottom-nav__item" data-section="projects">
+      <span class="bottom-nav__icon">⚙</span><span>Projects</span>
+    </button>
+    <button class="bottom-nav__item" data-section="users">
+      <span class="bottom-nav__icon">◉</span><span>Users</span>
+    </button>
+    <button class="bottom-nav__item" data-section="support">
+      <span class="bottom-nav__icon">✱</span><span>Support</span>
+      <span class="bottom-nav__item__badge" data-badge="supportMobile" hidden>0</span>
+    </button>
+    <button class="bottom-nav__item" data-section="settings">
+      <span class="bottom-nav__icon">⚙</span><span>More</span>
+    </button>
+  </nav>
+
+</div>
+
+<!-- Modal + toasts -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal__box" id="modalBox">
+    <button class="modal__close" id="modalClose" aria-label="Close dialog">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+<div class="toast-wrap" id="toastWrap" aria-live="polite" aria-atomic="true"></div>
+
+<script type="module">
+/* ============================================================
+   IKAZE DIGITAL — FOUNDER COMMAND CENTER
+   ============================================================
+
+   SECURITY MODEL
+   ---------------
+   This page does NOT enforce authorization. All privileged
+   operations are enforced by Firebase custom claims + Firestore
+   Security Rules + trusted backend functions.
+
+   An admin claim must be set via the Firebase Admin SDK (a
+   trusted process), not by this page. See the Security Rules
+   template at the end of this file.
+
+   A determined user can modify everything in this file. It
+   grants no real privileges.
+   ============================================================ */
+
+'use strict';
+
+/* ============================================================
+   CONFIGURATION — replace with your real Firebase config
+   ============================================================ */
+const firebaseConfig = {
+  apiKey: "REPLACE_WITH_FIREBASE_API_KEY",
+  authDomain: "REPLACE_WITH.firebaseapp.com",
+  projectId: "REPLACE_WITH_PROJECT_ID",
+  storageBucket: "REPLACE_WITH.appspot.com",
+  messagingSenderId: "REPLACE_WITH",
+  appId: "REPLACE_WITH_APP_ID"
+};
+
+const isConfigured =
+  !firebaseConfig.apiKey.startsWith('REPLACE_WITH') &&
+  !firebaseConfig.projectId.startsWith('REPLACE_WITH');
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+const $  = (s, c=document) => c.querySelector(s);
+const $$ = (s, c=document) => Array.from(c.querySelectorAll(s));
+const el = (tag, cls, html) => {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (html !== undefined) e.innerHTML = html;
+  return e;
+};
+const escapeHTML = (s) => String(s ?? '').replace(/[&<>"']/g, m => ({
+  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+}[m]));
+const formatDate = (ts) => {
+  if (!ts) return '—';
+  const d = ts.toDate ? ts.toDate() : new Date(ts);
+  if (isNaN(d)) return '—';
+  return d.toLocaleDateString(undefined, { day:'numeric', month:'short', year:'numeric' });
+};
+const formatDateTime = (ts) => {
+  if (!ts) return '—';
+  const d = ts.toDate ? ts.toDate() : new Date(ts);
+  if (isNaN(d)) return '—';
+  return d.toLocaleString(undefined, { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
+};
+const initials = (name) => {
+  if (!name) return '—';
+  return name.split(/\s+/).map(x => x[0]).filter(Boolean).slice(0,2).join('').toUpperCase();
+};
+
+function toast(msg, type='ok', ttl=4200){
+  const wrap = $('#toastWrap');
+  const t = el('div', 'toast ' + type);
+  const icon = type === 'ok' ? '✓' : type === 'err' ? '✕' : '!';
+  t.innerHTML = `<span class="toast__icon">${icon}</span><div>${escapeHTML(msg)}</div>`;
+  wrap.appendChild(t);
+  setTimeout(() => {
+    t.style.transition = 'opacity .3s, transform .3s';
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(20px)';
+    setTimeout(() => t.remove(), 320);
+  }, ttl);
+}
+
+/* ============================================================
+   LOADER
+   ============================================================ */
+function hideLoader(){
+  const l = $('#loader');
+  if (l) l.classList.add('hidden');
+  document.body.classList.remove('lock');
+}
+
+/* ============================================================
+   AUTH UI
+   ============================================================ */
+function showSetupCard(){
+  $('#authContent').innerHTML = `
+    <div class="setup-card">
+      <h2>⚙ Command Center Setup Required</h2>
+      <p>This dashboard is production-ready but requires a Firebase project before it can authenticate administrators. No fake data is shown anywhere — the dashboard will start empty and populate from your Firestore collections.</p>
+      <p><strong>To connect the Command Center:</strong></p>
+      <ol>
+        <li>Create a Firebase project at <code>console.firebase.google.com</code></li>
+        <li>Enable <strong>Authentication → Email/Password</strong></li>
+        <li>Enable <strong>Firestore Database</strong> and <strong>Storage</strong></li>
+        <li>Copy your web app config into the <code>firebaseConfig</code> object in this file</li>
+        <li>Provision your Founder account with an <code>admin</code> custom claim via the Admin SDK (instructions in the Security Rules block at the bottom of this file)</li>
+        <li>Deploy the Security Rules to Firestore + Storage</li>
+        <li>Reload this page</li>
+      </ol>
+      <div class="setup-card__actions">
+        <a class="btn" href="support.html">Get Help</a>
+        <a class="btn o" href="index.html">Back to Website</a>
+      </div>
+    </div>
+  `;
+  $('#authGate').classList.remove('hidden');
+  hideLoader();
+}
+
+function showAuthForm(){
+  $('#authContent').innerHTML = `
+    <div class="auth-card">
+      <div class="auth-card__logo">
+        <img src="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png" alt="" />
+        <div>
+          <strong>IKAZE DIGITAL</strong>
+          <small>Founder Command Center</small>
+        </div>
+      </div>
+      <h1 id="authTitle">Sign in</h1>
+      <p class="auth-card__sub">Authorized administrators only. All access is enforced server-side.</p>
+
+      <form class="auth-form" id="authForm" novalidate>
+        <div class="field">
+          <label for="authEmail">Email</label>
+          <input id="authEmail" type="email" required autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="authPassword">Password</label>
+          <input id="authPassword" type="password" required autocomplete="current-password" minlength="8" />
+        </div>
+        <button class="auth-submit" type="submit" id="authSubmit">Sign In</button>
+      </form>
+
+      <div class="auth-divider">or</div>
+
+      <button class="auth-google" id="authGoogle" type="button">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8.1 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-8.9 20-20 0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.9 1.2 8.1 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.5 0 10.4-2.1 14.1-5.4l-6.5-5.5C29.7 34.7 27 36 24 36c-5.1 0-9.5-3.2-11.2-7.7l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4.1 5.5l6.5 5.5C41 35.6 44 30.3 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg>
+        Continue with Google
+      </button>
+
+      <div class="auth-message" id="authMsg" role="alert" aria-live="polite"></div>
+
+      <div class="auth-footer">
+        <a href="#" id="forgotLink">Forgot password?</a>
+        <span style="margin:0 8px">·</span>
+        <a href="index.html">Back to site</a>
+      </div>
+    </div>
+  `;
+  $('#authGate').classList.remove('hidden');
+  hideLoader();
+
+  $('#authForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    setAuthMsg('');
+    const email = $('#authEmail').value.trim();
+    const password = $('#authPassword').value;
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setAuthMsg('Please enter a valid email address.', 'err'); return; }
+    if (!password || password.length < 8) { setAuthMsg('Password must be at least 8 characters.', 'err'); return; }
+
+    const btn = $('#authSubmit');
+    btn.disabled = true; btn.textContent = 'Signing in…';
+    try { await signInUser(email, password); }
+    catch (err) {
+      setAuthMsg(friendlyAuthError(err), 'err');
+      btn.disabled = false; btn.textContent = 'Sign In';
+    }
+  });
+
+  $('#authGoogle').addEventListener('click', async () => {
+    setAuthMsg('');
+    try { await signInWithGoogle(); }
+    catch (err) { setAuthMsg(friendlyAuthError(err), 'err'); }
+  });
+
+  $('#forgotLink').addEventListener('click', async (e) => {
+    e.preventDefault();
+    const email = $('#authEmail').value.trim();
+    if (!email) { setAuthMsg('Enter your email first, then click Forgot password.', 'err'); return; }
+    try { await sendReset(email); setAuthMsg('If that email exists, a reset link has been sent. Check your inbox and spam folder.', 'ok'); }
+    catch (err) { setAuthMsg(friendlyAuthError(err), 'err'); }
+  });
+}
+
+function showAccessDenied(user){
+  $('#authContent').innerHTML = `
+    <div class="denied-card">
+      <h2>⛔ Access Denied</h2>
+      <p>Your account is signed in, but you do not have permission to access the Founder Command Center.</p>
+      <p>Administrator privileges are granted through Firebase custom claims, set by a trusted provisioning process. If you believe you should have access, contact the Founder.</p>
+      <p style="margin-top:18px;font-size:.8rem;color:var(--mut);text-align:left"><strong>Your account details:</strong></p>
+      <div class="denied-card__uid">${escapeHTML(user.email || '—')}<br>UID: ${escapeHTML(user.uid || '—')}</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px">
+        <button class="btn o" id="deniedSignOut">Sign Out</button>
+        <a class="btn o" href="index.html">Back to Website</a>
+      </div>
+    </div>
+  `;
+  $('#authGate').classList.remove('hidden');
+  hideLoader();
+  $('#deniedSignOut').addEventListener('click', () => doSignOut());
+}
+
+function setAuthMsg(msg, type){
+  const el = $('#authMsg');
+  if (!el) return;
+  el.className = 'auth-message' + (type ? ' ' + type : '');
+  el.textContent = msg;
+}
+
+function friendlyAuthError(err){
+  const code = err && err.code ? err.code : '';
+  switch (code) {
+    case 'auth/invalid-email': return 'That email address is not valid.';
+    case 'auth/user-not-found': return 'No administrator account found with that email.';
+    case 'auth/wrong-password':
+    case 'auth/invalid-credential': return 'Incorrect email or password.';
+    case 'auth/too-many-requests': return 'Too many attempts. Please wait and try again.';
+    case 'auth/network-request-failed': return 'Network problem. Check your connection and try again.';
+    case 'auth/popup-closed-by-user': return 'Sign-in popup was closed. Try again.';
+    case 'auth/operation-not-allowed': return 'This sign-in method is not enabled. Contact the Founder.';
+    default: return 'Something went wrong. Please try again.';
+  }
+}
+
+/* ============================================================
+   FIREBASE
+   ============================================================ */
+let fb = null;
+
+async function initFirebase(){
+  if (!isConfigured) { showSetupCard(); return false; }
+  try {
+    const appMod = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js');
+    const authMod = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js');
+    const fsMod  = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
+    const stMod  = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js');
+
+    const app = appMod.initializeApp(firebaseConfig);
+    const auth = authMod.getAuth(app);
+    const db = fsMod.initializeFirestore(app, { ignoreUndefinedProperties: true });
+    const storage = stMod.getStorage(app);
+
+    fb = { app, auth, db, storage, ...authMod, ...fsMod, ...stMod };
+    return true;
+  } catch (err) {
+    console.error('[admin] Firebase init failed', err);
+    $('#authContent').innerHTML = `
+      <div class="setup-card">
+        <h2>⚠ Firebase Initialization Failed</h2>
+        <p>The Command Center could not connect to Firebase. Check your <code>firebaseConfig</code> object and reload.</p>
+        <div class="setup-card__actions">
+          <button class="btn" onclick="location.reload()">Reload</button>
+        </div>
+      </div>
+    `;
+    $('#authGate').classList.remove('hidden');
+    hideLoader();
+    return false;
+  }
+}
+
+async function signInUser(email, password){
+  const { signInWithEmailAndPassword } = fb;
+  await signInWithEmailAndPassword(fb.auth, email, password);
+}
+async function signInWithGoogle(){
+  const { GoogleAuthProvider, signInWithPopup } = fb;
+  const p = new GoogleAuthProvider();
+  await signInWithPopup(fb.auth, p);
+}
+async function sendReset(email){
+  const { sendPasswordResetEmail } = fb;
+  await sendPasswordResetEmail(fb.auth, email);
+}
+async function doSignOut(){
+  const { signOut } = fb;
+  detachListeners();
+  await signOut(fb.auth);
+  currentUser = null;
+  currentUserClaims = null;
+  renderAuth();
+}
+
+/* ============================================================
+   ADMINISTRATOR STATE
+   ============================================================ */
+let currentUser = null;
+let currentUserClaims = null;
+let activeSection = 'overview';
+const firestoreListeners = [];
+
+function detachListeners(){
+  firestoreListeners.forEach(u => { try { u(); } catch {} });
+  firestoreListeners.length = 0;
+}
+
+/* Check admin privileges via Firebase custom claim */
+async function checkAdminPrivileges(user){
+  if (!user) return false;
+  try {
+    const { getIdTokenResult } = fb;
+    const token = await getIdTokenResult(user, /* forceRefresh */ true);
+    currentUserClaims = token.claims || {};
+    // A user is an administrator if the custom claim `admin === true` is set
+    // AND (optionally) they have at least one permission, OR an explicit role claim.
+    return token.claims.admin === true;
+  } catch (err) {
+    console.error('[admin] Failed to read token claims', err);
+    return false;
+  }
+}
+
+function roleLabel(){
+  if (!currentUserClaims) return 'Unknown';
+  if (currentUserClaims.founder === true) return 'Founder';
+  if (currentUserClaims.admin === true) return currentUserClaims.role || 'Administrator';
+  return 'User';
+}
+
+/* ============================================================
+   AUTH STATE
+   ============================================================ */
+function renderAuth(){
+  if (!currentUser) {
+    $('#authGate').classList.remove('hidden');
+    $('#portal').classList.remove('ready');
+    showAuthForm();
+    return;
+  }
+  // If signed in but not admin, we already handled in the listener — but double check
+}
+
+async function onAuthChanged(user){
+  currentUser = user;
+
+  if (!user) {
+    $('#authGate').classList.remove('hidden');
+    $('#portal').classList.remove('ready');
+    showAuthForm();
+    return;
+  }
+
+  const isAdmin = await checkAdminPrivileges(user);
+  if (!isAdmin) {
+    showAccessDenied(user);
+    return;
+  }
+
+  // Authorized — enter the Command Center
+  $('#authGate').classList.add('hidden');
+  $('#portal').classList.add('ready');
+  hydrateUserChip();
+  wireNavigation();
+  wireActions();
+  wireModal();
+  wireSignOut();
+  wireProfileForms();
+
+  const initial = (location.hash || '').replace('#','') || 'overview';
+  switchSection(document.querySelector(`.section[data-section="${initial}"]`) ? initial : 'overview');
+
+  toast('Signed in as ' + (user.email || 'admin'), 'ok');
+}
+
+function hydrateUserChip(){
+  const name = (currentUser.displayName) || (currentUser.email ? currentUser.email.split('@')[0] : 'Administrator');
+  const email = currentUser.email || '—';
+  $('#userAvatar').textContent = initials(name);
+  $('#userName').textContent = name;
+  $('#userEmail').textContent = email;
+  const first = name.split(/\s+/)[0] || 'Founder';
+  const fEl = $('#firstName');
+  if (fEl) fEl.textContent = first;
+  const rEl = $('#roleLine');
+  if (rEl) rEl.textContent = `Signed in as ${roleLabel()} — everything about IKAZE DIGITAL at a glance.`;
+
+  // Sidebar admin role display in Security section
+  const secRole = $('#secRole');
+  if (secRole) secRole.textContent = roleLabel();
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+let navWired = false;
+function wireNavigation(){
+  if (navWired) return;
+  navWired = true;
+
+  // Desktop sidebar + bottom nav
+  $$('[data-section]').forEach(node => {
+    if (node.tagName === 'BUTTON' || node.tagName === 'A') {
+      node.addEventListener('click', (e) => {
+        e.preventDefault();
+        switchSection(node.dataset.section);
+        closeDrawer();
+      });
+    }
+  });
+
+  // Drawer open/close
+  const drawer = $('#drawer');
+  $('#openDrawer').addEventListener('click', () => {
+    // Clone sidebar nav into drawer
+    const src = $('#portal .sidebar .sidebar__nav').cloneNode(true);
+    src.id = 'drawerNav';
+    $('#drawerNav').replaceWith(src);
+    // Re-wire drawer items
+    src.querySelectorAll('[data-section]').forEach(b => {
+      b.addEventListener('click', () => { switchSection(b.dataset.section); closeDrawer(); });
+    });
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('lock');
+  });
+  $('#closeDrawer').addEventListener('click', closeDrawer);
+  drawer.addEventListener('click', (e) => { if (e.target === drawer) closeDrawer(); });
+}
+
+function closeDrawer(){
+  const d = $('#drawer');
+  d.classList.remove('open');
+  d.setAttribute('aria-hidden','true');
+  document.body.classList.remove('lock');
+}
+
+function switchSection(id){
+  if (!document.querySelector(`.section[data-section="${id}"]`)) return;
+  activeSection = id;
+
+  $$('[data-section]').forEach(n => {
+    if (n.tagName === 'BUTTON') n.classList.toggle('on', n.dataset.section === id);
+  });
+  $$('.section').forEach(s => s.classList.toggle('on', s.dataset.section === id));
+
+  if (history.replaceState) history.replaceState(null, '', '#' + id);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  loadSection(id);
+}
+
+/* ============================================================
+   SECTION LOADERS — every loader uses real Firestore data,
+   with proper limits and pagination-friendly patterns.
+   No fake data anywhere.
+   ============================================================ */
+async function loadSection(id){
+  if (!fb || !currentUser) return;
+  try {
+    switch (id) {
+      case 'overview':      await loadOverview(); break;
+      case 'activity':      await loadActivity(); break;
+      case 'content':       await loadContent(); break;
+      case 'media':         await loadMedia(); break;
+      case 'announcements': await loadAnnouncements(); break;
+      case 'services':      await loadServices(); break;
+      case 'portfolio':     await loadPortfolio(); break;
+      case 'requests':      await loadRequests(); break;
+      case 'projects':      await loadProjects(); break;
+      case 'clients':       await loadClients(); break;
+      case 'messages':      await loadMessages(); break;
+      case 'products':      await loadProducts(); break;
+      case 'opportunities': await loadOpportunities(); break;
+      case 'tools':         await loadTools(); break;
+      case 'users':         await loadUsers(); break;
+      case 'admins':        await loadAdmins(); break;
+      case 'billing':       await loadBilling(); break;
+      case 'support':       await loadSupport(); break;
+      case 'security':      await loadSecurity(); break;
+      case 'audit':         await loadAudit(); break;
+      case 'settings':      await loadSettings(); break;
+    }
+  } catch (err) {
+    console.error('[admin] Section load error', id, err);
+    showSectionError(id);
+  }
+}
+
+/* ---------- OVERVIEW ---------- */
+async function loadOverview(){
+  const { collection, getCountFromServer, query, where, limit, getDocs, orderBy } = fb;
+
+  const stats = {
+    users: null, projects: null, services: null, products: null,
+    messagesNew: null, supportOpen: null, requestsNew: null, opportunitiesPending: null
+  };
+
+  // Count queries — resilient to missing collections
+  async function countOf(col, constraints = []){
+    try {
+      const ref = collection(fb.db, col);
+      const q = constraints.length ? query(ref, ...constraints) : ref;
+      const snap = await getCountFromServer(q);
+      return snap.data().count;
+    } catch { return null; }
+  }
+
+  stats.users       = await countOf('users');
+  stats.projects    = await countOf('projects', [where('status','in',['in_progress','planned','review','client_approval'])]);
+  stats.services    = await countOf('services', [where('published','==',true)]);
+  stats.products    = await countOf('ecosystemProducts', [where('published','==',true)]);
+  stats.messagesNew = await countOf('contactMessages', [where('status','==','new')]);
+  stats.supportOpen = await countOf('supportTickets', [where('status','in',['new','acknowledged','in_review','in_progress'])]);
+  stats.requestsNew = await countOf('projectRequests', [where('status','==','new')]);
+  stats.opportunitiesPending = await countOf('opportunities', [where('status','==','submitted')]);
+
+  const stat = (label, value, icon, sub='') => `
+    <div class="stat">
+      <span class="stat__icon">${icon}</span>
+      <div class="stat__label">${escapeHTML(label)}</div>
+      <div class="stat__value ${value === null ? 'muted' : ''}">${value === null ? 'Data unavailable' : value.toLocaleString()}</div>
+      ${sub ? `<div class="stat__sub">${escapeHTML(sub)}</div>` : ''}
+    </div>
+  `;
+
+  $('#overviewStats').innerHTML =
+    stat('Registered Users',   stats.users,       '◉') +
+    stat('Active Projects',    stats.projects,    '⚙') +
+    stat('Published Services', stats.services,    '◇') +
+    stat('Ecosystem Products', stats.products,    '◆') +
+    stat('New Messages',       stats.messagesNew, '✎') +
+    stat('Open Support',       stats.supportOpen, '✱') +
+    stat('New Requests',       stats.requestsNew, '⌘') +
+    stat('Opportunities Queue', stats.opportunitiesPending, '★');
+
+  // Update sidebar badges
+  updateBadge('requests', stats.requestsNew);
+  updateBadge('support', stats.supportOpen);
+  updateBadge('supportMobile', stats.supportOpen);
+  updateBadge('opportunities', stats.opportunitiesPending);
+
+  // Alerts: highlight anything requiring action
+  const alerts = [];
+  if (stats.requestsNew && stats.requestsNew > 0) alerts.push(`${stats.requestsNew} new project request${stats.requestsNew===1?'':'s'} awaiting review`);
+  if (stats.supportOpen && stats.supportOpen > 0) alerts.push(`${stats.supportOpen} open support ticket${stats.supportOpen===1?'':'s'}`);
+  if (stats.opportunitiesPending && stats.opportunitiesPending > 0) alerts.push(`${stats.opportunitiesPending} opportunit${stats.opportunitiesPending===1?'y':'ies'} awaiting verification`);
+  if (stats.messagesNew && stats.messagesNew > 0) alerts.push(`${stats.messagesNew} new contact message${stats.messagesNew===1?'':'s'}`);
+
+  const alertsEl = $('#overviewAlerts');
+  if (alerts.length) {
+    alertsEl.innerHTML = `
+      <div class="card" style="border-color:rgba(242,163,58,.4);background:linear-gradient(135deg,rgba(242,163,58,.08),rgba(200,85,61,.03));margin-bottom:20px">
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(242,163,58,.2);color:var(--amb);display:grid;place-items:center;font-size:18px;flex-shrink:0">!</div>
+          <div>
+            <h3 style="margin:0 0 6px;color:var(--amb);font-size:.98rem">Action Required</h3>
+            <ul style="margin:0;padding-left:20px;color:var(--mut);font-size:.9rem;line-height:1.75">
+              ${alerts.map(a => `<li>${escapeHTML(a)}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+      </div>
+    `;
+  } else {
+    alertsEl.innerHTML = '';
+  }
+
+  // Recent messages preview
+  try {
+    const msgQ = query(
+      collection(fb.db, 'contactMessages'),
+      orderBy('createdAt','desc'),
+      limit(5)
+    );
+    const msnap = await getDocs(msgQ);
+    const mEl = $('#overviewMessages');
+    mEl.innerHTML = '';
+    if (msnap.empty) {
+      mEl.innerHTML = `<p style="color:var(--mut);font-size:.9rem;margin:0">No messages yet.</p>`;
+    } else {
+      msnap.forEach(d => {
+        const m = d.data();
+        mEl.appendChild(el('div','data-item', `
+          <div class="data-item__icon">✎</div>
+          <div class="data-item__body">
+            <div class="data-item__title">${escapeHTML(m.subject || m.name || 'Message')} ${statusBadge(m.status)}</div>
+            <div class="data-item__meta">
+              <span>${escapeHTML(m.email || '')}</span>
+              ${m.createdAt ? `<span>${formatDate(m.createdAt)}</span>` : ''}
+            </div>
+          </div>
+        `));
+      });
+    }
+  } catch {
+    $('#overviewMessages').innerHTML = `<p style="color:var(--mut);font-size:.9rem;margin:0">Contact messages will appear here once the collection is active.</p>`;
+  }
+
+  // Recent support tickets preview
+  try {
+    const supQ = query(
+      collection(fb.db, 'supportTickets'),
+      orderBy('createdAt','desc'),
+      limit(5)
+    );
+    const ssnap = await getDocs(supQ);
+    const sEl = $('#overviewSupport');
+    sEl.innerHTML = '';
+    if (ssnap.empty) {
+      sEl.innerHTML = `<p style="color:var(--mut);font-size:.9rem;margin:0">No support tickets yet.</p>`;
+    } else {
+      ssnap.forEach(d => {
+        const t = d.data();
+        sEl.appendChild(el('div','data-item', `
+          <div class="data-item__icon">✱</div>
+          <div class="data-item__body">
+            <div class="data-item__title">${escapeHTML(t.subject || 'Ticket')} ${statusBadge(t.status)}</div>
+            <div class="data-item__meta">
+              <span>${escapeHTML(t.ticketId || '')}</span>
+              ${t.createdAt ? `<span>${formatDate(t.createdAt)}</span>` : ''}
+            </div>
+          </div>
+        `));
+      });
+    }
+  } catch {
+    $('#overviewSupport').innerHTML = `<p style="color:var(--mut);font-size:.9rem;margin:0">Support tickets will appear here once the collection is active.</p>`;
+  }
+}
+
+function updateBadge(key, value){
+  const nodes = $$(`[data-badge="${key}"]`);
+  if (!nodes.length) return;
+  if (value && value > 0) {
+    nodes.forEach(n => { n.textContent = value; n.hidden = false; });
+  } else {
+    nodes.forEach(n => { n.hidden = true; });
+  }
+}
+
+/* ---------- ACTIVITY ---------- */
+async function loadActivity(){
+  const { collection, query, orderBy, limit, getDocs } = fb;
+  const list = $('#activityList');
+  list.innerHTML = `<div class="skeleton"><div class="sk-line w60"></div><div class="sk-line w80"></div></div>`;
+
+  try {
+    const q = query(collection(fb.db, 'activityLogs'), orderBy('timestamp','desc'), limit(60));
+    const snap = await getDocs(q);
+    list.innerHTML = '';
+    if (snap.empty) {
+      list.innerHTML = emptyState('◐','No Activity Yet','Activity from users and administrators will appear here as the platform is used.');
+      return;
+    }
+    snap.forEach(d => {
+      const a = d.data();
+      list.appendChild(el('div','data-item', `
+        <div class="data-item__icon">◐</div>
+        <div class="data-item__body">
+          <div class="data-item__title">${escapeHTML(a.action || a.title || 'Activity')}</div>
+          <div class="data-item__meta">
+            ${a.actorEmail ? `<span>${escapeHTML(a.actorEmail)}</span>` : ''}
+            ${a.resourceType ? `<span>${escapeHTML(a.resourceType)}</span>` : ''}
+            ${a.timestamp ? `<span>${formatDateTime(a.timestamp)}</span>` : ''}
+          </div>
+        </div>
+      `));
+    });
+  } catch (err) {
+    list.innerHTML = emptyState('◐','Activity Feed Not Configured','The activityLogs collection will populate this feed once events are being recorded.');
+  }
+}
+
+/* ---------- CONTENT ---------- */
+async function loadContent(){
+  const { doc, getDoc } = fb;
+  try {
+    const homeRef = doc(fb.db, 'siteSettings', 'homepage');
+    const snap = await getDoc(homeRef);
+    const box = $('#homepageStatus');
+    if (snap.exists()) {
+      const d = snap.data();
+      box.innerHTML = `
+        <div class="data-item">
+          <div class="data-item__icon">▤</div>
+          <div class="data-item__body">
+            <div class="data-item__title">${escapeHTML(d.heroTitle || '(no title set)')}</div>
+            <div class="data-item__meta">
+              <span>Hero title</span>
+              ${d.updatedAt ? `<span>Updated ${formatDate(d.updatedAt)}</span>` : ''}
+            </div>
+          </div>
+        </div>
+      `;
+    } else {
+      box.innerHTML = `<p style="color:var(--mut);font-size:.9rem;margin:0">No homepage content stored yet. Click <strong>Edit homepage</strong> to add content to Firestore.</p>`;
+    }
+  } catch {
+    $('#homepageStatus').innerHTML = `<p style="color:var(--mut);font-size:.9rem;margin:0">Homepage settings load once the siteSettings collection is configured.</p>`;
+  }
+
+  // Detect pages by probing common routes
+  const candidates = ['index.html','services.html','start-project.html','portfolio.html','about.html','contact.html','ecosystem.html','pricing.html','support.html','tools.html','opportunities.html','insights.html','privacy.html','terms.html','client-portal.html'];
+  const list = $('#pagesList');
+  list.innerHTML = '';
+  candidates.forEach(p => {
+    list.appendChild(el('div','data-item', `
+      <div class="data-item__icon">▤</div>
+      <div class="data-item__body">
+        <div class="data-item__title">${escapeHTML(p)}</div>
+        <div class="data-item__meta"><span>Route</span></div>
+      </div>
+      <div class="data-item__actions">
+        <a class="btn o sm" href="${escapeHTML(p)}" target="_blank" rel="noopener">Open</a>
+      </div>
+    `));
+  });
+}
+
+/* ---------- MEDIA ---------- */
+async function loadMedia(){
+  const { collection, query, orderBy, limit, getDocs } = fb;
+  const list = $('#mediaList');
+  try {
+    const q = query(collection(fb.db, 'mediaAssets'), orderBy('uploadedAt','desc'), limit(60));
+    const snap = await getDocs(q);
+    list.innerHTML = '';
+    if (snap.empty) {
+      list.innerHTML = emptyState('▧','No Media Yet','Uploaded logos, images and documents will appear here.');
+      return;
+    }
+    snap.forEach(d => {
+      const a = d.data();
+      list.appendChild(el('div','data-item', `
+        <div class="data-item__icon">▧</div>
+        <div class="data-item__body">
+          <div class="data-item__title">${escapeHTML(a.name || 'Asset')}</div>
+          <div class="data-item__meta">
+            ${a.type ? `<span>${escapeHTML(a.type)}</span>` : ''}
+            ${a.size ? `<span>${Math.round(a.size/1024)} KB</span>` : ''}
+            ${a.uploadedAt ? `<span>${formatDate(a.uploadedAt)}</span>` : ''}
+          </div>
+        </div>
+      `));
+    });
+  } catch {
+    list.innerHTML = emptyState('▧','Media Library Not Configured','The mediaAssets collection will populate this library.');
+  }
+}
+
+/* ---------- ANNOUNCEMENTS ---------- */
+async function loadAnnouncements(){
+  const { collection, query, orderBy, limit, getDocs } = fb;
+  const list = $('#announcementsList');
+  try {
+    const q = query(collection(fb.db, 'announcements'), orderBy('createdAt','desc'), limit(40));
+    const snap = await getDocs(q);
+    list.innerHTML = '';
+    if (snap.empty) {
+      list.innerHTML = emptyState('✦','No Announcements Yet','Published announcements will appear here.');
+      return;
+    }
+    snap.forEach(d => {
+      const a = d.data();
+      list.appendChild(el('div','data-item', `
+        <div class="data-item__icon">✦</div>
+        <div class="data-item__body">
+          <div class="data-item__title">${escapeHTML(a.title || 'Announcement')} ${statusBadge(a.status)}</div>
+          <div class="data-item__meta">
+            ${a.createdAt ? `<span>${formatDate(a.createdAt)}</span>` : ''}
+          </div>
+        </div>
+      `));
+    });
+  } catch {
+    list.innerHTML = emptyState('✦','Announcements Not Configured','The announcements collection will populate this list.');
+  }
+}
+
+/* ---------- SERVICES ---------- */
+async function loadServices(){
+  const { collection, query, orderBy, limit, getDocs } = fb;
+  const list = $('#servicesList');
+  list.innerHTML = `<div class="skeleton"><div class="sk-line w60"></div><div class="sk-line w80"></div></div>`;
+  try {
+    const q = query(collection(fb.db, 'services'), orderBy('order','asc'), limit(60));
+    const snap = await getDocs(q);
+    list.innerHTML = '';
+    if (snap.empty) {
+      list.innerHTML = emptyState('◇','No Services Yet','Create your first service to make it appear on the public site.','new-service','+ Create Service');
+      return;
+    }
+    snap.forEach(d => {
+      const s = d.data();
+      list.appendChild(el('div','data-item', `
+        <div class="data-item__icon">◇</div>
+        <div class="data-item__body">
+          <div class="data-item__title">${escapeHTML(s.name || 'Service')} ${s.published ? '<span class="badge badge--active">Published</span>' : '<span class="badge badge--muted">Draft</span>'}</div>
+          <div class="data-item__meta">
+            ${s.category ? `<span>${escapeHTML(s.category)}</span>` : ''}
+            ${s.updatedAt ? `<span>Updated ${formatDate(s.updatedAt)}</span>` : ''}
+          </div>
+        </div>
+        <div class="data-item__actions">
+          <button class="btn o sm" data-edit="services" data-id="${escapeHTML(d.id)}">Edit</button>
+        </div>
+      `));
+    });
+    wireSearchFilter('#servicesSearch', '#servicesList');
+  } catch (err) {
+    list.innerHTML = emptyState('◇','Services Collection Not Ready','The services collection will populate this list once records exist.');
+  }
+}
+
+/* ---------- PORTFOLIO ---------- */
+async function loadPortfolio(){
+  const { collection, query, orderBy, limit, getDocs } = fb;
+  const list = $('#portfolioList');
+  try {
+    const q = query(collection(fb.db, 'portfolioProjects'), orderBy('order','asc'), limit(60));
+    const snap = await getDocs(q);
+    list.innerHTML = '';
+    if (snap.empty) {
+      list.innerHTML = emptyState('▣','No Portfolio Projects Yet','Add a project to feature it publicly.','new-portfolio','+ Add Project');
+      return;
+    }
+    snap.forEach(d => {
+      const p = d.data();
+      list.appendChild(el('div','data-item', `
+        <div class="data-item__icon">▣</div>
+        <div class="data-item__body">
+          <div class="data-item__title">${escapeHTML(p.title || 'Project')} ${p.published ? '<span class="badge badge--active">Published</span>' : '<span class="badge badge--muted">Draft</span>'}</div>
+          <div class="data-item__meta">
+            ${p.category ? `<span>${escapeHTML(p.category)}</span>` : ''}
+            ${p.ownership ? `<span>${escapeHTML(p.ownership)}</span>` : ''}
+          </div>
+        </div>
+      `));
+    });
+  } catch {
+    list.innerHTML = emptyState('▣','Portfolio Not Configured','The portfolioProjects collection will populate this list.');
+  }
+}
+
+/* ---------- REQUESTS ---------- */
+async function loadRequests(){
+  const { collection, query, orderBy, limit, getDocs } = fb;
+  const list = $('#requestsList');
+  try {
+    const q = query(collection(fb.db, 'projectRequests'), orderBy('createdAt','desc'), limit(60));
+    const snap = await getDocs(q);
+    list.innerHTML = '';
+    if (snap.empty) {
+      list.innerHTML = emptyState('⌘','No Project Requests Yet','Inbound project requests will appear here.');
+      return;
+    }
+    snap.forEach(d => {
+      const r = d.data();
+      list.appendChild(el('div','data-item', `
+        <div class="data-item__icon">⌘</div>
+        <div class="data-item__body">
+          <div class="data-item__title">${escapeHTML(r.projectType || r.subject || 'Request')} ${statusBadge(r.status)}</div>
+          <div class="data-item__meta">
+            ${r.name ? `<span>${escapeHTML(r.name)}</span>` : ''}
+            ${r.email ? `<span>${escapeHTML(r.email)}</span>` : ''}
+            ${r.budget ? `<span>Budget: ${escapeHTML(r.budget)}</span>` : ''}
+            ${r.createdAt ? `<span>${formatDate(r.createdAt)}</span>` : ''}
+          </div>
+        </div>
+      `));
+    });
+  } catch {
+    list.innerHTML = emptyState('⌘','Requests Collection Not Ready','The projectRequests collection will populate this list once requests arrive.');
+  }
+}
+
+/* ---------- PROJECTS ---------- */
+async function loadProjects(){
+  const { collection, query, orderBy, limit, getDocs } = fb;
+  const list = $('#projectsList');
+  try {
+    const q = query(collection(fb.db, 'projects'), orderBy('updatedAt','desc'), limit(60));
+    const snap = await getDocs(q);
+    list.innerHTML = '';
+    if (snap.empty) {
+      list.innerHTML = emptyState('⚙','No Projects Yet','Active client projects will appear here.','new-project','+ New Project');
+      return;
+    }
+    snap.forEach(d => {
+      const p = d.data();
+      list.appendChild(el('div','data-item', `
+        <div class="data-item__icon">⚙</div>
+        <div class="data-item__body">
+          <div class="data-item__title">${escapeHTML(p.name || 'Project')} ${statusBadge(p.status)}</div>
+          <div class="data-item__meta">
+            ${p.reference ? `<span>${escapeHTML(p.reference)}</span>` : ''}
+            ${p.clientName ? `<span>${escapeHTML(p.clientName)}</span>` : ''}
+            ${p.updatedAt ? `<span>Updated ${formatDate(p.updatedAt)}</span>` : ''}
+          </div>
+        </div>
+      `));
+    });
+  } catch {
+    list.innerHTML = emptyState('⚙','Projects Collection Not Ready','The projects collection will populate this list.');
+  }
+}
+
+/* ---------- CLIENTS ---------- */
+async function loadClients(){
+  const { collection, query, orderBy, limit, getDocs } = fb;
+  const list = $('#clientsList');
+  try {
+    const q = query(collection(fb.db, 'clients'), orderBy('createdAt','desc'), limit(60));
+    const snap = await getDocs(q);
+    list.innerHTML = '';
+    if (snap.empty) {
+      list.innerHTML = emptyState('◎','No Clients Yet','Client records will appear here.','new-client','+ New Client');
+      return;
+    }
+    snap.forEach(d => {
+      const c = d.data();
+      list.appendChild(el('div','data-item', `
+        <div class="data-item__icon">◎</div>
+        <div class="data-item__body">
+          <div class="data-item__title">${escapeHTML(c.name || 'Client')}</div>
+          <div class="data-item__meta">
+            ${c.organization ? `<span>${escapeHTML(c.organization)}</span>` : ''}
+            ${c.country ? `<span>${escapeHTML(c.country)}</span>` : ''}
+            ${c.email ? `<span>${escapeHTML(c.email)}</span>` : ''}
+          </div>
+        </div>
+      `));
+    });
+  } catch {
+    list.innerHTML = emptyState('◎','Clients Collection Not Ready','The clients collection will populate this list.');
+  }
+}
+
+/* ---------- MESSAGES ---------- */
+async function loadMessages(){
+  const { collection, query, orderBy, limit, getDocs } = fb;
+  const list = $('#messagesList');
+  try {
+    const q = query(collection(fb.db, 'contactMessages'), orderBy('createdAt','desc'), limit(80));
+    const snap = await getDocs(q);
+    list.innerHTML = '';
+    if (snap.empty) {
+      list.innerHTML = emptyState('✎','No Contact Messages Yet','Messages from the public contact form will appear here.');
+      return;
+    }
+    snap.forEach(d => {
+      const m = d.data();
+      list.appendChild(el('div','data-item', `
+        <div class="data-item__icon">✎</div>
+        <div class="data-item__body">
+          <div class="data-item__title">${escapeHTML(m.subject || m.name || 'Message')} ${statusBadge(m.status)}</div>
+          <div class="data-item__meta">
+            ${m.name ? `<span>${escapeHTML(m.name)}</span>` : ''}
+            ${m.email ? `<span>${escapeHTML(m.email)}</span>` : ''}
+            ${m.createdAt ? `<span>${formatDate(m.createdAt)}</span>` : ''}
+          </div>
+        </div>
+      `));
+    });
+  } catch {
+    list.innerHTML = emptyState('✎','Contact Messages Not Configured','The contactMessages collection will populate this list once the form writes to Firestore.');
+  }
+}
+
+/* ---------- PRODUCTS ---------- */
+async function loadProducts(){
+  const { collection, query, orderBy, limit, getDocs } = fb;
+  const list = $('#productsList');
+  try {
+    const q = query(collection(fb.db, 'ecosystemProducts'), orderBy('order','asc'), limit(60));
+    const snap = await getDocs(q);
+    list.innerHTML = '';
+    if (snap.empty) {
+      list.innerHTML = emptyState('◆','No Ecosystem Products Yet','Add products like IKAZE AI, Cloud, Forms.','new-product','+ New Product');
+      return;
+    }
+    snap.forEach(d => {
+      const p = d.data();
+      list.appendChild(el('div','data-item', `
+        <div class="data-item__icon">◆</div>
+        <div class="data-item__body">
+          <div class="data-item__title">${escapeHTML(p.name || 'Product')} ${statusBadge(p.status || 'concept')}</div>
+          <div class="data-item__meta">
+            ${p.category ? `<span>${escapeHTML(p.category)}</span>` : ''}
+            ${p.published ? '<span>Published</span>' : '<span>Draft</span>'}
+          </div>
+        </div>
+      `));
+    });
+  } catch {
+    list.innerHTML = emptyState('◆','Ecosystem Products Not Configured','The ecosystemProducts collection will populate this list.');
+  }
+}
+
+/* ---------- OPPORTUNITIES ---------- */
+async function loadOpportunities(){
+  const { collection, query, orderBy, limit, getDocs } = fb;
+  const list = $('#opportunitiesList');
+  try {
+    const q = query(collection(fb.db, 'opportunities'), orderBy('createdAt','desc'), limit(60));
+    const snap = await getDocs(q);
+    list.innerHTML = '';
+    if (snap.empty) {
+      list.innerHTML = emptyState('★','No Opportunities Yet','Add a listing to feature it on the public site.','new-opportunity','+ New Listing');
+      return;
+    }
+    snap.forEach(d => {
+      const o = d.data();
+      list.appendChild(el('div','data-item', `
+        <div class="data-item__icon">★</div>
+        <div class="data-item__body">
+          <div class="data-item__title">${escapeHTML(o.title || 'Opportunity')} ${statusBadge(o.status)}</div>
+          <div class="data-item__meta">
+            ${o.organization ? `<span>${escapeHTML(o.organization)}</span>` : ''}
+            ${o.deadline ? `<span>Deadline ${formatDate(o.deadline)}</span>` : ''}
+          </div>
+        </div>
+      `));
+    });
+  } catch {
+    list.innerHTML = emptyState('★','Opportunities Not Configured','The opportunities collection will populate this list.');
+  }
+}
+
+/* ---------- TOOLS ---------- */
+async function loadTools(){
+  const { collection, query, orderBy, limit, getDocs } = fb;
+  const list = $('#toolsList');
+  try {
+    const q = query(collection(fb.db, 'tools'), orderBy('order','asc'), limit(60));
+    const snap = await getDocs(q);
+    list.innerHTML = '';
+    if (snap.empty) {
+      list.innerHTML = emptyState('✎','Tools Coming Soon','Tools will be listed here once they are added to Firestore.');
+      return;
+    }
+    snap.forEach(d => {
+      const t = d.data();
+      list.appendChild(el('div','data-item', `
+        <div class="data-item__icon">✎</div>
+        <div class="data-item__body">
+          <div class="data-item__title">${escapeHTML(t.name || 'Tool')} ${statusBadge(t.status)}</div>
+          <div class="data-item__meta">
+            ${t.category ? `<span>${escapeHTML(t.category)}</span>` : ''}
+          </div>
+        </div>
+      `));
+    });
+  } catch {
+    list.innerHTML = emptyState('✎','Tools Not Configured','The tools collection will populate this list.');
+  }
+}
+
+/* ---------- USERS ---------- */
+async function loadUsers(){
+  const { collection, query, orderBy, limit, getDocs } = fb;
+  const list = $('#usersList');
+  try {
+    const q = query(collection(fb.db, 'users'), orderBy('createdAt','desc'), limit(80));
+    const snap = await getDocs(q);
+    list.innerHTML = '';
+    if (snap.empty) {
+      list.innerHTML = emptyState('◉','No Users Yet','Registered users will appear here.');
+      return;
+    }
+    snap.forEach(d => {
+      const u = d.data();
+      list.appendChild(el('div','data-item', `
+        <div class="data-item__icon">◉</div>
+        <div class="data-item__body">
+          <div class="data-item__title">${escapeHTML(u.fullName || 'User')} ${statusBadge(u.status || 'active')}</div>
+          <div class="data-item__meta">
+            ${u.email ? `<span>${escapeHTML(u.email)}</span>` : ''}
+            ${u.country ? `<span>${escapeHTML(u.country)}</span>` : ''}
+            ${u.createdAt ? `<span>Joined ${formatDate(u.createdAt)}</span>` : ''}
+          </div>
+        </div>
+      `));
+    });
+    wireSearchFilter('#usersSearch', '#usersList');
+  } catch {
+    list.innerHTML = emptyState('◉','Users Collection Not Ready','The users collection will populate this list.');
+  }
+}
+
+/* ---------- ADMINS ---------- */
+async function loadAdmins(){
+  const { collection, query, where, limit, getDocs } = fb;
+  const list = $('#adminsList');
+  try {
+    const q = query(collection(fb.db, 'users'), where('isAdmin','==',true), limit(40));
+    const snap = await getDocs(q);
+    list.innerHTML = '';
+    if (snap.empty) {
+      list.innerHTML = emptyState('⚿','No Administrators Listed','Administrators are provisioned via Firebase custom claims. The Admin SDK script (documented in the Security block) records them here for visibility.');
+      return;
+    }
+    snap.forEach(d => {
+      const a = d.data();
+      list.appendChild(el('div','data-item', `
+        <div class="data-item__icon">⚿</div>
+        <div class="data-item__body">
+          <div class="data-item__title">${escapeHTML(a.fullName || 'Administrator')} <span class="badge badge--founder">${escapeHTML(a.role || 'admin')}</span></div>
+          <div class="data-item__meta">
+            ${a.email ? `<span>${escapeHTML(a.email)}</span>` : ''}
+          </div>
+        </div>
+      `));
+    });
+  } catch {
+    list.innerHTML = emptyState('⚿','Administrators Not Listed','Administrator privileges are enforced by Firebase custom claims, not by this list.');
+  }
+}
+
+/* ---------- BILLING ---------- */
+async function loadBilling(){
+  const { collection, query, orderBy, limit, getDocs } = fb;
+  const list = $('#billingList');
+  try {
+    const q = query(collection(fb.db, 'invoices'), orderBy('issuedAt','desc'), limit(60));
+    const snap = await getDocs(q);
+    list.innerHTML = '';
+    if (snap.empty) {
+      list.innerHTML = emptyState('◇','No Invoices Yet','Issued invoices will appear here.');
+      return;
+    }
+    snap.forEach(d => {
+      const inv = d.data();
+      list.appendChild(el('div','data-item', `
+        <div class="data-item__icon">◇</div>
+        <div class="data-item__body">
+          <div class="data-item__title">${escapeHTML(inv.number || 'Invoice')} ${statusBadge(inv.status)}</div>
+          <div class="data-item__meta">
+            ${inv.amount != null ? `<span>${inv.amount.toLocaleString()} ${escapeHTML(inv.currency || 'RWF')}</span>` : ''}
+            ${inv.dueAt ? `<span>Due ${formatDate(inv.dueAt)}</span>` : ''}
+          </div>
+        </div>
+      `));
+    });
+  } catch {
+    list.innerHTML = emptyState('◇','Billing Not Configured','The invoices collection will populate this list once billing is activated.');
+  }
+}
+
+/* ---------- SUPPORT ---------- */
+async function loadSupport(){
+  const { collection, query, orderBy, limit, getDocs } = fb;
+  const list = $('#supportList');
+  try {
+    const q = query(collection(fb.db, 'supportTickets'), orderBy('createdAt','desc'), limit(60));
+    const snap = await getDocs(q);
+    list.innerHTML = '';
+    if (snap.empty) {
+      list.innerHTML = emptyState('✱','No Support Tickets Yet','Support tickets from the public Support Center will appear here.');
+      return;
+    }
+    snap.forEach(d => {
+      const t = d.data();
+      list.appendChild(el('div','data-item', `
+        <div class="data-item__icon">✱</div>
+        <div class="data-item__body">
+          <div class="data-item__title">${escapeHTML(t.subject || 'Ticket')} ${statusBadge(t.status)}</div>
+          <div class="data-item__meta">
+            ${t.ticketId ? `<span>${escapeHTML(t.ticketId)}</span>` : ''}
+            ${t.priority ? `<span>Priority: ${escapeHTML(t.priority)}</span>` : ''}
+            ${t.createdAt ? `<span>${formatDate(t.createdAt)}</span>` : ''}
+          </div>
+        </div>
+      `));
+    });
+  } catch {
+    list.innerHTML = emptyState('✱','Support Not Configured','The supportTickets collection will populate this queue.');
+  }
+}
+
+/* ---------- SECURITY ---------- */
+async function loadSecurity(){
+  const u = currentUser;
+  if (!u) return;
+  $('#secEmail').textContent = u.email || '—';
+  $('#secSignIn').textContent = (u.providerData && u.providerData[0])
+    ? ({ 'password': 'Email & Password', 'google.com': 'Google Sign-In' }[u.providerData[0].providerId] || u.providerData[0].providerId)
+    : 'Email & Password';
+  $('#secRole').textContent = roleLabel();
+  $('#secVerified').textContent = u.emailVerified ? '✓ Verified' : 'Not verified';
+  $('#secLast').textContent = u.metadata && u.metadata.lastSignInTime
+    ? new Date(u.metadata.lastSignInTime).toLocaleString()
+    : '—';
+  $('#secUid').textContent = u.uid || '—';
+
+  // Config health — always available checks
+  const health = [
+    { name: 'Firebase Authentication', value: fb?.auth ? 'Connected' : 'Not configured', ok: !!fb?.auth },
+    { name: 'Firestore Database',      value: fb?.db   ? 'Connected' : 'Not configured', ok: !!fb?.db },
+    { name: 'Firebase Storage',        value: fb?.storage ? 'Connected' : 'Not configured', ok: !!fb?.storage },
+    { name: 'Admin Custom Claim',      value: currentUserClaims?.admin === true ? 'Granted' : 'Not granted', ok: currentUserClaims?.admin === true },
+    { name: 'Payment Provider',        value: 'Not configured', ok: false },
+    { name: 'Email Provider',          value: 'Not configured', ok: false },
+    { name: 'Backup Service',          value: 'Not configured', ok: false }
+  ];
+
+  $('#configHealth').innerHTML = health.map(h => `
+    <div class="data-item">
+      <div class="data-item__icon">${h.ok ? '✓' : '!'}</div>
+      <div class="data-item__body">
+        <div class="data-item__title">${escapeHTML(h.name)}</div>
+        <div class="data-item__meta"><span style="color:${h.ok ? 'var(--blue)' : 'var(--mut)'}">${escapeHTML(h.value)}</span></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ---------- AUDIT ---------- */
+async function loadAudit(){
+  const { collection, query, orderBy, limit, getDocs } = fb;
+  const list = $('#auditList');
+  try {
+    const q = query(collection(fb.db, 'adminAuditLogs'), orderBy('timestamp','desc'), limit(80));
+    const snap = await getDocs(q);
+    list.innerHTML = '';
+    if (snap.empty) {
+      list.innerHTML = emptyState('▦','No Audit Entries Yet','Administrative actions recorded by the backend will appear here.');
+      return;
+    }
+    snap.forEach(d => {
+      const a = d.data();
+      list.appendChild(el('div','data-item', `
+        <div class="data-item__icon">▦</div>
+        <div class="data-item__body">
+          <div class="data-item__title">${escapeHTML(a.action || 'Action')}</div>
+          <div class="data-item__meta">
+            ${a.actorEmail ? `<span>${escapeHTML(a.actorEmail)}</span>` : ''}
+            ${a.resourceType ? `<span>${escapeHTML(a.resourceType)}</span>` : ''}
+            ${a.timestamp ? `<span>${formatDateTime(a.timestamp)}</span>` : ''}
+          </div>
+        </div>
+      `));
+    });
+  } catch {
+    list.innerHTML = emptyState('▦','Audit Logs Not Configured','The adminAuditLogs collection will populate this list once audit logging is enabled in the backend.');
+  }
+}
+
+/* ---------- SETTINGS ---------- */
+async function loadSettings(){
+  const { doc, getDoc } = fb;
+  try {
+    const snap = await getDoc(doc(fb.db, 'siteSettings', 'general'));
+    if (snap.exists()) {
+      const s = snap.data();
+      $('#sitename').value = s.siteName || 'IKAZE DIGITAL';
+      $('#tagline').value = s.tagline || 'Building Africa\'s Digital Future';
+      $('#contactEmail').value = s.contactEmail || 'theonosteniyibigira6@gmail.com';
+      $('#contactPhone').value = s.contactPhone || '+250 794 204 258';
+    } else {
+      $('#sitename').value = 'IKAZE DIGITAL';
+      $('#tagline').value = 'Building Africa\'s Digital Future';
+      $('#contactEmail').value = 'theonosteniyibigira6@gmail.com';
+      $('#contactPhone').value = '+250 794 204 258';
+    }
+  } catch { /* silent */ }
+}
+
+/* ============================================================
+   ACTIONS + FORMS
+   ============================================================ */
+let actionsWired = false;
+function wireActions(){
+  if (actionsWired) return;
+  actionsWired = true;
+
+  document.addEventListener('click', (e) => {
+    const actionEl = e.target.closest('[data-action]');
+    if (actionEl) { e.preventDefault(); handleAction(actionEl.dataset.action); }
+    const navEl = e.target.closest('[data-nav]');
+    if (navEl) { e.preventDefault(); switchSection(navEl.dataset.nav); }
+    const editEl = e.target.closest('[data-edit]');
+    if (editEl) { e.preventDefault(); toast('Edit form opening is available once the schema is confirmed for "' + editEl.dataset.edit + '".', 'warn'); }
+  });
+
+  // Settings form
+  const settingsForm = $('#settingsForm');
+  if (settingsForm) {
+    settingsForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const status = $('#settingsStatus');
+      status.className = 'form-status';
+      status.textContent = 'Saving…';
+      try {
+        const { doc, setDoc, serverTimestamp } = fb;
+        await setDoc(doc(fb.db, 'siteSettings', 'general'), {
+          siteName: $('#sitename').value.trim(),
+          tagline: $('#tagline').value.trim(),
+          contactEmail: $('#contactEmail').value.trim(),
+          contactPhone: $('#contactPhone').value.trim(),
+          updatedAt: serverTimestamp(),
+          updatedBy: currentUser.uid
+        }, { merge: true });
+        status.className = 'form-status ok';
+        status.textContent = 'Settings saved.';
+        toast('Settings saved.', 'ok');
+      } catch (err) {
+        console.error('[admin] Settings save failed', err);
+        status.className = 'form-status err';
+        status.textContent = 'We could not save your settings right now. Please try again.';
+      }
+    });
+  }
+}
+
+function handleAction(action){
+  switch (action) {
+    case 'new-service':      openNewDocModal('services', 'New Service', [
+      { key: 'name', label: 'Service name', type: 'text', required: true },
+      { key: 'category', label: 'Category', type: 'text' },
+      { key: 'description', label: 'Short description', type: 'textarea' }
+    ]); break;
+    case 'new-project':      openNewDocModal('projects', 'New Project', [
+      { key: 'name', label: 'Project name', type: 'text', required: true },
+      { key: 'reference', label: 'Reference', type: 'text' },
+      { key: 'clientName', label: 'Client name', type: 'text' }
+    ]); break;
+    case 'new-portfolio':    openNewDocModal('portfolioProjects', 'New Portfolio Project', [
+      { key: 'title', label: 'Title', type: 'text', required: true },
+      { key: 'category', label: 'Category', type: 'text' },
+      { key: 'ownership', label: 'Ownership', type: 'text' }
+    ]); break;
+    case 'new-client':       openNewDocModal('clients', 'New Client', [
+      { key: 'name', label: 'Client name', type: 'text', required: true },
+      { key: 'organization', label: 'Organization', type: 'text' },
+      { key: 'country', label: 'Country', type: 'text' },
+      { key: 'email', label: 'Email', type: 'email' }
+    ]); break;
+    case 'new-product':      openNewDocModal('ecosystemProducts', 'New Ecosystem Product', [
+      { key: 'name', label: 'Product name', type: 'text', required: true },
+      { key: 'category', label: 'Category', type: 'text' },
+      { key: 'status', label: 'Status', type: 'select', options: ['concept','dev','soon','available','experimental','deprecated'] }
+    ]); break;
+    case 'new-opportunity':  openNewDocModal('opportunities', 'New Opportunity', [
+      { key: 'title', label: 'Title', type: 'text', required: true },
+      { key: 'organization', label: 'Organization', type: 'text' },
+      { key: 'deadline', label: 'Deadline (YYYY-MM-DD)', type: 'text' }
+    ]); break;
+    case 'new-announcement': openNewDocModal('announcements', 'New Announcement', [
+      { key: 'title', label: 'Title', type: 'text', required: true },
+      { key: 'body', label: 'Body', type: 'textarea' }
+    ]); break;
+    case 'invite-admin':     toast('Administrator provisioning uses Firebase custom claims. See the Security Rules block at the bottom of this file for the Admin SDK script.', 'warn', 7000); break;
+    case 'upload-media':     toast('Media upload activates once Firebase Storage Rules are deployed.', 'warn'); break;
+    case 'edit-homepage':    openNewDocModal('siteSettings', 'Homepage Content', [
+      { key: 'heroTitle', label: 'Hero title', type: 'text' },
+      { key: 'heroSubtitle', label: 'Hero subtitle', type: 'text' },
+      { key: 'heroCta', label: 'Hero CTA label', type: 'text' }
+    ], 'homepage'); break;
+    case 'detect-pages':     loadContent(); toast('Page inventory refreshed.', 'ok'); break;
+    default: toast('That action is not yet wired in this build.', 'warn');
+  }
+}
+
+/* ============================================================
+   CREATE MODAL — generic Firestore document writer
+   ============================================================ */
+function openNewDocModal(collectionName, title, fields, fixedDocId){
+  const body = $('#modalBody');
+  const box = $('#modalBox');
+  box.classList.add('wide');
+  body.innerHTML = `
+    <h3 id="modalTitle">${escapeHTML(title)}</h3>
+    <p class="modal__sub">Saves directly to Firestore — collection <code>${escapeHTML(collectionName)}</code>.</p>
+    <form class="modal__form" id="newDocForm">
+      ${fields.map(f => renderField(f)).join('')}
+      <p style="color:var(--mut);font-size:.82rem;margin:0">
+        Your admin custom claim and the Firestore Security Rules determine whether this write succeeds.
+      </p>
+      <div class="modal__actions">
+        <button class="btn o sm" type="button" data-close-modal>Cancel</button>
+        <button class="btn sm" type="submit" id="newDocSubmit">Save</button>
+      </div>
+      <p class="form-status" id="newDocStatus" role="status" aria-live="polite" style="font-size:.85rem"></p>
+    </form>
+  `;
+  const modal = $('#modal');
+  modal.hidden = false; modal.classList.add('open'); document.body.classList.add('lock');
+
+  const form = $('#newDocForm');
+  const status = $('#newDocStatus');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.className = ''; status.textContent = 'Saving…';
+
+    const data = {};
+    fields.forEach(f => {
+      const input = form.elements[f.key];
+      if (input) {
+        const v = input.value.trim();
+        if (f.required && !v) { status.className = 'err'; status.textContent = `${f.label} is required.`; input.focus(); return; }
+        if (v) data[f.key] = v;
+      }
+    });
+
+    try {
+      const { doc, setDoc, addDoc, collection, serverTimestamp } = fb;
+      data.createdAt = serverTimestamp();
+      data.updatedAt = serverTimestamp();
+      data.createdBy = currentUser.uid;
+
+      if (fixedDocId) {
+        await setDoc(doc(fb.db, collectionName, fixedDocId), data, { merge: true });
+      } else {
+        await addDoc(collection(fb.db, collectionName), data);
+      }
+
+      // Best-effort audit log (only succeeds if the rules allow it)
+      try {
+        await addDoc(collection(fb.db, 'adminAuditLogs'), {
+          action: 'create',
+          resourceType: collectionName,
+          resourceId: fixedDocId || 'auto',
+          actorEmail: currentUser.email || '',
+          actorUid: currentUser.uid,
+          timestamp: serverTimestamp()
+        });
+      } catch { /* audit might be backend-only */ }
+
+      status.className = 'ok'; status.textContent = 'Saved.';
+      toast('Saved to ' + collectionName + '.', 'ok');
+      closeModal();
+      loadSection(activeSection);
+    } catch (err) {
+      console.error('[admin] Save failed', err);
+      status.className = 'err';
+      status.textContent = 'Save failed. This usually means the Firestore Security Rules did not allow the write. Verify your admin custom claim and rules.';
+    }
+  });
+}
+
+function renderField(f){
+  if (f.type === 'textarea') {
+    return `<div><label for="f-${f.key}">${escapeHTML(f.label)}</label><textarea id="f-${f.key}" name="${f.key}" ${f.required?'required':''}></textarea></div>`;
+  }
+  if (f.type === 'select') {
+    return `<div><label for="f-${f.key}">${escapeHTML(f.label)}</label><select id="f-${f.key}" name="${f.key}">${f.options.map(o => `<option value="${escapeHTML(o)}">${escapeHTML(o)}</option>`).join('')}</select></div>`;
+  }
+  return `<div><label for="f-${f.key}">${escapeHTML(f.label)}</label><input id="f-${f.key}" name="${f.key}" type="${f.type||'text'}" ${f.required?'required':''} /></div>`;
+}
+
+/* ============================================================
+   MODAL WIRING
+   ============================================================ */
+function wireModal(){
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('#modalClose') || e.target.closest('[data-close-modal]')) closeModal();
+    if (e.target === $('#modal')) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && $('#modal').classList.contains('open')) closeModal();
+  });
+}
+function closeModal(){
+  const m = $('#modal');
+  m.classList.remove('open'); m.hidden = true;
+  $('#modalBox').classList.remove('wide');
+  document.body.classList.remove('lock');
+}
+
+/* ============================================================
+   SIGN OUT + PASSWORD RESET
+   ============================================================ */
+function wireSignOut(){
+  const so = $('#signOutBtn');
+  if (so) so.addEventListener('click', () => doSignOut());
+  const rp = $('#resetPasswordBtn');
+  if (rp) rp.addEventListener('click', async () => {
+    if (!currentUser || !currentUser.email) return;
+    try { await sendReset(currentUser.email); toast('Password reset email sent.', 'ok'); }
+    catch { toast('Could not send reset email right now.', 'err'); }
+  });
+}
+
+function wireProfileForms(){
+  // Reserved for future profile form
+}
+
+/* ============================================================
+   SEARCH FILTER
+   ============================================================ */
+function wireSearchFilter(inputSel, listSel){
+  const input = $(inputSel);
+  const list = $(listSel);
+  if (!input || !list || input.dataset.wired) return;
+  input.dataset.wired = '1';
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    list.querySelectorAll('.data-item').forEach(item => {
+      item.style.display = item.textContent.toLowerCase().includes(q) ? '' : 'none';
+    });
+  });
+}
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+function emptyState(icon, title, sub, actionKey, actionLabel){
+  return `
+    <div class="empty">
+      <div class="empty__icon">${icon}</div>
+      <h3>${escapeHTML(title)}</h3>
+      <p>${escapeHTML(sub)}</p>
+      ${actionKey ? `<button class="btn" data-action="${escapeHTML(actionKey)}">${escapeHTML(actionLabel || 'Get Started')}</button>` : ''}
+    </div>
+  `;
+}
+function statusBadge(status){
+  const s = String(status || '').toLowerCase();
+  const map = {
+    active:['active','Active'], approved:['active','Approved'], published:['active','Published'],
+    completed:['active','Completed'], resolved:['active','Resolved'], paid:['active','Paid'],
+    in_progress:['progress','In Progress'], new:['progress','New'], reviewing:['progress','Reviewing'],
+    acknowledged:['progress','Acknowledged'], draft:['muted','Draft'], concept:['muted','Concept'],
+    soon:['waiting','Coming Soon'], dev:['progress','In Development'],
+    waiting:['waiting','Waiting'], pending:['waiting','Pending'],
+    overdue:['urgent','Overdue'], expired:['urgent','Expired'], cancelled:['muted','Cancelled'],
+    spam:['urgent','Spam'], archived:['muted','Archived']
+  };
+  const [cls, label] = map[s] || ['muted', status || 'Draft'];
+  return `<span class="badge badge--${cls}">${escapeHTML(label)}</span>`;
+}
+
+function showSectionError(id){
+  const sec = document.querySelector(`.section[data-section="${id}"]`);
+  if (!sec) return;
+  const list = sec.querySelector('.data-list');
+  if (list) {
+    list.innerHTML = emptyState('⚠','Something went wrong','We could not load this section right now. Please try again.');
+  }
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+async function boot(){
+  const ok = await initFirebase();
+  if (!ok) return;
+  const { onAuthStateChanged } = fb;
+  onAuthStateChanged(fb.auth, onAuthChanged);
+}
+boot();
+
+/* ============================================================
+   DEVTOOLS DETERRENTS (not security)
+   ============================================================ */
+document.addEventListener('contextmenu', (e) => {
+  const t = e.target;
+  if (t.matches?.('input,textarea,select,[contenteditable="true"]')) return;
+  e.preventDefault();
+});
+document.addEventListener('keydown', (e) => {
+  const k = e.key.toLowerCase();
+  const block =
+    k === 'f12' ||
+    (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+    (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+    (e.ctrlKey && ['u','s'].includes(k)) ||
+    (e.metaKey && ['u','s'].includes(k));
+  if (block) { e.preventDefault(); e.stopPropagation(); return false; }
+}, true);
+(() => {
+  const toast = document.createElement('div');
+  toast.className = 'devtools-warning';
+  toast.setAttribute('role','alert');
+  toast.setAttribute('aria-live','polite');
+  toast.innerHTML = '<span class="devtools-warning__icon">!</span><span>Developer tools detected — this page is protected.</span>';
+  document.body.appendChild(toast);
+  let visible = false, warnUntil = 0;
+  const show = () => { warnUntil = Date.now() + 5000; if (!visible) { visible = true; toast.classList.add('is-visible'); } };
+  const hide = () => { if (visible && Date.now() > warnUntil) { visible = false; toast.classList.remove('is-visible'); } };
+  setInterval(() => {
+    const w = window.outerWidth - window.innerWidth;
+    const h = window.outerHeight - window.innerHeight;
+    if (w > 160 || h > 160) show();
+    hide();
+  }, 900);
+  document.addEventListener('keydown', (e) => {
+    const k = e.key.toLowerCase();
+    if (k === 'f12' ||
+        (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+        (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+        (e.ctrlKey && ['u','s'].includes(k)) ||
+        (e.metaKey && ['u','s'].includes(k))) show();
+  }, true);
+})();
+if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+  (() => { let n = 0; setInterval(() => { n++; if (n > 1) { console.clear(); n = 0; } }, 2000); })();
+}
+console.log('%c⚠️ STOP', 'color:#ff3b3b;font-size:32px;font-weight:900');
+console.log('%cThis is the Founder Command Center. Authorization is enforced by Firebase custom claims and Firestore Security Rules. Modifying this file grants no privileges.', 'font-size:13px;color:#ff9');
+</script>
+
+<!-- ============================================================
+     PROVISIONING + SECURITY RULES — REFERENCE
+     ============================================================
+     Place these in your trusted backend. NEVER ship them in
+     browser-delivered code.
+
+     --- 1. PROVISION THE FOUNDER (run once, locally) ---------
+     // file: scripts/setFounder.js  (Node.js, run with: node scripts/setFounder.js)
+     const admin = require('firebase-admin');
+     admin.initializeApp({ credential: admin.credential.applicationDefault() });
+
+     const FOUNDER_UID = 'PASTE_YOUR_UID_HERE';
+     await admin.auth().setCustomUserClaims(FOUNDER_UID, {
+       admin: true,
+       founder: true,
+       role: 'founder',
+       permissions: [
+         'dashboard.read','users.read','users.manage',
+         'content.create','content.publish','projects.manage',
+         'finance.read','finance.manage','support.manage',
+         'settings.manage','security.manage','admins.manage'
+       ]
+     });
+     // Then, on next sign-in, the client's getIdTokenResult() will
+     // return these claims. The browser cannot modify them.
+
+     --- 2. FIRESTORE SECURITY RULES --------------------------
+     // firestore.rules
+     rules_version = '2';
+     service cloud.firestore {
+       match /databases/{database}/documents {
+
+         function signedIn() { return request.auth != null; }
+         function isAdmin()  { return signedIn() && request.auth.token.admin == true; }
+         function isFounder(){ return signedIn() && request.auth.token.founder == true; }
+         function hasPerm(p){
+           return signedIn()
+             && request.auth.token.admin == true
+             && p in request.auth.token.permissions;
+         }
+
+         // USERS — self or admin
+         match /users/{uid} {
+           allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
+           allow create: if signedIn() && request.auth.uid == uid;
+           allow update: if (signedIn() && request.auth.uid == uid
+                             && !request.resource.data.diff(resource.data)
+                                 .affectedKeys().hasAny(['role','admin','permissions']))
+                         || isAdmin();
+           allow delete: if isFounder();
+         }
+
+         // siteSettings / homepage — admins only
+         match /siteSettings/{docId} {
+           allow read: if true;             // public homepage content
+           allow write: if hasPerm('settings.manage');
+         }
+
+         // Public content (services, portfolio, products, opportunities, tools, announcements)
+         match /services/{id}            { allow read: if true; allow write: if hasPerm('content.publish'); }
+         match /portfolioProjects/{id}   { allow read: if true; allow write: if hasPerm('content.publish'); }
+         match /ecosystemProducts/{id}   { allow read: if true; allow write: if hasPerm('content.publish'); }
+         match /opportunities/{id}       { allow read: if true; allow write: if hasPerm('content.publish'); }
+         match /tools/{id}               { allow read: if true; allow write: if hasPerm('content.publish'); }
+         match /announcements/{id}       { allow read: if true; allow write: if hasPerm('content.publish'); }
+
+         // Projects — admins only
+         match /projects/{id}   { allow read, write: if hasPerm('projects.manage'); }
+         match /projectRequests/{id} {
+           allow create: if true;           // public form
+           allow read, update, delete: if hasPerm('projects.manage');
+         }
+
+         // Clients — admins only
+         match /clients/{id}    { allow read, write: if hasPerm('projects.manage'); }
+
+         // Contact messages — public create, admin read/update
+         match /contactMessages/{id} {
+           allow create: if true;
+           allow read, update, delete: if hasPerm('support.manage');
+         }
+
+         // Support tickets — public create, admin read
+         match /supportTickets/{id} {
+           allow create: if true;
+           allow read, update, delete: if hasPerm('support.manage');
+         }
+
+         // Finance — admin only
+         match /invoices/{id}   { allow read, write: if hasPerm('finance.manage'); }
+         match /payments/{id}   { allow read: if hasPerm('finance.read'); allow write: if false; }
+
+         // Audit logs — read admin, write backend only
+         match /adminAuditLogs/{id} {
+           allow read: if hasPerm('security.manage');
+           allow write: if false;           // written by Cloud Functions
+         }
+
+         // Media metadata — admin only
+         match /mediaAssets/{id} { allow read, write: if hasPerm('content.publish'); }
+
+         // Default deny
+         match /{document=**} { allow read, write: if false; }
+       }
+     }
+
+     --- 3. STORAGE SECURITY RULES ----------------------------
+     // storage.rules
+     rules_version = '2';
+     service firebase.storage {
+       match /b/{bucket}/o {
+         match /media/{allPaths=**} {
+           allow read: if true;
+           allow write: if request.auth != null
+             && request.auth.token.admin == true;
+         }
+         match /{allPaths=**} { allow read, write: if false; }
+       }
+     }
+
+     --- 4. RECOMMENDED FIRESTORE INDEXES ---------------------
+     // firestore.indexes.json (composite indexes you'll likely need)
+     {
+       "indexes": [
+         { "collectionGroup": "projects", "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath":"status","order":"ASCENDING"},
+             {"fieldPath":"updatedAt","order":"DESCENDING"}
+           ]
+         },
+         { "collectionGroup": "contactMessages", "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath":"status","order":"ASCENDING"},
+             {"fieldPath":"createdAt","order":"DESCENDING"}
+           ]
+         },
+         { "collectionGroup": "supportTickets", "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath":"status","order":"ASCENDING"},
+             {"fieldPath":"createdAt","order":"DESCENDING"}
+           ]
+         },
+         { "collectionGroup": "opportunities", "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath":"status","order":"ASCENDING"},
+             {"fieldPath":"createdAt","order":"DESCENDING"}
+           ]
+         }
+       ]
+     }
+     ============================================================
+-->
+</body>
+</html>
