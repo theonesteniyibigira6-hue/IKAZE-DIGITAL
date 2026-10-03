@@ -1,0 +1,2282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>IKAZE Cloud — Your Digital World. Powered by the Cloud. | IKAZE DIGITAL</title>
+<meta name="description" content="Deploy applications, manage digital resources, store files, and grow your projects through a connected cloud ecosystem powered by modern infrastructure." />
+<meta name="theme-color" content="#080A0F" />
+<link rel="canonical" href="https://ikaze-digital.vercel.app/ikaze-cloud.html" />
+
+<meta property="og:title" content="IKAZE Cloud — Build. Store. Deploy. Scale." />
+<meta property="og:description" content="Cloud infrastructure, storage and deployment from Rwanda to the world." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://i.postimg.cc/tJ9QydF2/Theoneste.png" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><path d='M6 40 24 6l18 34-9-6-9-14-9 14z' fill='%23f2a33a'/><path d='M24 6 42 40l-9-6z' fill='%23c8553d'/><circle cx='24' cy='6' r='4' fill='%23FAD201'/></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "IKAZE Cloud",
+  "url": "https://ikaze-digital.vercel.app/ikaze-cloud.html",
+  "description": "Cloud infrastructure, storage, deployment and digital services from Rwanda.",
+  "isPartOf": {
+    "@type": "Organization",
+    "name": "Ikaze Digital",
+    "url": "https://ikaze-digital.vercel.app/"
+  }
+}
+</script>
+
+<style>
+/* ============================================================
+   TOKENS — matched to existing IKAZE DIGITAL pages
+   ============================================================ */
+:root{
+  --bg:#080A0F; --bg2:#0B1017; --bg3:#10151D;
+  --ink:#f4efe8; --mut:#a9a39b;
+  --amb:#f2a33a; --ter:#c8553d;
+  --blue:#00A1DE; --grn:#20603D; --yel:#FAD201;
+  --card:rgba(255,255,255,.04);
+  --card2:rgba(255,255,255,.06);
+  --line:rgba(255,255,255,.10);
+  --line2:rgba(255,255,255,.16);
+  --radius:14px;
+  --radius-lg:20px;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(80px + env(safe-area-inset-top,0px))}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.55;
+  overflow-x:hidden;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  font-size:14px;
+}
+body.lock{overflow:hidden}
+input,textarea,select,button{-webkit-user-select:text;user-select:text}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+button{font:inherit;cursor:pointer}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px;font-size:.88em;font-family:var(--mono)}
+
+/* ============================================================
+   BACKGROUND LAYERS
+   ============================================================ */
+#bg{
+  position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(60% 50% at 20% 15%,rgba(0,161,222,.20),transparent 70%),
+    radial-gradient(50% 45% at 85% 80%,rgba(32,96,61,.16),transparent 70%),
+    radial-gradient(45% 45% at 50% 50%,rgba(242,163,58,.06),transparent 70%),
+    linear-gradient(#10151D,#080A0F);
+}
+#c{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+
+.aurora{position:fixed;border-radius:50%;filter:blur(100px);opacity:.36;mix-blend-mode:screen;pointer-events:none;z-index:-1}
+.aurora-1{width:520px;height:520px;top:-140px;left:-100px;background:radial-gradient(circle,var(--blue),transparent 70%);animation:float1 24s ease-in-out infinite}
+.aurora-2{width:600px;height:600px;bottom:-200px;right:-120px;background:radial-gradient(circle,var(--grn),transparent 70%);animation:float2 28s ease-in-out infinite}
+.aurora-3{width:420px;height:420px;top:40%;left:50%;background:radial-gradient(circle,var(--yel),transparent 70%);opacity:.14;animation:float3 32s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(60px,50px) scale(1.12)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-60px,-70px) scale(1.15)}}
+@keyframes float3{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-40%,-60%) scale(1.2)}}
+
+.grid-lines{
+  position:fixed;inset:0;opacity:.09;pointer-events:none;z-index:-1;
+  background-image:
+    linear-gradient(rgba(0,161,222,.30) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,161,222,.30) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(circle at 50% 40%,#000 0%,transparent 75%);
+  -webkit-mask-image:radial-gradient(circle at 50% 40%,#000 0%,transparent 75%);
+  animation:gridMove 40s linear infinite;
+}
+@keyframes gridMove{0%{background-position:0 0,0 0}100%{background-position:64px 64px,64px 64px}}
+
+.code-frag{
+  position:fixed;font-family:var(--mono);font-size:11px;
+  color:rgba(0,161,222,.30);letter-spacing:.05em;white-space:nowrap;
+  pointer-events:none;z-index:-1;
+  animation:codeFloat linear infinite;will-change:transform,opacity;
+}
+@keyframes codeFloat{
+  0%{transform:translateY(0) translateX(0);opacity:0}
+  10%{opacity:.7}
+  90%{opacity:.7}
+  100%{transform:translateY(-100vh) translateX(30px);opacity:0}
+}
+
+/* ============================================================
+   DEVTOOLS TOAST
+   ============================================================ */
+.devtools-warning{
+  position:fixed;top:0;left:50%;transform:translate(-50%,-140%);
+  z-index:9999;padding:.85rem 1.4rem;
+  background:linear-gradient(120deg,rgba(200,85,61,.95),rgba(150,40,20,.95));
+  color:#fff;font-weight:600;font-size:.9rem;
+  border-radius:0 0 14px 14px;letter-spacing:.03em;
+  box-shadow:0 14px 40px -10px rgba(200,85,61,.6);
+  display:flex;align-items:center;gap:.7rem;
+  transition:transform .5s cubic-bezier(.2,.7,.2,1);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  max-width:calc(100% - 24px);pointer-events:none;
+}
+.devtools-warning.is-visible{transform:translate(-50%,0)}
+.devtools-warning__icon{
+  width:22px;height:22px;border-radius:50%;
+  background:rgba(255,255,255,.18);
+  display:grid;place-items:center;font-size:13px;flex-shrink:0;
+}
+@media (max-width:620px){.devtools-warning{font-size:.78rem;padding:.7rem 1rem}}
+
+/* ============================================================
+   LOADER
+   ============================================================ */
+#loader{
+  position:fixed;inset:0;z-index:8000;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:var(--bg);gap:22px;
+  transition:opacity .4s ease,visibility .4s;
+}
+#loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-spinner{
+  width:54px;height:54px;border-radius:50%;
+  border:3px solid rgba(255,255,255,.1);
+  border-top-color:var(--blue);
+  border-right-color:var(--yel);
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loader-text{
+  color:var(--mut);font-size:.82rem;letter-spacing:.3em;
+  text-transform:uppercase;font-weight:500;text-align:center;padding:0 20px;
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.wrap--narrow{max-width:820px}
+
+header{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+  backdrop-filter:blur(14px);
+  background:rgba(8,10,15,.78);
+  border-bottom:1px solid var(--line);
+}
+.bar{display:flex;align-items:center;gap:16px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.08em;font-size:14px}
+.logo img{height:44px;width:auto;max-width:56px;object-fit:contain}
+.logo small{display:block;font-weight:500;letter-spacing:0;font-size:10px;color:var(--mut)}
+nav{margin-left:auto;display:flex;gap:14px;align-items:center}
+nav a{text-decoration:none;font-size:13.5px;color:var(--mut);transition:color .2s}
+nav a:hover,nav a[aria-current]{color:var(--blue)}
+
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 22px;border-radius:999px;
+  background:var(--blue);color:#fff;font-weight:700;text-decoration:none;
+  border:0;cursor:pointer;font-size:14px;
+  transition:transform .2s,box-shadow .2s;
+  min-height:44px;white-space:nowrap;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,161,222,.35)}
+.btn.o{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.o:hover{border-color:var(--blue);color:var(--blue)}
+.btn.amb{background:var(--amb);color:#1a0f05}
+.btn.amb:hover{box-shadow:0 8px 28px rgba(242,163,58,.35)}
+.btn.grn{background:linear-gradient(120deg,var(--grn),#164a2e);color:#fff}
+.btn.sm{padding:10px 16px;font-size:13px;min-height:40px}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+
+:focus-visible{outline:3px solid var(--yel);outline-offset:2px;border-radius:8px}
+
+#menu{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:12px 16px;min-height:44px;cursor:pointer}
+
+section{padding:70px 0;position:relative;z-index:1}
+h1{font-size:clamp(2rem,6vw,3.8rem);line-height:1.05;margin:0 0 16px;letter-spacing:-.02em}
+h2{font-size:clamp(1.5rem,3.6vw,2.4rem);margin:0 0 12px;letter-spacing:-.01em}
+h3{font-size:1.1rem;margin:6px 0}
+h4{font-size:1rem;margin:14px 0 6px;color:var(--blue)}
+p{margin:0 0 14px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin-bottom:6px}
+.tag{color:var(--blue);font-weight:600;letter-spacing:.06em;font-size:.82rem;text-transform:uppercase}
+.lead{color:var(--mut);max-width:680px;font-size:clamp(1rem,1.4vw,1.12rem)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{padding:60px 0 40px;min-height:85vh;display:flex;align-items:center}
+.hero__inner{display:grid;gap:40px;grid-template-columns:1fr;align-items:center;width:100%}
+@media(min-width:900px){.hero__inner{grid-template-columns:1.05fr .95fr}}
+.hero__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.hero__cta-group{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+
+.cloud-visual{
+  position:relative;aspect-ratio:1/1;max-width:520px;width:100%;margin:0 auto;
+  border-radius:24px;overflow:hidden;
+  border:1px solid var(--line);
+  background:radial-gradient(circle at 50% 50%,rgba(0,161,222,.10),transparent 60%),var(--card);
+  backdrop-filter:blur(10px);
+}
+.cloud-visual canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.cloud-visual__label{
+  position:absolute;bottom:14px;left:0;right:0;text-align:center;
+  font-size:.72rem;color:var(--mut);letter-spacing:.14em;text-transform:uppercase;
+  pointer-events:none;z-index:2;
+}
+
+/* ============================================================
+   STATUS BADGES
+   ============================================================ */
+.st{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:4px 10px;border-radius:99px;border:1px solid;white-space:nowrap;
+}
+.st::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+.st--available{color:#3ddc84;border-color:rgba(61,220,132,.4);background:rgba(61,220,132,.08)}
+.st--dev{color:#00A1DE;border-color:rgba(0,161,222,.4);background:rgba(0,161,222,.08)}
+.st--soon{color:#f2a33a;border-color:rgba(242,163,58,.4);background:rgba(242,163,58,.08)}
+.st--early{color:#c084fc;border-color:rgba(192,132,252,.4);background:rgba(192,132,252,.08)}
+.st--concept{color:#9aa0a6;border-color:rgba(154,160,166,.35);background:rgba(154,160,166,.06)}
+
+/* ============================================================
+   SECTION HEADS
+   ============================================================ */
+.section-head{margin-bottom:32px}
+.section-head--center{text-align:center;max-width:760px;margin-inline:auto}
+
+/* ============================================================
+   CARDS / GRIDS
+   ============================================================ */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.grid--two{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.grid--three{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.grid--four{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;backdrop-filter:blur(8px);
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+  display:flex;flex-direction:column;
+}
+.card:hover{transform:translateY(-5px);border-color:rgba(0,161,222,.4);box-shadow:0 14px 34px rgba(0,85,120,.18)}
+.card__icon{
+  width:48px;height:48px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(0,161,222,.15),rgba(32,96,61,.08));
+  border:1px solid rgba(0,161,222,.25);
+  font-size:22px;color:var(--blue);margin-bottom:14px;
+  transition:transform .4s ease;
+}
+.card:hover .card__icon{transform:rotate(-5deg) scale(1.05)}
+.card__head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
+.card h3{margin:6px 0}
+.card p{color:var(--mut);font-size:.93rem;flex-grow:1;margin:0}
+
+/* Product card */
+.product-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;display:flex;flex-direction:column;
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+}
+.product-card:hover{transform:translateY(-5px);border-color:rgba(0,161,222,.5);box-shadow:0 14px 34px rgba(0,85,120,.18)}
+.product-card__head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}
+.product-card__icon{
+  width:52px;height:52px;border-radius:14px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(0,161,222,.15),rgba(32,96,61,.08));
+  border:1px solid rgba(0,161,222,.28);
+  font-size:24px;color:var(--blue);flex-shrink:0;
+}
+.product-card h3{font-size:1.1rem;margin:0}
+.product-card__tagline{color:var(--blue);font-weight:600;font-size:.85rem;margin:2px 0 8px}
+.product-card p{color:var(--mut);font-size:.92rem;flex-grow:1;margin:0 0 16px}
+.product-card__cta{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap}
+
+/* Pathway / steps */
+.pathway{
+  padding:22px;border-radius:var(--radius);
+  border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(0,161,222,.06),rgba(32,96,61,.03));
+}
+.pathway h3{color:var(--blue);margin:0 0 12px}
+.pathway__steps{list-style:none;padding:0;margin:0;display:grid;gap:8px;counter-reset:pstep}
+.pathway__steps li{
+  padding:10px 14px 10px 44px;border-radius:10px;
+  background:rgba(255,255,255,.03);border:1px solid var(--line);
+  font-size:.88rem;color:var(--ink);
+  display:flex;align-items:center;position:relative;
+}
+.pathway__steps li::before{
+  content:counter(pstep);counter-increment:pstep;
+  position:absolute;left:12px;top:50%;transform:translateY(-50%);
+  width:22px;height:22px;border-radius:50%;
+  background:rgba(0,161,222,.15);color:var(--blue);
+  font-family:var(--mono);font-size:11px;font-weight:700;
+  display:grid;place-items:center;
+}
+
+/* Pricing */
+.price-card{
+  padding:28px;border-radius:var(--radius-lg);
+  border:1px solid var(--line);background:var(--card);
+  display:flex;flex-direction:column;
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+  position:relative;
+}
+.price-card:hover{transform:translateY(-5px);border-color:rgba(0,161,222,.5);box-shadow:0 20px 50px -20px rgba(0,161,222,.35)}
+.price-card--featured{
+  border-color:rgba(242,163,58,.55);
+  box-shadow:0 0 0 1px rgba(242,163,58,.2) inset;
+}
+.price-card__label{
+  display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--amb);margin-bottom:10px;
+}
+.price-card h3{font-size:1.35rem;margin:4px 0 6px}
+.price-card__for{color:var(--mut);font-size:.88rem;margin:0 0 14px}
+.price-card__price{
+  font-size:1.05rem;font-weight:700;color:var(--blue);
+  margin:14px 0;letter-spacing:.02em;
+}
+.price-card__price small{
+  display:block;color:var(--mut);font-size:.72rem;font-weight:500;
+  letter-spacing:.05em;text-transform:uppercase;margin-top:4px;
+}
+.price-card__features{list-style:none;padding:0;margin:14px 0;display:grid;gap:8px;font-size:.9rem}
+.price-card__features li{padding-left:22px;position:relative;color:var(--ink)}
+.price-card__features li::before{content:"✓";position:absolute;left:0;top:0;color:var(--blue);font-weight:700}
+.price-card__cta{margin-top:auto;padding-top:16px}
+
+/* FAQ */
+.faq{margin-top:26px;display:grid;gap:10px}
+.faq__item{border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden}
+.faq__q{
+  width:100%;text-align:left;padding:18px 22px;background:none;border:0;color:var(--ink);
+  font-size:1rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;gap:14px;align-items:center;
+}
+.faq__q::after{content:"+";color:var(--blue);font-size:1.4rem;line-height:1;transition:transform .3s}
+.faq__item[aria-expanded=true] .faq__q::after{transform:rotate(45deg)}
+.faq__a{padding:0 22px 18px;color:var(--mut);font-size:.94rem;display:none}
+.faq__item[aria-expanded=true] .faq__a{display:block}
+
+/* Flow */
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:22px}
+.flow span{padding:10px 16px;border-radius:99px;background:var(--card);border:1px solid var(--line);font-size:.85rem;color:var(--ink)}
+.flow i{color:var(--blue);font-style:normal;font-size:1.1rem;font-weight:700}
+
+/* CTA block */
+.cta-block{
+  padding:48px 28px;border-radius:24px;border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(0,161,222,.12),rgba(32,96,61,.06));
+  text-align:center;
+}
+.cta-block .btn{margin:6px 4px 0}
+.cta-block h2{font-size:clamp(1.6rem,3.5vw,2.4rem)}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+.modal{
+  position:fixed;inset:0;z-index:9100;
+  display:none;align-items:flex-start;justify-content:center;
+  padding:20px;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);
+  overflow-y:auto;
+}
+.modal.open{display:flex}
+.modal__box{
+  background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius-lg);
+  max-width:600px;width:100%;padding:28px;position:relative;
+  box-shadow:0 30px 80px rgba(0,0,0,.7);margin:auto;
+}
+.modal__close{
+  position:absolute;top:14px;right:14px;
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(255,255,255,.05);border:1px solid var(--line);
+  color:var(--ink);display:grid;place-items:center;font-size:16px;
+}
+.modal__close:hover{background:rgba(0,161,222,.15);color:var(--blue)}
+.modal h3{margin:0 0 6px;font-size:1.3rem;padding-right:44px}
+.modal__sub{color:var(--mut);font-size:.9rem;margin:0 0 20px}
+
+/* Auth tabs */
+.auth-tabs{display:flex;gap:4px;padding:4px;border-radius:10px;background:rgba(255,255,255,.03);margin-bottom:20px}
+.auth-tab{
+  flex:1;padding:10px;border-radius:8px;background:transparent;border:0;
+  color:var(--mut);font-size:13px;font-weight:600;transition:all .2s;
+}
+.auth-tab.on{background:var(--blue);color:#fff}
+
+/* Forms */
+.form{display:grid;gap:14px}
+.form .row{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+@media(max-width:520px){.form .row{grid-template-columns:1fr}}
+.form label{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:6px}
+.form input,.form select,.form textarea{
+  width:100%;padding:13px 16px;border-radius:10px;
+  border:1px solid var(--line);background:rgba(255,255,255,.04);
+  color:var(--ink);font-size:14px;min-height:48px;
+}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,161,222,.12)}
+.form select option{background:var(--bg2);color:var(--ink)}
+.form button[type=submit]{justify-self:start}
+.form .consent{display:flex;gap:10px;align-items:flex-start;font-size:.85rem;color:var(--mut)}
+.form .consent input{width:auto;min-height:auto;margin-top:3px;accent-color:var(--blue)}
+.form-status{font-size:.85rem;min-height:1.2em;margin:6px 0 0}
+.form-status.ok{color:#7be2a8}
+.form-status.err{color:#ff9a9a}
+
+/* Console preview (landing page mock — clearly labelled) */
+.console-preview{
+  margin-top:26px;padding:24px;border-radius:var(--radius-lg);
+  border:1px solid var(--line);background:var(--bg2);
+  overflow:hidden;position:relative;
+}
+.console-preview__head{
+  display:flex;align-items:center;gap:10px;margin-bottom:18px;
+  padding-bottom:14px;border-bottom:1px solid var(--line);
+}
+.console-preview__dots{display:flex;gap:6px}
+.console-preview__dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.15)}
+.console-preview__dot.r{background:rgba(255,95,86,.6)}
+.console-preview__dot.y{background:rgba(255,189,46,.6)}
+.console-preview__dot.g{background:rgba(39,201,63,.6)}
+.console-preview__title{font-family:var(--mono);font-size:12px;color:var(--mut)}
+.console-preview__body{
+  display:grid;gap:12px;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));
+}
+.console-tile{
+  padding:16px;border-radius:12px;
+  background:rgba(255,255,255,.03);border:1px solid var(--line);
+}
+.console-tile__label{font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);margin-bottom:6px;font-weight:600}
+.console-tile__value{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.console-tile__value.muted{font-size:1rem;color:var(--mut);font-weight:600}
+.console-tile__sub{font-size:11.5px;color:var(--mut);margin-top:4px}
+.console-preview__label{
+  position:absolute;top:14px;right:14px;
+  font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--amb);background:rgba(242,163,58,.1);
+  padding:4px 10px;border-radius:99px;border:1px solid rgba(242,163,58,.3);
+}
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+.empty-state{
+  padding:52px 24px;text-align:center;
+  border:1px dashed var(--line);border-radius:var(--radius);
+}
+.empty-state__icon{
+  width:56px;height:56px;border-radius:50%;
+  background:rgba(0,161,222,.08);color:var(--blue);
+  display:grid;place-items:center;margin:0 auto 14px;font-size:22px;
+}
+.empty-state h3{margin:0 0 6px;font-size:1.02rem}
+.empty-state p{color:var(--mut);font-size:.9rem;margin:0 0 18px;max-width:460px;margin-inline:auto}
+
+/* Skeleton */
+.skeleton{padding:20px;border-radius:var(--radius);background:var(--card);border:1px solid var(--line)}
+.sk-line{
+  height:12px;border-radius:6px;
+  background:linear-gradient(90deg,rgba(255,255,255,.04),rgba(255,255,255,.09),rgba(255,255,255,.04));
+  background-size:200% 100%;animation:shimmer 1.4s linear infinite;margin-bottom:10px;
+}
+.sk-line.w40{width:40%}.sk-line.w60{width:60%}.sk-line.w80{width:80%}
+.sk-line.h20{height:20px}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{border-top:1px solid var(--line);padding:44px 0 28px;color:var(--mut);font-size:.9rem;background:rgba(8,10,15,.85);position:relative;z-index:1}
+footer a{text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--blue)}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px}
+@media(max-width:780px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr}}
+footer h4{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--mut);margin:0 0 12px}
+footer ul{list-style:none;padding:0;margin:0}
+footer li{margin-bottom:6px;font-size:.88rem}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+[data-reveal]{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+[data-reveal].is-visible{opacity:1;transform:translateY(0)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:900px){
+  nav{display:none}
+  nav.open{
+    display:flex;flex-direction:column;
+    position:absolute;top:68px;left:0;right:0;
+    background:rgba(8,10,15,.97);padding:22px;
+    gap:14px;border-bottom:1px solid var(--line);z-index:50;
+  }
+  #menu{display:block;margin-left:auto}
+  .aurora{filter:blur(60px);opacity:.30}
+}
+@media (max-width:620px){
+  section{padding:52px 0}
+  .hero{padding:40px 0 30px;min-height:auto}
+  .code-frag{display:none}
+  #c{opacity:.5}
+  h1{font-size:1.85rem}
+  .modal{padding:10px}
+  .modal__box{padding:22px 18px}
+  .console-preview{padding:18px}
+}
+@media (max-width:380px){
+  h1{font-size:1.65rem}
+  .btn{padding:10px 16px;font-size:13px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  #c,.aurora,.grid-lines,.code-frag{display:none}
+  [data-reveal]{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div id="bg" aria-hidden="true"></div>
+<canvas id="c" aria-hidden="true"></canvas>
+
+<a class="skip-link" href="#main" style="position:absolute;left:-9999px;background:var(--blue);color:#fff;padding:.6rem 1rem;z-index:1000;font-weight:700">Skip to content</a>
+
+<!-- ==================== LOADER ==================== -->
+<div id="loader">
+  <div class="loader-spinner"></div>
+  <div class="loader-text">IKAZE CLOUD<br>Loading…</div>
+</div>
+
+<!-- ==================== HEADER ==================== -->
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="index.html" aria-label="Ikaze Digital home">
+      <img src="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png" alt="IKAZE Digital sunrise logo" width="56" height="44" />
+      <span>IKAZE CLOUD<small>Build · Store · Deploy · Scale</small></span>
+    </a>
+    <button id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="ikaze-cloud.html" aria-current="page">Cloud</a>
+      <a href="#services">Services</a>
+      <a href="#academy">Academy</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#docs">Docs</a>
+      <a href="#faq">FAQ</a>
+      <button class="btn o sm" id="signInBtn" type="button">Sign In</button>
+      <button class="btn sm" id="openConsoleBtn" type="button">Open Console</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="hero">
+  <div class="wrap hero__inner">
+    <div data-reveal>
+      <p class="tag">IKAZE Cloud · Global Infrastructure</p>
+      <h1>Everything You Need to <span style="color:var(--blue)">Build and Power</span> Your Digital World.</h1>
+      <p class="lead">
+        Deploy applications, manage digital resources, store files, and grow your projects through a
+        connected cloud ecosystem powered by modern infrastructure.
+      </p>
+      <div class="hero__cta">
+        <a class="btn" href="#services">Explore Cloud Services</a>
+        <button class="btn o" id="heroConsoleBtn" type="button">Open Cloud Console</button>
+      </div>
+      <div class="hero__cta-group">
+        <a class="btn o sm" href="start-project.html">Start a Project</a>
+        <a class="btn o sm" href="#docs">View Documentation</a>
+      </div>
+
+      <!-- Honest status banner -->
+      <div style="margin-top:26px;padding:14px 18px;border-radius:12px;background:rgba(242,163,58,.06);border:1px solid rgba(242,163,58,.24);font-size:.85rem;color:var(--mut);max-width:560px">
+        <strong style="color:var(--amb)">Honest status:</strong> IKAZE Cloud is in active development.
+        Some services are available today, others are in development or planned. Every service is
+        clearly labelled — we do not claim capabilities that are not actually built.
+      </div>
+    </div>
+    <div class="cloud-visual" data-reveal>
+      <canvas id="cloudCanvas" aria-label="3D cloud infrastructure visualization"></canvas>
+      <span class="cloud-visual__label">Rwanda · Africa · Global</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== INFRASTRUCTURE PRINCIPLE ==================== -->
+<section id="infrastructure">
+  <div class="wrap wrap--narrow" data-reveal style="text-align:center">
+    <p class="tag">How IKAZE Cloud Is Built</p>
+    <h2>Real infrastructure, honest architecture.</h2>
+    <p class="lead" style="margin-inline:auto">
+      IKAZE Cloud does not claim to own data centers. We build the platform layer — dashboard,
+      account management, service catalog, billing, automation, and integration logic — and run on
+      proven cloud infrastructure: Firebase and Google Cloud as our primary foundation, with
+      support for additional providers as the platform grows.
+    </p>
+    <div class="grid grid--three" style="margin-top:28px;text-align:left">
+      <div class="card">
+        <div class="card__icon">◇</div>
+        <h3>Layer 1 — IKAZE Platform</h3>
+        <p>Brand, dashboard, accounts, service catalog, billing, support, automation, integration logic. Owned and operated by IKAZE DIGITAL.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">◆</div>
+        <h3>Layer 2 — Firebase &amp; Google Cloud</h3>
+        <p>Authentication, Firestore, Storage, Cloud Functions, App Check and selected Google Cloud services for compute, containers and APIs.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">✦</div>
+        <h3>Layer 3 — External Providers</h3>
+        <p>Hosting, virtual machines, object storage, managed databases, domains, CDN and backups — integrated through provider adapters as they are configured and tested.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SERVICE CATALOG ==================== -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="tag">Cloud Services</p>
+      <h2>Build. Store. Deploy. Scale.</h2>
+      <p class="lead">The services that make up IKAZE Cloud — with honest status labels.</p>
+    </div>
+
+    <div class="grid grid--three" data-reveal>
+
+      <!-- IKAZE Hosting -->
+      <article class="product-card">
+        <div class="product-card__head">
+          <div class="product-card__icon" aria-hidden="true">◇</div>
+          <span class="st st--dev">In Development</span>
+        </div>
+        <h3>IKAZE Hosting</h3>
+        <p class="product-card__tagline">Websites, web apps, landing pages.</p>
+        <p>Deploy websites and web applications with custom domains, SSL, deployment history, build logs, and rollback. Connects to GitHub securely — never via pasted passwords.</p>
+        <div class="product-card__cta">
+          <button class="btn o sm" data-detail="hosting" type="button">Learn More</button>
+          <a class="btn sm" href="support.html">Early Access</a>
+        </div>
+      </article>
+
+      <!-- IKAZE Drive -->
+      <article class="product-card">
+        <div class="product-card__head">
+          <div class="product-card__icon" aria-hidden="true">▣</div>
+          <span class="st st--dev">In Development</span>
+        </div>
+        <h3>IKAZE Drive</h3>
+        <p class="product-card__tagline">Secure digital file storage.</p>
+        <p>Upload, organize, share and preview files. Private links with expiration, version history, trash recovery, and real usage tracking. No claim of unlimited storage.</p>
+        <div class="product-card__cta">
+          <button class="btn o sm" data-detail="drive" type="button">Learn More</button>
+          <a class="btn sm" href="support.html">Early Access</a>
+        </div>
+      </article>
+
+      <!-- IKAZE Deploy -->
+      <article class="product-card">
+        <div class="product-card__head">
+          <div class="product-card__icon" aria-hidden="true">▲</div>
+          <span class="st st--dev">In Development</span>
+        </div>
+        <h3>IKAZE Deploy</h3>
+        <p class="product-card__tagline">Ship applications from GitHub.</p>
+        <p>Connect a repository, configure build settings, deploy with one click, view real build logs, get a live URL, and manage environment variables securely.</p>
+        <div class="product-card__cta">
+          <button class="btn o sm" data-detail="deploy" type="button">Learn More</button>
+          <a class="btn sm" href="support.html">Early Access</a>
+        </div>
+      </article>
+
+      <!-- IKAZE Database -->
+      <article class="product-card">
+        <div class="product-card__head">
+          <div class="product-card__icon" aria-hidden="true">◈</div>
+          <span class="st st--dev">In Development</span>
+        </div>
+        <h3>IKAZE Database</h3>
+        <p class="product-card__tagline">Managed data services.</p>
+        <p>Guided Firebase and Firestore integration, managed SQL database integrations, connection configuration, usage monitoring and access management. Secrets never exposed in the browser.</p>
+        <div class="product-card__cta">
+          <button class="btn o sm" data-detail="database" type="button">Learn More</button>
+          <a class="btn sm" href="support.html">Early Access</a>
+        </div>
+      </article>
+
+      <!-- IKAZE Domains -->
+      <article class="product-card">
+        <div class="product-card__head">
+          <div class="product-card__icon" aria-hidden="true">◎</div>
+          <span class="st st--soon">Coming Soon</span>
+        </div>
+        <h3>IKAZE Domains</h3>
+        <p class="product-card__tagline">Domain registration and DNS.</p>
+        <p>Search domain availability, register, manage DNS, connect to hosted applications, and monitor SSL status. Registration activates once registrar integration is configured.</p>
+        <div class="product-card__cta">
+          <button class="btn o sm" data-detail="domains" type="button">Learn More</button>
+          <a class="btn sm" href="support.html">Notify Me</a>
+        </div>
+      </article>
+
+      <!-- IKAZE Backup -->
+      <article class="product-card">
+        <div class="product-card__head">
+          <div class="product-card__icon" aria-hidden="true">↺</div>
+          <span class="st st--soon">Coming Soon</span>
+        </div>
+        <h3>IKAZE Backup</h3>
+        <p class="product-card__tagline">Scheduled, verified backups.</p>
+        <p>Backup schedules, verified completion status, restore workflow, retention settings and notifications. Only shows a backup as completed when it actually completed.</p>
+        <div class="product-card__cta">
+          <button class="btn o sm" data-detail="backup" type="button">Learn More</button>
+          <a class="btn sm" href="support.html">Notify Me</a>
+        </div>
+      </article>
+
+      <!-- IKAZE Compute -->
+      <article class="product-card">
+        <div class="product-card__head">
+          <div class="product-card__icon" aria-hidden="true">◆</div>
+          <span class="st st--concept">Concept</span>
+        </div>
+        <h3>IKAZE Compute</h3>
+        <p class="product-card__tagline">Containers, jobs and APIs.</p>
+        <p>Run containerized applications, background jobs, server-side APIs and scheduled workloads. Activates once Google Cloud or another compute provider is configured for this service.</p>
+        <div class="product-card__cta">
+          <button class="btn o sm" data-detail="compute" type="button">Learn More</button>
+          <a class="btn sm" href="support.html">Join Waitlist</a>
+        </div>
+      </article>
+
+      <!-- IKAZE API -->
+      <article class="product-card">
+        <div class="product-card__head">
+          <div class="product-card__icon" aria-hidden="true">⌘</div>
+          <span class="st st--concept">Concept</span>
+        </div>
+        <h3>IKAZE API</h3>
+        <p class="product-card__tagline">Developer API foundation.</p>
+        <p>API documentation, project list, usage tracking, rate limits, key management, endpoint health and access logs. Keys are only shown at creation time and stored securely.</p>
+        <div class="product-card__cta">
+          <button class="btn o sm" data-detail="api" type="button">Learn More</button>
+          <a class="btn sm" href="support.html">Join Waitlist</a>
+        </div>
+      </article>
+
+      <!-- IKAZE Monitoring -->
+      <article class="product-card">
+        <div class="product-card__head">
+          <div class="product-card__icon" aria-hidden="true">◐</div>
+          <span class="st st--soon">Coming Soon</span>
+        </div>
+        <h3>IKAZE Monitoring</h3>
+        <p class="product-card__tagline">Usage, health and cost control.</p>
+        <p>Real usage monitoring, service health, deployment status, budget thresholds, cost alerts and admin audit logs. Prevents accidental runaway resource creation.</p>
+        <div class="product-card__cta">
+          <button class="btn o sm" data-detail="monitoring" type="button">Learn More</button>
+          <a class="btn sm" href="support.html">Notify Me</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CONSOLE PREVIEW (clearly labelled) ==================== -->
+<section id="console">
+  <div class="wrap" data-reveal>
+    <div class="section-head section-head--center">
+      <p class="tag">Cloud Console Preview</p>
+      <h2>A clear, focused control panel.</h2>
+      <p class="lead">Real dashboard tiles — only values that exist in your account are shown. Empty accounts see honest empty states, not fake numbers.</p>
+    </div>
+
+    <div class="console-preview">
+      <span class="console-preview__label">Preview — not live data</span>
+      <div class="console-preview__head">
+        <div class="console-preview__dots">
+          <span class="console-preview__dot r"></span>
+          <span class="console-preview__dot y"></span>
+          <span class="console-preview__dot g"></span>
+        </div>
+        <span class="console-preview__title">cloud.ikazedigital.com / console</span>
+      </div>
+      <div class="console-preview__body">
+        <div class="console-tile">
+          <div class="console-tile__label">Active Services</div>
+          <div class="console-tile__value muted">—</div>
+          <div class="console-tile__sub">Populated from your account</div>
+        </div>
+        <div class="console-tile">
+          <div class="console-tile__label">Projects</div>
+          <div class="console-tile__value muted">—</div>
+          <div class="console-tile__sub">Real project count</div>
+        </div>
+        <div class="console-tile">
+          <div class="console-tile__label">Storage Used</div>
+          <div class="console-tile__value muted">—</div>
+          <div class="console-tile__sub">Actual usage</div>
+        </div>
+        <div class="console-tile">
+          <div class="console-tile__label">Deployments</div>
+          <div class="console-tile__value muted">—</div>
+          <div class="console-tile__sub">Real deployment history</div>
+        </div>
+      </div>
+      <p style="color:var(--mut);font-size:.85rem;margin:18px 0 0">
+        The Cloud Console is delivered as a separate authenticated application. When it is opened,
+        it connects to your Firebase-authenticated account and displays only real data —
+        never fabricated numbers, never fake server metrics.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ACADEMY INTEGRATION ==================== -->
+<section id="academy">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="tag">IKAZE Academy + IKAZE Cloud</p>
+      <h2>Learn. Build. Store. Deploy. Share. Grow.</h2>
+      <p class="lead">
+        IKAZE Academy is one of the first major use cases of IKAZE Cloud — a real integration, not two
+        buttons linking separate pages. A learner who signs into Academy uses the same account in Cloud.
+      </p>
+    </div>
+
+    <div class="grid grid--two" data-reveal>
+      <div class="pathway">
+        <h3>The Learner Journey</h3>
+        <ol class="pathway__steps">
+          <li>Enroll in Web Development on IKAZE Academy</li>
+          <li>Complete HTML and CSS lessons</li>
+          <li>Create a real project</li>
+          <li>Save project files in <strong>My Learning Cloud</strong></li>
+          <li>Connect a GitHub repository securely</li>
+          <li>Deploy through IKAZE Deploy</li>
+          <li>Receive an actual deployment URL</li>
+          <li>Add the project to your Academy portfolio</li>
+          <li>Share with an instructor for review</li>
+        </ol>
+      </div>
+
+      <div class="pathway">
+        <h3>What Each Side Gets</h3>
+        <ul class="pathway__steps" style="counter-reset:none">
+          <li style="counter-increment:none">Shared Firebase account — no separate signup</li>
+          <li style="counter-increment:none">Learner file workspace with private storage</li>
+          <li style="counter-increment:none">Instructor-reviewed project submissions</li>
+          <li style="counter-increment:none">Cloud learning modules: Firebase Fundamentals, Hosting, Deployment, Storage, Database Security, API Development, DevOps Foundations</li>
+          <li style="counter-increment:none">Sandbox quotas that prevent unexpected cloud bills</li>
+          <li style="counter-increment:none">Learners explicitly share project links with instructors — never silent access</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:32px">
+      <a class="btn" href="ikaze-academy.html">Explore IKAZE Academy</a>
+      <a class="btn o" href="support.html">Join the Waitlist</a>
+    </div>
+
+    <div style="margin-top:26px;padding:16px 20px;border-radius:12px;background:rgba(0,161,222,.06);border:1px solid rgba(0,161,222,.24);font-size:.88rem;color:var(--mut);max-width:820px;margin-inline:auto">
+      <strong style="color:var(--ink)">Fair billing for learners:</strong> Free Academy enrollment
+      never silently activates paid Cloud resources. Any billable compute, storage or deployment
+      requires explicit confirmation from the learner first.
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PRICING ==================== -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="tag">Pricing</p>
+      <h2>Transparent tiers, honest limits.</h2>
+      <p class="lead">No "unlimited" claims, no fake 99.9% uptime. Real limits and real starting prices.</p>
+    </div>
+
+    <div class="grid grid--four" data-reveal>
+
+      <div class="price-card">
+        <span class="price-card__label">Free</span>
+        <h3>Cloud Free</h3>
+        <p class="price-card__for">For learners, students and anyone exploring.</p>
+        <div class="price-card__price">
+          Free
+          <small>No card required</small>
+        </div>
+        <ul class="price-card__features">
+          <li>Account access</li>
+          <li>Cloud learning resources</li>
+          <li>Academy integration</li>
+          <li>Project metadata</li>
+          <li>Limited free allowances where provider costs permit</li>
+        </ul>
+        <div class="price-card__cta">
+          <button class="btn" data-open-signup type="button">Get Started Free</button>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <span class="price-card__label">Starter</span>
+        <h3>Cloud Starter</h3>
+        <p class="price-card__for">For individual developers building real projects.</p>
+        <div class="price-card__price">
+          Custom
+          <small>Regional pricing at launch</small>
+        </div>
+        <ul class="price-card__features">
+          <li>Personal projects</li>
+          <li>Increased storage</li>
+          <li>Deployment history</li>
+          <li>Custom domain support (once integrated)</li>
+          <li>Basic usage dashboard</li>
+        </ul>
+        <div class="price-card__cta">
+          <a class="btn o" href="support.html">Register Interest</a>
+        </div>
+      </div>
+
+      <div class="price-card price-card--featured">
+        <span class="price-card__label">Recommended for creators &amp; devs</span>
+        <h3>Cloud Pro</h3>
+        <p class="price-card__for">For creators and professional developers.</p>
+        <div class="price-card__price">
+          Custom
+          <small>Regional pricing at launch</small>
+        </div>
+        <ul class="price-card__features">
+          <li>Multiple projects</li>
+          <li>Higher configured quotas</li>
+          <li>Advanced deployment options</li>
+          <li>Backup options</li>
+          <li>Collaboration features</li>
+          <li>Priority support (only if actually offered)</li>
+        </ul>
+        <div class="price-card__cta">
+          <a class="btn o" href="support.html">Register Interest</a>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <span class="price-card__label">Business</span>
+        <h3>Cloud Business</h3>
+        <p class="price-card__for">For organizations and businesses.</p>
+        <div class="price-card__price">
+          Custom Quote
+          <small>Scoped per organization</small>
+        </div>
+        <ul class="price-card__features">
+          <li>Team access</li>
+          <li>Organization projects</li>
+          <li>Role management</li>
+          <li>Usage reports</li>
+          <li>Business hosting</li>
+          <li>Support packages</li>
+        </ul>
+        <div class="price-card__cta">
+          <a class="btn o" href="contact.html">Request a Quote</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p style="color:var(--mut);font-size:.85rem;text-align:center;margin-top:26px;max-width:720px;margin-inline:auto">
+      <strong style="color:var(--amb)">Honest limits:</strong> We do not promise 99.9% uptime,
+      unlimited storage, unlimited compute, or 24/7 support unless operationally and contractually
+      supported. Final pricing is confirmed before any payment is charged, and payments are verified
+      server-side — never from a browser redirect.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== HOW IT WORKS ==================== -->
+<section id="how">
+  <div class="wrap">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="tag">How It Works</p>
+      <h2>From account to live project in minutes.</h2>
+    </div>
+    <div class="grid grid--four" data-reveal>
+      <div class="card">
+        <div class="card__icon">◎</div>
+        <h3>01 · Create Account</h3>
+        <p>One IKAZE account works across Academy, Cloud and the rest of the ecosystem.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">◆</div>
+        <h3>02 · Choose Service</h3>
+        <p>Hosting, storage, deployment, database or another service from the catalog.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">◈</div>
+        <h3>03 · Configure</h3>
+        <p>Review settings, estimate costs, and confirm before anything is provisioned.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">✦</div>
+        <h3>04 · Deploy &amp; Verify</h3>
+        <p>Real deployment with real status. We never simulate a successful deployment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== DOCUMENTATION ==================== -->
+<section id="docs">
+  <div class="wrap">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="tag">Documentation</p>
+      <h2>Developer-friendly guides.</h2>
+      <p class="lead">Beginner-friendly walkthroughs for African learners and international developers.</p>
+    </div>
+
+    <div class="grid grid--three" data-reveal>
+      <div class="card"><div class="card__icon">◇</div><h3>Getting Started</h3><p>Set up your account, understand the console, and run your first deployment.</p></div>
+      <div class="card"><div class="card__icon">◆</div><h3>Firebase Integration</h3><p>Connect your Firebase project and use Firestore, Storage and Auth from your app.</p></div>
+      <div class="card"><div class="card__icon">▲</div><h3>Hosting Guides</h3><p>Deploy static sites and web apps with custom domains and SSL.</p></div>
+      <div class="card"><div class="card__icon">⌘</div><h3>GitHub Deployment</h3><p>Connect repositories securely, configure build settings, and view real logs.</p></div>
+      <div class="card"><div class="card__icon">◈</div><h3>Storage Guides</h3><p>Upload, organize, share and back up files with proper access controls.</p></div>
+      <div class="card"><div class="card__icon">◐</div><h3>Security Guidance</h3><p>Understand Firestore rules, Storage rules, and secrets management.</p></div>
+      <div class="card"><div class="card__icon">◎</div><h3>Billing</h3><p>Understand plans, usage-based charges, and how to set spending limits.</p></div>
+      <div class="card"><div class="card__icon">✎</div><h3>Troubleshooting</h3><p>Common issues, provider errors, and how to get support.</p></div>
+      <div class="card"><div class="card__icon">★</div><h3>Release Notes</h3><p>What's shipped, what's coming next, and known limitations.</p></div>
+    </div>
+
+    <div style="text-align:center;margin-top:32px">
+      <a class="btn o" href="support.html">Request Early Access</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section id="faq">
+  <div class="wrap wrap--narrow">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="tag">FAQ</p>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq" id="faqList"></div>
+  </div>
+</section>
+
+<!-- ==================== FINAL CTA ==================== -->
+<section id="final" style="padding-bottom:6rem">
+  <div class="wrap" data-reveal>
+    <div class="cta-block">
+      <p class="tag">Build · Store · Deploy · Scale</p>
+      <h2>Your Digital World. Powered by the Cloud.</h2>
+      <p class="lead" style="margin-inline:auto">
+        Join IKAZE Cloud — a real, honest, growing cloud platform built from Rwanda for Africa and the world.
+      </p>
+      <div style="margin-top:22px">
+        <button class="btn" id="finalSignupBtn" type="button">Create Free Account</button>
+        <a class="btn o" href="support.html">Request Early Access</a>
+        <a class="btn o" href="contact.html">Contact IKAZE DIGITAL</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p><strong>IKAZE CLOUD</strong><br/>Build. Store. Deploy. Scale.<br/><span style="font-size:.8rem">Part of IKAZE DIGITAL — Building Africa's Digital Future.</span></p>
+      </div>
+      <div>
+        <h4>Cloud Services</h4>
+        <ul>
+          <li><a href="#services">Hosting</a></li>
+          <li><a href="#services">Drive</a></li>
+          <li><a href="#services">Deploy</a></li>
+          <li><a href="#services">Database</a></li>
+          <li><a href="#services">Domains</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>IKAZE DIGITAL</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="ikaze-academy.html">Academy</a></li>
+          <li><a href="ecosystem.html">Ecosystem</a></li>
+          <li><a href="opportunities.html">Opportunities</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact &amp; Legal</h4>
+        <ul>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Terms</a></li>
+        </ul>
+        <p style="font-size:.85rem;margin-top:10px">
+          <a href="mailto:theonosteniyibigira6@gmail.com">theonosteniyibigira6@gmail.com</a>
+        </p>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--mut);font-size:.8rem">
+      <small>© <span id="year"></span> IKAZE Cloud · IKAZE DIGITAL. All rights reserved. · Cloud services are built on Firebase, Google Cloud and selected external infrastructure providers. No uptime guarantee is claimed unless contractually agreed.</small>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== MODAL ==================== -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal__box">
+    <button class="modal__close" id="modalClose" aria-label="Close dialog">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script type="module">
+/* ============================================================
+   IKAZE CLOUD — Application Script
+   ============================================================
+
+   SECURITY NOTES
+   ---------------
+   This script is delivered to the browser and can be inspected.
+   It does NOT enforce authorization. Real access control is
+   enforced by Firebase Security Rules and trusted backend
+   functions. NEVER place Firebase Admin credentials, provider
+   secrets, or payment keys in this file.
+   ============================================================ */
+
+'use strict';
+
+/* ============================================================
+   FIREBASE CONFIG — replace with your real config
+   ============================================================ */
+const firebaseConfig = {
+  apiKey: "REPLACE_WITH_FIREBASE_API_KEY",
+  authDomain: "REPLACE_WITH.firebaseapp.com",
+  projectId: "REPLACE_WITH_PROJECT_ID",
+  storageBucket: "REPLACE_WITH.appspot.com",
+  messagingSenderId: "REPLACE_WITH",
+  appId: "REPLACE_WITH_APP_ID"
+};
+
+const isConfigured =
+  !firebaseConfig.apiKey.startsWith('REPLACE_WITH') &&
+  !firebaseConfig.projectId.startsWith('REPLACE_WITH');
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+const $  = (s, c=document) => c.querySelector(s);
+const $$ = (s, c=document) => Array.from(c.querySelectorAll(s));
+const escapeHTML = (s) => String(s ?? '').replace(/[&<>"']/g, m => ({
+  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+}[m]));
+const el = (tag, cls, html) => {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (html !== undefined) e.innerHTML = html;
+  return e;
+};
+
+/* ============================================================
+   LOADER
+   ============================================================ */
+function hideLoader(){
+  const l = $('#loader');
+  if (l) l.classList.add('hidden');
+}
+
+/* ============================================================
+   FIREBASE
+   ============================================================ */
+let fb = null;
+let currentUser = null;
+let currentUserProfile = null;
+
+async function initFirebase(){
+  if (!isConfigured) return false;
+  try {
+    const appMod = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js');
+    const authMod = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js');
+    const fsMod  = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
+    const stMod  = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js');
+
+    const app = appMod.initializeApp(firebaseConfig);
+    const auth = authMod.getAuth(app);
+    const db = fsMod.initializeFirestore(app, { ignoreUndefinedProperties: true });
+    const storage = stMod.getStorage(app);
+
+    fb = { app, auth, db, storage, ...authMod, ...fsMod, ...stMod };
+    return true;
+  } catch (err) {
+    console.error('[cloud] Firebase init failed', err);
+    return false;
+  }
+}
+
+/* ============================================================
+   AUTH
+   ============================================================ */
+async function signInEmail(email, password){
+  const { signInWithEmailAndPassword } = fb;
+  await signInWithEmailAndPassword(fb.auth, email, password);
+}
+async function signUpEmail(email, password, name){
+  const { createUserWithEmailAndPassword, updateProfile, doc, setDoc, serverTimestamp } = fb;
+  const cred = await createUserWithEmailAndPassword(fb.auth, email, password);
+  await updateProfile(cred.user, { displayName: name });
+  await setDoc(doc(fb.db, 'users', cred.user.uid), {
+    fullName: name,
+    email: email,
+    role: 'cloud_user',
+    createdAt: serverTimestamp()
+  }, { merge: true });
+  return cred;
+}
+async function signInGoogle(){
+  const { GoogleAuthProvider, signInWithPopup, doc, getDoc, setDoc, serverTimestamp } = fb;
+  const provider = new GoogleAuthProvider();
+  const cred = await signInWithPopup(fb.auth, provider);
+  const ref = doc(fb.db, 'users', cred.user.uid);
+  const snap = await getDoc(ref);
+  if (!snap.exists()) {
+    await setDoc(ref, {
+      fullName: cred.user.displayName || '',
+      email: cred.user.email || '',
+      role: 'cloud_user',
+      createdAt: serverTimestamp()
+    });
+  }
+  return cred;
+}
+async function sendReset(email){
+  const { sendPasswordResetEmail } = fb;
+  await sendPasswordResetEmail(fb.auth, email);
+}
+async function signOutUser(){
+  const { signOut } = fb;
+  await signOut(fb.auth);
+  currentUser = null;
+  currentUserProfile = null;
+  renderAuthState();
+}
+
+async function loadUserProfile(){
+  if (!currentUser || !fb) return;
+  try {
+    const { doc, getDoc } = fb;
+    const snap = await getDoc(doc(fb.db, 'users', currentUser.uid));
+    currentUserProfile = snap.exists()
+      ? { id: snap.id, ...snap.data() }
+      : { id: currentUser.uid, fullName: currentUser.displayName || '', email: currentUser.email || '' };
+  } catch {
+    currentUserProfile = { id: currentUser.uid, fullName: currentUser.displayName || '', email: currentUser.email || '' };
+  }
+}
+
+function renderAuthState(){
+  const sBtn = $('#signInBtn');
+  const cBtn = $('#openConsoleBtn');
+  const fBtn = $('#finalSignupBtn');
+
+  if (currentUser) {
+    if (sBtn) { sBtn.textContent = 'Sign Out'; sBtn.onclick = () => signOutUser(); }
+    if (cBtn) { cBtn.textContent = 'Open Console'; cBtn.onclick = () => toast('Cloud Console is coming soon — sign in is connected, dashboard is in development.', 'warn'); }
+    if (fBtn) { fBtn.textContent = 'Open Console'; fBtn.onclick = () => toast('Cloud Console is coming soon.', 'warn'); }
+  } else {
+    if (sBtn) { sBtn.textContent = 'Sign In'; sBtn.onclick = () => openAuthModal('signin'); }
+    if (cBtn) { cBtn.textContent = 'Open Console'; cBtn.onclick = () => openAuthModal('signin'); }
+    if (fBtn) { fBtn.textContent = 'Create Free Account'; fBtn.onclick = () => openAuthModal('signup'); }
+  }
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+function toast(msg, type='ok'){
+  let wrap = $('#toastWrap');
+  if (!wrap) {
+    wrap = el('div');
+    wrap.id = 'toastWrap';
+    wrap.style.cssText = 'position:fixed;bottom:24px;right:16px;z-index:9500;display:grid;gap:10px;max-width:380px';
+    document.body.appendChild(wrap);
+  }
+  const t = el('div');
+  t.style.cssText = 'padding:14px 18px;border-radius:12px;background:rgba(11,16,23,.97);border:1px solid ' +
+    (type === 'ok' ? 'rgba(61,220,132,.4)' : type === 'err' ? 'rgba(200,85,61,.5)' : 'rgba(242,163,58,.4)') +
+    ';backdrop-filter:blur(10px);box-shadow:0 14px 40px rgba(0,0,0,.5);font-size:.9rem;display:flex;gap:10px;align-items:flex-start';
+  const icon = type === 'ok' ? '✓' : type === 'err' ? '✕' : '!';
+  t.innerHTML = `<span style="flex-shrink:0;font-size:16px">${icon}</span><div>${escapeHTML(msg)}</div>`;
+  wrap.appendChild(t);
+  setTimeout(() => {
+    t.style.transition = 'opacity .3s, transform .3s';
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(20px)';
+    setTimeout(() => t.remove(), 320);
+  }, 4200);
+}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+function openModal(){
+  const m = $('#modal');
+  m.hidden = false;
+  m.classList.add('open');
+  document.body.classList.add('lock');
+}
+function closeModal(){
+  const m = $('#modal');
+  m.classList.remove('open');
+  m.hidden = true;
+  document.body.classList.remove('lock');
+}
+document.addEventListener('click', e => {
+  if (e.target.closest('#modalClose')) closeModal();
+  if (e.target === $('#modal')) closeModal();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && $('#modal').classList.contains('open')) closeModal();
+});
+
+/* ============================================================
+   AUTH MODAL
+   ============================================================ */
+function openAuthModal(mode='signin'){
+  const body = $('#modalBody');
+  body.innerHTML = `
+    <h3 id="modalTitle">${mode === 'signup' ? 'Create Your IKAZE Cloud Account' : 'Sign In to IKAZE Cloud'}</h3>
+    <p class="modal__sub">${mode === 'signup' ? 'One account works across IKAZE Academy, Cloud and the ecosystem.' : 'Welcome back — continue to your cloud workspace.'}</p>
+
+    <div class="auth-tabs" role="tablist">
+      <button class="auth-tab ${mode==='signin'?'on':''}" data-auth-tab="signin" role="tab" aria-selected="${mode==='signin'}">Sign In</button>
+      <button class="auth-tab ${mode==='signup'?'on':''}" data-auth-tab="signup" role="tab" aria-selected="${mode==='signup'}">Create Account</button>
+    </div>
+
+    <form class="form" id="authForm" novalidate>
+      <div data-signup-only style="display:${mode==='signup'?'':'none'}">
+        <label for="authName">Full name</label>
+        <input id="authName" type="text" autocomplete="name" />
+      </div>
+      <div>
+        <label for="authEmail">Email</label>
+        <input id="authEmail" type="email" required autocomplete="email" />
+      </div>
+      <div>
+        <label for="authPassword">Password</label>
+        <input id="authPassword" type="password" required minlength="8" autocomplete="current-password" />
+        <div style="font-size:11.5px;color:var(--mut);margin-top:6px">At least 8 characters.</div>
+      </div>
+      <button class="btn" type="submit" id="authSubmit">${mode==='signup'?'Create Account':'Sign In'}</button>
+      <p class="form-status" id="authStatus" role="status" aria-live="polite"></p>
+    </form>
+
+    <div style="display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.15em">
+      <span style="flex:1;height:1px;background:var(--line)"></span>
+      or
+      <span style="flex:1;height:1px;background:var(--line)"></span>
+    </div>
+
+    <button class="btn o" id="authGoogle" type="button" style="width:100%;justify-content:center">
+      Continue with Google
+    </button>
+
+    <p style="text-align:center;font-size:.82rem;color:var(--mut);margin-top:18px">
+      <a href="#" id="forgotLink" style="color:var(--blue);text-decoration:underline">Forgot password?</a>
+      <span style="margin:0 6px">·</span>
+      <a href="privacy.html" style="color:var(--blue);text-decoration:underline">Privacy</a>
+      <span style="margin:0 6px">·</span>
+      <a href="terms.html" style="color:var(--blue);text-decoration:underline">Terms</a>
+    </p>
+  `;
+  openModal();
+
+  let currentMode = mode;
+  $$('.auth-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      $$('.auth-tab').forEach(t => { t.classList.remove('on'); t.setAttribute('aria-selected','false'); });
+      tab.classList.add('on'); tab.setAttribute('aria-selected','true');
+      currentMode = tab.dataset.authTab;
+      $$('[data-signup-only]').forEach(n => n.style.display = currentMode === 'signup' ? '' : 'none');
+      $('#authSubmit').textContent = currentMode === 'signup' ? 'Create Account' : 'Sign In';
+    });
+  });
+
+  $('#authForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const status = $('#authStatus');
+    status.className = 'form-status';
+    status.textContent = '';
+
+    if (!fb) {
+      status.className = 'form-status err';
+      status.textContent = 'Authentication is not connected yet. See the setup notes.';
+      return;
+    }
+
+    const email = $('#authEmail').value.trim();
+    const password = $('#authPassword').value;
+    const name = $('#authName') ? $('#authName').value.trim() : '';
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { status.className = 'form-status err'; status.textContent = 'Please enter a valid email.'; return; }
+    if (password.length < 8) { status.className = 'form-status err'; status.textContent = 'Password must be at least 8 characters.'; return; }
+    if (currentMode === 'signup' && !name) { status.className = 'form-status err'; status.textContent = 'Please enter your full name.'; return; }
+
+    $('#authSubmit').disabled = true;
+    try {
+      if (currentMode === 'signup') await signUpEmail(email, password, name);
+      else await signInEmail(email, password);
+      closeModal();
+      toast('Signed in successfully.', 'ok');
+    } catch (err) {
+      status.className = 'form-status err';
+      status.textContent = friendlyAuthError(err);
+    } finally {
+      $('#authSubmit').disabled = false;
+    }
+  });
+
+  $('#authGoogle').addEventListener('click', async () => {
+    if (!fb) { toast('Authentication is not connected yet.', 'warn'); return; }
+    try { await signInGoogle(); closeModal(); toast('Signed in with Google.', 'ok'); }
+    catch (err) { toast(friendlyAuthError(err), 'err'); }
+  });
+
+  $('#forgotLink').addEventListener('click', async (e) => {
+    e.preventDefault();
+    const email = $('#authEmail').value.trim();
+    if (!email) { toast('Enter your email first.', 'warn'); return; }
+    if (!fb) { toast('Authentication is not connected yet.', 'warn'); return; }
+    try { await sendReset(email); toast('If that email exists, a reset link has been sent.', 'ok'); }
+    catch (err) { toast(friendlyAuthError(err), 'err'); }
+  });
+}
+
+function friendlyAuthError(err){
+  const code = (err && err.code) || '';
+  const map = {
+    'auth/invalid-email': 'That email is not valid.',
+    'auth/user-not-found': 'No account with that email.',
+    'auth/wrong-password': 'Incorrect email or password.',
+    'auth/invalid-credential': 'Incorrect email or password.',
+    'auth/email-already-in-use': 'An account with that email already exists.',
+    'auth/weak-password': 'Please choose a stronger password.',
+    'auth/too-many-requests': 'Too many attempts. Wait a moment and try again.',
+    'auth/network-request-failed': 'Network problem. Check your connection.',
+    'auth/popup-closed-by-user': 'Sign-in popup closed.',
+    'auth/operation-not-allowed': 'This sign-in method is not enabled.'
+  };
+  return map[code] || 'Something went wrong. Please try again.';
+}
+
+/* ============================================================
+   SERVICE DETAIL MODAL
+   ============================================================ */
+const SERVICE_DETAILS = {
+  hosting: {
+    title: 'IKAZE Hosting',
+    tagline: 'Websites, web apps, landing pages.',
+    status: 'st--dev',
+    statusLabel: 'In Development',
+    about: 'Host websites, web applications, landing pages, and supported backend applications. Connect a custom domain, configure SSL, view deployment history, watch build logs, and roll back when supported.',
+    features: [
+      'Website deployment',
+      'Custom domain connection',
+      'SSL configuration',
+      'Deployment history and rollback',
+      'Build logs',
+      'Environment configuration',
+      'Basic analytics and error reporting',
+      'Deployment notifications'
+    ],
+    honest: 'GitHub integration is done through secure OAuth — never by pasting a password. We will never ask for a GitHub token in a form.'
+  },
+  drive: {
+    title: 'IKAZE Drive',
+    tagline: 'Secure digital file storage.',
+    status: 'st--dev',
+    statusLabel: 'In Development',
+    about: 'Upload, download, organize, share, and preview files securely. Support documents, images, educational resources, project files, and approved media.',
+    features: [
+      'Upload and download files',
+      'Folders, rename, move, delete',
+      'Search across files',
+      'File previews where supported',
+      'Sharing permissions and private links',
+      'Expiration controls',
+      'Version history and trash recovery',
+      'File access logs'
+    ],
+    honest: 'We do not claim unlimited storage. You will always see your real storage limits and actual usage. File size, type, ownership, and authorization are enforced by Storage Rules.'
+  },
+  deploy: {
+    title: 'IKAZE Deploy',
+    tagline: 'Ship applications from GitHub.',
+    status: 'st--dev',
+    statusLabel: 'In Development',
+    about: 'Simplify application deployment for learners, creators, and developers. Connect a repository, select framework and output directory, deploy, and view real build status.',
+    features: [
+      'Connect GitHub repository',
+      'Framework and build configuration',
+      'Environment variables managed securely',
+      'Build status and logs',
+      'Live URL after success',
+      'Custom domain connection',
+      'Redeploy and rollback',
+      'Deployment history'
+    ],
+    honest: 'We never simulate a successful deployment. If the provider deployment did not actually succeed, you will see the real status — including failure reasons.'
+  },
+  database: {
+    title: 'IKAZE Database',
+    tagline: 'Managed data services.',
+    status: 'st--dev',
+    statusLabel: 'In Development',
+    about: 'Give developers access to managed data services — Firebase Firestore, Realtime Database, and managed SQL integrations where configured.',
+    features: [
+      'Guided Firebase integration',
+      'Connection configuration',
+      'Usage monitoring',
+      'Backup configuration',
+      'Access management',
+      'Database health',
+      'Documentation and examples'
+    ],
+    honest: 'Database passwords and privileged service credentials are never exposed in the browser. For existing Firebase applications we provide guided integration rather than unnecessary migration.'
+  },
+  domains: {
+    title: 'IKAZE Domains',
+    tagline: 'Domain registration and DNS.',
+    status: 'st--soon',
+    statusLabel: 'Coming Soon',
+    about: 'Search domain availability, register, manage DNS, connect to hosted applications, and monitor SSL status. Activates once registrar integration is configured.',
+    features: [
+      'Domain search and availability',
+      'Domain registration (once integrated)',
+      'DNS management',
+      'Domain renewal',
+      'Custom domain connection',
+      'SSL status',
+      'Ownership verification',
+      'Transfer guidance'
+    ],
+    honest: 'Until registrar integration is live, we will direct you to a supported registrar rather than pretending a domain has been purchased. We do not sell domains we cannot actually register.'
+  },
+  backup: {
+    title: 'IKAZE Backup',
+    tagline: 'Scheduled, verified backups.',
+    status: 'st--soon',
+    statusLabel: 'Coming Soon',
+    about: 'Backup schedules for databases and files, with real completion verification, restore workflow, retention settings, and notifications.',
+    features: [
+      'Backup schedules',
+      'Backup history',
+      'Verified completion status',
+      'Restore workflow',
+      'Database and file backup',
+      'Retention settings',
+      'Backup notifications',
+      'Recovery documentation'
+    ],
+    honest: 'We display a backup as completed only when the backup job actually completed and its result was verified. We do not claim data is backed up unless it truly is.'
+  },
+  compute: {
+    title: 'IKAZE Compute',
+    tagline: 'Containers, jobs and APIs.',
+    status: 'st--concept',
+    statusLabel: 'Concept',
+    about: 'Run containerized applications, background jobs, server-side APIs, and scheduled workloads through Google Cloud, Cloud Run, or another configured provider.',
+    features: [
+      'Containerized applications',
+      'Background jobs',
+      'Server-side APIs',
+      'Scheduled workloads',
+      'Compute usage and resource monitoring',
+      'Deployment management'
+    ],
+    honest: 'We do not advertise virtual machines or compute capacity that has not been provisioned. Compute activates when a real provider is configured for this service.'
+  },
+  api: {
+    title: 'IKAZE API',
+    tagline: 'Developer API foundation.',
+    status: 'st--concept',
+    statusLabel: 'Concept',
+    about: 'A developer-oriented API management foundation: documentation, project list, usage, rate limits, key management, endpoint health, and access logs.',
+    features: [
+      'API documentation',
+      'API project list',
+      'Usage tracking',
+      'Rate-limit information',
+      'API key creation and revocation',
+      'Endpoint health',
+      'Access logs',
+      'Developer onboarding'
+    ],
+    honest: 'API keys are shown only at creation time. Secrets are stored in a secure backend secret-management system — never returned to the browser after creation.'
+  },
+  monitoring: {
+    title: 'IKAZE Monitoring',
+    tagline: 'Usage, health and cost control.',
+    status: 'st--soon',
+    statusLabel: 'Coming Soon',
+    about: 'Real usage monitoring, provider error reporting, provisioning logs, budget thresholds, cost alerts, rate limits, resource quotas, and admin audit logs.',
+    features: [
+      'Usage monitoring',
+      'Service health status',
+      'Deployment status',
+      'Budget thresholds and cost alerts',
+      'Rate limits and quotas',
+      'Abnormal activity detection',
+      'Deployment failure notifications',
+      'Admin audit logs'
+    ],
+    honest: 'We use Firebase and provider monitoring where applicable. We do not claim that App Check alone prevents all abuse. Conservative quotas are applied to new accounts, and expensive operations require additional verification.'
+  }
+};
+
+function openServiceDetail(key){
+  const d = SERVICE_DETAILS[key];
+  if (!d) return;
+  const body = $('#modalBody');
+  body.innerHTML = `
+    <h3 id="modalTitle">${escapeHTML(d.title)}</h3>
+    <p class="modal__sub">${escapeHTML(d.tagline)}</p>
+
+    <div style="margin-bottom:16px">
+      <span class="st ${d.status}">${escapeHTML(d.statusLabel)}</span>
+    </div>
+
+    <h4 style="color:var(--blue);margin-top:6px">About this service</h4>
+    <p style="color:var(--mut);font-size:.94rem">${escapeHTML(d.about)}</p>
+
+    <h4 style="color:var(--blue);margin-top:16px">Features</h4>
+    <ul style="color:var(--mut);font-size:.92rem;padding-left:20px">
+      ${d.features.map(f => `<li>${escapeHTML(f)}</li>`).join('')}
+    </ul>
+
+    <div style="margin-top:18px;padding:14px 18px;border-radius:12px;background:rgba(242,163,58,.06);border:1px solid rgba(242,163,58,.24);font-size:.85rem;color:var(--mut)">
+      <strong style="color:var(--amb)">Honest note:</strong> ${escapeHTML(d.honest)}
+    </div>
+
+    <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
+      <button class="btn o" data-close-modal type="button">Close</button>
+      <a class="btn" href="support.html">Request Early Access</a>
+    </div>
+  `;
+  openModal();
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+const FAQS = [
+  { q:'What is IKAZE Cloud?', a:'IKAZE Cloud is a cloud-services platform from IKAZE DIGITAL that provides hosting, storage, deployment, database, and related digital services through a unified account, dashboard, and service catalog. It is built on Firebase, Google Cloud, and selected external infrastructure providers.' },
+  { q:'Does IKAZE DIGITAL own data centers?', a:'No. We are honest about this: IKAZE DIGITAL owns the platform layer — brand, dashboard, account management, service catalog, billing, automation, and integration logic. The underlying compute, storage, and network infrastructure runs on proven providers including Firebase and Google Cloud.' },
+  { q:'Is IKAZE Cloud free?', a:'There is a Free tier with account access, cloud learning resources, Academy integration, and limited free allowances where provider costs permit. Paid tiers (Starter, Pro, Business) activate once payment processing is connected. Free Academy enrollment never silently activates paid Cloud resources.' },
+  { q:'When do paid plans launch?', a:'Payment processing is being set up with regional settlement and currency support in mind. We will not accept payments until a secure provider is connected and payment verification happens server-side. Registration of interest is open through the Support Center.' },
+  { q:'Is IKAZE Cloud safe?', a:'Authorization is enforced by Firebase Security Rules and trusted backend functions — not by the browser. Learners can only access their own files; organizations are isolated; service-account credentials, provider secrets, and payment keys are never placed in frontend code.' },
+  { q:'How does IKAZE Cloud connect to IKAZE Academy?', a:'They share one account. A learner signs in once and can access authorized Cloud features without a second signup. Academy projects can be saved in My Learning Cloud, deployed through IKAZE Deploy, and submitted for instructor review with explicit sharing — never silent access.' },
+  { q:'Can I deploy from GitHub?', a:'Yes — through secure OAuth. We never ask for a GitHub password or personal access token in a form. Deployment shows real build status and real logs, and never simulates a successful deploy if the provider deployment failed.' },
+  { q:'Do you offer 99.9% uptime or 24/7 support?', a:'We do not claim either unless operationally and contractually supported. Where a specific enterprise arrangement includes an SLA, it will be documented in the applicable agreement.' },
+  { q:'Which currencies will be supported?', a:'The billing architecture is built for RWF, USD, EUR, GBP, KES, UGX, TZS, ZAR, CAD, and AUD. Actual currencies at launch depend on the payment provider\'s regional settlement.' },
+  { q:'What about the Cloud Console dashboard?', a:'The Console is delivered as a separate authenticated application. It connects to your Firebase account and displays only real data from your account — no fabricated usage numbers, no fake server metrics, no invented uptime.' }
+];
+
+function renderFAQ(){
+  const list = $('#faqList');
+  if (!list) return;
+  list.innerHTML = '';
+  FAQS.forEach((f, i) => {
+    const item = el('div','faq__item');
+    item.setAttribute('aria-expanded','false');
+    const qid = `faq-q-${i}`, aid = `faq-a-${i}`;
+    item.innerHTML = `
+      <button class="faq__q" aria-controls="${aid}" aria-expanded="false" id="${qid}">${escapeHTML(f.q)}</button>
+      <div class="faq__a" role="region" aria-labelledby="${qid}" id="${aid}">${escapeHTML(f.a)}</div>
+    `;
+    const btn = item.querySelector('.faq__q');
+    btn.addEventListener('click', () => {
+      const open = item.getAttribute('aria-expanded') === 'true';
+      item.setAttribute('aria-expanded', String(!open));
+      btn.setAttribute('aria-expanded', String(!open));
+    });
+    list.appendChild(item);
+  });
+}
+
+/* ============================================================
+   REVEAL ON SCROLL
+   ============================================================ */
+function initReveal(){
+  const els = $$('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('is-visible')); return; }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); }
+    });
+  }, { rootMargin:'0px 0px -8% 0px', threshold:0.06 });
+  els.forEach(e => io.observe(e));
+}
+
+/* ============================================================
+   MOBILE NAV
+   ============================================================ */
+function initMobileNav(){
+  const t = $('#menu'), n = $('#nav');
+  if (!t || !n) return;
+  t.addEventListener('click', () => {
+    const open = n.classList.toggle('open');
+    t.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('lock', open);
+  });
+  n.addEventListener('click', e => {
+    if (e.target.closest('a')) {
+      n.classList.remove('open');
+      t.setAttribute('aria-expanded','false');
+      document.body.classList.remove('lock');
+    }
+  });
+}
+
+/* ============================================================
+   CODE FRAGMENTS
+   ============================================================ */
+function initCodeFragments(){
+  if (matchMedia('(max-width:620px)').matches) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const frags = ['deploy()','storage.put()','=>{}','{region:"af"}','build.start','env.set','cloud.run','backup.verify()','api.key()','monitor.watch','// deploy','scale.up()'];
+  for (let i = 0; i < 10; i++) {
+    const span = document.createElement('span');
+    span.className = 'code-frag';
+    span.textContent = frags[Math.floor(Math.random()*frags.length)];
+    span.style.left = (Math.random()*100) + '%';
+    span.style.bottom = '-40px';
+    span.style.animationDuration = (16 + Math.random()*16) + 's';
+    span.style.animationDelay = (-Math.random()*22) + 's';
+    span.style.opacity = (0.18 + Math.random()*0.35).toFixed(2);
+    document.body.appendChild(span);
+  }
+}
+
+/* ============================================================
+   3D CLOUD VISUAL
+   ============================================================ */
+function initCloudVisual(){
+  const canvas = document.getElementById('cloudCanvas');
+  if (!canvas) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const test = (()=>{try{const c=document.createElement('canvas');return !!(window.WebGLRenderingContext&&(c.getContext('webgl2')||c.getContext('webgl')));}catch{return false;}})();
+  if (!test) return;
+
+  const s = document.createElement('script');
+  s.type = 'module';
+  s.textContent = `
+    import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+    const canvas = document.getElementById('cloudCanvas');
+    const parent = canvas.parentElement;
+    const isSmall = matchMedia('(max-width:700px)').matches;
+
+    const renderer = new THREE.WebGLRenderer({canvas, antialias:!isSmall, alpha:true, powerPreference:'high-performance'});
+    renderer.setPixelRatio(Math.min(devicePixelRatio, isSmall ? 1.5 : 2));
+    renderer.setClearColor(0x000000, 0);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 200);
+    camera.position.set(0, 0, 8);
+
+    scene.add(new THREE.AmbientLight(0x00A1DE, 0.5));
+    const key = new THREE.DirectionalLight(0xffffff, 1.0); key.position.set(4, 6, 4); scene.add(key);
+    const rim = new THREE.DirectionalLight(0x20603D, 0.8); rim.position.set(-5, -3, -4); scene.add(rim);
+    const fill = new THREE.DirectionalLight(0xFAD201, 0.3); fill.position.set(2, -3, 3); scene.add(fill);
+
+    // Central cloud — constructed from several overlapping spheres
+    const cloudGroup = new THREE.Group();
+    const cloudMat = new THREE.MeshStandardMaterial({
+      color: 0x00A1DE, emissive: 0x00A1DE, emissiveIntensity: 0.35,
+      roughness: 0.35, metalness: 0.45,
+      transparent: true, opacity: 0.9
+    });
+
+    const sphereData = [
+      { x: 0,    y: 0,    r: 0.9 },
+      { x: 0.85, y: -0.15,r: 0.65 },
+      { x: -0.85,y: -0.15,r: 0.65 },
+      { x: 0.45, y: 0.35, r: 0.6 },
+      { x: -0.45,y: 0.35, r: 0.6 }
+    ];
+    sphereData.forEach(s => {
+      const geo = new THREE.SphereGeometry(s.r, 24, 24);
+      const mesh = new THREE.Mesh(geo, cloudMat);
+      mesh.position.set(s.x, s.y, s.z || 0);
+      cloudGroup.add(mesh);
+    });
+
+    // Wireframe shell around the cloud
+    const shellGeo = new THREE.SphereGeometry(1.9, 18, 18);
+    const shellMat = new THREE.MeshBasicMaterial({ color: 0x00A1DE, wireframe: true, transparent: true, opacity: 0.12 });
+    const shell = new THREE.Mesh(shellGeo, shellMat);
+    scene.add(shell);
+
+    scene.add(cloudGroup);
+
+    // Orbiting service nodes
+    const nodes = ['◇','▣','▲','◈','◎','↺','◆','⌘'];
+    const meshes = [];
+    const nodeGeo = new THREE.SphereGeometry(0.14, 20, 20);
+    nodes.forEach((n, i) => {
+      const color = i % 3 === 0 ? 0x00A1DE : i % 3 === 1 ? 0x20603D : 0xFAD201;
+      const mat = new THREE.MeshStandardMaterial({ color, emissive:color, emissiveIntensity: 0.6, roughness: 0.3, metalness: 0.45 });
+      const mesh = new THREE.Mesh(nodeGeo, mat);
+      const angle = (i / nodes.length) * Math.PI * 2;
+      const radius = 2.7;
+      const y = Math.sin(i * 1.7) * 0.9;
+      mesh.userData = { angle, radius, y, speed: 0.14 + Math.random()*0.08 };
+      mesh.position.set(Math.cos(angle)*radius, y, Math.sin(angle)*radius);
+      scene.add(mesh);
+      meshes.push(mesh);
+
+      const lineGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,0,0), mesh.position.clone()]);
+      const lineMat = new THREE.LineBasicMaterial({ color, transparent:true, opacity: 0.28, blending: THREE.AdditiveBlending });
+      const line = new THREE.Line(lineGeo, lineMat);
+      scene.add(line);
+      mesh.userData.line = line;
+    });
+
+    // Data flow particles
+    const pCount = isSmall ? 80 : 200;
+    const pGeo = new THREE.BufferGeometry();
+    const pPos = new Float32Array(pCount * 3);
+    for (let i = 0; i < pCount; i++) {
+      const r = 2.5 + Math.random() * 4;
+      const t = Math.random() * Math.PI * 2;
+      const p = Math.acos(2 * Math.random() - 1);
+      pPos[i*3]   = r * Math.sin(p) * Math.cos(t);
+      pPos[i*3+1] = r * Math.sin(p) * Math.sin(t);
+      pPos[i*3+2] = r * Math.cos(p);
+    }
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+    const dustMat = new THREE.PointsMaterial({
+      color: 0x00A1DE, size: 0.03, transparent: true, opacity: 0.55,
+      depthWrite: false, blending: THREE.AdditiveBlending
+    });
+    const dust = new THREE.Points(pGeo, dustMat);
+    scene.add(dust);
+
+    function resize(){
+      const w = parent.clientWidth || 400;
+      const h = parent.clientHeight || 400;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    if ('ResizeObserver' in window) new ResizeObserver(resize).observe(parent);
+    else addEventListener('resize', resize);
+
+    let mx = 0, my = 0, tx = 0, ty = 0;
+    if (!isSmall) {
+      parent.addEventListener('pointermove', e => {
+        const r = parent.getBoundingClientRect();
+        tx = ((e.clientX - r.left) / r.width - 0.5) * 0.45;
+        ty = ((e.clientY - r.top) / r.height - 0.5) * 0.45;
+      });
+    }
+
+    let running = true;
+    document.addEventListener('visibilitychange', () => { running = !document.hidden; if (running) loop(); });
+
+    const clock = new THREE.Clock();
+    function loop(){
+      if (!running) return;
+      requestAnimationFrame(loop);
+      const t = clock.getElapsedTime();
+
+      cloudGroup.rotation.y += 0.003;
+      shell.rotation.y -= 0.0015;
+      dust.rotation.y += 0.0008;
+
+      meshes.forEach((m, i) => {
+        const d = m.userData;
+        const angle = d.angle + t * d.speed;
+        m.position.set(
+          Math.cos(angle) * d.radius,
+          d.y + Math.sin(t * 0.6 + i) * 0.12,
+          Math.sin(angle) * d.radius
+        );
+        const arr = d.line.geometry.attributes.position.array;
+        arr[3] = m.position.x; arr[4] = m.position.y; arr[5] = m.position.z;
+        d.line.geometry.attributes.position.needsUpdate = true;
+      });
+
+      mx += (tx - mx) * 0.05;
+      my += (ty - my) * 0.05;
+      scene.rotation.y = mx;
+      scene.rotation.x = my;
+
+      renderer.render(scene, camera);
+    }
+    loop();
+  `;
+  document.body.appendChild(s);
+}
+
+/* ============================================================
+   WIRE BUTTONS
+   ============================================================ */
+function wireButtons(){
+  // Service detail modals
+  document.addEventListener('click', e => {
+    const t = e.target.closest('[data-detail]');
+    if (t) { e.preventDefault(); openServiceDetail(t.dataset.detail); }
+    const s = e.target.closest('[data-open-signup]');
+    if (s) { e.preventDefault(); openAuthModal('signup'); }
+  });
+
+  // Hero console button
+  const h = $('#heroConsoleBtn');
+  if (h) h.addEventListener('click', () => {
+    if (currentUser) toast('Cloud Console is coming soon.', 'warn');
+    else openAuthModal('signin');
+  });
+}
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+async function boot(){
+  const y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  renderFAQ();
+  initMobileNav();
+  initCodeFragments();
+  initCloudVisual();
+  wireButtons();
+
+  const ok = await initFirebase();
+  if (ok) {
+    const { onAuthStateChanged } = fb;
+    onAuthStateChanged(fb.auth, async (user) => {
+      currentUser = user;
+      if (user) await loadUserProfile();
+      renderAuthState();
+    });
+  } else {
+    renderAuthState(); // will show "Sign In" that explains config needed
+  }
+
+  initReveal();
+  hideLoader();
+}
+
+boot();
+
+/* ============================================================
+   DEVTOOLS DETERRENTS (not security)
+   ============================================================ */
+document.addEventListener('contextmenu', (e) => {
+  const t = e.target;
+  if (t.matches?.('input,textarea,select,[contenteditable="true"]')) return;
+  e.preventDefault();
+});
+document.addEventListener('keydown', (e) => {
+  const k = e.key.toLowerCase();
+  const block =
+    k === 'f12' ||
+    (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+    (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+    (e.ctrlKey && ['u','s'].includes(k)) ||
+    (e.metaKey && ['u','s'].includes(k));
+  if (block) { e.preventDefault(); e.stopPropagation(); return false; }
+}, true);
+(() => {
+  const toastEl = document.createElement('div');
+  toastEl.className = 'devtools-warning';
+  toastEl.setAttribute('role','alert');
+  toastEl.setAttribute('aria-live','polite');
+  toastEl.innerHTML = '<span class="devtools-warning__icon">!</span><span>Developer tools detected — this page is protected.</span>';
+  document.body.appendChild(toastEl);
+  let visible = false, warnUntil = 0;
+  const show = () => { warnUntil = Date.now() + 5000; if (!visible) { visible = true; toastEl.classList.add('is-visible'); } };
+  const hide = () => { if (visible && Date.now() > warnUntil) { visible = false; toastEl.classList.remove('is-visible'); } };
+  setInterval(() => {
+    const w = window.outerWidth - window.innerWidth;
+    const h = window.outerHeight - window.innerHeight;
+    if (w > 160 || h > 160) show();
+    hide();
+  }, 900);
+  document.addEventListener('keydown', (e) => {
+    const k = e.key.toLowerCase();
+    if (k === 'f12' ||
+        (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+        (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+        (e.ctrlKey && ['u','s'].includes(k)) ||
+        (e.metaKey && ['u','s'].includes(k))) show();
+  }, true);
+})();
+if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+  (() => { let n = 0; setInterval(() => { n++; if (n > 1) { console.clear(); n = 0; } }, 2000); })();
+}
+console.log('%c⚠️ STOP', 'color:#ff3b3b;font-size:32px;font-weight:900');
+console.log('%cThis is IKAZE Cloud. Authorization is enforced by Firebase Security Rules and trusted backend functions. Modifying this file grants no privileges. No secrets are stored here.', 'font-size:13px;color:#ff9');
+</script>
+
+<!-- ============================================================
+     FIRESTORE SCHEMA + SECURITY RULES — REFERENCE
+     ============================================================
+     Deploy these to your Firebase project. All real access
+     control is enforced server-side by these rules. Provider
+     API secrets and payment keys are NEVER placed in this file —
+     they live in Secret Manager and are accessed only from
+     Cloud Functions.
+
+     --- FIRESTORE COLLECTIONS --------------------------------
+     users/{uid}                     — shared across Academy and Cloud
+     cloudProfiles/{uid}             — cloud-specific preferences
+     cloudProjects/{projectId}       — user/org projects
+       { ownerId, organizationId, name, service, provider,
+         status, usage, createdAt, updatedAt }
+     cloudServices/{serviceId}       — catalog of services
+     cloudDeployments/{deploymentId} — deployment records
+     cloudStorageMetadata/{fileId}   — file metadata (Storage holds binary)
+     cloudDomains/{domainId}         — registered/connected domains
+     cloudDatabaseProjects/{dbId}    — database projects
+     cloudBackups/{backupId}         — scheduled backups
+     cloudUsage/{usageId}            — usage snapshots
+     cloudSubscriptions/{subId}      — subscription state
+     cloudInvoices/{invoiceId}       — invoices
+     cloudPaymentEvents/{eventId}    — verified payment events (webhooks only)
+     cloudProviderConnections/{pId}  — provider adapters (metadata only)
+     cloudNotifications/{nId}        — notifications
+     cloudAuditLogs/{logId}          — administrative audit
+     cloudSupportTickets/{ticketId}  — support tickets
+
+     --- FIRESTORE SECURITY RULES -----------------------------
+     rules_version = '2';
+     service cloud.firestore {
+       match /databases/{database}/documents {
+
+         function signedIn() { return request.auth != null; }
+         function isSelf(uid) { return signedIn() && request.auth.uid == uid; }
+         function isAdmin() { return signedIn() && request.auth.token.admin == true; }
+         function isOrgMember(orgId) {
+           return signedIn()
+             && exists(/databases/$(database)/documents/cloudOrganizations/$(orgId)/members/$(request.auth.uid));
+         }
+
+         // Shared user doc — self read/write on safe fields only
+         match /users/{uid} {
+           allow read: if isSelf(uid) || isAdmin();
+           allow create: if isSelf(uid);
+           allow update: if (isSelf(uid)
+             && !request.resource.data.diff(resource.data)
+                 .affectedKeys().hasAny(['role','admin','permissions']))
+             || isAdmin();
+           allow delete: if isAdmin();
+         }
+
+         match /cloudProfiles/{uid} {
+           allow read, write: if isSelf(uid) || isAdmin();
+         }
+
+         // Projects — owner or org member or admin
+         match /cloudProjects/{projectId} {
+           allow read: if isAdmin()
+                     || resource.data.ownerId == request.auth.uid
+                     || (resource.data.organizationId != null
+                         && isOrgMember(resource.data.organizationId));
+           allow create: if signedIn()
+                     && request.resource.data.ownerId == request.auth.uid;
+           allow update, delete: if isAdmin()
+                     || resource.data.ownerId == request.auth.uid;
+         }
+
+         // Deployments — owner via parent project ownership
+         match /cloudDeployments/{deploymentId} {
+           allow read: if isAdmin()
+                     || get(/databases/$(database)/documents/cloudProjects/$(resource.data.projectId)).data.ownerId == request.auth.uid;
+           allow write: if false; // created by Cloud Functions only
+         }
+
+         // Storage metadata — same ownership as project
+         match /cloudStorageMetadata/{fileId} {
+           allow read: if isAdmin()
+                     || resource.data.ownerId == request.auth.uid;
+           allow create, delete: if signedIn()
+                     && request.resource.data.ownerId == request.auth.uid;
+         }
+
+         match /cloudDomains/{domainId} {
+           allow read, write: if isAdmin()
+                     || resource.data.ownerId == request.auth.uid;
+         }
+
+         match /cloudDatabaseProjects/{dbId} {
+           allow read, write: if isAdmin()
+                     || resource.data.ownerId == request.auth.uid;
+         }
+
+         match /cloudBackups/{backupId} {
+           allow read: if isAdmin()
+                     || resource.data.ownerId == request.auth.uid;
+           allow write: if false; // created by Cloud Functions only
+         }
+
+         match /cloudUsage/{usageId} {
+           allow read: if isAdmin()
+                     || resource.data.ownerId == request.auth.uid;
+           allow write: if false; // written by Cloud Functions
+         }
+
+         match /cloudSubscriptions/{subId} {
+           allow read: if isAdmin()
+                     || resource.data.ownerId == request.auth.uid;
+           allow write: if false; // provider webhook / Cloud Function
+         }
+
+         match /cloudInvoices/{invoiceId} {
+           allow read: if isAdmin()
+                     || resource.data.ownerId == request.auth.uid;
+           allow write: if false;
+         }
+
+         // Payment events — never client-writable
+         match /cloudPaymentEvents/{eventId} {
+           allow read: if isAdmin();
+           allow write: if false;
+         }
+
+         match /cloudProviderConnections/{providerId} {
+           allow read: if isAdmin();
+           allow write: if false; // secret provisioning only via backend
+         }
+
+         match /cloudNotifications/{nId} {
+           allow read, update: if resource.data.ownerId == request.auth.uid;
+           allow create, delete: if isAdmin();
+         }
+
+         match /cloudAuditLogs/{logId} {
+           allow read: if isAdmin();
+           allow write: if false; // backend only
+         }
+
+         match /cloudSupportTickets/{ticketId} {
+           allow read: if isAdmin()
+                     || resource.data.ownerId == request.auth.uid;
+           allow create: if signedIn()
+                     && request.resource.data.ownerId == request.auth.uid;
+           allow update: if isAdmin();
+         }
+
+         // Public service catalog — anyone can read
+         match /cloudServices/{serviceId} {
+           allow read: if true;
+           allow write: if isAdmin();
+         }
+
+         // Default deny
+         match /{document=**} { allow read, write: if false; }
+       }
+     }
+
+     --- STORAGE RULES (storage.rules) ------------------------
+     rules_version = '2';
+     service firebase.storage {
+       match /b/{bucket}/o {
+         match /cloud/users/{userId}/{allPaths=**} {
+           allow read: if request.auth != null
+             && (request.auth.uid == userId
+                 || request.auth.token.admin == true);
+           allow write: if request.auth != null
+             && request.auth.uid == userId
+             && request.resource.size < 100 * 1024 * 1024 // 100 MB
+             && (request.resource.contentType.matches('image/.*')
+                 || request.resource.contentType.matches('application/pdf')
+                 || request.resource.contentType.matches('video/.*')
+                 || request.resource.contentType == 'application/zip'
+                 || request.resource.contentType == 'text/plain');
+         }
+         match /cloud/projects/{projectId}/{allPaths=**} {
+           allow read: if request.auth != null;
+           allow write: if request.auth != null
+             && request.auth.token.admin == true;
+         }
+         match /{allPaths=**} { allow read, write: if false; }
+       }
+     }
+
+     --- RECOMMENDED FIRESTORE INDEXES ------------------------
+     {
+       "indexes": [
+         { "collectionGroup": "cloudProjects",
+           "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath": "ownerId", "order": "ASCENDING"},
+             {"fieldPath": "createdAt", "order": "DESCENDING"}
+           ]
+         },
+         { "collectionGroup": "cloudDeployments",
+           "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath": "projectId", "order": "ASCENDING"},
+             {"fieldPath": "createdAt", "order": "DESCENDING"}
+           ]
+         },
+         { "collectionGroup": "cloudNotifications",
+           "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath": "ownerId", "order": "ASCENDING"},
+             {"fieldPath": "read", "order": "ASCENDING"},
+             {"fieldPath": "createdAt", "order": "DESCENDING"}
+           ]
+         }
+       ]
+     }
+
+     --- PROVIDER ADAPTERS (backend design) -------------------
+     Implement provider adapters as Cloud Functions. Each adapter
+     must implement: connect(), provision(), status(), usage(),
+     deprovision(), verifyCredentials(). Secrets are read from
+     Secret Manager at runtime, never from Firestore or the
+     browser. Supported adapter types:
+       HostingProvider   — Vercel, Netlify, Cloudflare Pages
+       StorageProvider   — Firebase Storage, Google Cloud Storage
+       ComputeProvider   — Google Cloud Run, Cloud Functions
+       DatabaseProvider  — Firestore, Cloud SQL
+       DomainProvider    — registrar APIs (when integrated)
+       BillingProvider   — Paystack, Flutterwave, Stripe (server-side)
+       MonitoringProvider— provider-native monitoring
+
+     When a provider is not configured, the platform surfaces
+     "Provider integration not configured." and never fabricates
+     a resource.
+     ============================================================
+-->
+</body>
+</html>
