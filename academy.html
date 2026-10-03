@@ -1,0 +1,2360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>IKAZE Academy — Learn. Build. Master. Become. | IKAZE DIGITAL</title>
+<meta name="description" content="Discover knowledge, master practical skills, build real projects, and unlock opportunities with IKAZE Academy — global learning, practical skills, limitless possibilities." />
+<meta name="theme-color" content="#080A0F" />
+<link rel="canonical" href="https://ikaze-digital.vercel.app/ikaze-academy.html" />
+
+<meta property="og:title" content="IKAZE Academy — Learn. Build. Master. Become." />
+<meta property="og:description" content="Global learning. Practical skills. Limitless possibilities." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://i.postimg.cc/tJ9QydF2/Theoneste.png" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><path d='M6 40 24 6l18 34-9-6-9-14-9 14z' fill='%23f2a33a'/><path d='M24 6 42 40l-9-6z' fill='%23c8553d'/><circle cx='24' cy='6' r='4' fill='%23FAD201'/></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "IKAZE Academy",
+  "url": "https://ikaze-digital.vercel.app/ikaze-academy.html",
+  "description": "Global learning platform — practical skills, technology, creativity, and career development from Rwanda to the world.",
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "Ikaze Digital",
+    "url": "https://ikaze-digital.vercel.app/"
+  }
+}
+</script>
+
+<style>
+/* ============================================================
+   TOKENS — matched to existing IKAZE DIGITAL pages
+   ============================================================ */
+:root{
+  --bg:#080A0F; --bg2:#0B1017; --bg3:#10151D;
+  --ink:#f4efe8; --mut:#a9a39b;
+  --amb:#f2a33a; --ter:#c8553d;
+  --blue:#00A1DE; --grn:#20603D; --yel:#FAD201;
+  --card:rgba(255,255,255,.04);
+  --card2:rgba(255,255,255,.06);
+  --line:rgba(255,255,255,.10);
+  --line2:rgba(255,255,255,.16);
+  --radius:14px;
+  --radius-lg:20px;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(80px + env(safe-area-inset-top,0px))}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.55;
+  overflow-x:hidden;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  font-size:14px;
+}
+body.lock{overflow:hidden}
+input,textarea,select,button{-webkit-user-select:text;user-select:text}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+button{font:inherit;cursor:pointer}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px;font-size:.88em;font-family:var(--mono)}
+
+/* ============================================================
+   BACKGROUND LAYERS
+   ============================================================ */
+#bg{
+  position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(60% 50% at 20% 15%,rgba(0,161,222,.18),transparent 70%),
+    radial-gradient(50% 45% at 85% 80%,rgba(32,96,61,.16),transparent 70%),
+    radial-gradient(40% 40% at 50% 50%,rgba(242,163,58,.06),transparent 70%),
+    linear-gradient(#10151D,#080A0F);
+}
+#c{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+
+.aurora{position:fixed;border-radius:50%;filter:blur(100px);opacity:.36;mix-blend-mode:screen;pointer-events:none;z-index:-1}
+.aurora-1{width:520px;height:520px;top:-140px;left:-100px;background:radial-gradient(circle,var(--blue),transparent 70%);animation:float1 24s ease-in-out infinite}
+.aurora-2{width:600px;height:600px;bottom:-200px;right:-120px;background:radial-gradient(circle,var(--grn),transparent 70%);animation:float2 28s ease-in-out infinite}
+.aurora-3{width:420px;height:420px;top:40%;left:50%;background:radial-gradient(circle,var(--yel),transparent 70%);opacity:.14;animation:float3 32s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(60px,50px) scale(1.12)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-60px,-70px) scale(1.15)}}
+@keyframes float3{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-40%,-60%) scale(1.2)}}
+
+.grid-lines{
+  position:fixed;inset:0;opacity:.08;pointer-events:none;z-index:-1;
+  background-image:
+    linear-gradient(rgba(0,161,222,.32) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,161,222,.32) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(circle at 50% 40%,#000 0%,transparent 75%);
+  -webkit-mask-image:radial-gradient(circle at 50% 40%,#000 0%,transparent 75%);
+  animation:gridMove 40s linear infinite;
+}
+@keyframes gridMove{0%{background-position:0 0,0 0}100%{background-position:64px 64px,64px 64px}}
+
+.code-frag{
+  position:fixed;font-family:var(--mono);font-size:11px;
+  color:rgba(0,161,222,.30);letter-spacing:.05em;white-space:nowrap;
+  pointer-events:none;z-index:-1;
+  animation:codeFloat linear infinite;will-change:transform,opacity;
+}
+@keyframes codeFloat{
+  0%{transform:translateY(0) translateX(0);opacity:0}
+  10%{opacity:.7}
+  90%{opacity:.7}
+  100%{transform:translateY(-100vh) translateX(30px);opacity:0}
+}
+
+/* ============================================================
+   DEVTOOLS TOAST
+   ============================================================ */
+.devtools-warning{
+  position:fixed;top:0;left:50%;transform:translate(-50%,-140%);
+  z-index:9999;padding:.85rem 1.4rem;
+  background:linear-gradient(120deg,rgba(200,85,61,.95),rgba(150,40,20,.95));
+  color:#fff;font-weight:600;font-size:.9rem;
+  border-radius:0 0 14px 14px;letter-spacing:.03em;
+  box-shadow:0 14px 40px -10px rgba(200,85,61,.6);
+  display:flex;align-items:center;gap:.7rem;
+  transition:transform .5s cubic-bezier(.2,.7,.2,1);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  max-width:calc(100% - 24px);pointer-events:none;
+}
+.devtools-warning.is-visible{transform:translate(-50%,0)}
+.devtools-warning__icon{
+  width:22px;height:22px;border-radius:50%;
+  background:rgba(255,255,255,.18);
+  display:grid;place-items:center;font-size:13px;flex-shrink:0;
+}
+@media (max-width:620px){.devtools-warning{font-size:.78rem;padding:.7rem 1rem}}
+
+/* ============================================================
+   LOADER
+   ============================================================ */
+#loader{
+  position:fixed;inset:0;z-index:8000;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:var(--bg);gap:22px;
+  transition:opacity .4s ease,visibility .4s;
+}
+#loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-spinner{
+  width:54px;height:54px;border-radius:50%;
+  border:3px solid rgba(255,255,255,.1);
+  border-top-color:var(--blue);
+  border-right-color:var(--yel);
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loader-text{
+  color:var(--mut);font-size:.82rem;letter-spacing:.3em;
+  text-transform:uppercase;font-weight:500;text-align:center;padding:0 20px;
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.wrap--narrow{max-width:820px}
+
+header{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+  backdrop-filter:blur(14px);
+  background:rgba(8,10,15,.78);
+  border-bottom:1px solid var(--line);
+}
+.bar{display:flex;align-items:center;gap:16px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.08em;font-size:14px}
+.logo img{height:44px;width:auto;max-width:56px;object-fit:contain}
+.logo small{display:block;font-weight:500;letter-spacing:0;font-size:10px;color:var(--mut)}
+nav{margin-left:auto;display:flex;gap:14px;align-items:center}
+nav a{text-decoration:none;font-size:13.5px;color:var(--mut);transition:color .2s}
+nav a:hover,nav a[aria-current]{color:var(--blue)}
+
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 22px;border-radius:999px;
+  background:var(--blue);color:#fff;font-weight:700;text-decoration:none;
+  border:0;cursor:pointer;font-size:14px;
+  transition:transform .2s,box-shadow .2s;
+  min-height:44px;white-space:nowrap;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,161,222,.35)}
+.btn.o{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.o:hover{border-color:var(--blue);color:var(--blue)}
+.btn.amb{background:var(--amb);color:#1a0f05}
+.btn.amb:hover{box-shadow:0 8px 28px rgba(242,163,58,.35)}
+.btn.grn{background:linear-gradient(120deg,var(--grn),#164a2e);color:#fff}
+.btn.sm{padding:10px 16px;font-size:13px;min-height:40px}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+
+:focus-visible{outline:3px solid var(--yel);outline-offset:2px;border-radius:8px}
+
+#menu{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:12px 16px;min-height:44px;cursor:pointer}
+
+section{padding:70px 0;position:relative;z-index:1}
+h1{font-size:clamp(2rem,6vw,3.8rem);line-height:1.05;margin:0 0 16px;letter-spacing:-.02em}
+h2{font-size:clamp(1.5rem,3.6vw,2.4rem);margin:0 0 12px;letter-spacing:-.01em}
+h3{font-size:1.1rem;margin:6px 0}
+h4{font-size:1rem;margin:14px 0 6px;color:var(--blue)}
+p{margin:0 0 14px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin-bottom:6px}
+.tag{color:var(--blue);font-weight:600;letter-spacing:.06em;font-size:.82rem;text-transform:uppercase}
+.lead{color:var(--mut);max-width:680px;font-size:clamp(1rem,1.4vw,1.12rem)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{padding:60px 0 40px;min-height:85vh;display:flex;align-items:center}
+.hero__inner{display:grid;gap:40px;grid-template-columns:1fr;align-items:center;width:100%}
+@media(min-width:900px){.hero__inner{grid-template-columns:1.05fr .95fr}}
+.hero__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+
+.globe-visual{
+  position:relative;aspect-ratio:1/1;max-width:520px;width:100%;margin:0 auto;
+  border-radius:24px;overflow:hidden;
+  border:1px solid var(--line);
+  background:radial-gradient(circle at 50% 50%,rgba(0,161,222,.10),transparent 60%),var(--card);
+  backdrop-filter:blur(10px);
+}
+.globe-visual canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.globe-visual__label{
+  position:absolute;bottom:14px;left:0;right:0;text-align:center;
+  font-size:.72rem;color:var(--mut);letter-spacing:.14em;text-transform:uppercase;
+  pointer-events:none;z-index:2;
+}
+
+/* ============================================================
+   STATS STRIP (only when data exists)
+   ============================================================ */
+.stats-strip{
+  display:grid;gap:12px;margin-top:32px;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));
+}
+.stat-tile{
+  padding:16px;border-radius:var(--radius);
+  background:var(--card);border:1px solid var(--line);
+}
+.stat-tile__label{
+  font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--mut);margin-bottom:6px;font-weight:600;
+}
+.stat-tile__value{
+  font-size:1.5rem;font-weight:800;letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums;line-height:1;
+}
+.stat-tile__value.muted{font-size:1rem;color:var(--mut);font-weight:600}
+.stat-tile__sub{font-size:11.5px;color:var(--mut);margin-top:4px}
+
+/* ============================================================
+   SECTION HEADS
+   ============================================================ */
+.section-head{margin-bottom:32px}
+.section-head--center{text-align:center;max-width:720px;margin-inline:auto}
+
+/* ============================================================
+   CARDS / GRIDS
+   ============================================================ */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.grid--two{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.grid--four{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;backdrop-filter:blur(8px);
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+  display:flex;flex-direction:column;
+}
+.card:hover{transform:translateY(-5px);border-color:rgba(0,161,222,.4);box-shadow:0 14px 34px rgba(0,85,120,.18)}
+.card__icon{
+  width:48px;height:48px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(0,161,222,.15),rgba(32,96,61,.08));
+  border:1px solid rgba(0,161,222,.25);
+  font-size:22px;color:var(--blue);margin-bottom:14px;
+  transition:transform .4s ease;
+}
+.card:hover .card__icon{transform:rotate(-5deg) scale(1.05)}
+.card h3{margin:6px 0}
+.card p{color:var(--mut);font-size:.93rem;flex-grow:1;margin:0}
+
+/* Domain cards */
+.domain{
+  padding:20px;border-radius:var(--radius);
+  border:1px solid var(--line);background:var(--card);
+  cursor:pointer;transition:transform .25s,border-color .25s,box-shadow .25s;
+  text-align:left;display:flex;flex-direction:column;gap:8px;
+}
+.domain:hover{transform:translateY(-4px);border-color:rgba(0,161,222,.5);box-shadow:0 12px 30px rgba(0,85,120,.16)}
+.domain__icon{
+  width:44px;height:44px;border-radius:11px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(0,161,222,.15),rgba(32,96,61,.08));
+  border:1px solid rgba(0,161,222,.25);font-size:20px;color:var(--blue);
+}
+.domain h3{margin:6px 0 4px;font-size:1.02rem}
+.domain p{margin:0;color:var(--mut);font-size:.86rem;flex-grow:1}
+
+/* Course card */
+.course-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+}
+.course-card:hover{transform:translateY(-5px);border-color:rgba(0,161,222,.4);box-shadow:0 14px 34px rgba(0,85,120,.18)}
+.course-card__cover{
+  aspect-ratio:16/9;background:linear-gradient(135deg,rgba(0,161,222,.2),rgba(32,96,61,.15));
+  display:grid;place-items:center;font-size:44px;color:rgba(255,255,255,.35);
+  position:relative;overflow:hidden;
+}
+.course-card__cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.course-card__body{padding:20px;display:flex;flex-direction:column;flex-grow:1}
+.course-card__meta{
+  display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;font-size:11px;
+}
+.course-card__meta span{
+  padding:3px 9px;border-radius:99px;background:rgba(255,255,255,.03);
+  border:1px solid var(--line);color:var(--mut);
+}
+.course-card h3{font-size:1.02rem;margin:0 0 6px;line-height:1.35}
+.course-card__desc{
+  color:var(--mut);font-size:.88rem;flex-grow:1;margin:0 0 14px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.course-card__foot{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  padding-top:14px;border-top:1px solid var(--line);margin-top:auto;
+}
+.course-card__price{font-weight:700;color:var(--blue);font-size:.95rem}
+.course-card__price.free{color:#3ddc84}
+.course-card__level{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+
+/* Pathway */
+.pathway{
+  padding:22px;border-radius:var(--radius);
+  border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(0,161,222,.06),rgba(32,96,61,.03));
+  transition:transform .3s,border-color .3s;
+}
+.pathway:hover{transform:translateY(-4px);border-color:rgba(0,161,222,.4)}
+.pathway h3{color:var(--blue);margin:0 0 12px}
+.pathway__steps{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.pathway__steps li{
+  padding:8px 12px;border-radius:10px;background:rgba(255,255,255,.03);
+  border:1px solid var(--line);font-size:.86rem;color:var(--mut);
+  display:flex;align-items:center;gap:10px;
+}
+.pathway__steps li::before{
+  content:counter(path);counter-increment:path;
+  font-family:var(--mono);font-size:10px;color:var(--blue);font-weight:700;
+}
+.pathway__steps{counter-reset:path}
+
+/* Pricing card */
+.price-card{
+  padding:28px;border-radius:var(--radius-lg);
+  border:1px solid var(--line);background:var(--card);
+  display:flex;flex-direction:column;
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+  position:relative;
+}
+.price-card:hover{transform:translateY(-5px);border-color:rgba(0,161,222,.5);box-shadow:0 20px 50px -20px rgba(0,161,222,.35)}
+.price-card--featured{
+  border-color:rgba(242,163,58,.55);
+  box-shadow:0 0 0 1px rgba(242,163,58,.2) inset;
+}
+.price-card__label{
+  display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--amb);margin-bottom:10px;
+}
+.price-card h3{font-size:1.35rem;margin:4px 0 6px}
+.price-card__for{color:var(--mut);font-size:.88rem;margin:0 0 14px}
+.price-card__price{
+  font-size:1.05rem;font-weight:700;color:var(--blue);
+  margin:14px 0;letter-spacing:.02em;
+}
+.price-card__price small{
+  display:block;color:var(--mut);font-size:.72rem;font-weight:500;
+  letter-spacing:.05em;text-transform:uppercase;margin-top:4px;
+}
+.price-card__features{list-style:none;padding:0;margin:14px 0;display:grid;gap:8px;font-size:.9rem}
+.price-card__features li{padding-left:22px;position:relative;color:var(--ink)}
+.price-card__features li::before{content:"✓";position:absolute;left:0;top:0;color:var(--blue);font-weight:700}
+.price-card__cta{margin-top:auto;padding-top:16px}
+
+/* FAQ */
+.faq{margin-top:26px;display:grid;gap:10px;max-width:820px;margin-inline:auto}
+.faq__item{border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden}
+.faq__q{
+  width:100%;text-align:left;padding:18px 22px;background:none;border:0;color:var(--ink);
+  font-size:1rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;gap:14px;align-items:center;
+}
+.faq__q::after{content:"+";color:var(--blue);font-size:1.4rem;line-height:1;transition:transform .3s}
+.faq__item[aria-expanded=true] .faq__q::after{transform:rotate(45deg)}
+.faq__a{padding:0 22px 18px;color:var(--mut);font-size:.94rem;display:none}
+.faq__item[aria-expanded=true] .faq__a{display:block}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+.modal{
+  position:fixed;inset:0;z-index:9100;
+  display:none;align-items:flex-start;justify-content:center;
+  padding:20px;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);
+  overflow-y:auto;
+}
+.modal.open{display:flex}
+.modal__box{
+  background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius-lg);
+  max-width:600px;width:100%;padding:28px;position:relative;
+  box-shadow:0 30px 80px rgba(0,0,0,.7);margin:auto;
+}
+.modal__box.wide{max-width:900px}
+.modal__close{
+  position:absolute;top:14px;right:14px;
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(255,255,255,.05);border:1px solid var(--line);
+  color:var(--ink);display:grid;place-items:center;font-size:16px;
+}
+.modal__close:hover{background:rgba(0,161,222,.15);color:var(--blue)}
+.modal h3{margin:0 0 6px;font-size:1.3rem;padding-right:44px}
+.modal__sub{color:var(--mut);font-size:.9rem;margin:0 0 20px}
+
+/* Auth tabs */
+.auth-tabs{display:flex;gap:4px;padding:4px;border-radius:10px;background:rgba(255,255,255,.03);margin-bottom:20px}
+.auth-tab{
+  flex:1;padding:10px;border-radius:8px;background:transparent;border:0;
+  color:var(--mut);font-size:13px;font-weight:600;transition:all .2s;
+}
+.auth-tab.on{background:var(--blue);color:#fff}
+
+/* Forms */
+.form{display:grid;gap:14px}
+.form .row{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+@media(max-width:520px){.form .row{grid-template-columns:1fr}}
+.form label{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:6px}
+.form input,.form select,.form textarea{
+  width:100%;padding:13px 16px;border-radius:10px;
+  border:1px solid var(--line);background:rgba(255,255,255,.04);
+  color:var(--ink);font-size:14px;min-height:48px;
+}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,161,222,.12)}
+.form select option{background:var(--bg2);color:var(--ink)}
+.form button[type=submit]{justify-self:start}
+.form .consent{display:flex;gap:10px;align-items:flex-start;font-size:.85rem;color:var(--mut)}
+.form .consent input{width:auto;min-height:auto;margin-top:3px;accent-color:var(--blue)}
+.form-status{font-size:.85rem;min-height:1.2em;margin:6px 0 0}
+.form-status.ok{color:#7be2a8}
+.form-status.err{color:#ff9a9a}
+
+/* ============================================================
+   CTA BLOCK
+   ============================================================ */
+.cta-block{
+  padding:48px 28px;border-radius:24px;border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(0,161,222,.12),rgba(32,96,61,.06));
+  text-align:center;
+}
+.cta-block .btn{margin:6px 4px 0}
+.cta-block h2{font-size:clamp(1.6rem,3.5vw,2.4rem)}
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+.empty-state{
+  padding:52px 24px;text-align:center;
+  border:1px dashed var(--line);border-radius:var(--radius);
+}
+.empty-state__icon{
+  width:56px;height:56px;border-radius:50%;
+  background:rgba(0,161,222,.08);color:var(--blue);
+  display:grid;place-items:center;margin:0 auto 14px;font-size:22px;
+}
+.empty-state h3{margin:0 0 6px;font-size:1.02rem}
+.empty-state p{color:var(--mut);font-size:.9rem;margin:0 0 18px;max-width:460px;margin-inline:auto}
+
+/* Skeleton */
+.skeleton{padding:20px;border-radius:var(--radius);background:var(--card);border:1px solid var(--line)}
+.sk-line{
+  height:12px;border-radius:6px;
+  background:linear-gradient(90deg,rgba(255,255,255,.04),rgba(255,255,255,.09),rgba(255,255,255,.04));
+  background-size:200% 100%;animation:shimmer 1.4s linear infinite;margin-bottom:10px;
+}
+.sk-line.w40{width:40%}.sk-line.w60{width:60%}.sk-line.w80{width:80%}
+.sk-line.h20{height:20px}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* ============================================================
+   SETUP CARD (Firebase not configured)
+   ============================================================ */
+.setup-card{
+  background:linear-gradient(135deg,rgba(242,163,58,.08),rgba(200,85,61,.04));
+  border:1px solid rgba(242,163,58,.32);
+  border-radius:var(--radius-lg);padding:30px 28px;
+  max-width:620px;width:100%;margin:40px auto;
+}
+.setup-card h2{color:var(--amb);margin:0 0 10px;font-size:1.2rem}
+.setup-card p{color:var(--mut);font-size:.9rem;margin:0 0 14px;line-height:1.65}
+.setup-card ol{padding-left:22px;margin:14px 0;color:var(--mut);font-size:.88rem;line-height:1.9}
+.setup-card code{background:rgba(0,0,0,.35);padding:3px 8px;border-radius:6px;font-family:var(--mono);font-size:12px;color:var(--amb)}
+.setup-card__actions{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap}
+
+/* ============================================================
+   FLOW
+   ============================================================ */
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin-top:22px}
+.flow span{padding:10px 16px;border-radius:99px;background:var(--card);border:1px solid var(--line);font-size:.85rem;color:var(--ink)}
+.flow i{color:var(--blue);font-style:normal;font-size:1.1rem;font-weight:700}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{border-top:1px solid var(--line);padding:44px 0 28px;color:var(--mut);font-size:.9rem;background:rgba(8,10,15,.85);position:relative;z-index:1}
+footer a{text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--blue)}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px}
+@media(max-width:780px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr}}
+footer h4{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--mut);margin:0 0 12px}
+footer ul{list-style:none;padding:0;margin:0}
+footer li{margin-bottom:6px;font-size:.88rem}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+[data-reveal]{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+[data-reveal].is-visible{opacity:1;transform:translateY(0)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:900px){
+  nav{display:none}
+  nav.open{
+    display:flex;flex-direction:column;
+    position:absolute;top:68px;left:0;right:0;
+    background:rgba(8,10,15,.97);padding:22px;
+    gap:14px;border-bottom:1px solid var(--line);z-index:50;
+  }
+  #menu{display:block;margin-left:auto}
+  .aurora{filter:blur(60px);opacity:.30}
+}
+@media (max-width:620px){
+  section{padding:52px 0}
+  .hero{padding:40px 0 30px;min-height:auto}
+  .code-frag{display:none}
+  #c{opacity:.5}
+  h1{font-size:1.85rem}
+  .modal{padding:10px}
+  .modal__box{padding:22px 18px}
+}
+@media (max-width:380px){
+  h1{font-size:1.65rem}
+  .btn{padding:10px 16px;font-size:13px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  #c,.aurora,.grid-lines,.code-frag{display:none}
+  [data-reveal]{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div id="bg" aria-hidden="true"></div>
+<canvas id="c" aria-hidden="true"></canvas>
+
+<a class="skip-link" href="#main" style="position:absolute;left:-9999px;background:var(--blue);color:#fff;padding:.6rem 1rem;z-index:1000;font-weight:700">Skip to content</a>
+
+<!-- ==================== LOADER ==================== -->
+<div id="loader">
+  <div class="loader-spinner"></div>
+  <div class="loader-text">IKAZE ACADEMY<br>Loading…</div>
+</div>
+
+<!-- ==================== HEADER ==================== -->
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="index.html" aria-label="Ikaze Digital home">
+      <img src="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png" alt="IKAZE Digital sunrise logo" width="56" height="44" />
+      <span>IKAZE ACADEMY<small>Learn · Build · Master · Become</small></span>
+    </a>
+    <button id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="ikaze-academy.html" aria-current="page">Academy</a>
+      <a href="#catalog">Courses</a>
+      <a href="#pathways">Pathways</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <button class="btn o sm" id="signInBtn" type="button">Sign In</button>
+      <button class="btn sm" id="signUpBtn" type="button">Start Learning</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="hero">
+  <div class="wrap hero__inner">
+    <div data-reveal>
+      <p class="tag">IKAZE Academy · Global Learning Platform</p>
+      <h1>Your Future Begins With <span style="color:var(--blue)">What You Learn Today.</span></h1>
+      <p class="lead">
+        Discover knowledge, master practical skills, build real projects, and unlock
+        opportunities with IKAZE Academy.
+      </p>
+      <p class="lead" style="font-size:.95rem">
+        Global Learning. Practical Skills. Limitless Possibilities.
+      </p>
+      <div class="hero__cta">
+        <a class="btn" href="#catalog">Explore Courses</a>
+        <button class="btn o" id="heroStartLearning" type="button">Start Learning</button>
+        <a class="btn o" href="support.html">Teach on IKAZE Academy</a>
+      </div>
+
+      <!-- Real stats strip — populated from Firestore if data exists -->
+      <div class="stats-strip" id="heroStats" hidden></div>
+    </div>
+    <div class="globe-visual" data-reveal>
+      <canvas id="globeCanvas" aria-label="3D globe showing global learning connections"></canvas>
+      <span class="globe-visual__label">Rwanda · Africa · World</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FEATURED COURSES ==================== -->
+<section id="featured">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="tag">Featured Courses</p>
+      <h2>Start with what matters most.</h2>
+      <p class="lead">Real, published courses from the IKAZE Academy catalog.</p>
+    </div>
+    <div class="grid" id="featuredGrid">
+      <div class="skeleton"><div class="sk-line w60"></div><div class="sk-line h20 w80"></div><div class="sk-line w40"></div></div>
+      <div class="skeleton"><div class="sk-line w60"></div><div class="sk-line h20 w80"></div><div class="sk-line w40"></div></div>
+      <div class="skeleton"><div class="sk-line w60"></div><div class="sk-line h20 w80"></div><div class="sk-line w40"></div></div>
+    </div>
+    <div id="featuredEmpty" hidden></div>
+  </div>
+</section>
+
+<!-- ==================== CATALOG ==================== -->
+<section id="catalog">
+  <div class="wrap">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="tag">Course Catalog</p>
+      <h2>Browse by learning domain.</h2>
+      <p class="lead">From school subjects to professional development — pick a domain and dive in.</p>
+    </div>
+
+    <div class="grid grid--four" data-reveal id="domainGrid"></div>
+
+    <div style="text-align:center;margin-top:32px">
+      <button class="btn" id="browseAllCourses" type="button">Browse All Courses</button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== LEARNING PATHWAYS ==================== -->
+<section id="pathways">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="tag">Learning Pathways</p>
+      <h2>Structured journeys, from beginner to career-ready.</h2>
+      <p class="lead">Follow a defined sequence, build real skills, and finish with a portfolio.</p>
+    </div>
+    <div class="grid grid--two">
+      <div class="pathway" data-reveal>
+        <h3>Become a Web Developer</h3>
+        <ul class="pathway__steps">
+          <li>Digital foundations</li>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>Git &amp; GitHub</li>
+          <li>Projects &amp; Portfolio</li>
+          <li>Career preparation</li>
+        </ul>
+      </div>
+      <div class="pathway" data-reveal>
+        <h3>Become a Graphic Designer</h3>
+        <ul class="pathway__steps">
+          <li>Design foundations</li>
+          <li>Color theory</li>
+          <li>Typography</li>
+          <li>Design tools</li>
+          <li>Branding</li>
+          <li>Portfolio</li>
+        </ul>
+      </div>
+      <div class="pathway" data-reveal>
+        <h3>Become a Digital Educator</h3>
+        <ul class="pathway__steps">
+          <li>Digital literacy</li>
+          <li>Digital pedagogy</li>
+          <li>Online lesson design</li>
+          <li>Assessment methods</li>
+          <li>Teaching portfolio</li>
+        </ul>
+      </div>
+      <div class="pathway" data-reveal>
+        <h3>Become an Entrepreneur</h3>
+        <ul class="pathway__steps">
+          <li>Problem discovery</li>
+          <li>Business model</li>
+          <li>Marketing</li>
+          <li>Finance fundamentals</li>
+          <li>Product development</li>
+          <li>Launch</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== HOW IT WORKS ==================== -->
+<section id="how">
+  <div class="wrap">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="tag">How IKAZE Academy Works</p>
+      <h2>Learn. Build. Master. Become.</h2>
+    </div>
+    <div class="grid grid--four">
+      <div class="card" data-reveal>
+        <div class="card__icon">◎</div>
+        <h3>Discover</h3>
+        <p>Browse a growing catalog of courses and pathways across academic, technical, creative, and professional domains.</p>
+      </div>
+      <div class="card" data-reveal>
+        <div class="card__icon">◆</div>
+        <h3>Enroll</h3>
+        <p>Free enrollment on free courses. Securely paid enrollment on premium courses once payment is connected.</p>
+      </div>
+      <div class="card" data-reveal>
+        <div class="card__icon">✦</div>
+        <h3>Learn</h3>
+        <p>Read, watch, and practice at your own pace with lessons, exercises, quizzes, and live classes.</p>
+      </div>
+      <div class="card" data-reveal>
+        <div class="card__icon">◉</div>
+        <h3>Become</h3>
+        <p>Finish with a portfolio, certificate, and readiness for what comes next — career, further study, or your own project.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== AI MENTOR ==================== -->
+<section id="ai-mentor">
+  <div class="wrap wrap--narrow" data-reveal style="text-align:center">
+    <p class="tag">IKAZE LearnWise AI</p>
+    <h2>Your Personal Learning Companion.</h2>
+    <p class="lead" style="margin-inline:auto">
+      An AI learning assistant to explain difficult concepts, practice skills, generate revision plans,
+      explain code, and support teachers with lesson drafts. Multilingual, purpose-built for learners
+      across Africa and the world.
+    </p>
+    <div class="flow">
+      <span>Explain</span><i>·</i>
+      <span>Practice</span><i>·</i>
+      <span>Revision</span><i>·</i>
+      <span>Coding Mentor</span><i>·</i>
+      <span>Language Practice</span><i>·</i>
+      <span>Teacher Assistant</span>
+    </div>
+    <div style="margin-top:22px">
+      <a class="btn" href="support.html">Register Interest</a>
+      <a class="btn o" href="#faq">Read AI Safeguards</a>
+    </div>
+    <p style="color:var(--mut);font-size:.82rem;margin-top:16px">
+      <strong>Honest note:</strong> IKAZE LearnWise AI is in development. It is not yet connected to a live AI backend.
+      We will enable it only after the secure backend and safeguards are in place. We do not show a fake chat interface.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== LIVE CLASSES ==================== -->
+<section id="live">
+  <div class="wrap">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="tag">Live Learning</p>
+      <h2>Live classes, workshops, and virtual classrooms.</h2>
+      <p class="lead">Scheduled sessions with teachers, tutors, and peers — with time-zone aware timetables.</p>
+    </div>
+    <div class="grid grid--two" data-reveal>
+      <div class="card">
+        <div class="card__icon">◉</div>
+        <h3>Scheduled Sessions</h3>
+        <p>Timetable with time-zone conversion, reminders, class resources, and post-session assignments.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">◆</div>
+        <h3>Virtual Classrooms</h3>
+        <p>Teacher-led sessions, live workshops, group discussions, tutoring, and office hours.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">✦</div>
+        <h3>Recordings &amp; Resources</h3>
+        <p>Session recordings where consent and permissions allow. Class resources shared directly in the session.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">◎</div>
+        <h3>Institutional Sessions</h3>
+        <p>Schools, universities, and organizations can run dedicated live sessions for their groups.</p>
+      </div>
+    </div>
+    <p style="color:var(--mut);font-size:.85rem;text-align:center;margin-top:22px">
+      Live sessions will appear here once the timetable is populated from Firestore.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== PROJECT LAB ==================== -->
+<section id="project-lab">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="tag">Project Lab</p>
+      <h2>Learn by building real projects.</h2>
+      <p class="lead">Websites, mobile apps, design work, music, research, entrepreneurship, community innovation.</p>
+    </div>
+    <div class="grid grid--four" data-reveal>
+      <div class="card"><div class="card__icon">◇</div><h3>Web Development</h3><p>Build and ship real websites with modern tools.</p></div>
+      <div class="card"><div class="card__icon">◆</div><h3>Mobile Apps</h3><p>Android, iOS, and cross-platform projects.</p></div>
+      <div class="card"><div class="card__icon">✦</div><h3>Graphic Design</h3><p>Logos, branding, and visual identity work.</p></div>
+      <div class="card"><div class="card__icon">◐</div><h3>Music</h3><p>Composition, performance, and recording.</p></div>
+      <div class="card"><div class="card__icon">✎</div><h3>Journalism</h3><p>Digital storytelling and reporting.</p></div>
+      <div class="card"><div class="card__icon">☼</div><h3>Research</h3><p>Structured investigation and evidence.</p></div>
+      <div class="card"><div class="card__icon">◉</div><h3>Entrepreneurship</h3><p>From idea to launch, step by step.</p></div>
+      <div class="card"><div class="card__icon">⌘</div><h3>Community Innovation</h3><p>Projects that solve real local problems.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CERTIFICATES ==================== -->
+<section id="certificates">
+  <div class="wrap wrap--narrow" data-reveal style="text-align:center">
+    <p class="tag">Certificates &amp; Achievements</p>
+    <h2>Verifiable digital credentials.</h2>
+    <p class="lead" style="margin-inline:auto">
+      Each certificate carries a unique credential ID, a public verification page, a QR code, and a
+      downloadable PDF. Employers and institutions can verify authenticity instantly.
+    </p>
+
+    <div class="grid grid--two" style="margin-top:26px;text-align:left">
+      <div class="card">
+        <div class="card__icon">✓</div>
+        <h3>Credential ID</h3>
+        <p>Every certificate has a unique ID that can be verified publicly.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">◆</div>
+        <h3>Verification Page</h3>
+        <p>A public URL where the credential can be checked in seconds.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">◇</div>
+        <h3>Skills &amp; Competencies</h3>
+        <p>Optional list of demonstrated skills for the specific course.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">✦</div>
+        <h3>Status Tracking</h3>
+        <p>Valid · Revoked · Expired (where applicable) · Pending.</p>
+      </div>
+    </div>
+
+    <p style="color:var(--mut);font-size:.85rem;margin-top:22px">
+      <strong>Honest note:</strong> IKAZE Academy certificates are issued by IKAZE DIGITAL.
+      They are not claimed to be internationally accredited, officially recognized, or equivalent to
+      university qualifications unless and until such recognition is independently established and documented.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== CAREERS ==================== -->
+<section id="careers">
+  <div class="wrap">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="tag">Career Pathways</p>
+      <h2>From learning to opportunity.</h2>
+      <p class="lead">Connect your learning with real careers, internships, scholarships, and freelance readiness.</p>
+    </div>
+    <div class="grid grid--four" data-reveal>
+      <div class="card"><div class="card__icon">◈</div><h3>Skills Checklist</h3><p>Know exactly what employers ask for and where you stand.</p></div>
+      <div class="card"><div class="card__icon">▣</div><h3>Portfolio Builder</h3><p>Turn your projects into a professional portfolio.</p></div>
+      <div class="card"><div class="card__icon">✎</div><h3>CV &amp; Interview Prep</h3><p>Practical guidance for landing your first or next role.</p></div>
+      <div class="card"><div class="card__icon">★</div><h3>Opportunities</h3><p>Internships, scholarships, jobs — through the IKAZE Opportunity Center.</p></div>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <a class="btn o" href="opportunities.html">Explore Opportunity Center</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== COMMUNITY ==================== -->
+<section id="community">
+  <div class="wrap wrap--narrow" data-reveal style="text-align:center">
+    <p class="tag">Global Learning Community</p>
+    <h2>A safe place to learn together.</h2>
+    <p class="lead" style="margin-inline:auto">
+      Course discussion boards, topic-based groups, project showcases, study groups, peer collaboration,
+      and mentorship requests — with moderation and reporting built in.
+    </p>
+    <div style="margin-top:22px">
+      <button class="btn" type="button" id="communityLearnMore">Learn More</button>
+      <a class="btn o" href="support.html">Report an Issue</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PRICING ==================== -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="tag">Pricing</p>
+      <h2>Free to start. Fair to grow.</h2>
+      <p class="lead">Honest tiers — no fake discounts, no hidden fees.</p>
+    </div>
+
+    <div class="grid grid--four" data-reveal>
+      <div class="price-card">
+        <span class="price-card__label">Start</span>
+        <h3>Free Learner</h3>
+        <p class="price-card__for">For anyone exploring what IKAZE Academy offers.</p>
+        <div class="price-card__price">
+          Free
+          <small>No card required</small>
+        </div>
+        <ul class="price-card__features">
+          <li>Access to free courses</li>
+          <li>Selected learning resources</li>
+          <li>Basic learner dashboard</li>
+          <li>Progress tracking</li>
+          <li>Community access (where permitted)</li>
+        </ul>
+        <div class="price-card__cta">
+          <button class="btn" data-auth-open="signup" type="button">Start Free</button>
+        </div>
+      </div>
+
+      <div class="price-card price-card--featured">
+        <span class="price-card__label">Recommended for most learners</span>
+        <h3>Learner Pro</h3>
+        <p class="price-card__for">For learners committed to building real, career-ready skills.</p>
+        <div class="price-card__price">
+          Custom
+          <small>Pricing per region at launch</small>
+        </div>
+        <ul class="price-card__features">
+          <li>All free-tier benefits</li>
+          <li>Premium courses</li>
+          <li>Verified credentials</li>
+          <li>Live classes</li>
+          <li>AI Mentor (when live)</li>
+          <li>Project Lab submissions</li>
+        </ul>
+        <div class="price-card__cta">
+          <a class="btn o" href="support.html">Register Interest</a>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <span class="price-card__label">Team</span>
+        <h3>Institution</h3>
+        <p class="price-card__for">For schools, universities, training centers, NGOs.</p>
+        <div class="price-card__price">
+          Custom Quote
+          <small>Scoped per institution</small>
+        </div>
+        <ul class="price-card__features">
+          <li>Organization portal</li>
+          <li>Teacher &amp; learner management</li>
+          <li>Class creation &amp; enrollment</li>
+          <li>Assessment reports</li>
+          <li>Bulk invitations</li>
+          <li>Organization-specific pathways</li>
+        </ul>
+        <div class="price-card__cta">
+          <a class="btn o" href="contact.html">Request a Quote</a>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <span class="price-card__label">Instructor</span>
+        <h3>Teach on IKAZE</h3>
+        <p class="price-card__for">For educators, practitioners, and creators.</p>
+        <div class="price-card__price">
+          Custom
+          <small>Revenue share discussed at onboarding</small>
+        </div>
+        <ul class="price-card__features">
+          <li>Instructor workspace</li>
+          <li>Course builder</li>
+          <li>Live class scheduling</li>
+          <li>Learner management</li>
+          <li>Analytics</li>
+          <li>Verification workflow</li>
+        </ul>
+        <div class="price-card__cta">
+          <a class="btn o" href="support.html">Apply as Instructor</a>
+        </div>
+      </div>
+    </div>
+
+    <p style="color:var(--mut);font-size:.85rem;text-align:center;margin-top:26px">
+      Prices shown are honest starting estimates. Final pricing depends on scope and is confirmed before any
+      payment. Payments will be processed through a secure provider once activated — we will never ask for
+      card details in the browser.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section id="faq">
+  <div class="wrap wrap--narrow">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="tag">FAQ</p>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq" id="faqList"></div>
+  </div>
+</section>
+
+<!-- ==================== FINAL CTA ==================== -->
+<section id="final" style="padding-bottom:6rem">
+  <div class="wrap" data-reveal>
+    <div class="cta-block">
+      <p class="tag">Learn · Build · Master · Become</p>
+      <h2>Your Future Begins Today.</h2>
+      <p class="lead" style="margin-inline:auto">
+        Join IKAZE Academy. Start free. Build real skills. Unlock the opportunities you deserve.
+      </p>
+      <div style="margin-top:22px">
+        <button class="btn" id="finalStartLearning" type="button">Start Learning Free</button>
+        <a class="btn o" href="#catalog">Explore Courses</a>
+        <a class="btn o" href="support.html">Contact IKAZE DIGITAL</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p><strong>IKAZE ACADEMY</strong><br/>Learn. Build. Master. Become.<br/><span style="font-size:.8rem">Part of IKAZE DIGITAL — Building Africa's Digital Future.</span></p>
+      </div>
+      <div>
+        <h4>Academy</h4>
+        <ul>
+          <li><a href="#catalog">Courses</a></li>
+          <li><a href="#pathways">Pathways</a></li>
+          <li><a href="#certificates">Certificates</a></li>
+          <li><a href="#careers">Careers</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>IKAZE DIGITAL</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="ecosystem.html">Ecosystem</a></li>
+          <li><a href="opportunities.html">Opportunities</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact &amp; Legal</h4>
+        <ul>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Terms</a></li>
+        </ul>
+        <p style="font-size:.85rem;margin-top:10px">
+          <a href="mailto:theonosteniyibigira6@gmail.com">theonosteniyibigira6@gmail.com</a>
+        </p>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--mut);font-size:.8rem">
+      <small>© <span id="year"></span> IKAZE Academy · IKAZE DIGITAL. All rights reserved. · Certificates issued by IKAZE DIGITAL — not claimed as internationally accredited unless verified.</small>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== MODAL ==================== -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal__box" id="modalBox">
+    <button class="modal__close" id="modalClose" aria-label="Close dialog">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script type="module">
+/* ============================================================
+   IKAZE ACADEMY — Application Script
+   ============================================================
+
+   SECURITY NOTES
+   ---------------
+   This script is delivered to the browser and can be inspected
+   and modified. It does NOT enforce authorization. All real
+   access control is enforced by Firebase Security Rules (see
+   the template at the end of this file).
+
+   Never place Firebase Admin credentials, service-account keys,
+   payment secrets, or private API keys in this file.
+   ============================================================ */
+
+'use strict';
+
+/* ============================================================
+   FIREBASE CONFIG — replace with your real config
+   ============================================================ */
+const firebaseConfig = {
+  apiKey: "REPLACE_WITH_FIREBASE_API_KEY",
+  authDomain: "REPLACE_WITH.firebaseapp.com",
+  projectId: "REPLACE_WITH_PROJECT_ID",
+  storageBucket: "REPLACE_WITH.appspot.com",
+  messagingSenderId: "REPLACE_WITH",
+  appId: "REPLACE_WITH_APP_ID"
+};
+
+const isConfigured =
+  !firebaseConfig.apiKey.startsWith('REPLACE_WITH') &&
+  !firebaseConfig.projectId.startsWith('REPLACE_WITH');
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+const $  = (s, c=document) => c.querySelector(s);
+const $$ = (s, c=document) => Array.from(c.querySelectorAll(s));
+const el = (tag, cls, html) => {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (html !== undefined) e.innerHTML = html;
+  return e;
+};
+const escapeHTML = (s) => String(s ?? '').replace(/[&<>"']/g, m => ({
+  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+}[m]));
+const formatDate = (ts) => {
+  if (!ts) return '';
+  const d = ts.toDate ? ts.toDate() : new Date(ts);
+  if (isNaN(d)) return '';
+  return d.toLocaleDateString(undefined, { day:'numeric', month:'short', year:'numeric' });
+};
+
+/* ============================================================
+   LOADER
+   ============================================================ */
+function hideLoader(){
+  const l = $('#loader');
+  if (l) l.classList.add('hidden');
+}
+
+/* ============================================================
+   FIREBASE
+   ============================================================ */
+let fb = null;
+let currentUser = null;
+let currentUserProfile = null;
+
+async function initFirebase(){
+  if (!isConfigured) return false;
+  try {
+    const appMod = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js');
+    const authMod = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js');
+    const fsMod  = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
+    const stMod  = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js');
+
+    const app = appMod.initializeApp(firebaseConfig);
+    const auth = authMod.getAuth(app);
+    const db = fsMod.initializeFirestore(app, { ignoreUndefinedProperties: true });
+    const storage = stMod.getStorage(app);
+
+    fb = { app, auth, db, storage, ...authMod, ...fsMod, ...stMod };
+    return true;
+  } catch (err) {
+    console.error('[academy] Firebase init failed', err);
+    return false;
+  }
+}
+
+/* ============================================================
+   AUTH
+   ============================================================ */
+async function signInEmail(email, password){
+  const { signInWithEmailAndPassword } = fb;
+  await signInWithEmailAndPassword(fb.auth, email, password);
+}
+async function signUpEmail(email, password, name){
+  const { createUserWithEmailAndPassword, updateProfile, doc, setDoc, serverTimestamp } = fb;
+  const cred = await createUserWithEmailAndPassword(fb.auth, email, password);
+  await updateProfile(cred.user, { displayName: name });
+  await setDoc(doc(fb.db, 'users', cred.user.uid), {
+    fullName: name,
+    email: email,
+    role: 'learner',
+    createdAt: serverTimestamp()
+  }, { merge: true });
+  return cred;
+}
+async function signInGoogle(){
+  const { GoogleAuthProvider, signInWithPopup, doc, getDoc, setDoc, serverTimestamp } = fb;
+  const provider = new GoogleAuthProvider();
+  const cred = await signInWithPopup(fb.auth, provider);
+  const ref = doc(fb.db, 'users', cred.user.uid);
+  const snap = await getDoc(ref);
+  if (!snap.exists()) {
+    await setDoc(ref, {
+      fullName: cred.user.displayName || '',
+      email: cred.user.email || '',
+      role: 'learner',
+      createdAt: serverTimestamp()
+    });
+  }
+  return cred;
+}
+async function sendReset(email){
+  const { sendPasswordResetEmail } = fb;
+  await sendPasswordResetEmail(fb.auth, email);
+}
+async function signOutUser(){
+  const { signOut } = fb;
+  await signOut(fb.auth);
+  currentUser = null;
+  currentUserProfile = null;
+  renderAuthState();
+}
+
+async function loadUserProfile(){
+  if (!currentUser) return;
+  try {
+    const { doc, getDoc } = fb;
+    const snap = await getDoc(doc(fb.db, 'users', currentUser.uid));
+    currentUserProfile = snap.exists()
+      ? { id: snap.id, ...snap.data() }
+      : { id: currentUser.uid, fullName: currentUser.displayName || '', email: currentUser.email || '' };
+  } catch {
+    currentUserProfile = { id: currentUser.uid, fullName: currentUser.displayName || '', email: currentUser.email || '' };
+  }
+}
+
+function renderAuthState(){
+  // Update header buttons
+  const sBtn = $('#signInBtn');
+  const uBtn = $('#signUpBtn');
+  if (currentUser) {
+    const name = (currentUserProfile && currentUserProfile.fullName) || currentUser.displayName || currentUser.email || 'Learner';
+    if (sBtn) { sBtn.textContent = 'My Dashboard'; sBtn.onclick = () => toast('Learner dashboard is coming soon.', 'warn'); }
+    if (uBtn) { uBtn.textContent = 'Sign Out'; uBtn.onclick = () => signOutUser(); }
+  } else {
+    if (sBtn) { sBtn.textContent = 'Sign In'; sBtn.onclick = () => openAuthModal('signin'); }
+    if (uBtn) { uBtn.textContent = 'Start Learning'; uBtn.onclick = () => openAuthModal('signup'); }
+  }
+}
+
+/* ============================================================
+   TOASTS
+   ============================================================ */
+function toast(msg, type='ok'){
+  let wrap = $('#toastWrap');
+  if (!wrap) {
+    wrap = el('div', 'toast-wrap');
+    wrap.id = 'toastWrap';
+    wrap.style.cssText = 'position:fixed;bottom:24px;right:16px;z-index:9500;display:grid;gap:10px;max-width:380px';
+    document.body.appendChild(wrap);
+  }
+  const t = el('div', 'toast ' + type);
+  t.style.cssText = 'padding:14px 18px;border-radius:12px;background:rgba(11,16,23,.97);border:1px solid ' +
+    (type === 'ok' ? 'rgba(61,220,132,.4)' : type === 'err' ? 'rgba(200,85,61,.5)' : 'rgba(242,163,58,.4)') +
+    ';backdrop-filter:blur(10px);box-shadow:0 14px 40px rgba(0,0,0,.5);font-size:.9rem;animation:fadeIn .3s ease';
+  const icon = type === 'ok' ? '✓' : type === 'err' ? '✕' : '!';
+  t.innerHTML = `<span style="flex-shrink:0;font-size:16px">${icon}</span><div>${escapeHTML(msg)}</div>`;
+  t.style.display = 'flex'; t.style.gap = '10px'; t.style.alignItems = 'flex-start';
+  wrap.appendChild(t);
+  setTimeout(() => {
+    t.style.transition = 'opacity .3s, transform .3s';
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(20px)';
+    setTimeout(() => t.remove(), 320);
+  }, 4200);
+}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+function openModal(){
+  const m = $('#modal');
+  m.hidden = false;
+  m.classList.add('open');
+  document.body.classList.add('lock');
+}
+function closeModal(){
+  const m = $('#modal');
+  m.classList.remove('open');
+  m.hidden = true;
+  $('#modalBox').classList.remove('wide');
+  document.body.classList.remove('lock');
+}
+document.addEventListener('click', e => {
+  if (e.target.closest('#modalClose')) closeModal();
+  if (e.target === $('#modal')) closeModal();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && $('#modal').classList.contains('open')) closeModal();
+});
+
+/* ============================================================
+   AUTH MODAL
+   ============================================================ */
+function openAuthModal(mode='signin'){
+  const body = $('#modalBody');
+  body.innerHTML = `
+    <h3 id="modalTitle">${mode === 'signup' ? 'Start Learning Free' : 'Sign In to IKAZE Academy'}</h3>
+    <p class="modal__sub">${mode === 'signup' ? 'Create your free learner account.' : 'Welcome back — continue your learning.'}</p>
+
+    <div class="auth-tabs" role="tablist">
+      <button class="auth-tab ${mode==='signin'?'on':''}" data-auth-tab="signin" role="tab" aria-selected="${mode==='signin'}">Sign In</button>
+      <button class="auth-tab ${mode==='signup'?'on':''}" data-auth-tab="signup" role="tab" aria-selected="${mode==='signup'}">Create Account</button>
+    </div>
+
+    <form class="form" id="authForm" novalidate>
+      <div data-signup-only style="display:${mode==='signup'?'':'none'}">
+        <label for="authName">Full name</label>
+        <input id="authName" type="text" autocomplete="name" />
+      </div>
+      <div>
+        <label for="authEmail">Email</label>
+        <input id="authEmail" type="email" required autocomplete="email" />
+      </div>
+      <div>
+        <label for="authPassword">Password</label>
+        <input id="authPassword" type="password" required minlength="8" autocomplete="current-password" />
+        <div style="font-size:11.5px;color:var(--mut);margin-top:6px">At least 8 characters.</div>
+      </div>
+      <button class="btn" type="submit" id="authSubmit">${mode==='signup'?'Create Account':'Sign In'}</button>
+      <p class="form-status" id="authStatus" role="status" aria-live="polite"></p>
+    </form>
+
+    <div style="display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.15em">
+      <span style="flex:1;height:1px;background:var(--line)"></span>
+      or
+      <span style="flex:1;height:1px;background:var(--line)"></span>
+    </div>
+
+    <button class="btn o" id="authGoogle" type="button" style="width:100%;justify-content:center">
+      Continue with Google
+    </button>
+
+    <p style="text-align:center;font-size:.82rem;color:var(--mut);margin-top:18px">
+      <a href="#" id="forgotLink" style="color:var(--blue);text-decoration:underline">Forgot password?</a>
+      <span style="margin:0 6px">·</span>
+      <a href="privacy.html" style="color:var(--blue);text-decoration:underline">Privacy</a>
+    </p>
+  `;
+  openModal();
+
+  let currentMode = mode;
+  $$('.auth-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      $$('.auth-tab').forEach(t => { t.classList.remove('on'); t.setAttribute('aria-selected','false'); });
+      tab.classList.add('on'); tab.setAttribute('aria-selected','true');
+      currentMode = tab.dataset.authTab;
+      $$('[data-signup-only]').forEach(n => n.style.display = currentMode === 'signup' ? '' : 'none');
+      $('#authSubmit').textContent = currentMode === 'signup' ? 'Create Account' : 'Sign In';
+    });
+  });
+
+  $('#authForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const status = $('#authStatus');
+    status.className = 'form-status';
+    status.textContent = '';
+
+    if (!fb) { status.className = 'form-status err'; status.textContent = 'Authentication is not connected yet. See the setup notes.'; return; }
+
+    const email = $('#authEmail').value.trim();
+    const password = $('#authPassword').value;
+    const name = $('#authName') ? $('#authName').value.trim() : '';
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { status.className = 'form-status err'; status.textContent = 'Please enter a valid email.'; return; }
+    if (password.length < 8) { status.className = 'form-status err'; status.textContent = 'Password must be at least 8 characters.'; return; }
+    if (currentMode === 'signup' && !name) { status.className = 'form-status err'; status.textContent = 'Please enter your full name.'; return; }
+
+    $('#authSubmit').disabled = true;
+    try {
+      if (currentMode === 'signup') await signUpEmail(email, password, name);
+      else await signInEmail(email, password);
+      // Success — auth listener will update UI
+      closeModal();
+      toast('Signed in successfully.', 'ok');
+    } catch (err) {
+      status.className = 'form-status err';
+      status.textContent = friendlyAuthError(err);
+    } finally {
+      $('#authSubmit').disabled = false;
+    }
+  });
+
+  $('#authGoogle').addEventListener('click', async () => {
+    if (!fb) { toast('Authentication is not connected yet.', 'warn'); return; }
+    try { await signInGoogle(); closeModal(); toast('Signed in with Google.', 'ok'); }
+    catch (err) { toast(friendlyAuthError(err), 'err'); }
+  });
+
+  $('#forgotLink').addEventListener('click', async (e) => {
+    e.preventDefault();
+    const email = $('#authEmail').value.trim();
+    if (!email) { toast('Enter your email first.', 'warn'); return; }
+    if (!fb) { toast('Authentication is not connected yet.', 'warn'); return; }
+    try { await sendReset(email); toast('If that email exists, a reset link has been sent.', 'ok'); }
+    catch (err) { toast(friendlyAuthError(err), 'err'); }
+  });
+}
+
+function friendlyAuthError(err){
+  const code = (err && err.code) || '';
+  const map = {
+    'auth/invalid-email': 'That email is not valid.',
+    'auth/user-not-found': 'No account with that email.',
+    'auth/wrong-password': 'Incorrect email or password.',
+    'auth/invalid-credential': 'Incorrect email or password.',
+    'auth/email-already-in-use': 'An account with that email already exists.',
+    'auth/weak-password': 'Please choose a stronger password.',
+    'auth/too-many-requests': 'Too many attempts. Wait a moment and try again.',
+    'auth/network-request-failed': 'Network problem. Check your connection.',
+    'auth/popup-closed-by-user': 'Sign-in popup closed.',
+    'auth/operation-not-allowed': 'This sign-in method is not enabled.'
+  };
+  return map[code] || 'Something went wrong. Please try again.';
+}
+
+/* ============================================================
+   COURSE DATA — from Firestore (real) or empty state
+   ============================================================ */
+async function loadFeaturedCourses(){
+  const grid = $('#featuredGrid');
+  const empty = $('#featuredEmpty');
+
+  if (!fb) {
+    grid.innerHTML = '';
+    empty.hidden = false;
+    empty.innerHTML = emptyStateHTML('◇','Courses Coming Soon',
+      'The Academy catalog is being set up. Courses will appear here once published.');
+    return;
+  }
+  try {
+    const { collection, query, where, orderBy, limit, getDocs } = fb;
+    const q = query(
+      collection(fb.db, 'academyCourses'),
+      where('published', '==', true),
+      limit(6)
+    );
+    const snap = await getDocs(q);
+    grid.innerHTML = '';
+    if (snap.empty) {
+      empty.hidden = false;
+      empty.innerHTML = emptyStateHTML('◇','No Courses Published Yet',
+        'Courses will appear here as soon as they are published by the IKAZE Academy team.');
+      return;
+    }
+    empty.hidden = true;
+    snap.forEach(d => {
+      const c = { id: d.id, ...d.data() };
+      grid.appendChild(renderCourseCard(c));
+    });
+  } catch (err) {
+    console.warn('[academy] Featured courses query failed', err);
+    grid.innerHTML = '';
+    empty.hidden = false;
+    empty.innerHTML = emptyStateHTML('◇','Courses Coming Soon',
+      'The Academy catalog is being set up. Courses will appear here once published.');
+  }
+}
+
+function renderCourseCard(c){
+  const card = el('article','course-card');
+  const price = c.price == null || c.price === 0 ? 'Free' : (c.price + ' ' + (c.currency || 'RWF'));
+  const priceClass = price === 'Free' ? 'free' : '';
+  const level = c.level ? c.level.charAt(0).toUpperCase() + c.level.slice(1) : 'All levels';
+
+  card.innerHTML = `
+    <div class="course-card__cover" aria-hidden="true">
+      ${c.coverUrl ? `<img src="${escapeHTML(c.coverUrl)}" alt="" loading="lazy" />` : (c.icon || '◇')}
+    </div>
+    <div class="course-card__body">
+      <div class="course-card__meta">
+        ${c.domain ? `<span>${escapeHTML(c.domain)}</span>` : ''}
+        ${c.language ? `<span>${escapeHTML(c.language.toUpperCase())}</span>` : ''}
+      </div>
+      <h3>${escapeHTML(c.title || 'Untitled course')}</h3>
+      <p class="course-card__desc">${escapeHTML(c.shortDescription || c.description || '')}</p>
+      <div class="course-card__foot">
+        <span class="course-card__price ${priceClass}">${escapeHTML(price)}</span>
+        <span class="course-card__level">${escapeHTML(level)}</span>
+      </div>
+      <div style="margin-top:12px">
+        <button class="btn sm" data-course="${escapeHTML(c.id)}" type="button">View Course</button>
+      </div>
+    </div>
+  `;
+  card.querySelector('[data-course]').addEventListener('click', () => openCourseDetails(c));
+  return card;
+}
+
+function openCourseDetails(c){
+  const body = $('#modalBody');
+  const price = c.price == null || c.price === 0 ? 'Free' : (c.price + ' ' + (c.currency || 'RWF'));
+  body.innerHTML = `
+    <h3 id="modalTitle">${escapeHTML(c.title || 'Course')}</h3>
+    <p class="modal__sub">${escapeHTML(c.instructor || 'IKAZE Academy')} · ${escapeHTML(c.domain || '')} · ${escapeHTML(price)}</p>
+
+    <div style="display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));margin-bottom:18px">
+      <div style="padding:12px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--line)">
+        <div style="font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">Level</div>
+        <div>${escapeHTML(c.level || 'All levels')}</div>
+      </div>
+      <div style="padding:12px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--line)">
+        <div style="font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">Language</div>
+        <div>${escapeHTML((c.language || 'en').toUpperCase())}</div>
+      </div>
+      <div style="padding:12px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--line)">
+        <div style="font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">Duration</div>
+        <div>${escapeHTML(c.duration || '—')}</div>
+      </div>
+      <div style="padding:12px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--line)">
+        <div style="font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">Price</div>
+        <div style="color:var(--blue);font-weight:700">${escapeHTML(price)}</div>
+      </div>
+    </div>
+
+    <h4 style="color:var(--blue);margin-top:16px">About this course</h4>
+    <p style="color:var(--mut);font-size:.94rem">${escapeHTML(c.description || c.shortDescription || 'Course details are being added.')}</p>
+
+    ${c.objectives ? `
+      <h4 style="color:var(--blue);margin-top:16px">What you will learn</h4>
+      <ul style="color:var(--mut);font-size:.92rem;padding-left:20px">
+        ${(Array.isArray(c.objectives) ? c.objectives : [c.objectives]).map(o => `<li>${escapeHTML(o)}</li>`).join('')}
+      </ul>
+    ` : ''}
+
+    ${c.prerequisites ? `
+      <h4 style="color:var(--blue);margin-top:16px">Prerequisites</h4>
+      <p style="color:var(--mut);font-size:.92rem">${escapeHTML(c.prerequisites)}</p>
+    ` : ''}
+
+    <div class="callout" style="margin-top:18px;padding:14px 18px;border-radius:12px;background:rgba(0,161,222,.06);border:1px solid rgba(0,161,222,.24);font-size:.85rem;color:var(--mut)">
+      <strong style="color:var(--ink)">Enrollment:</strong> Free courses enroll immediately. Paid courses will
+      complete enrollment once payment processing is connected — we never ask for card details in the browser.
+    </div>
+
+    <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
+      <button class="btn o" data-close-modal type="button">Close</button>
+      <button class="btn" id="enrollBtn" type="button">Enroll Now</button>
+    </div>
+  `;
+  openModal();
+  $('#enrollBtn').addEventListener('click', () => attemptEnroll(c));
+}
+
+async function attemptEnroll(c){
+  if (!currentUser) {
+    closeModal();
+    openAuthModal('signup');
+    toast('Sign in or create a free account to enroll.', 'warn');
+    return;
+  }
+  if (!fb) { toast('Enrollment is not connected yet.', 'warn'); return; }
+
+  // Only free courses enroll instantly. Paid courses wait for payment provider.
+  const isFree = c.price == null || c.price === 0;
+  if (!isFree) {
+    toast('Paid enrollment activates once a payment provider is connected. Register your interest and we will notify you.', 'warn');
+    return;
+  }
+
+  try {
+    const { doc, setDoc, serverTimestamp } = fb;
+    await setDoc(doc(fb.db, 'academyEnrollments', `${currentUser.uid}_${c.id}`), {
+      userId: currentUser.uid,
+      courseId: c.id,
+      courseTitle: c.title || '',
+      status: 'active',
+      progress: 0,
+      enrolledAt: serverTimestamp()
+    }, { merge: true });
+    closeModal();
+    toast('Enrolled! Your learner dashboard is coming soon.', 'ok');
+  } catch (err) {
+    console.error('[academy] Enrollment failed', err);
+    toast('We could not complete enrollment right now. Please try again.', 'err');
+  }
+}
+
+function emptyStateHTML(icon, title, sub){
+  return `
+    <div class="empty-state">
+      <div class="empty-state__icon">${icon}</div>
+      <h3>${escapeHTML(title)}</h3>
+      <p>${escapeHTML(sub)}</p>
+    </div>
+  `;
+}
+
+/* ============================================================
+   DOMAINS
+   ============================================================ */
+const DOMAINS = [
+  { icon:'◇', name:'School & Academic',  desc:'Primary, secondary, O-Level, A-Level — mathematics, sciences, languages, humanities.' },
+  { icon:'✦', name:'Teacher Education',  desc:'Teacher training, pedagogy, curriculum design, classroom management, assessment.' },
+  { icon:'◆', name:'TVET & Technical',   desc:'Software development, construction, electrical, hospitality, agriculture, renewable energy.' },
+  { icon:'⚙', name:'Technology & ICT',   desc:'HTML, CSS, JavaScript, Python, web, mobile, databases, AI, cybersecurity, cloud.' },
+  { icon:'◉', name:'Creative Arts',      desc:'Piano, music theory, drawing, painting, design, photography, video, journalism.' },
+  { icon:'▣', name:'Business & Career',  desc:'Entrepreneurship, marketing, finance, project management, leadership, freelancing.' },
+  { icon:'☼', name:'Life & Community',   desc:'Digital literacy, financial literacy, languages, health, environment, personal development.' },
+  { icon:'★', name:'University & Lifelong', desc:'Academic foundations, research skills, specialization, continuing education.' }
+];
+
+function renderDomains(){
+  const grid = $('#domainGrid');
+  grid.innerHTML = '';
+  DOMAINS.forEach(d => {
+    const card = el('button', 'domain');
+    card.type = 'button';
+    card.innerHTML = `
+      <div class="domain__icon" aria-hidden="true">${d.icon}</div>
+      <h3>${escapeHTML(d.name)}</h3>
+      <p>${escapeHTML(d.desc)}</p>
+    `;
+    card.addEventListener('click', () => {
+      toast('Full domain catalog is coming soon. Courses will populate from Firestore.', 'warn');
+    });
+    grid.appendChild(card);
+  });
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+const FAQS = [
+  { q:'Is IKAZE Academy free?', a:'Yes — there is a Free Learner tier with access to free courses and selected resources. Premium courses, verified credentials, live classes, and the AI Mentor are part of paid tiers that will be priced per region when launched.' },
+  { q:'When do paid courses and payment options launch?', a:'Payment integration is being set up. We will not accept payments until a secure provider is connected and verified server-side. Registration of interest is open now through the Support Center.' },
+  { q:'Are the certificates accredited?', a:'No. IKAZE Academy certificates are issued by IKAZE DIGITAL and are not claimed as internationally accredited or equivalent to university qualifications unless such recognition is independently established. They are verifiable digital credentials that employers can check.' },
+  { q:'How will the AI Mentor work?', a:'IKAZE LearnWise AI is in development. It will run on a secure backend with authentication, quotas, and abuse controls. It will not be enabled until those safeguards are in place. We will never place AI API keys in the browser.' },
+  { q:'Can schools and institutions use IKAZE Academy?', a:'Yes. An Institution plan provides an organization portal, teacher and learner management, class creation, assessment reports, and bulk invitations. Institution data is isolated — one institution cannot access another institution\'s records.' },
+  { q:'Can I teach on IKAZE Academy?', a:'Yes. Instructors get an instructor workspace with course builder, live class scheduling, learner management, and analytics. Apply through the Support Center — instructor verification is required before publishing.' },
+  { q:'Does IKAZE Academy work on mobile?', a:'Yes. The platform is built mobile-first and works on affordable smartphones and unstable connections. Pages are lightweight, media is lazy-loaded, and Firestore queries are limited.' },
+  { q:'Is my data safe?', a:'Authorization is enforced by Firebase Security Rules, not by the browser. Learners can only access their own records; instructors only their own courses; institutions only their own organization. See the Privacy Policy for full details.' },
+  { q:'How do I report a problem with a course or listing?', a:'Use the Support Center at support.html. Reports go through review before any listing is changed.' },
+  { q:'Which languages will be supported?', a:'English and Kinyarwanda first, with architecture for French, Swahili, Arabic, Spanish, Portuguese, and additional languages. Course metadata is language-aware.' }
+];
+
+function renderFAQ(){
+  const list = $('#faqList');
+  list.innerHTML = '';
+  FAQS.forEach((f, i) => {
+    const item = el('div','faq__item');
+    item.setAttribute('aria-expanded','false');
+    const qid = `faq-q-${i}`, aid = `faq-a-${i}`;
+    item.innerHTML = `
+      <button class="faq__q" aria-controls="${aid}" aria-expanded="false" id="${qid}">${escapeHTML(f.q)}</button>
+      <div class="faq__a" role="region" aria-labelledby="${qid}" id="${aid}">${escapeHTML(f.a)}</div>
+    `;
+    const btn = item.querySelector('.faq__q');
+    btn.addEventListener('click', () => {
+      const open = item.getAttribute('aria-expanded') === 'true';
+      item.setAttribute('aria-expanded', String(!open));
+      btn.setAttribute('aria-expanded', String(!open));
+    });
+    list.appendChild(item);
+  });
+}
+
+/* ============================================================
+   REVEAL ON SCROLL
+   ============================================================ */
+function initReveal(){
+  const els = $$('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('is-visible')); return; }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); }
+    });
+  }, { rootMargin:'0px 0px -8% 0px', threshold:0.06 });
+  els.forEach(e => io.observe(e));
+}
+
+/* ============================================================
+   MOBILE NAV
+   ============================================================ */
+function initMobileNav(){
+  const t = $('#menu'), n = $('#nav');
+  if (!t || !n) return;
+  t.addEventListener('click', () => {
+    const open = n.classList.toggle('open');
+    t.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('lock', open);
+  });
+  n.addEventListener('click', e => {
+    if (e.target.closest('a')) {
+      n.classList.remove('open');
+      t.setAttribute('aria-expanded','false');
+      document.body.classList.remove('lock');
+    }
+  });
+}
+
+/* ============================================================
+   CODE FRAGMENTS (background)
+   ============================================================ */
+function initCodeFragments(){
+  if (matchMedia('(max-width:620px)').matches) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const frags = ['course.create()','enroll()','progress.save','=>{}','{level:"pro"}','lesson.next','certificate.issue()','pathway.link','AI.tutor()','verify()','// learn','quiz.submit'];
+  for (let i = 0; i < 10; i++) {
+    const span = document.createElement('span');
+    span.className = 'code-frag';
+    span.textContent = frags[Math.floor(Math.random()*frags.length)];
+    span.style.left = (Math.random()*100) + '%';
+    span.style.bottom = '-40px';
+    span.style.animationDuration = (16 + Math.random()*16) + 's';
+    span.style.animationDelay = (-Math.random()*22) + 's';
+    span.style.opacity = (0.18 + Math.random()*0.35).toFixed(2);
+    document.body.appendChild(span);
+  }
+}
+
+/* ============================================================
+   3D GLOBE VISUAL
+   ============================================================ */
+function initGlobe(){
+  const canvas = document.getElementById('globeCanvas');
+  if (!canvas) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const test = (()=>{try{const c=document.createElement('canvas');return !!(window.WebGLRenderingContext&&(c.getContext('webgl2')||c.getContext('webgl')));}catch{return false;}})();
+  if (!test) return;
+
+  const s = document.createElement('script');
+  s.type = 'module';
+  s.textContent = `
+    import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+    const canvas = document.getElementById('globeCanvas');
+    const parent = canvas.parentElement;
+    const isSmall = matchMedia('(max-width:700px)').matches;
+
+    const renderer = new THREE.WebGLRenderer({canvas, antialias:!isSmall, alpha:true, powerPreference:'high-performance'});
+    renderer.setPixelRatio(Math.min(devicePixelRatio, isSmall ? 1.5 : 2));
+    renderer.setClearColor(0x000000, 0);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 200);
+    camera.position.set(0, 0, 7);
+
+    scene.add(new THREE.AmbientLight(0x00A1DE, 0.55));
+    const key = new THREE.DirectionalLight(0xffffff, 1.0); key.position.set(4, 6, 4); scene.add(key);
+    const rim = new THREE.DirectionalLight(0x20603D, 0.75); rim.position.set(-5, -3, -4); scene.add(rim);
+    const fill = new THREE.DirectionalLight(0xFAD201, 0.35); fill.position.set(2, -3, 3); scene.add(fill);
+
+    // Outer wireframe globe
+    const globeGeo = new THREE.SphereGeometry(1.9, isSmall ? 24 : 40, isSmall ? 16 : 28);
+    const globeMat = new THREE.MeshBasicMaterial({ color: 0x00A1DE, wireframe: true, transparent: true, opacity: 0.20 });
+    const globe = new THREE.Mesh(globeGeo, globeMat);
+    scene.add(globe);
+
+    // Inner glow sphere
+    const innerGeo = new THREE.SphereGeometry(1.85, 24, 24);
+    const innerMat = new THREE.MeshStandardMaterial({
+      color: 0x0B1017, emissive: 0x00A1DE, emissiveIntensity: 0.14,
+      roughness: 0.7, metalness: 0.1, transparent: true, opacity: 0.85
+    });
+    scene.add(new THREE.Mesh(innerGeo, innerMat));
+
+    // Learning nodes across continents (representing global learning network)
+    const nodes = [
+      { lat: -1.94, lon: 29.87 },  // Rwanda
+      { lat: 1.29,  lon: 36.82 },  // Kenya
+      { lat: 6.52,  lon: 3.37  },  // Nigeria
+      { lat: -26.2, lon: 28.04 },  // South Africa
+      { lat: 30.04, lon: 31.24 },  // Egypt
+      { lat: 51.51, lon: -0.13 },  // UK
+      { lat: 48.86, lon: 2.35  },  // France
+      { lat: 40.71, lon: -74.0 },  // USA East
+      { lat: 37.77, lon: -122.4 }, // USA West
+      { lat: 35.68, lon: 139.69 }, // Japan
+      { lat: 1.35,  lon: 103.82 }, // Singapore
+      { lat: -33.87, lon: 151.21 },// Australia
+      { lat: 19.43, lon: -99.13 }, // Mexico
+      { lat: -23.55, lon: -46.63 } // Brazil
+    ];
+
+    function latLonToVec3(lat, lon, r){
+      const phi = (90 - lat) * Math.PI / 180;
+      const theta = (lon + 180) * Math.PI / 180;
+      return new THREE.Vector3(
+        -r * Math.sin(phi) * Math.cos(theta),
+         r * Math.cos(phi),
+         r * Math.sin(phi) * Math.sin(theta)
+      );
+    }
+
+    const nodeGroup = new THREE.Group();
+    const nodeGeo = new THREE.SphereGeometry(0.05, 12, 12);
+    const lines = [];
+
+    nodes.forEach((n, i) => {
+      const color = i % 3 === 0 ? 0x00A1DE : i % 3 === 1 ? 0xFAD201 : 0x20603D;
+      const mat = new THREE.MeshStandardMaterial({ color, emissive:color, emissiveIntensity: 0.85, roughness: 0.3, metalness: 0.4 });
+      const mesh = new THREE.Mesh(nodeGeo, mat);
+      const pos = latLonToVec3(n.lat, n.lon, 1.92);
+      mesh.position.copy(pos);
+      nodeGroup.add(mesh);
+
+      // Connect each node to Rwanda (global learning from Rwanda)
+      if (i > 0) {
+        const rwandaPos = latLonToVec3(nodes[0].lat, nodes[0].lon, 1.92);
+        const lineGeo = new THREE.BufferGeometry().setFromPoints([rwandaPos, pos]);
+        const lineMat = new THREE.LineBasicMaterial({ color, transparent:true, opacity: 0.28, blending: THREE.AdditiveBlending });
+        const line = new THREE.Line(lineGeo, lineMat);
+        nodeGroup.add(line);
+        lines.push(line);
+      }
+    });
+    scene.add(nodeGroup);
+
+    // Dust
+    const count = isSmall ? 60 : 140;
+    const pGeo = new THREE.BufferGeometry();
+    const pPos = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      const r = 2.4 + Math.random() * 3;
+      const t = Math.random() * Math.PI * 2;
+      const p = Math.acos(2 * Math.random() - 1);
+      pPos[i*3]   = r * Math.sin(p) * Math.cos(t);
+      pPos[i*3+1] = r * Math.sin(p) * Math.sin(t);
+      pPos[i*3+2] = r * Math.cos(p);
+    }
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+    const dustMat = new THREE.PointsMaterial({
+      color: 0x00A1DE, size: 0.025, transparent: true, opacity: 0.55,
+      depthWrite: false, blending: THREE.AdditiveBlending
+    });
+    const dust = new THREE.Points(pGeo, dustMat);
+    scene.add(dust);
+
+    function resize(){
+      const w = parent.clientWidth || 400;
+      const h = parent.clientHeight || 400;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    if ('ResizeObserver' in window) new ResizeObserver(resize).observe(parent);
+    else addEventListener('resize', resize);
+
+    let mx = 0, my = 0, tx = 0, ty = 0;
+    if (!isSmall) {
+      parent.addEventListener('pointermove', e => {
+        const r = parent.getBoundingClientRect();
+        tx = ((e.clientX - r.left) / r.width - 0.5) * 0.4;
+        ty = ((e.clientY - r.top) / r.height - 0.5) * 0.4;
+      });
+    }
+
+    let running = true;
+    document.addEventListener('visibilitychange', () => { running = !document.hidden; if (running) loop(); });
+
+    const clock = new THREE.Clock();
+    function loop(){
+      if (!running) return;
+      requestAnimationFrame(loop);
+      const t = clock.getElapsedTime();
+
+      nodeGroup.rotation.y += 0.0025;
+      globe.rotation.y += 0.002;
+      dust.rotation.y += 0.001;
+
+      lines.forEach((l, i) => {
+        l.material.opacity = 0.18 + Math.sin(t * 1.2 + i * 0.4) * 0.12;
+      });
+
+      mx += (tx - mx) * 0.05;
+      my += (ty - my) * 0.05;
+      scene.rotation.y = mx;
+      scene.rotation.x = my;
+
+      renderer.render(scene, camera);
+    }
+    loop();
+  `;
+  document.body.appendChild(s);
+}
+
+/* ============================================================
+   HERO STATS — only show real counts
+   ============================================================ */
+async function loadHeroStats(){
+  const wrap = $('#heroStats');
+  if (!wrap || !fb) return;
+  try {
+    const { collection, query, where, getCountFromServer } = fb;
+    const c = await getCountFromServer(query(
+      collection(fb.db, 'academyCourses'),
+      where('published','==',true)
+    )).catch(() => null);
+
+    const count = c ? c.data().count : null;
+    if (count && count > 0) {
+      wrap.hidden = false;
+      wrap.innerHTML = `
+        <div class="stat-tile">
+          <div class="stat-tile__label">Published Courses</div>
+          <div class="stat-tile__value">${count.toLocaleString()}</div>
+          <div class="stat-tile__sub">Ready to enroll</div>
+        </div>
+      `;
+    }
+  } catch { /* silent */ }
+}
+
+/* ============================================================
+   WIRE BUTTONS
+   ============================================================ */
+function wireButtons(){
+  const start1 = $('#heroStartLearning');
+  const start2 = $('#finalStartLearning');
+  const browse = $('#browseAllCourses');
+  const community = $('#communityLearnMore');
+
+  if (start1) start1.addEventListener('click', () => currentUser ? toast('Learner dashboard is coming soon.', 'warn') : openAuthModal('signup'));
+  if (start2) start2.addEventListener('click', () => currentUser ? toast('Learner dashboard is coming soon.', 'warn') : openAuthModal('signup'));
+  if (browse) browse.addEventListener('click', () => {
+    document.getElementById('featured').scrollIntoView({ behavior:'smooth', block:'start' });
+    toast('Full catalog page is coming soon. Featured courses are shown above.', 'warn');
+  });
+  if (community) community.addEventListener('click', () => toast('Community features are in development. Sign in to be notified when they launch.', 'warn'));
+
+  $$('[data-auth-open]').forEach(b => {
+    b.addEventListener('click', () => openAuthModal(b.dataset.authOpen));
+  });
+}
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+async function boot(){
+  const y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  renderDomains();
+  renderFAQ();
+  initMobileNav();
+  initCodeFragments();
+  initGlobe();
+  wireButtons();
+
+  const ok = await initFirebase();
+  if (ok) {
+    const { onAuthStateChanged } = fb;
+    onAuthStateChanged(fb.auth, async (user) => {
+      currentUser = user;
+      if (user) await loadUserProfile();
+      renderAuthState();
+    });
+    await loadFeaturedCourses();
+    await loadHeroStats();
+  } else {
+    // Firebase not configured — show honest empty states
+    $('#featuredGrid').innerHTML = '';
+    $('#featuredEmpty').hidden = false;
+    $('#featuredEmpty').innerHTML = emptyStateHTML(
+      '◇','Academy Launching Soon',
+      'Courses will appear here once the IKAZE Academy catalog is published. Register your interest through the Support Center to be notified.'
+    );
+  }
+
+  initReveal();
+  hideLoader();
+}
+
+boot();
+
+/* ============================================================
+   DEVTOOLS DETERRENTS (not security)
+   ============================================================ */
+document.addEventListener('contextmenu', (e) => {
+  const t = e.target;
+  if (t.matches?.('input,textarea,select,[contenteditable="true"]')) return;
+  e.preventDefault();
+});
+document.addEventListener('keydown', (e) => {
+  const k = e.key.toLowerCase();
+  const block =
+    k === 'f12' ||
+    (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+    (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+    (e.ctrlKey && ['u','s'].includes(k)) ||
+    (e.metaKey && ['u','s'].includes(k));
+  if (block) { e.preventDefault(); e.stopPropagation(); return false; }
+}, true);
+(() => {
+  const toastEl = document.createElement('div');
+  toastEl.className = 'devtools-warning';
+  toastEl.setAttribute('role','alert');
+  toastEl.setAttribute('aria-live','polite');
+  toastEl.innerHTML = '<span class="devtools-warning__icon">!</span><span>Developer tools detected — this page is protected.</span>';
+  document.body.appendChild(toastEl);
+  let visible = false, warnUntil = 0;
+  const show = () => { warnUntil = Date.now() + 5000; if (!visible) { visible = true; toastEl.classList.add('is-visible'); } };
+  const hide = () => { if (visible && Date.now() > warnUntil) { visible = false; toastEl.classList.remove('is-visible'); } };
+  setInterval(() => {
+    const w = window.outerWidth - window.innerWidth;
+    const h = window.outerHeight - window.innerHeight;
+    if (w > 160 || h > 160) show();
+    hide();
+  }, 900);
+  document.addEventListener('keydown', (e) => {
+    const k = e.key.toLowerCase();
+    if (k === 'f12' ||
+        (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+        (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+        (e.ctrlKey && ['u','s'].includes(k)) ||
+        (e.metaKey && ['u','s'].includes(k))) show();
+  }, true);
+})();
+if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+  (() => { let n = 0; setInterval(() => { n++; if (n > 1) { console.clear(); n = 0; } }, 2000); })();
+}
+console.log('%c⚠️ STOP', 'color:#ff3b3b;font-size:32px;font-weight:900');
+console.log('%cThis is IKAZE Academy. Authorization is enforced by Firebase Security Rules — modifying this file grants no privileges.', 'font-size:13px;color:#ff9');
+</script>
+
+<!-- ============================================================
+     FIRESTORE SCHEMA + SECURITY RULES — REFERENCE
+     ============================================================
+     Deploy these to your Firebase project. All real access
+     control is enforced server-side by these rules.
+
+     --- FIRESTORE COLLECTIONS --------------------------------
+     users/{uid}
+       fullName, email, role, country, language, timezone,
+       interests, educationLevel, accessibilityPrefs, createdAt
+
+     academyCourses/{courseId}
+       title, slug, shortDescription, description, coverUrl, icon,
+       instructorId, instructor, domain, category, subcategory,
+       level, language, duration, lessonCount, objectives[],
+       prerequisites, curriculum[], price, currency, published,
+       certificateEligible, lastUpdated, createdAt, updatedAt
+
+     academyModules/{moduleId}
+       courseId, title, order, createdAt
+
+     academyLessons/{lessonId}
+       courseId, moduleId, title, type (text|video|audio|quiz|project),
+       content, videoUrl, resources[], order, completionRule,
+       createdAt, updatedAt
+
+     academyEnrollments/{enrollmentId}
+       userId, courseId, courseTitle, status, progress,
+       enrolledAt, completedAt
+
+     academyProgress/{progressId}
+       userId, courseId, lessonId, completed, completedAt
+
+     academyAssessments/{assessmentId}
+       courseId, title, questions[], passMark, timeLimit, attempts
+
+     academySubmissions/{submissionId}
+       userId, assessmentId, answers, score, submittedAt, gradedAt
+
+     academyCertificates/{certificateId}
+       userId, courseId, courseTitle, credentialId, issuedAt,
+       status, verifyUrl, qrCodeUrl
+
+     academyPathways/{pathwayId}
+       title, slug, description, courses[], level, published
+
+     academyProjects/{projectId}
+       title, brief, objectives[], skills[], resources[],
+       submission, status, visibility
+
+     academyLiveSessions/{sessionId}
+       courseId, title, scheduledAt, timezone, duration, joinUrl,
+       hostId, participants[], status, recordings[]
+
+     academyInstitutions/{institutionId}
+       name, adminId, teachers[], learners[], plan, country
+
+     academyAnnouncements/{announcementId}
+       title, body, audience, courseId, createdAt, publishedAt
+
+     academyDiscussions/{discussionId}
+       courseId, userId, title, body, replies[], createdAt
+
+     academyNotifications/{notificationId}
+       userId, type, title, body, read, createdAt
+
+     academyPayments/{paymentId}
+       userId, courseId, amount, currency, provider, status,
+       providerRef, verifiedAt, createdAt
+
+     academySubscriptions/{subscriptionId}
+       userId, plan, status, startedAt, renewalAt
+
+     adminAuditLogs/{logId}
+       actorId, actorEmail, action, resourceType, resourceId,
+       timestamp, metadata
+
+     --- SECURITY RULES (firestore.rules) ---------------------
+     rules_version = '2';
+     service cloud.firestore {
+       match /databases/{database}/documents {
+
+         function signedIn() { return request.auth != null; }
+         function isSelf(uid) { return signedIn() && request.auth.uid == uid; }
+         function isAdmin() { return signedIn() && request.auth.token.admin == true; }
+         function isInstructor() {
+           return signedIn() && request.auth.token.role == 'instructor';
+         }
+
+         // USERS — self read/write on safe fields only
+         match /users/{uid} {
+           allow read: if isSelf(uid) || isAdmin();
+           allow create: if isSelf(uid);
+           allow update: if (isSelf(uid)
+             && !request.resource.data.diff(resource.data)
+                 .affectedKeys().hasAny(['role','admin']))
+             || isAdmin();
+           allow delete: if isAdmin();
+         }
+
+         // COURSES — public read only if published, admin/instructor write
+         match /academyCourses/{courseId} {
+           allow read: if resource.data.published == true
+                        || isAdmin()
+                        || (isInstructor() && resource.data.instructorId == request.auth.uid);
+           allow create: if isInstructor() || isAdmin();
+           allow update, delete: if isAdmin()
+             || (isInstructor() && resource.data.instructorId == request.auth.uid);
+         }
+
+         // MODULES / LESSONS — same access as parent course
+         match /academyModules/{moduleId} {
+           allow read: if isAdmin() || (isInstructor()
+             && get(/databases/$(database)/documents/academyCourses/$(resource.data.courseId)).data.instructorId == request.auth.uid)
+             || get(/databases/$(database)/documents/academyCourses/$(resource.data.courseId)).data.published == true;
+           allow write: if isAdmin() || isInstructor();
+         }
+         match /academyLessons/{lessonId} {
+           allow read: if isAdmin() || (isInstructor()
+             && get(/databases/$(database)/documents/academyCourses/$(resource.data.courseId)).data.instructorId == request.auth.uid)
+             || get(/databases/$(database)/documents/academyCourses/$(resource.data.courseId)).data.published == true;
+           allow write: if isAdmin() || isInstructor();
+         }
+
+         // ENROLLMENTS — self only
+         match /academyEnrollments/{enrollmentId} {
+           allow read: if isSelf(resource.data.userId) || isAdmin();
+           allow create: if signedIn()
+             && request.resource.data.userId == request.auth.uid;
+           allow update, delete: if isSelf(resource.data.userId) || isAdmin();
+         }
+
+         // PROGRESS — self only
+         match /academyProgress/{progressId} {
+           allow read, write: if isSelf(resource.data.userId) || isAdmin();
+         }
+
+         // ASSESSMENTS — public read, instructor write
+         match /academyAssessments/{assessmentId} {
+           allow read: if true;
+           allow write: if isAdmin() || isInstructor();
+         }
+
+         // SUBMISSIONS — self only
+         match /academySubmissions/{submissionId} {
+           allow read: if isSelf(resource.data.userId) || isAdmin() || isInstructor();
+           allow create: if signedIn()
+             && request.resource.data.userId == request.auth.uid;
+           allow update: if isAdmin() || isInstructor();
+         }
+
+         // CERTIFICATES — public read (verification), admin write
+         match /academyCertificates/{certificateId} {
+           allow read: if true; // verification portal needs public read
+           allow write: if isAdmin(); // issued by backend only
+         }
+
+         // PATHWAYS — public read, admin write
+         match /academyPathways/{pathwayId} {
+           allow read: if resource.data.published == true || isAdmin();
+           allow write: if isAdmin();
+         }
+
+         // PROJECTS — public read if visibility public, self write
+         match /academyProjects/{projectId} {
+           allow read: if resource.data.visibility == 'public'
+                        || isSelf(resource.data.userId)
+                        || isAdmin();
+           allow create: if signedIn()
+             && request.resource.data.userId == request.auth.uid;
+           allow update, delete: if isSelf(resource.data.userId) || isAdmin();
+         }
+
+         // LIVE SESSIONS — public read for published, instructor write
+         match /academyLiveSessions/{sessionId} {
+           allow read: if true;
+           allow write: if isAdmin() || isInstructor();
+         }
+
+         // INSTITUTIONS — admin + own members only
+         match /academyInstitutions/{institutionId} {
+           allow read: if isAdmin()
+             || request.auth.uid == resource.data.adminId
+             || request.auth.uid in resource.data.teachers
+             || request.auth.uid in resource.data.learners;
+           allow write: if isAdmin()
+             || request.auth.uid == resource.data.adminId;
+         }
+
+         // ANNOUNCEMENTS — public read for published, admin write
+         match /academyAnnouncements/{announcementId} {
+           allow read: if resource.data.published == true || isAdmin();
+           allow write: if isAdmin() || isInstructor();
+         }
+
+         // DISCUSSIONS — signed-in read, self write
+         match /academyDiscussions/{discussionId} {
+           allow read: if signedIn();
+           allow create: if signedIn();
+           allow update, delete: if isSelf(resource.data.userId) || isAdmin();
+         }
+
+         // NOTIFICATIONS — self only
+         match /academyNotifications/{notificationId} {
+           allow read, update: if isSelf(resource.data.userId);
+           allow create, delete: if isAdmin();
+         }
+
+         // PAYMENTS — no client write (webhooks only)
+         match /academyPayments/{paymentId} {
+           allow read: if isSelf(resource.data.userId) || isAdmin();
+           allow write: if false;
+         }
+
+         // SUBSCRIPTIONS — no client write
+         match /academySubscriptions/{subscriptionId} {
+           allow read: if isSelf(resource.data.userId) || isAdmin();
+           allow write: if false;
+         }
+
+         // AUDIT LOGS — admin read, backend write
+         match /adminAuditLogs/{logId} {
+           allow read: if isAdmin();
+           allow write: if false;
+         }
+
+         // Default deny
+         match /{document=**} {
+           allow read, write: if false;
+         }
+       }
+     }
+
+     --- STORAGE RULES (storage.rules) ------------------------
+     rules_version = '2';
+     service firebase.storage {
+       match /b/{bucket}/o {
+         match /academy/courses/{courseId}/{allPaths=**} {
+           allow read: if true;
+           allow write: if request.auth != null
+             && (request.auth.token.admin == true
+                 || request.auth.token.role == 'instructor');
+         }
+         match /academy/projects/{userId}/{allPaths=**} {
+           allow read: if true;
+           allow write: if request.auth != null
+             && request.auth.uid == userId;
+         }
+         match /academy/certificates/{userId}/{allPaths=**} {
+           allow read: if request.auth != null
+             && (request.auth.uid == userId
+                 || request.auth.token.admin == true);
+           allow write: if request.auth.token.admin == true;
+         }
+         match /{allPaths=**} {
+           allow read, write: if false;
+         }
+       }
+     }
+
+     --- RECOMMENDED FIRESTORE INDEXES ------------------------
+     {
+       "indexes": [
+         { "collectionGroup": "academyCourses",
+           "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath": "published", "order": "ASCENDING"},
+             {"fieldPath": "domain", "order": "ASCENDING"}
+           ]
+         },
+         { "collectionGroup": "academyCourses",
+           "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath": "published", "order": "ASCENDING"},
+             {"fieldPath": "createdAt", "order": "DESCENDING"}
+           ]
+         },
+         { "collectionGroup": "academyEnrollments",
+           "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath": "userId", "order": "ASCENDING"},
+             {"fieldPath": "enrolledAt", "order": "DESCENDING"}
+           ]
+         },
+         { "collectionGroup": "academyProgress",
+           "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath": "userId", "order": "ASCENDING"},
+             {"fieldPath": "courseId", "order": "ASCENDING"}
+           ]
+         }
+       ]
+     }
+
+     --- PROVISIONING (run once locally, not in browser) ------
+     // Set admin claim on Founder:
+     const admin = require('firebase-admin');
+     admin.initializeApp({ credential: admin.credential.applicationDefault() });
+     await admin.auth().setCustomUserClaims('FOUNDER_UID_HERE', {
+       admin: true,
+       role: 'founder'
+     });
+     // Set instructor claim on a teacher:
+     await admin.auth().setCustomUserClaims('TEACHER_UID_HERE', {
+       role: 'instructor'
+     });
+     ============================================================
+-->
+</body>
+</html>
