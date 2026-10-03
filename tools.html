@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Terms of Use | IKAZE DIGITAL</title>
+<meta name="description" content="Read the IKAZE DIGITAL Terms of Use covering website usage, digital services, project requests, pricing, intellectual property, accounts, responsibilities and platform rules." />
+<meta name="theme-color" content="#080A0F" />
+<link rel="canonical" href="https://ikaze-digital.vercel.app/terms.html" />
+
+<meta property="og:title" content="Terms of Use | IKAZE DIGITAL" />
+<meta property="og:description" content="The rules, responsibilities and expectations that apply when you use IKAZE DIGITAL services." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://i.postimg.cc/tJ9QydF2/Theoneste.png" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><path d='M6 40 24 6l18 34-9-6-9-14-9 14z' fill='%23f2a33a'/><path d='M24 6 42 40l-9-6z' fill='%23c8553d'/><circle cx='24' cy='6' r='4' fill='%23FAD201'/></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Terms of Use | IKAZE DIGITAL",
+  "url": "https://ikaze-digital.vercel.app/terms.html",
+  "description": "Terms of Use covering website usage, digital services, project requests, pricing, intellectual property and platform rules.",
+  "isPartOf": {
+    "@type": "Organization",
+    "name": "Ikaze Digital",
+    "url": "https://ikaze-digital.vercel.app/"
+  }
+}
+</script>
+
+<style>
+/* ============================================================
+   TOKENS — matched across all IKAZE pages
+   ============================================================ */
+:root{
+  --bg:#080A0F; --bg2:#0B1017; --bg3:#10151D;
+  --ink:#f4efe8; --mut:#a9a39b;
+  --amb:#f2a33a; --ter:#c8553d;
+  --blue:#00A1DE; --grn:#20603D; --yel:#FAD201;
+  --card:rgba(255,255,255,.04);
+  --line:rgba(255,255,255,.10);
+  --radius:18px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(80px + env(safe-area-inset-top,0px))}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.7;
+  overflow-x:hidden;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+body.lock{overflow:hidden}
+input,textarea,select{-webkit-user-select:text;user-select:text}
+a{color:inherit}
+img{max-width:100%;height:auto;display:block}
+button{font:inherit}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px;font-size:.9em}
+
+/* ============================================================
+   BACKGROUND LAYERS — amber/green accent for Terms
+   ============================================================ */
+#bg{
+  position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(60% 50% at 20% 15%,rgba(242,163,58,.20),transparent 70%),
+    radial-gradient(50% 45% at 85% 80%,rgba(32,96,61,.18),transparent 70%),
+    radial-gradient(45% 45% at 50% 50%,rgba(200,85,61,.08),transparent 70%),
+    linear-gradient(#10151D,#080A0F);
+}
+#c{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+
+.aurora{position:fixed;border-radius:50%;filter:blur(90px);opacity:.42;mix-blend-mode:screen;pointer-events:none;z-index:-1}
+.aurora-1{width:520px;height:520px;top:-120px;left:-80px;background:radial-gradient(circle,var(--amb),transparent 70%);animation:float1 22s ease-in-out infinite}
+.aurora-2{width:600px;height:600px;bottom:-180px;right:-100px;background:radial-gradient(circle,var(--grn),transparent 70%);animation:float2 26s ease-in-out infinite}
+.aurora-3{width:420px;height:420px;top:40%;left:50%;background:radial-gradient(circle,var(--yel),transparent 70%);opacity:.12;animation:float3 30s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(80px,60px) scale(1.15)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-70px,-90px) scale(1.2)}}
+@keyframes float3{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-40%,-60%) scale(1.3)}}
+
+.grid-lines{
+  position:fixed;inset:0;opacity:.10;pointer-events:none;z-index:-1;
+  background-image:
+    linear-gradient(rgba(242,163,58,.32) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(242,163,58,.32) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(circle at 50% 40%,#000 0%,transparent 75%);
+  -webkit-mask-image:radial-gradient(circle at 50% 40%,#000 0%,transparent 75%);
+  animation:gridMove 40s linear infinite;
+}
+@keyframes gridMove{0%{background-position:0 0,0 0}100%{background-position:64px 64px,64px 64px}}
+
+.scanline{
+  position:fixed;left:0;right:0;height:2px;z-index:-1;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--amb),transparent);
+  opacity:.24;filter:blur(1px);
+  animation:scanSweep 9s linear infinite;
+}
+@keyframes scanSweep{0%{top:0}100%{top:100%}}
+
+.code-frag{
+  position:fixed;font-size:11px;
+  color:rgba(242,163,58,.32);letter-spacing:.05em;white-space:nowrap;
+  pointer-events:none;z-index:-1;
+  animation:codeFloat linear infinite;will-change:transform,opacity;
+}
+@keyframes codeFloat{
+  0%{transform:translateY(0) translateX(0);opacity:0}
+  10%{opacity:.7}
+  90%{opacity:.7}
+  100%{transform:translateY(-100vh) translateX(30px);opacity:0}
+}
+
+/* ============================================================
+   DEVTOOLS TOAST
+   ============================================================ */
+.devtools-warning{
+  position:fixed;top:0;left:50%;transform:translate(-50%,-140%);
+  z-index:9999;padding:.85rem 1.4rem;
+  background:linear-gradient(120deg,rgba(200,85,61,.95),rgba(150,40,20,.95));
+  color:#fff;font-weight:600;font-size:.9rem;
+  border-radius:0 0 14px 14px;letter-spacing:.03em;
+  box-shadow:0 14px 40px -10px rgba(200,85,61,.6);
+  display:flex;align-items:center;gap:.7rem;
+  transition:transform .5s cubic-bezier(.2,.7,.2,1);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  max-width:calc(100% - 24px);pointer-events:none;
+}
+.devtools-warning.is-visible{transform:translate(-50%,0)}
+.devtools-warning__icon{
+  width:22px;height:22px;border-radius:50%;
+  background:rgba(255,255,255,.18);
+  display:grid;place-items:center;font-size:13px;flex-shrink:0;
+}
+@media (max-width:620px){.devtools-warning{font-size:.78rem;padding:.7rem 1rem}}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.wrap--narrow{max-width:820px}
+
+header{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+  backdrop-filter:blur(14px);
+  background:rgba(8,10,15,.78);
+  border-bottom:1px solid var(--line);
+}
+.bar{display:flex;align-items:center;gap:16px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.08em;font-size:14px}
+.logo img{height:44px;width:auto;max-width:56px;object-fit:contain}
+.logo small{display:block;font-weight:500;letter-spacing:0;font-size:10px;color:var(--mut)}
+nav{margin-left:auto;display:flex;gap:16px;align-items:center}
+nav a{text-decoration:none;font-size:14px;color:var(--mut);transition:color .2s}
+nav a:hover,nav a[aria-current]{color:var(--amb)}
+
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 22px;border-radius:999px;
+  background:var(--amb);color:#1a0f05;font-weight:700;text-decoration:none;
+  border:0;cursor:pointer;font-size:14px;
+  transition:transform .2s,box-shadow .2s;min-height:44px;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(242,163,58,.35)}
+.btn.o{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.sm{padding:10px 16px;font-size:13px;min-height:40px}
+
+:focus-visible{outline:3px solid var(--yel);outline-offset:2px;border-radius:6px}
+
+#menu{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:12px 16px;min-height:44px;cursor:pointer}
+
+section{padding:60px 0;position:relative;z-index:1}
+h1{font-size:clamp(2rem,6vw,3.6rem);line-height:1.05;margin:0 0 16px;letter-spacing:-.02em}
+h2{font-size:clamp(1.4rem,3.2vw,2rem);margin:0 0 12px;letter-spacing:-.01em}
+h3{font-size:1.1rem;margin:20px 0 8px}
+h4{font-size:1rem;margin:16px 0 6px;color:var(--amb)}
+p{margin:0 0 14px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin-bottom:6px}
+.tag{color:var(--amb);font-weight:600;letter-spacing:.06em;font-size:.82rem;text-transform:uppercase}
+.lead{color:var(--mut);max-width:680px;font-size:clamp(1rem,1.4vw,1.1rem)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{padding:60px 0 30px;position:relative}
+.hero__inner{display:grid;gap:40px;grid-template-columns:1fr;align-items:center}
+@media(min-width:900px){.hero__inner{grid-template-columns:1.2fr .8fr}}
+.hero__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.hero__meta{
+  display:flex;flex-wrap:wrap;gap:16px;margin-top:20px;
+  font-size:.82rem;color:var(--mut);
+}
+.hero__meta span b{color:var(--ink)}
+.hero__meta .placeholder{
+  color:var(--yel);font-weight:600;letter-spacing:.04em;
+  border-bottom:1px dashed rgba(250,210,1,.4);
+}
+
+.doc-visual{
+  position:relative;aspect-ratio:1/1;max-width:400px;width:100%;margin:0 auto;
+  border-radius:24px;overflow:hidden;
+  border:1px solid var(--line);
+  background:radial-gradient(circle at 50% 50%,rgba(242,163,58,.10),transparent 60%),var(--card);
+  backdrop-filter:blur(10px);
+}
+.doc-visual canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.doc-visual__label{
+  position:absolute;bottom:14px;left:0;right:0;text-align:center;
+  font-size:.72rem;color:var(--mut);letter-spacing:.14em;text-transform:uppercase;
+  pointer-events:none;z-index:2;
+}
+
+/* ============================================================
+   GLANCE CARDS
+   ============================================================ */
+.glance{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));margin-top:24px}
+.gcard{
+  padding:20px;border-radius:16px;border:1px solid var(--line);
+  background:var(--card);backdrop-filter:blur(10px);
+  transition:transform .3s,border-color .3s;
+}
+.gcard:hover{transform:translateY(-4px);border-color:rgba(242,163,58,.4)}
+.gcard__icon{
+  width:40px;height:40px;border-radius:10px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(242,163,58,.15),rgba(200,85,61,.08));
+  border:1px solid rgba(242,163,58,.28);
+  font-size:18px;margin-bottom:12px;color:var(--amb);
+}
+.gcard h3{margin:0 0 6px;font-size:.98rem;color:var(--ink)}
+.gcard p{margin:0;color:var(--mut);font-size:.88rem;line-height:1.55}
+
+/* ============================================================
+   DOC LAYOUT (TOC + CONTENT)
+   ============================================================ */
+.doc-layout{display:grid;gap:32px;grid-template-columns:1fr}
+@media(min-width:1000px){.doc-layout{grid-template-columns:280px 1fr;gap:48px;align-items:start}}
+
+.toc{
+  padding:20px;border-radius:16px;border:1px solid var(--line);
+  background:var(--card);backdrop-filter:blur(10px);
+}
+@media(min-width:1000px){
+  .toc{position:sticky;top:calc(88px + env(safe-area-inset-top,0px));max-height:calc(100vh - 110px);overflow-y:auto;}
+}
+.toc h3{margin:0 0 14px;font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--mut)}
+.toc ol{list-style:none;padding:0;margin:0;counter-reset:toc}
+.toc li{counter-increment:toc;margin-bottom:4px}
+.toc a{
+  display:block;padding:7px 10px;border-radius:8px;
+  color:var(--mut);font-size:.85rem;text-decoration:none;
+  transition:color .2s,background .2s;
+}
+.toc a::before{content:counter(toc) ". ";color:var(--amb);font-weight:600;margin-right:4px}
+.toc a:hover{color:var(--ink);background:rgba(242,163,58,.06)}
+.toc a.active{color:var(--amb);background:rgba(242,163,58,.08)}
+
+.toc-toggle{
+  display:flex;justify-content:space-between;align-items:center;width:100%;
+  padding:14px 18px;border-radius:14px;background:var(--card);border:1px solid var(--line);
+  color:var(--ink);font-weight:600;font-size:14px;cursor:pointer;
+}
+.toc-toggle::after{content:"▾";color:var(--amb);transition:transform .2s}
+.toc-toggle[aria-expanded=true]::after{transform:rotate(180deg)}
+@media(min-width:1000px){.toc-toggle{display:none}}
+
+.content section{padding:32px 0;border-bottom:1px solid var(--line)}
+.content section:last-child{border-bottom:0}
+.content h2{display:flex;align-items:center;gap:12px}
+.content h2 .num{
+  display:inline-grid;place-items:center;min-width:34px;height:34px;
+  border-radius:10px;background:rgba(242,163,58,.10);
+  border:1px solid rgba(242,163,58,.28);
+  color:var(--amb);font-size:.85rem;font-weight:700;
+}
+
+/* ============================================================
+   CALLOUTS
+   ============================================================ */
+.callout{
+  display:flex;gap:14px;padding:18px 22px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(242,163,58,.08),rgba(200,85,61,.04));
+  border:1px solid rgba(242,163,58,.28);
+  margin:16px 0;
+}
+.callout--blue{
+  background:linear-gradient(135deg,rgba(0,161,222,.08),rgba(32,96,61,.04));
+  border-color:rgba(0,161,222,.28);
+}
+.callout--warn{
+  background:linear-gradient(135deg,rgba(200,85,61,.10),rgba(150,40,20,.05));
+  border-color:rgba(200,85,61,.4);
+}
+.callout--review{
+  background:linear-gradient(135deg,rgba(250,210,1,.10),rgba(242,163,58,.04));
+  border-color:rgba(250,210,1,.35);
+}
+.callout__icon{
+  width:32px;height:32px;border-radius:10px;display:grid;place-items:center;
+  background:rgba(242,163,58,.18);color:var(--amb);flex-shrink:0;font-size:16px;
+}
+.callout--blue .callout__icon{background:rgba(0,161,222,.18);color:var(--blue)}
+.callout--warn .callout__icon{background:rgba(200,85,61,.22);color:var(--ter)}
+.callout--review .callout__icon{background:rgba(250,210,1,.2);color:var(--yel)}
+.callout p{margin:0;font-size:.94rem;color:var(--ink)}
+.callout p + p{margin-top:8px}
+
+/* ============================================================
+   PLACEHOLDER BLOCKS
+   ============================================================ */
+.placeholder-box{
+  padding:20px 22px;border-radius:14px;
+  background:rgba(250,210,1,.04);
+  border:1px dashed rgba(250,210,1,.35);
+  margin:16px 0;
+  font-family:'Courier New',ui-monospace,monospace;
+  font-size:.88rem;line-height:1.9;
+}
+.placeholder-box b{
+  color:var(--yel);font-weight:700;
+}
+.placeholder-box .ph-value{
+  color:var(--mut);
+}
+
+/* ============================================================
+   FLOW
+   ============================================================ */
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:16px 0;justify-content:flex-start}
+.flow span{padding:9px 16px;border-radius:99px;background:var(--card);border:1px solid var(--line);font-size:.85rem;color:var(--ink)}
+.flow i{color:var(--amb);font-style:normal;font-size:1.1rem;font-weight:700}
+
+/* ============================================================
+   CTA BLOCK
+   ============================================================ */
+.cta-block{
+  padding:44px 28px;border-radius:24px;border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(242,163,58,.10),rgba(200,85,61,.05));
+  text-align:center;
+}
+.cta-block .btn{margin:6px 4px 0}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{border-top:1px solid var(--line);padding:44px 0 28px;color:var(--mut);font-size:.9rem;background:rgba(8,10,15,.85);position:relative;z-index:1}
+footer a{text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--amb)}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px}
+@media(max-width:780px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr}}
+footer h4{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--mut);margin:0 0 12px}
+footer ul{list-style:none;padding:0;margin:0}
+footer li{margin-bottom:6px;font-size:.88rem}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+[data-reveal]{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+[data-reveal].is-visible{opacity:1;transform:translateY(0)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:900px){
+  nav{display:none}
+  nav.open{
+    display:flex;flex-direction:column;
+    position:absolute;top:68px;left:0;right:0;
+    background:rgba(8,10,15,.97);padding:22px;
+    gap:14px;border-bottom:1px solid var(--line);
+    z-index:50;
+  }
+  #menu{display:block;margin-left:auto}
+  .aurora{filter:blur(60px);opacity:.32}
+}
+@media (max-width:620px){
+  section{padding:48px 0}
+  .hero{padding:40px 0 20px}
+  .code-frag{display:none}
+  #c{opacity:.5}
+  h1{font-size:1.8rem}
+  h2{font-size:1.35rem}
+  .content section{padding:24px 0}
+}
+@media (max-width:380px){
+  h1{font-size:1.6rem}
+  .btn{padding:10px 16px;font-size:13px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  #c,.aurora,.grid-lines,.scanline,.code-frag{display:none}
+  [data-reveal]{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div id="bg" aria-hidden="true"></div>
+<canvas id="c" aria-hidden="true"></canvas>
+
+<a class="skip-link" href="#main" style="position:absolute;left:-9999px;background:var(--amb);color:#1a0f05;padding:.6rem 1rem;z-index:1000;font-weight:700">Skip to content</a>
+
+<!-- ==================== HEADER ==================== -->
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="index.html" aria-label="Ikaze Digital home">
+      <img src="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png" alt="IKAZE Digital sunrise logo" width="56" height="44" />
+      <span>IKAZE DIGITAL<small>Digital Technology &amp; Creative Solutions</small></span>
+    </a>
+    <button id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="ecosystem.html">Ecosystem</a>
+      <a href="portfolio.html">Work</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn" href="start-project.html">Start a Project</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="top">
+  <div class="wrap hero__inner">
+    <div data-reveal>
+      <p class="tag">Terms of Use · Service Framework · Platform Rules</p>
+      <h1>Terms That Define <span style="color:var(--amb)">How We Work Together.</span></h1>
+      <p class="lead">
+        These terms explain the rules, responsibilities and expectations that apply when you use
+        IKAZE DIGITAL services, website features and digital experiences.
+      </p>
+      <div class="hero__meta">
+        <span>Effective date: <b class="placeholder">[TO BE CONFIRMED]</b></span>
+        <span>Last updated: <b>10 October 2026</b></span>
+        <span>Version: <b>v1.0</b></span>
+      </div>
+      <div class="hero__cta">
+        <a class="btn" href="start-project.html">Start a Project</a>
+        <a class="btn o" href="privacy.html">Read Privacy Policy</a>
+      </div>
+    </div>
+    <div class="doc-visual" data-reveal>
+      <canvas id="docCanvas" aria-label="3D illustration representing a digital agreement"></canvas>
+      <span class="doc-visual__label">Clear · Honest · Documented</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== AT A GLANCE ==================== -->
+<section id="glance">
+  <div class="wrap" data-reveal>
+    <p class="tag">Terms at a Glance</p>
+    <h2>A short summary before the details.</h2>
+    <p class="lead">If you only read one section, read this one.</p>
+    <div class="glance">
+      <div class="gcard">
+        <div class="gcard__icon">◆</div>
+        <h3>Use Responsibly</h3>
+        <p>Use IKAZE DIGITAL services lawfully and respectfully.</p>
+      </div>
+      <div class="gcard">
+        <div class="gcard__icon">◈</div>
+        <h3>Provide Accurate Information</h3>
+        <p>Information submitted through forms should be accurate and current.</p>
+      </div>
+      <div class="gcard">
+        <div class="gcard__icon">◉</div>
+        <h3>Respect Intellectual Property</h3>
+        <p>Do not copy, misuse or redistribute protected content or code without permission.</p>
+      </div>
+      <div class="gcard">
+        <div class="gcard__icon">◐</div>
+        <h3>Project Scope Matters</h3>
+        <p>Custom projects are governed by their agreed scope and deliverables.</p>
+      </div>
+      <div class="gcard">
+        <div class="gcard__icon">◇</div>
+        <h3>Pricing Is Contextual</h3>
+        <p>Estimates are not necessarily final quotations.</p>
+      </div>
+      <div class="gcard">
+        <div class="gcard__icon">⌘</div>
+        <h3>Protect Your Account</h3>
+        <p>Users are responsible for maintaining the security of their account credentials.</p>
+      </div>
+      <div class="gcard">
+        <div class="gcard__icon">✦</div>
+        <h3>Future Products May Differ</h3>
+        <p>New products may introduce product-specific agreements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== LEGAL REVIEW NOTICE ==================== -->
+<section id="review-notice" style="padding-top:0">
+  <div class="wrap wrap--narrow" data-reveal>
+    <div class="callout callout--review">
+      <div class="callout__icon">⚖</div>
+      <p><strong>Legal review notice.</strong> These website terms describe how IKAZE DIGITAL operates and are intended to be clear and honest. They should be reviewed and finalized by qualified legal counsel before being relied upon as a complete legal agreement.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== DOC LAYOUT ==================== -->
+<section id="terms" style="padding-top:20px">
+  <div class="wrap doc-layout">
+
+    <!-- TOC -->
+    <aside class="toc" aria-label="Table of contents">
+      <button class="toc-toggle" aria-expanded="false" aria-controls="tocList-ol">Table of Contents</button>
+      <h3 id="tocList" style="margin-top:14px">Sections</h3>
+      <ol id="tocList-ol">
+        <li><a href="#accept">Acceptance of Terms</a></li>
+        <li><a href="#about">About IKAZE DIGITAL</a></li>
+        <li><a href="#eligibility">Eligibility</a></li>
+        <li><a href="#website">Website Use</a></li>
+        <li><a href="#accounts">Accounts</a></li>
+        <li><a href="#responsibilities">User Responsibilities</a></li>
+        <li><a href="#prohibited">Prohibited Activities</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#descriptions">Service Descriptions</a></li>
+        <li><a href="#requests">Project Requests</a></li>
+        <li><a href="#projectinfo">Project Information</a></li>
+        <li><a href="#scope">Project Scope</a></li>
+        <li><a href="#changes">Change Requests</a></li>
+        <li><a href="#clientresp">Client Responsibilities</a></li>
+        <li><a href="#contentrights">Content &amp; Legal Rights</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#estimator">Project Estimator</a></li>
+        <li><a href="#payments">Payments</a></li>
+        <li><a href="#thirdcosts">Third-Party Costs</a></li>
+        <li><a href="#refunds">Refunds &amp; Cancellations</a></li>
+        <li><a href="#delivery">Delivery &amp; Timelines</a></li>
+        <li><a href="#approval">Client Approval</a></li>
+        <li><a href="#ip">Intellectual Property</a></li>
+        <li><a href="#oss">Open-Source Software</a></li>
+        <li><a href="#portfolio">Portfolio Rights</a></li>
+        <li><a href="#ugc">User-Generated Content</a></li>
+        <li><a href="#public">Public Content</a></li>
+        <li><a href="#moderation">Content Moderation</a></li>
+        <li><a href="#ai">AI &amp; Automated Features</a></li>
+        <li><a href="#aiinput">AI Inputs</a></li>
+        <li><a href="#thirdparty">Third-Party Services</a></li>
+        <li><a href="#externallinks">External Links</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#opportunities">Opportunities</a></li>
+        <li><a href="#availability">Availability</a></li>
+        <li><a href="#productdev">Product Development</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#warranties">Disclaimer of Warranties</a></li>
+        <li><a href="#results">No Guaranteed Results</a></li>
+        <li><a href="#advice">Professional Advice Disclaimer</a></li>
+        <li><a href="#liability">Limitation of Liability</a></li>
+        <li><a href="#indemnification">Indemnification</a></li>
+        <li><a href="#termination">Suspension &amp; Termination</a></li>
+        <li><a href="#accountdel">Account Deletion</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="#dataprotect">Data Protection</a></li>
+        <li><a href="#governing">Governing Law</a></li>
+        <li><a href="#dispute">Dispute Resolution</a></li>
+        <li><a href="#forcemajeure">Force Majeure</a></li>
+        <li><a href="#severability">Severability</a></li>
+        <li><a href="#entire">Entire Agreement</a></li>
+        <li><a href="#nowaiver">No Waiver</a></li>
+        <li><a href="#assignment">Assignment</a></li>
+        <li><a href="#changes-terms">Changes to Terms</a></li>
+        <li><a href="#connection">Privacy + Terms Connection</a></li>
+        <li><a href="#product-terms">Future Product Terms</a></li>
+        <li><a href="#marketplace-terms">Marketplace Terms</a></li>
+        <li><a href="#creator-terms">Creator Platform Terms</a></li>
+        <li><a href="#jobs-terms">Jobs &amp; Opportunity Terms</a></li>
+        <li><a href="#education-terms">Education Terms</a></li>
+        <li><a href="#digital-products">Digital Products</a></li>
+        <li><a href="#legal-compliance">User Responsibility for Legal Compliance</a></li>
+        <li><a href="#security-report">Responsible Security Reporting</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#legal-notice">Legal Notice</a></li>
+      </ol>
+    </aside>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+<!-- 1 -->
+<section id="accept" data-reveal>
+  <h2><span class="num">01</span>Acceptance of These Terms</h2>
+  <p>By accessing or using the IKAZE DIGITAL website and the services, features and pages described in these Terms, you acknowledge that you have read and understood the terms applicable to your use.</p>
+  <p>Where a specific service, project or product requires explicit acceptance, that acceptance will be requested separately — for example, through a checkbox on a specific form or an agreement signed as part of a project.</p>
+  <p style="color:var(--mut);font-size:.9rem">Simply browsing the website does not, in every jurisdiction, automatically create a binding contractual relationship. Contractual obligations typically arise only when a specific agreement is entered into between you and IKAZE DIGITAL.</p>
+</section>
+
+<!-- 2 -->
+<section id="about" data-reveal>
+  <h2><span class="num">02</span>About IKAZE DIGITAL</h2>
+  <p><strong>IKAZE DIGITAL</strong> is a Rwanda-rooted technology and creative ecosystem focused on:</p>
+  <ul>
+    <li>Digital technology</li>
+    <li>Web development</li>
+    <li>Software</li>
+    <li>AI and automation</li>
+    <li>Creative solutions</li>
+    <li>Education technology</li>
+    <li>Digital transformation</li>
+    <li>Business technology</li>
+    <li>Emerging digital products</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">Corporate registration details, legal entity identifiers and physical office information are not published here because they are not yet formalized for this early-stage platform. Where required, they will be provided in project-specific agreements or on request.</p>
+</section>
+
+<!-- 3 -->
+<section id="eligibility" data-reveal>
+  <h2><span class="num">03</span>Eligibility</h2>
+  <p>To use IKAZE DIGITAL services, you must be legally capable of entering into the agreements that apply to your use.</p>
+  <p>For minors:</p>
+  <ul>
+    <li>Certain services may require involvement of a parent or legal guardian</li>
+    <li>Age restrictions may vary by product or service</li>
+    <li>Users should not misrepresent their age to access services they are not eligible for</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">A single universal minimum age is not stated here because requirements vary by product and jurisdiction. Specific products will state any applicable age requirement.</p>
+</section>
+
+<!-- 4 -->
+<section id="website" data-reveal>
+  <h2><span class="num">04</span>Website Use</h2>
+  <p>You may use the IKAZE DIGITAL website to:</p>
+  <ul>
+    <li>Browse public pages and content</li>
+    <li>Read about services, portfolio, ecosystem and pricing</li>
+    <li>Use available free tools where provided</li>
+    <li>Submit legitimate inquiries through contact and project forms</li>
+    <li>Request a quote or start a project</li>
+    <li>Explore services and available features</li>
+  </ul>
+  <p>You must not:</p>
+  <ul>
+    <li>Attack, probe or exploit the website or its underlying infrastructure</li>
+    <li>Exploit vulnerabilities without responsible disclosure</li>
+    <li>Distribute malware through forms, links or any channel connected to the site</li>
+    <li>Abuse forms (spam, automated submissions, forged data)</li>
+    <li>Attempt unauthorized access to any part of the site or its systems</li>
+    <li>Impersonate IKAZE DIGITAL, its founder or other users</li>
+    <li>Scrape restricted data or bypass access controls</li>
+    <li>Interfere with service availability</li>
+    <li>Submit fraudulent or misleading information</li>
+    <li>Bypass security controls or rate limits</li>
+  </ul>
+</section>
+
+<!-- 5 -->
+<section id="accounts" data-reveal>
+  <h2><span class="num">05</span>Accounts</h2>
+  <p>Where accounts are enabled for a specific IKAZE DIGITAL product, users are responsible for:</p>
+  <ul>
+    <li>Providing accurate registration information</li>
+    <li>Maintaining the security of their credentials</li>
+    <li>Using a strong, unique password</li>
+    <li>Activity performed through their account</li>
+    <li>Reporting suspicious access promptly</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">As of this terms version, general account registration is not enabled across the main IKAZE DIGITAL website. Where accounts are introduced, the applicable product will describe them.</p>
+  <div class="callout">
+    <div class="callout__icon">!</div>
+    <p><strong>We will never ask you to send your password.</strong> Not by email, not through a form, not in chat.</p>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="responsibilities" data-reveal>
+  <h2><span class="num">06</span>User Responsibilities</h2>
+  <p>As a user of IKAZE DIGITAL, you agree to:</p>
+  <ul>
+    <li>Provide accurate and current information when submitting forms or requests</li>
+    <li>Use the site lawfully and in accordance with these Terms</li>
+    <li>Respect intellectual property of IKAZE DIGITAL, other users and third parties</li>
+    <li>Not misuse tools, opportunities or community features</li>
+    <li>Follow applicable law in your jurisdiction</li>
+    <li>Report security issues responsibly rather than exploiting them</li>
+  </ul>
+</section>
+
+<!-- 7 -->
+<section id="prohibited" data-reveal>
+  <h2><span class="num">07</span>Prohibited Activities</h2>
+  <p>The following activities are prohibited:</p>
+
+  <h4>Security abuse</h4>
+  <ul>
+    <li>Hacking, unauthorized access or credential attacks</li>
+    <li>Distributing malware</li>
+    <li>Exploiting vulnerabilities without responsible disclosure</li>
+  </ul>
+
+  <h4>Fraud</h4>
+  <ul>
+    <li>Impersonation of IKAZE DIGITAL, its founder or any other party</li>
+    <li>Fraudulent project requests or payment fraud</li>
+    <li>Submitting deceptive or misleading information</li>
+  </ul>
+
+  <h4>Abuse</h4>
+  <ul>
+    <li>Harassment, threats or unlawful content</li>
+    <li>Spam through any contact channel</li>
+  </ul>
+
+  <h4>Platform abuse</h4>
+  <ul>
+    <li>Automated attacks or excessive request volumes</li>
+    <li>Scraping where prohibited</li>
+    <li>Attempts to bypass rate limits or security controls</li>
+  </ul>
+
+  <h4>Intellectual property abuse</h4>
+  <ul>
+    <li>Unauthorized copying, redistribution or reverse engineering where prohibited</li>
+    <li>Unauthorized commercial use of IKAZE DIGITAL content or code</li>
+  </ul>
+</section>
+
+<!-- 8 -->
+<section id="services" data-reveal>
+  <h2><span class="num">08</span>Our Services</h2>
+  <p>IKAZE DIGITAL may offer technology and creative services such as:</p>
+  <ul>
+    <li>Web Development</li>
+    <li>Software Development</li>
+    <li>Mobile App Development</li>
+    <li>AI &amp; Automation</li>
+    <li>E-Commerce</li>
+    <li>UI/UX &amp; Product Design</li>
+    <li>Branding &amp; Creative Design</li>
+    <li>Digital Marketing &amp; SEO</li>
+    <li>Cloud, Hosting &amp; Domains</li>
+    <li>Cybersecurity &amp; Digital Protection</li>
+    <li>Education Technology</li>
+    <li>Digital Transformation</li>
+    <li>Business Consulting &amp; Technology Strategy</li>
+    <li>Maintenance &amp; Technical Support</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">Service availability may change. Not every service is actively offered at every stage — some are available, some are being developed, and some are planned. See <a href="services.html" style="color:var(--amb)">services.html</a> for current availability.</p>
+</section>
+
+<!-- 9 -->
+<section id="descriptions" data-reveal>
+  <h2><span class="num">09</span>Service Descriptions</h2>
+  <p>Website descriptions are intended to communicate the general scope of services we offer. They are not a substitute for a project-specific proposal.</p>
+  <p>Actual deliverables for any given project are determined by:</p>
+  <ul>
+    <li>The project scope</li>
+    <li>The proposal or quotation</li>
+    <li>A statement of work, where applicable</li>
+    <li>The signed agreement</li>
+    <li>The confirmed technical requirements</li>
+    <li>The agreed timeline</li>
+  </ul>
+</section>
+
+<!-- 10 -->
+<section id="requests" data-reveal>
+  <h2><span class="num">10</span>Project Requests</h2>
+  <p>Submitting the form at <a href="start-project.html" style="color:var(--amb)">start-project.html</a> does <strong>not</strong> automatically create a contract.</p>
+  <p>The normal process is:</p>
+  <div class="flow">
+    <span>Project Request</span><i>→</i>
+    <span>Initial Review</span><i>→</i>
+    <span>Clarification</span><i>→</i>
+    <span>Scope Definition</span><i>→</i>
+    <span>Proposal / Quote</span><i>→</i>
+    <span>Agreement</span><i>→</i>
+    <span>Development</span>
+  </div>
+  <p>A binding project relationship arises only according to the applicable agreement.</p>
+</section>
+
+<!-- 11 -->
+<section id="projectinfo" data-reveal>
+  <h2><span class="num">11</span>Project Information</h2>
+  <p>When submitting a project request, you are responsible for providing sufficiently accurate information about:</p>
+  <ul>
+    <li>Project goals and desired outcomes</li>
+    <li>Functional requirements</li>
+    <li>Target users</li>
+    <li>Technical requirements and integrations</li>
+    <li>Content you will provide</li>
+    <li>Deadlines and constraints</li>
+    <li>References or examples</li>
+  </ul>
+  <p>If important requirements are omitted at the time of scoping, project scope and pricing may change later.</p>
+</section>
+
+<!-- 12 -->
+<section id="scope" data-reveal>
+  <h2><span class="num">12</span>Scope Defines the Work</h2>
+  <p>Project scope may define:</p>
+  <ul>
+    <li>Features</li>
+    <li>Pages and screens</li>
+    <li>Integrations</li>
+    <li>Platforms (web, mobile, both)</li>
+    <li>Deliverables</li>
+    <li>Number of revisions</li>
+    <li>Technology and stack</li>
+    <li>Deadlines</li>
+    <li>Support commitments</li>
+  </ul>
+  <p>Additional work outside the agreed scope may require additional approval and additional pricing.</p>
+  <div class="callout">
+    <div class="callout__icon">!</div>
+    <p>Unlimited revisions and unlimited development are <strong>not</strong> automatically included. What is included is defined in the applicable scope and agreement.</p>
+  </div>
+</section>
+
+<!-- 13 -->
+<section id="changes" data-reveal>
+  <h2><span class="num">13</span>Changes &amp; Additional Requirements</h2>
+  <p>Significant changes requested after scope approval may affect:</p>
+  <ul>
+    <li>Cost</li>
+    <li>Timeline</li>
+    <li>Architecture</li>
+    <li>Deliverables</li>
+  </ul>
+  <p>Where appropriate, changes should be documented and agreed before implementation begins.</p>
+</section>
+
+<!-- 14 -->
+<section id="clientresp" data-reveal>
+  <h2><span class="num">14</span>Client Responsibilities</h2>
+  <p>For project-based work, clients are typically responsible for providing:</p>
+  <ul>
+    <li>Accurate and complete content</li>
+    <li>Logos and brand assets</li>
+    <li>Approvals in a timely manner</li>
+    <li>Clear and consolidated feedback</li>
+    <li>Legal permissions for any material provided</li>
+    <li>Access to third-party systems where legitimately required</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">Sensitive credentials should be shared through secure methods, never through ordinary email or chat. We will discuss the appropriate method before any sensitive access is needed.</p>
+</section>
+
+<!-- 15 -->
+<section id="contentrights" data-reveal>
+  <h2><span class="num">15</span>Content &amp; Legal Rights</h2>
+  <p>Users and clients must have appropriate rights to any content they provide, including:</p>
+  <ul>
+    <li>Images</li>
+    <li>Videos</li>
+    <li>Text</li>
+    <li>Logos and trademarks</li>
+    <li>Music and audio</li>
+    <li>Documents</li>
+    <li>Datasets</li>
+    <li>Software</li>
+  </ul>
+  <p>You must not ask IKAZE DIGITAL to knowingly use infringing or unlawfully obtained content in a project.</p>
+</section>
+
+<!-- 16 -->
+<section id="pricing" data-reveal>
+  <h2><span class="num">16</span>Pricing</h2>
+  <p>See the full <a href="pricing.html" style="color:var(--amb)">pricing page</a> for our current pricing approach. This section explains the terminology used across the site.</p>
+
+  <h4>Estimate</h4>
+  <p>A planning indication based on the information available at the time. Used to help you plan.</p>
+
+  <h4>Quote</h4>
+  <p>A specific commercial proposal, subject to its stated conditions and validity period.</p>
+
+  <h4>Final Project Price</h4>
+  <p>The amount agreed in the applicable project agreement, after scope confirmation.</p>
+
+  <p style="color:var(--mut);font-size:.9rem">The website estimator is not a guaranteed quote. It is a planning tool.</p>
+</section>
+
+<!-- 17 -->
+<section id="estimator" data-reveal>
+  <h2><span class="num">17</span>Project Estimator</h2>
+  <div class="callout">
+    <div class="callout__icon">i</div>
+    <p>Any online project estimator is intended for planning purposes and does not automatically create a binding quotation.</p>
+  </div>
+  <p>Factors that may affect a real quote include:</p>
+  <ul>
+    <li>Complexity</li>
+    <li>Scope</li>
+    <li>Features</li>
+    <li>Integrations</li>
+    <li>Timeline</li>
+    <li>Support level</li>
+    <li>Third-party costs</li>
+  </ul>
+</section>
+
+<!-- 18 -->
+<section id="payments" data-reveal>
+  <h2><span class="num">18</span>Payments</h2>
+  <p>Payment terms are defined in the applicable project agreement, proposal or invoice. Specific percentages, milestones and due dates are set per project — no universal rules are assumed here.</p>
+  <p>Possible payment stages may include (depending on the project):</p>
+  <ul>
+    <li>A deposit or initial payment before development begins</li>
+    <li>Milestone payments during development</li>
+    <li>A final payment on delivery</li>
+    <li>Recurring payments for ongoing support or maintenance</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">These are possible structures, not universal rules. Your specific project will be governed by its own agreement.</p>
+</section>
+
+<!-- 19 -->
+<section id="thirdcosts" data-reveal>
+  <h2><span class="num">19</span>Third-Party Costs</h2>
+  <p>Projects commonly involve external costs such as:</p>
+  <ul>
+    <li>Domain registration</li>
+    <li>Hosting</li>
+    <li>Cloud services</li>
+    <li>Payment providers</li>
+    <li>APIs</li>
+    <li>Email and SMS services</li>
+    <li>Software licenses</li>
+    <li>Advertising platforms</li>
+    <li>Premium assets (stock photography, fonts, music)</li>
+  </ul>
+  <p>Unless expressly included in an agreement, these costs are separate from IKAZE DIGITAL's own service fees.</p>
+</section>
+
+<!-- 20 -->
+<section id="refunds" data-reveal>
+  <h2><span class="num">20</span>Refunds &amp; Cancellations</h2>
+  <p>Refunds, cancellations and credits are governed by the applicable project agreement, purchase terms or product-specific policy. A universal refund policy is not stated here because it depends on the nature of the engagement.</p>
+  <p>Where an official refund policy exists for a specific product or service, it will be provided alongside that product.</p>
+  <p style="color:var(--mut);font-size:.9rem">Refunds are not automatically promised by these website terms.</p>
+</section>
+
+<!-- 21 -->
+<section id="delivery" data-reveal>
+  <h2><span class="num">21</span>Delivery &amp; Timelines</h2>
+  <p>Project timelines depend on many factors, including:</p>
+  <ul>
+    <li>Project scope</li>
+    <li>Client approvals</li>
+    <li>Client feedback</li>
+    <li>Content delivery</li>
+    <li>Third-party services</li>
+    <li>Technical complexity</li>
+    <li>Requested changes during development</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">Specific delivery dates, launch dates and response times are not guaranteed by the general website terms unless formally agreed in a project agreement.</p>
+</section>
+
+<!-- 22 -->
+<section id="approval" data-reveal>
+  <h2><span class="num">22</span>Client Approval</h2>
+  <p>Where applicable, clients are expected to review and approve:</p>
+  <ul>
+    <li>Designs</li>
+    <li>Content</li>
+    <li>Features</li>
+    <li>Functionality</li>
+    <li>Staging versions</li>
+    <li>Final deliverables</li>
+  </ul>
+  <p>Delays in approval can affect delivery timelines.</p>
+</section>
+
+<!-- 23 -->
+<section id="ip" data-reveal>
+  <h2><span class="num">23</span>Intellectual Property</h2>
+  <p>Different categories of materials have different ownership and licensing. This section distinguishes them.</p>
+
+  <h4>Client-owned materials</h4>
+  <p>Content and assets provided by the client remain owned by the client (or by their licensors), unless an agreement states otherwise.</p>
+
+  <h4>IKAZE DIGITAL materials</h4>
+  <p>Pre-existing frameworks, components, systems, templates, methods, reusable code and tools that IKAZE DIGITAL brings to a project remain the property of IKAZE DIGITAL. Where they are included in a delivered project, they are typically licensed for use rather than transferred.</p>
+
+  <h4>Third-party materials</h4>
+  <p>Libraries, fonts, APIs, software and assets governed by their own licenses remain subject to those licenses.</p>
+
+  <h4>Project deliverables</h4>
+  <p>Ownership and licensing of project deliverables are determined by the applicable project agreement. Not every project results in full ownership transfer — the specific arrangement is set out in the agreement.</p>
+
+  <div class="callout callout--warn">
+    <div class="callout__icon">!</div>
+    <p>We do not automatically state that "every project is 100% owned by the client." Ownership and licensing terms are determined by the specific agreement for each project.</p>
+  </div>
+</section>
+
+<!-- 24 -->
+<section id="oss" data-reveal>
+  <h2><span class="num">24</span>Open-Source Software</h2>
+  <p>Projects may use open-source software. Open-source components remain subject to their respective licenses, and any use of delivered code must comply with those licenses.</p>
+  <p>Where a project includes open-source components, the applicable license terms still apply.</p>
+</section>
+
+<!-- 25 -->
+<section id="portfolio" data-reveal>
+  <h2><span class="num">25</span>Portfolio Rights</h2>
+  <p>Where permitted by the applicable project agreement, IKAZE DIGITAL may showcase completed work as part of its portfolio.</p>
+  <p>We do not automatically claim the right to publish confidential client projects. Any portfolio use is subject to the terms of the specific agreement between IKAZE DIGITAL and the client.</p>
+</section>
+
+<!-- 26 -->
+<section id="ugc" data-reveal>
+  <h2><span class="num">26</span>User-Generated Content</h2>
+  <p>Future IKAZE DIGITAL products may allow users to submit content such as:</p>
+  <ul>
+    <li>Profiles</li>
+    <li>Posts</li>
+    <li>Comments</li>
+    <li>Portfolio items</li>
+    <li>Marketplace listings</li>
+    <li>Applications</li>
+    <li>Reviews</li>
+  </ul>
+  <p>Users remain responsible for content they submit and must not submit unlawful, infringing or misleading material.</p>
+  <p style="color:var(--mut);font-size:.9rem">These features are not yet live on the current site. This section is provided so these Terms remain accurate when they are introduced.</p>
+</section>
+
+<!-- 27 -->
+<section id="public" data-reveal>
+  <h2><span class="num">27</span>Public Content</h2>
+  <p>Content intentionally published publicly through IKAZE DIGITAL features may be visible to:</p>
+  <ul>
+    <li>Other users</li>
+    <li>Search engines</li>
+    <li>Site visitors</li>
+    <li>Third parties, potentially beyond the platform</li>
+  </ul>
+  <p>Please do not publish confidential information through public features.</p>
+</section>
+
+<!-- 28 -->
+<section id="moderation" data-reveal>
+  <h2><span class="num">28</span>Content Moderation</h2>
+  <p>For future community and product functionality, IKAZE DIGITAL may need to:</p>
+  <ul>
+    <li>Remove prohibited content</li>
+    <li>Restrict accounts</li>
+    <li>Investigate abuse</li>
+    <li>Respond to reports from users</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">A specific moderation system is not claimed here — these are principles that will apply to community features when they are introduced.</p>
+</section>
+
+<!-- 29 -->
+<section id="ai" data-reveal>
+  <h2><span class="num">29</span>AI &amp; Automated Features</h2>
+  <p>AI functionality may be introduced in specific IKAZE DIGITAL products. Where AI features exist, they may:</p>
+  <ul>
+    <li>Assist with content</li>
+    <li>Provide recommendations</li>
+    <li>Summarize information</li>
+    <li>Support workflows</li>
+    <li>Assist with learning</li>
+    <li>Automate certain tasks</li>
+  </ul>
+  <div class="callout callout--warn">
+    <div class="callout__icon">!</div>
+    <p><strong>AI-generated output may contain errors.</strong> Users should review important information before relying on it.</p>
+  </div>
+  <p>AI is not represented as infallible, guaranteed accurate, or as a substitute for professional legal, medical or financial advice, unless a specific regulated service has appropriate safeguards in place.</p>
+</section>
+
+<!-- 30 -->
+<section id="aiinput" data-reveal>
+  <h2><span class="num">30</span>AI Inputs</h2>
+  <p>When using AI features, avoid submitting:</p>
+  <ul>
+    <li>Passwords</li>
+    <li>Private keys or API credentials</li>
+    <li>Authentication codes or one-time passwords</li>
+    <li>Highly sensitive personal data</li>
+    <li>Confidential business information</li>
+  </ul>
+  <p>Unless the specific service provides appropriate protections and explicitly states so, treat AI inputs as non-private.</p>
+</section>
+
+<!-- 31 -->
+<section id="thirdparty" data-reveal>
+  <h2><span class="num">31</span>Third-Party Services</h2>
+  <p>Some functionality may rely on third-party providers. Depending on the specific page or feature, this may include:</p>
+  <ul>
+    <li>Firebase (authentication, database, storage) where configured</li>
+    <li>Hosting providers</li>
+    <li>Authentication providers (for example, Google sign-in where enabled)</li>
+    <li>Payment processors where applicable</li>
+    <li>Email or SMS services where applicable</li>
+    <li>AI providers where applicable</li>
+  </ul>
+  <p>Third-party services may have their own terms, privacy policies, service limitations, pricing and availability. We do not control them.</p>
+</section>
+
+<!-- 32 -->
+<section id="externallinks" data-reveal>
+  <h2><span class="num">32</span>External Links</h2>
+  <p>IKAZE DIGITAL may link to third-party websites or services. We do not control all third-party websites and are not responsible for their independent content, policies or availability.</p>
+</section>
+
+<!-- 33 -->
+<section id="tools" data-reveal>
+  <h2><span class="num">33</span>Tools</h2>
+  <p>Free tools on this site (calculators, estimators, generators, educational utilities) are provided for their intended purposes and may contain limitations.</p>
+  <p>Tool results are <strong>not</strong> guaranteed to be legally authoritative, professionally certified, error-free, or suitable for critical decisions. Use your own judgement and consult appropriate professionals for matters that require them.</p>
+</section>
+
+<!-- 34 -->
+<section id="opportunities" data-reveal>
+  <h2><span class="num">34</span>Opportunities</h2>
+  <p>The future <a href="opportunities.html" style="color:var(--amb)">opportunities page</a> may list jobs, internships, scholarships, freelance opportunities, volunteering and programs.</p>
+  <p>IKAZE DIGITAL does not guarantee:</p>
+  <ul>
+    <li>The legitimacy of every external opportunity listed</li>
+    <li>Selection for any opportunity</li>
+    <li>Employment, income, scholarship award or program acceptance</li>
+  </ul>
+  <p>Users should independently verify third-party opportunities before acting on them.</p>
+</section>
+
+<!-- 35 -->
+<section id="availability" data-reveal>
+  <h2><span class="num">35</span>Service Availability</h2>
+  <p>Websites and services may occasionally be:</p>
+  <ul>
+    <li>Unavailable</li>
+    <li>Interrupted</li>
+    <li>Updated</li>
+    <li>Modified</li>
+    <li>Delayed</li>
+    <li>Temporarily disabled</li>
+  </ul>
+  <p>Reasons may include maintenance, security, infrastructure changes, technical failures, third-party outages or upgrades.</p>
+  <p style="color:var(--mut);font-size:.9rem">We do not promise 100% uptime. Where a specific service-level agreement exists, it will be provided separately.</p>
+</section>
+
+<!-- 36 -->
+<section id="productdev" data-reveal>
+  <h2><span class="num">36</span>Product Development</h2>
+  <p>IKAZE DIGITAL may:</p>
+  <ul>
+    <li>Launch new products</li>
+    <li>Modify features</li>
+    <li>Discontinue features</li>
+    <li>Change interfaces</li>
+    <li>Experiment with new technologies</li>
+  </ul>
+  <p>Future ecosystem products may have their own terms when launched. Products are described using honest statuses: <strong>Available</strong>, <strong>In Development</strong>, <strong>Coming Soon</strong>, <strong>Concept</strong>, <strong>Experimental</strong>.</p>
+</section>
+
+<!-- 37 -->
+<section id="security" data-reveal>
+  <h2><span class="num">37</span>Security &amp; Responsible Use</h2>
+  <p>You must not:</p>
+  <ul>
+    <li>Attempt unauthorized access to any system</li>
+    <li>Exploit vulnerabilities</li>
+    <li>Distribute malware</li>
+    <li>Steal credentials</li>
+    <li>Bypass authorization controls</li>
+    <li>Attack infrastructure</li>
+    <li>Overload services with excessive requests</li>
+  </ul>
+  <p>If you discover a security vulnerability, please disclose it responsibly through the contact channel in section 66, rather than exploiting it.</p>
+  <p style="color:var(--mut);font-size:.9rem">A formal bug bounty program is not currently offered, and no reward is promised for responsible disclosure.</p>
+</section>
+
+<!-- 38 -->
+<section id="warranties" data-reveal>
+  <h2><span class="num">38</span>Disclaimer of Warranties</h2>
+  <p>To the extent permitted by applicable law:</p>
+  <ul>
+    <li>Website information may contain errors or omissions</li>
+    <li>Services may change over time</li>
+    <li>Third-party services may fail or change</li>
+    <li>Free tools may have limitations</li>
+    <li>Future products may change before launch</li>
+    <li>Availability is not guaranteed</li>
+  </ul>
+  <p>The website is provided on an "as is" and "as available" basis, to the extent permitted by applicable law. This disclaimer does not exclude any warranty that cannot legally be excluded in your jurisdiction.</p>
+</section>
+
+<!-- 39 -->
+<section id="results" data-reveal>
+  <h2><span class="num">39</span>No Guaranteed Results</h2>
+  <p>IKAZE DIGITAL does not automatically guarantee:</p>
+  <ul>
+    <li>Business revenue or sales</li>
+    <li>Website rankings or search-engine positions</li>
+    <li>User growth or audience growth</li>
+    <li>Investment returns</li>
+    <li>Employment outcomes</li>
+    <li>Funding or scholarship awards</li>
+    <li>Viral performance or specific engagement metrics</li>
+  </ul>
+  <p>Project outcomes depend on many factors beyond the technology itself — including market conditions, content quality, execution and timing.</p>
+</section>
+
+<!-- 40 -->
+<section id="advice" data-reveal>
+  <h2><span class="num">40</span>Professional Advice Disclaimer</h2>
+  <p>Unless a specific regulated professional service is actually offered and appropriate safeguards are in place, general website content does not constitute:</p>
+  <ul>
+    <li>Legal advice</li>
+    <li>Medical advice</li>
+    <li>Financial advice</li>
+    <li>Investment advice</li>
+    <li>Tax advice</li>
+  </ul>
+  <p>Please consult qualified professionals for matters that require regulated expertise.</p>
+</section>
+
+<!-- 41 -->
+<section id="liability" data-reveal>
+  <h2><span class="num">41</span>Limitation of Liability</h2>
+  <div class="callout callout--review">
+    <div class="callout__icon">⚖</div>
+    <p><strong>Placeholder — requires legal review.</strong> To the extent permitted by applicable law, certain limitations may apply to liability arising from use of the website or services. Specific project agreements may contain additional terms. Final wording will be provided after legal review.</p>
+  </div>
+  <p style="color:var(--mut);font-size:.9rem">Specific monetary caps or liability limits are not stated here because they depend on the applicable legal framework and the specific agreement for each project.</p>
+</section>
+
+<!-- 42 -->
+<section id="indemnification" data-reveal>
+  <h2><span class="num">42</span>Indemnification</h2>
+  <div class="callout callout--review">
+    <div class="callout__icon">⚖</div>
+    <p><strong>Placeholder — requires legal review.</strong> Where legally enforceable and applicable, users may be responsible for certain claims arising from unlawful use, infringement, misuse, violation of these Terms or unauthorized activity. Final wording will be provided after legal review.</p>
+  </div>
+</section>
+
+<!-- 43 -->
+<section id="termination" data-reveal>
+  <h2><span class="num">43</span>Suspension &amp; Termination</h2>
+  <p>Access to IKAZE DIGITAL services may be restricted or terminated where appropriate because of:</p>
+  <ul>
+    <li>Serious violation of these Terms</li>
+    <li>Security abuse</li>
+    <li>Fraud</li>
+    <li>Unlawful activity</li>
+    <li>Threats to other users or to our infrastructure</li>
+  </ul>
+  <p>Where possible and appropriate, notice will be provided — subject to security or legal circumstances that may require immediate action.</p>
+  <p style="color:var(--mut);font-size:.9rem">For paid projects, termination is governed by the applicable project agreement.</p>
+</section>
+
+<!-- 44 -->
+<section id="accountdel" data-reveal>
+  <h2><span class="num">44</span>Account Deletion</h2>
+  <p>Where accounts exist, users may be able to request account deletion.</p>
+  <p>Data handling after deletion is governed by:</p>
+  <ul>
+    <li>Our <a href="privacy.html" style="color:var(--amb)">Privacy Policy</a></li>
+    <li>Applicable legal requirements</li>
+    <li>Security requirements</li>
+    <li>Contractual obligations</li>
+  </ul>
+</section>
+
+<!-- 45 -->
+<section id="privacy" data-reveal>
+  <h2><span class="num">45</span>Privacy</h2>
+  <p>Personal information is handled according to the <strong>IKAZE DIGITAL Privacy Policy</strong>.</p>
+  <div class="callout callout--blue">
+    <div class="callout__icon">◆</div>
+    <p>For details on how we collect, use and protect personal information, please read the <a href="privacy.html" style="color:var(--blue);font-weight:600">Privacy Policy</a>.</p>
+  </div>
+  <p>These Terms do not duplicate the entire Privacy Policy.</p>
+</section>
+
+<!-- 46 -->
+<section id="dataprotect" data-reveal>
+  <h2><span class="num">46</span>Data Protection</h2>
+  <p>Privacy and data handling are governed separately through our <a href="privacy.html" style="color:var(--amb)">Privacy Policy</a>.</p>
+  <p style="color:var(--mut);font-size:.9rem">We do not claim formal certification or compliance under any specific data protection law unless such certification has been independently verified.</p>
+</section>
+
+<!-- 47 -->
+<section id="governing" data-reveal>
+  <h2><span class="num">47</span>Governing Law</h2>
+  <p>This section will be finalized with qualified legal counsel. Until then, the following values are intentionally marked as to be confirmed:</p>
+  <div class="placeholder-box">
+<b>GOVERNING LAW:</b> <span class="ph-value">[TO BE CONFIRMED]</span><br/>
+<b>JURISDICTION:</b> <span class="ph-value">[TO BE CONFIRMED]</span><br/>
+<b>DISPUTE RESOLUTION:</b> <span class="ph-value">[TO BE CONFIRMED]</span>
+  </div>
+  <p style="color:var(--mut);font-size:.9rem">We do not automatically claim that Rwandan law applies exclusively to all users in all circumstances, because such a claim requires legal review and depends on the specific user, project and applicable consumer protections.</p>
+</section>
+
+<!-- 48 -->
+<section id="dispute" data-reveal>
+  <h2><span class="num">48</span>Dispute Resolution</h2>
+  <p>If you have a concern about our services, we ask that you contact us first so we can attempt to resolve it informally.</p>
+  <p style="color:var(--mut);font-size:.9rem">Mandatory arbitration, mediation or specific court jurisdiction are not asserted here unless formally established through a signed agreement or a formal legal framework that applies to your relationship with IKAZE DIGITAL.</p>
+</section>
+
+<!-- 49 -->
+<section id="forcemajeure" data-reveal>
+  <h2><span class="num">49</span>Force Majeure</h2>
+  <div class="callout callout--review">
+    <div class="callout__icon">⚖</div>
+    <p><strong>Placeholder — requires legal review.</strong> Events outside reasonable control may affect performance — for example, major infrastructure outages, natural disasters, widespread internet disruptions, government actions, conflict, major cybersecurity incidents or third-party failures. Final wording will be provided after legal review.</p>
+  </div>
+</section>
+
+<!-- 50 -->
+<section id="severability" data-reveal>
+  <h2><span class="num">50</span>Severability</h2>
+  <p>If a particular provision of these Terms is found to be unenforceable, the remaining provisions may continue to operate where permitted by applicable law.</p>
+</section>
+
+<!-- 51 -->
+<section id="entire" data-reveal>
+  <h2><span class="num">51</span>Entire Agreement</h2>
+  <p>Project-specific agreements may supplement or, in some respects, supersede these general website terms for the specific project they cover.</p>
+  <p style="color:var(--mut);font-size:.9rem">We do not claim that these website terms override signed project contracts. Where the two differ on a specific project, the signed project agreement governs that project.</p>
+</section>
+
+<!-- 52 -->
+<section id="nowaiver" data-reveal>
+  <h2><span class="num">52</span>No Waiver</h2>
+  <p>Failure to enforce a provision of these Terms immediately does not necessarily mean that the provision is permanently waived, subject to applicable law.</p>
+</section>
+
+<!-- 53 -->
+<section id="assignment" data-reveal>
+  <h2><span class="num">53</span>Assignment</h2>
+  <p>Any assignment of rights or obligations under these Terms will be handled consistently with applicable law. Aggressive assignment provisions are intentionally not included here; specific assignments for a project are handled through the applicable agreement.</p>
+</section>
+
+<!-- 54 -->
+<section id="changes-terms" data-reveal>
+  <h2><span class="num">54</span>Changes to These Terms</h2>
+  <p>These Terms may be updated as our services, products or legal obligations evolve.</p>
+  <ul>
+    <li>The updated version and effective date will appear at the top of this page</li>
+    <li>Material changes will be reflected on this page</li>
+    <li>Where appropriate, material changes may be communicated through other channels</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">We do not claim that every minor update will trigger an email to every user.</p>
+</section>
+
+<!-- 55 -->
+<section id="connection" data-reveal>
+  <h2><span class="num">55</span>Privacy + Terms Connection</h2>
+  <p>These documents work together, but they cover different things:</p>
+  <div class="flow">
+    <span>Terms</span><i>↕</i>
+    <span>Privacy</span><i>↕</i>
+    <span>Security</span><i>↕</i>
+    <span>Project Agreement</span><i>↕</i>
+    <span>Product-Specific Terms</span>
+  </div>
+  <ul>
+    <li><strong>Terms</strong> — rules of use</li>
+    <li><strong>Privacy</strong> — how information is handled</li>
+    <li><strong>Project agreement</strong> — specific project scope and commercial relationship</li>
+    <li><strong>Product terms</strong> — rules for a specific digital product</li>
+  </ul>
+</section>
+
+<!-- 56 -->
+<section id="product-terms" data-reveal>
+  <h2><span class="num">56</span>Future Product Terms</h2>
+  <p>Products currently in development or planned — such as IKAZE AI, IKAZE Cloud, IKAZE Forms, IKAZE CRM, IKAZE Creator, IKAZE Jobs, IKAZE Marketplace, IKAZE Academy and IKAZE Labs — may eventually have dedicated:</p>
+  <ul>
+    <li>Terms of Service</li>
+    <li>Privacy information</li>
+    <li>Acceptable Use Policies</li>
+    <li>Subscription terms</li>
+    <li>Refund policies</li>
+    <li>Community rules</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">These separate terms do not currently exist for most of these products. They will be provided when the relevant product is launched.</p>
+</section>
+
+<!-- 57 -->
+<section id="marketplace-terms" data-reveal>
+  <h2><span class="num">57</span>Marketplace Terms</h2>
+  <p>For the future IKAZE Marketplace, additional rules may apply to:</p>
+  <ul>
+    <li>Sellers</li>
+    <li>Buyers</li>
+    <li>Digital products and services</li>
+    <li>Transactions</li>
+    <li>Refunds</li>
+    <li>Intellectual property</li>
+    <li>Disputes between parties</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">Marketplace functionality is not yet available. These rules will be published when it is.</p>
+</section>
+
+<!-- 58 -->
+<section id="creator-terms" data-reveal>
+  <h2><span class="num">58</span>Creator Platform Terms</h2>
+  <p>For the future IKAZE Creator platform, rules may cover:</p>
+  <ul>
+    <li>Creator profiles</li>
+    <li>Publishing</li>
+    <li>Content ownership</li>
+    <li>Licensing</li>
+    <li>Monetization</li>
+    <li>Collaboration</li>
+    <li>Community behaviour</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">These rules do not apply yet. They will be described when the platform is introduced.</p>
+</section>
+
+<!-- 59 -->
+<section id="jobs-terms" data-reveal>
+  <h2><span class="num">59</span>Jobs &amp; Opportunity Terms</h2>
+  <p>For the future IKAZE Jobs platform:</p>
+  <ul>
+    <li>Job listings may come from third parties</li>
+    <li>IKAZE DIGITAL does not automatically guarantee employment or selection</li>
+    <li>Users should verify opportunities independently</li>
+    <li>Application information may be governed by separate privacy and terms policies</li>
+  </ul>
+</section>
+
+<!-- 60 -->
+<section id="education-terms" data-reveal>
+  <h2><span class="num">60</span>Education Terms</h2>
+  <p>For the future IKAZE Academy platform, terms may cover:</p>
+  <ul>
+    <li>Courses</li>
+    <li>Certificates</li>
+    <li>Learning materials</li>
+    <li>Instructors</li>
+    <li>Assessments</li>
+    <li>User accounts</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">These terms are not yet active. They will be described when the platform is introduced.</p>
+</section>
+
+<!-- 61 -->
+<section id="digital-products" data-reveal>
+  <h2><span class="num">61</span>Digital Products</h2>
+  <p>For future digital products, product-specific terms may cover:</p>
+  <ul>
+    <li>Licenses</li>
+    <li>Subscriptions</li>
+    <li>Usage limits</li>
+    <li>Acceptable use</li>
+    <li>Support</li>
+    <li>Updates</li>
+    <li>Cancellation</li>
+    <li>Refunds</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">We do not invent those terms before the product is launched.</p>
+</section>
+
+<!-- 62 -->
+<section id="legal-compliance" data-reveal>
+  <h2><span class="num">62</span>User Responsibility for Legal Compliance</h2>
+  <p>Users are responsible for using IKAZE DIGITAL services in accordance with the laws applicable to them. This can include:</p>
+  <ul>
+    <li>Copyright and intellectual property law</li>
+    <li>Privacy law</li>
+    <li>Taxation</li>
+    <li>Business licensing</li>
+    <li>Communications regulations</li>
+    <li>Employment law (where applicable to your use)</li>
+    <li>Advertising standards</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">These Terms are not legal advice. Consult a qualified professional for matters that require it.</p>
+</section>
+
+<!-- 63 -->
+<section id="security-report" data-reveal>
+  <h2><span class="num">63</span>Responsible Security Reporting</h2>
+  <p>If you discover a potential security issue, please report it through the contact route below rather than attempting to exploit it.</p>
+  <div class="callout callout--blue">
+    <div class="callout__icon">◇</div>
+    <p>Report a security concern to: <a href="mailto:theonesteniyibigira6@gmail.com" style="color:var(--blue);font-weight:600">theonesteniyibigira6@gmail.com</a></p>
+  </div>
+  <p style="color:var(--mut);font-size:.9rem">A bug bounty program is not currently offered. We appreciate responsible disclosure regardless.</p>
+</section>
+
+<!-- 64 -->
+<section id="contact" data-reveal>
+  <h2><span class="num">64</span>Contact</h2>
+  <p>If you have questions about these Terms or need clarification about a project or service agreement, contact IKAZE DIGITAL:</p>
+  <ul>
+    <li>Email: <a href="mailto:theonesteniyibigira6@gmail.com" style="color:var(--amb)">theonesteniyibigira6@gmail.com</a></li>
+    <li>Contact form: <a href="contact.html?inquiry=terms" style="color:var(--amb)">contact.html</a></li>
+  </ul>
+</section>
+
+<!-- 65 -->
+<section id="legal-notice" data-reveal>
+  <h2><span class="num">65</span>Legal Notice</h2>
+  <p>These website terms should be reviewed and finalized by qualified legal counsel before being relied upon as a complete legal agreement.</p>
+  <p>They are provided as an early-stage framework and do not constitute legal advice. Where applicable law grants rights or imposes obligations that differ from these Terms, the applicable law governs.</p>
+</section>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FINAL CTA ==================== -->
+<section id="final" style="padding:40px 0 6rem">
+  <div class="wrap wrap--narrow" data-reveal>
+    <div class="cta-block">
+      <p class="tag">Continue</p>
+      <h2>Clear expectations create better digital relationships.</h2>
+      <p class="lead" style="margin-inline:auto">
+        If anything here is unclear, or if you want to discuss a specific project or agreement,
+        get in touch — we would rather explain than assume.
+      </p>
+      <div style="margin-top:22px">
+        <a class="btn" href="start-project.html">Start a Project</a>
+        <a class="btn o" href="privacy.html">Read Privacy Policy</a>
+        <a class="btn o" href="contact.html?inquiry=terms">Ask a Question</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p><strong>IKAZE DIGITAL</strong><br/>Digital Technology &amp; Creative Solutions<br/>Building Africa's Digital Future</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="ecosystem.html">Ecosystem</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal &amp; Trust</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
+          <li><a href="privacy.html#cookies">Cookies</a></li>
+          <li><a href="privacy.html#request">Data Request</a></li>
+          <li><a href="privacy.html#security">Security</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>NIYIBIGIRA THEONESTE<br/>Founder &amp; Owner — IKAZE DIGITAL</p>
+        <p>
+          <a href="mailto:theonesteniyibigira6@gmail.com">theonesteniyibigira6@gmail.com</a><br/>
+          <a href="tel:+250794204258">+250 794 204 258</a>
+        </p>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--mut);font-size:.8rem">
+      <small>© <span id="year"></span> Ikaze Digital. All rights reserved. · Terms v1.0 · Effective date: [TO BE CONFIRMED] · Last updated: 10 October 2026</small>
+    </div>
+  </div>
+</footer>
+
+<script>
+(()=>{'use strict';
+
+/* ============================================================
+   YEAR
+   ============================================================ */
+const yEl = document.getElementById('year');
+if (yEl) yEl.textContent = new Date().getFullYear();
+
+/* ============================================================
+   TOC: mobile toggle + active-section highlighting
+   ============================================================ */
+(()=>{
+  const toggle = document.querySelector('.toc-toggle');
+  const list = document.getElementById('tocList-ol');
+  if (toggle && list) {
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      list.style.display = open ? 'none' : 'block';
+    });
+    if (matchMedia('(max-width:999px)').matches) {
+      toggle.setAttribute('aria-expanded','false');
+      list.style.display = 'none';
+    } else {
+      toggle.setAttribute('aria-expanded','true');
+    }
+  }
+
+  const links = Array.from(document.querySelectorAll('.toc a'));
+  const sections = links
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+
+  if ('IntersectionObserver' in window && sections.length) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          links.forEach(a => a.classList.remove('active'));
+          const active = links.find(a => a.getAttribute('href') === '#' + en.target.id);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+    sections.forEach(s => io.observe(s));
+  }
+})();
+
+/* ============================================================
+   MOBILE NAV
+   ============================================================ */
+(()=>{
+  const t = document.getElementById('menu');
+  const n = document.getElementById('nav');
+  if (!t || !n) return;
+  t.addEventListener('click', () => {
+    const open = n.classList.toggle('open');
+    t.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('lock', open);
+  });
+  n.addEventListener('click', e => {
+    if (e.target.closest('a')) {
+      n.classList.remove('open'); t.setAttribute('aria-expanded','false');
+      document.body.classList.remove('lock');
+    }
+  });
+})();
+
+/* ============================================================
+   REVEAL ON SCROLL
+   ============================================================ */
+(()=>{
+  const els = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(e=>e.classList.add('is-visible')); return; }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+  els.forEach(e => io.observe(e));
+})();
+
+/* ============================================================
+   FLOATING CODE FRAGMENTS
+   ============================================================ */
+(()=>{
+  if (matchMedia('(max-width:620px)').matches) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const frags = ['terms','agreement','sign()','=>{}','accept()','version="1.0"','draft','//terms','clause','commit()','return true;','seal()'];
+  for (let i = 0; i < 12; i++) {
+    const span = document.createElement('span');
+    span.className = 'code-frag';
+    span.textContent = frags[Math.floor(Math.random()*frags.length)];
+    span.style.left = (Math.random()*100) + '%';
+    span.style.bottom = '-40px';
+    span.style.animationDuration = (14 + Math.random()*18) + 's';
+    span.style.animationDelay = (-Math.random()*20) + 's';
+    span.style.opacity = (0.20 + Math.random()*0.4).toFixed(2);
+    document.body.appendChild(span);
+  }
+})();
+
+/* ============================================================
+   3D DOCUMENT VISUAL (floating agreement + nodes)
+   ============================================================ */
+(()=>{
+  const canvas = document.getElementById('docCanvas');
+  if (!canvas) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const test = (()=>{try{const c=document.createElement('canvas');return !!(window.WebGLRenderingContext&&(c.getContext('webgl2')||c.getContext('webgl')));}catch{return false;}})();
+  if (!test) return;
+
+  const s = document.createElement('script');
+  s.type = 'module';
+  s.textContent = `
+    import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+    const canvas = document.getElementById('docCanvas');
+    const parent = canvas.parentElement;
+    const isSmall = matchMedia('(max-width:700px)').matches;
+
+    const renderer = new THREE.WebGLRenderer({canvas, antialias:!isSmall, alpha:true, powerPreference:'high-performance'});
+    renderer.setPixelRatio(Math.min(devicePixelRatio, isSmall ? 1.5 : 2));
+    renderer.setClearColor(0x000000, 0);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 200);
+    camera.position.set(0, 0, 7);
+
+    scene.add(new THREE.AmbientLight(0xf2a33a, 0.55));
+    const key = new THREE.DirectionalLight(0xffffff, 1.0); key.position.set(4, 6, 4); scene.add(key);
+    const rim = new THREE.DirectionalLight(0x20603d, 0.7); rim.position.set(-5, -3, -4); scene.add(rim);
+    const fill = new THREE.DirectionalLight(0xc8553d, 0.4); fill.position.set(0, -2, 5); scene.add(fill);
+
+    // Document — a slightly rounded slab
+    const docGeo = new THREE.BoxGeometry(1.8, 2.4, 0.14);
+    const docMat = new THREE.MeshStandardMaterial({
+      color: 0xf4efe8, emissive: 0xf2a33a, emissiveIntensity: 0.05,
+      roughness: 0.6, metalness: 0.15
+    });
+    const doc = new THREE.Mesh(docGeo, docMat);
+    scene.add(doc);
+
+    // Text lines on the document (thin amber strips)
+    const lineMat = new THREE.MeshBasicMaterial({ color: 0xf2a33a, transparent: true, opacity: 0.55 });
+    const lineWidths = [1.3, 1.1, 1.35, 0.9, 1.2, 1.0, 1.3, 0.85, 1.15, 1.05];
+    for (let i = 0; i < lineWidths.length; i++) {
+      const w = lineWidths[i];
+      const lineGeo = new THREE.PlaneGeometry(w, 0.04);
+      const line = new THREE.Mesh(lineGeo, lineMat);
+      line.position.set(-0.9 + w/2 + 0.05, 0.9 - i * 0.22, 0.076);
+      doc.add(line);
+    }
+
+    // Signature line — a thicker amber bar at the bottom
+    const sigGeo = new THREE.PlaneGeometry(0.7, 0.08);
+    const sigMat = new THREE.MeshBasicMaterial({ color: 0xf2a33a });
+    const sig = new THREE.Mesh(sigGeo, sigMat);
+    sig.position.set(0.35, -0.85, 0.076);
+    doc.add(sig);
+
+    // Embossed seal — a torus
+    const sealGeo = new THREE.TorusGeometry(0.22, 0.045, 12, 32);
+    const sealMat = new THREE.MeshStandardMaterial({
+      color: 0x00A1DE, emissive: 0x00A1DE, emissiveIntensity: 0.6,
+      roughness: 0.25, metalness: 0.65
+    });
+    const seal = new THREE.Mesh(sealGeo, sealMat);
+    seal.position.set(-0.55, -0.85, 0.08);
+    doc.add(seal);
+
+    // Orbiting nodes
+    const nodes = ['§','◈','⌘','◆','⚖','◇','✦','◉'];
+    const nodeMeshes = [];
+    const nodeGeo = new THREE.SphereGeometry(0.1, 16, 16);
+    nodes.forEach((n, i) => {
+      const color = i % 3 === 0 ? 0xf2a33a : i % 3 === 1 ? 0x20603D : 0x00A1DE;
+      const mat = new THREE.MeshStandardMaterial({ color, emissive:color, emissiveIntensity:0.6, roughness: 0.3, metalness: 0.4 });
+      const mesh = new THREE.Mesh(nodeGeo, mat);
+      const angle = (i / nodes.length) * Math.PI * 2;
+      const radius = 2.4;
+      const y = Math.sin(i * 1.7) * 0.8;
+      mesh.userData = { angle, radius, y, speed: 0.15 + Math.random()*0.08 };
+      mesh.position.set(Math.cos(angle)*radius, y, Math.sin(angle)*radius);
+      scene.add(mesh);
+      nodeMeshes.push(mesh);
+
+      const lineGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,0,0), mesh.position.clone()]);
+      const lineMat2 = new THREE.LineBasicMaterial({ color, transparent:true, opacity:0.24, blending:THREE.AdditiveBlending });
+      const line = new THREE.Line(lineGeo, lineMat2);
+      scene.add(line);
+      mesh.userData.line = line;
+    });
+
+    // Dust
+    const count = isSmall ? 60 : 140;
+    const pGeo = new THREE.BufferGeometry();
+    const pPos = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      const r = 2.5 + Math.random() * 4;
+      const t = Math.random() * Math.PI * 2;
+      const p = Math.acos(2 * Math.random() - 1);
+      pPos[i*3]   = r * Math.sin(p) * Math.cos(t);
+      pPos[i*3+1] = r * Math.sin(p) * Math.sin(t);
+      pPos[i*3+2] = r * Math.cos(p);
+    }
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+    const dustMat = new THREE.PointsMaterial({
+      color: 0xf2a33a, size: 0.03, transparent: true, opacity: 0.45,
+      depthWrite: false, blending: THREE.AdditiveBlending
+    });
+    const dust = new THREE.Points(pGeo, dustMat);
+    scene.add(dust);
+
+    function resize() {
+      const w = parent.clientWidth || 400;
+      const h = parent.clientHeight || 400;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    if ('ResizeObserver' in window) new ResizeObserver(resize).observe(parent);
+    else addEventListener('resize', resize);
+
+    let mx = 0, my = 0, tx = 0, ty = 0;
+    if (!isSmall) {
+      parent.addEventListener('pointermove', e => {
+        const r = parent.getBoundingClientRect();
+        tx = ((e.clientX - r.left) / r.width - 0.5) * 0.55;
+        ty = ((e.clientY - r.top) / r.height - 0.5) * 0.55;
+      });
+    }
+
+    let running = true;
+    document.addEventListener('visibilitychange', () => { running = !document.hidden; if (running) loop(); });
+
+    const clock = new THREE.Clock();
+    function loop() {
+      if (!running) return;
+      requestAnimationFrame(loop);
+      const t = clock.getElapsedTime();
+
+      doc.rotation.y = Math.sin(t * 0.35) * 0.35;
+      doc.rotation.x = Math.sin(t * 0.25) * 0.08;
+
+      nodeMeshes.forEach((m, i) => {
+        const d = m.userData;
+        const angle = d.angle + t * d.speed;
+        m.position.set(
+          Math.cos(angle) * d.radius,
+          d.y + Math.sin(t * 0.6 + i) * 0.1,
+          Math.sin(angle) * d.radius
+        );
+        const arr = d.line.geometry.attributes.position.array;
+        arr[3] = m.position.x; arr[4] = m.position.y; arr[5] = m.position.z;
+        d.line.geometry.attributes.position.needsUpdate = true;
+      });
+
+      dust.rotation.y += 0.0008;
+
+      mx += (tx - mx) * 0.05;
+      my += (ty - my) * 0.05;
+      scene.rotation.y = mx;
+      scene.rotation.x = my;
+
+      renderer.render(scene, camera);
+    }
+    loop();
+  `;
+  document.body.appendChild(s);
+})();
+
+/* ============================================================
+   SOURCE-CODE DETERRENTS (not real security)
+   ============================================================ */
+document.addEventListener('contextmenu', e => {
+  const t = e.target;
+  if (t.matches?.('input,textarea,select,[contenteditable="true"]')) return;
+  e.preventDefault();
+});
+
+document.addEventListener('keydown', e => {
+  const k = e.key.toLowerCase();
+  const block =
+    k === 'f12' ||
+    (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+    (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+    (e.ctrlKey && ['u','s'].includes(k)) ||
+    (e.metaKey && ['u','s'].includes(k));
+  if (block) { e.preventDefault(); e.stopPropagation(); return false; }
+}, true);
+
+(()=>{
+  const toast = document.createElement('div');
+  toast.className = 'devtools-warning';
+  toast.setAttribute('role','alert');
+  toast.setAttribute('aria-live','polite');
+  toast.innerHTML = '<span class="devtools-warning__icon">!</span><span>Developer tools detected — this page is protected.</span>';
+  document.body.appendChild(toast);
+
+  let visible = false, warnUntil = 0;
+  const show = () => { warnUntil = Date.now() + 5000; if (!visible) { visible = true; toast.classList.add('is-visible'); } };
+  const hide = () => { if (visible && Date.now() > warnUntil) { visible = false; toast.classList.remove('is-visible'); } };
+
+  setInterval(() => {
+    const w = window.outerWidth - window.innerWidth;
+    const h = window.outerHeight - window.innerHeight;
+    if (w > 160 || h > 160) show();
+    hide();
+  }, 900);
+
+  document.addEventListener('keydown', e => {
+    const k = e.key.toLowerCase();
+    if (k === 'f12' ||
+        (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+        (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+        (e.ctrlKey && ['u','s'].includes(k)) ||
+        (e.metaKey && ['u','s'].includes(k))) show();
+  }, true);
+})();
+
+if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+  (() => { let n = 0; setInterval(() => { n++; if (n > 1) { console.clear(); n = 0; } }, 2000); })();
+}
+console.log('%c⚠️ STOP', 'color:#ff3b3b;font-size:32px;font-weight:900');
+console.log('%cNo secrets are stored here. If someone told you to paste something here, it is a scam.', 'font-size:13px;color:#ff9');
+
+})();
+</script>
+
+</body>
+</html>
