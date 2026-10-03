@@ -1,0 +1,2353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>IKAZE Creator — Create. Connect. Earn. Own Your Future. | IKAZE DIGITAL</title>
+<meta name="description" content="IKAZE Creator gives creators the tools to publish their work, build communities, sell digital products, discover opportunities, and grow creative businesses from Africa to the world." />
+<meta name="theme-color" content="#080A0F" />
+<link rel="canonical" href="https://ikaze-digital.vercel.app/ikaze-creator.html" />
+
+<meta property="og:title" content="IKAZE Creator — Create. Connect. Earn. Own Your Future." />
+<meta property="og:description" content="Your Creativity. Your Audience. Your Business." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://i.postimg.cc/tJ9QydF2/Theoneste.png" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><path d='M6 40 24 6l18 34-9-6-9-14-9 14z' fill='%23f2a33a'/><path d='M24 6 42 40l-9-6z' fill='%23c8553d'/><circle cx='24' cy='6' r='4' fill='%23FAD201'/></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "IKAZE Creator",
+  "url": "https://ikaze-digital.vercel.app/ikaze-creator.html",
+  "description": "Global creator economy platform — publish, connect, sell and grow.",
+  "isPartOf": {
+    "@type": "Organization",
+    "name": "Ikaze Digital",
+    "url": "https://ikaze-digital.vercel.app/"
+  }
+}
+</script>
+
+<style>
+/* ============================================================
+   TOKENS — matched to existing IKAZE DIGITAL pages
+   ============================================================ */
+:root{
+  --bg:#080A0F; --bg2:#0B1017; --bg3:#10151D;
+  --ink:#f4efe8; --mut:#a9a39b;
+  --amb:#f2a33a; --ter:#c8553d;
+  --blue:#00A1DE; --grn:#20603D; --yel:#FAD201;
+  --card:rgba(255,255,255,.04);
+  --card2:rgba(255,255,255,.06);
+  --line:rgba(255,255,255,.10);
+  --line2:rgba(255,255,255,.16);
+  --radius:14px;
+  --radius-lg:20px;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(80px + env(safe-area-inset-top,0px))}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.55;
+  overflow-x:hidden;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  font-size:14px;
+}
+body.lock{overflow:hidden}
+input,textarea,select,button{-webkit-user-select:text;user-select:text}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+button{font:inherit;cursor:pointer}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px;font-size:.88em;font-family:var(--mono)}
+
+/* ============================================================
+   BACKGROUND LAYERS
+   ============================================================ */
+#bg{
+  position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(60% 50% at 20% 15%,rgba(0,161,222,.20),transparent 70%),
+    radial-gradient(50% 45% at 85% 80%,rgba(32,96,61,.16),transparent 70%),
+    radial-gradient(40% 40% at 50% 50%,rgba(250,210,1,.06),transparent 70%),
+    linear-gradient(#10151D,#080A0F);
+}
+#c{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+
+.aurora{position:fixed;border-radius:50%;filter:blur(100px);opacity:.36;mix-blend-mode:screen;pointer-events:none;z-index:-1}
+.aurora-1{width:520px;height:520px;top:-140px;left:-100px;background:radial-gradient(circle,var(--blue),transparent 70%);animation:float1 24s ease-in-out infinite}
+.aurora-2{width:600px;height:600px;bottom:-200px;right:-120px;background:radial-gradient(circle,var(--grn),transparent 70%);animation:float2 28s ease-in-out infinite}
+.aurora-3{width:420px;height:420px;top:40%;left:50%;background:radial-gradient(circle,var(--yel),transparent 70%);opacity:.14;animation:float3 32s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(60px,50px) scale(1.12)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-60px,-70px) scale(1.15)}}
+@keyframes float3{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-40%,-60%) scale(1.2)}}
+
+.grid-lines{
+  position:fixed;inset:0;opacity:.09;pointer-events:none;z-index:-1;
+  background-image:
+    linear-gradient(rgba(0,161,222,.30) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,161,222,.30) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(circle at 50% 40%,#000 0%,transparent 75%);
+  -webkit-mask-image:radial-gradient(circle at 50% 40%,#000 0%,transparent 75%);
+  animation:gridMove 40s linear infinite;
+}
+@keyframes gridMove{0%{background-position:0 0,0 0}100%{background-position:64px 64px,64px 64px}}
+
+.code-frag{
+  position:fixed;font-family:var(--mono);font-size:11px;
+  color:rgba(0,161,222,.30);letter-spacing:.05em;white-space:nowrap;
+  pointer-events:none;z-index:-1;
+  animation:codeFloat linear infinite;will-change:transform,opacity;
+}
+@keyframes codeFloat{
+  0%{transform:translateY(0) translateX(0);opacity:0}
+  10%{opacity:.7}
+  90%{opacity:.7}
+  100%{transform:translateY(-100vh) translateX(30px);opacity:0}
+}
+
+/* ============================================================
+   DEVTOOLS TOAST
+   ============================================================ */
+.devtools-warning{
+  position:fixed;top:0;left:50%;transform:translate(-50%,-140%);
+  z-index:9999;padding:.85rem 1.4rem;
+  background:linear-gradient(120deg,rgba(200,85,61,.95),rgba(150,40,20,.95));
+  color:#fff;font-weight:600;font-size:.9rem;
+  border-radius:0 0 14px 14px;letter-spacing:.03em;
+  box-shadow:0 14px 40px -10px rgba(200,85,61,.6);
+  display:flex;align-items:center;gap:.7rem;
+  transition:transform .5s cubic-bezier(.2,.7,.2,1);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  max-width:calc(100% - 24px);pointer-events:none;
+}
+.devtools-warning.is-visible{transform:translate(-50%,0)}
+.devtools-warning__icon{
+  width:22px;height:22px;border-radius:50%;
+  background:rgba(255,255,255,.18);
+  display:grid;place-items:center;font-size:13px;flex-shrink:0;
+}
+@media (max-width:620px){.devtools-warning{font-size:.78rem;padding:.7rem 1rem}}
+
+/* ============================================================
+   LOADER
+   ============================================================ */
+#loader{
+  position:fixed;inset:0;z-index:8000;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:var(--bg);gap:22px;
+  transition:opacity .4s ease,visibility .4s;
+}
+#loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-spinner{
+  width:54px;height:54px;border-radius:50%;
+  border:3px solid rgba(255,255,255,.1);
+  border-top-color:var(--blue);
+  border-right-color:var(--yel);
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loader-text{
+  color:var(--mut);font-size:.82rem;letter-spacing:.3em;
+  text-transform:uppercase;font-weight:500;text-align:center;padding:0 20px;
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.wrap--narrow{max-width:820px}
+
+header{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+  backdrop-filter:blur(14px);
+  background:rgba(8,10,15,.78);
+  border-bottom:1px solid var(--line);
+}
+.bar{display:flex;align-items:center;gap:16px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.08em;font-size:14px}
+.logo img{height:44px;width:auto;max-width:56px;object-fit:contain}
+.logo small{display:block;font-weight:500;letter-spacing:0;font-size:10px;color:var(--mut)}
+nav{margin-left:auto;display:flex;gap:14px;align-items:center}
+nav a{text-decoration:none;font-size:13.5px;color:var(--mut);transition:color .2s}
+nav a:hover,nav a[aria-current]{color:var(--blue)}
+
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 22px;border-radius:999px;
+  background:var(--blue);color:#fff;font-weight:700;text-decoration:none;
+  border:0;cursor:pointer;font-size:14px;
+  transition:transform .2s,box-shadow .2s;
+  min-height:44px;white-space:nowrap;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,161,222,.35)}
+.btn.o{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.o:hover{border-color:var(--blue);color:var(--blue)}
+.btn.amb{background:var(--amb);color:#1a0f05}
+.btn.amb:hover{box-shadow:0 8px 28px rgba(242,163,58,.35)}
+.btn.grn{background:linear-gradient(120deg,var(--grn),#164a2e);color:#fff}
+.btn.sm{padding:10px 16px;font-size:13px;min-height:40px}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+
+:focus-visible{outline:3px solid var(--yel);outline-offset:2px;border-radius:8px}
+
+#menu{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:12px 16px;min-height:44px;cursor:pointer}
+
+section{padding:70px 0;position:relative;z-index:1}
+h1{font-size:clamp(2rem,6vw,3.8rem);line-height:1.05;margin:0 0 16px;letter-spacing:-.02em}
+h2{font-size:clamp(1.5rem,3.6vw,2.4rem);margin:0 0 12px;letter-spacing:-.01em}
+h3{font-size:1.1rem;margin:6px 0}
+h4{font-size:1rem;margin:14px 0 6px;color:var(--blue)}
+p{margin:0 0 14px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin-bottom:6px}
+.tag{color:var(--blue);font-weight:600;letter-spacing:.06em;font-size:.82rem;text-transform:uppercase}
+.lead{color:var(--mut);max-width:680px;font-size:clamp(1rem,1.4vw,1.12rem)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{padding:60px 0 40px;min-height:88vh;display:flex;align-items:center}
+.hero__inner{display:grid;gap:40px;grid-template-columns:1fr;align-items:center;width:100%}
+@media(min-width:900px){.hero__inner{grid-template-columns:1.05fr .95fr}}
+.hero__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.hero__cta-group{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+
+.creator-visual{
+  position:relative;aspect-ratio:1/1;max-width:520px;width:100%;margin:0 auto;
+  border-radius:24px;overflow:hidden;
+  border:1px solid var(--line);
+  background:radial-gradient(circle at 50% 50%,rgba(0,161,222,.10),transparent 60%),var(--card);
+  backdrop-filter:blur(10px);
+}
+.creator-visual canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.creator-visual__label{
+  position:absolute;bottom:14px;left:0;right:0;text-align:center;
+  font-size:.72rem;color:var(--mut);letter-spacing:.14em;text-transform:uppercase;
+  pointer-events:none;z-index:2;
+}
+
+/* ============================================================
+   STATUS BADGES
+   ============================================================ */
+.st{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:4px 10px;border-radius:99px;border:1px solid;white-space:nowrap;
+}
+.st::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+.st--available{color:#3ddc84;border-color:rgba(61,220,132,.4);background:rgba(61,220,132,.08)}
+.st--dev{color:#00A1DE;border-color:rgba(0,161,222,.4);background:rgba(0,161,222,.08)}
+.st--soon{color:#f2a33a;border-color:rgba(242,163,58,.4);background:rgba(242,163,58,.08)}
+.st--early{color:#c084fc;border-color:rgba(192,132,252,.4);background:rgba(192,132,252,.08)}
+.st--concept{color:#9aa0a6;border-color:rgba(154,160,166,.35);background:rgba(154,160,166,.06)}
+.st--notconfig{color:#c8553d;border-color:rgba(200,85,61,.45);background:rgba(200,85,61,.10)}
+
+/* ============================================================
+   SECTION HEADS
+   ============================================================ */
+.section-head{margin-bottom:32px}
+.section-head--center{text-align:center;max-width:760px;margin-inline:auto}
+
+/* ============================================================
+   CARDS / GRIDS
+   ============================================================ */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.grid--two{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.grid--three{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.grid--four{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;backdrop-filter:blur(8px);
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+  display:flex;flex-direction:column;
+}
+.card:hover{transform:translateY(-5px);border-color:rgba(0,161,222,.4);box-shadow:0 14px 34px rgba(0,85,120,.18)}
+.card__icon{
+  width:48px;height:48px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(0,161,222,.15),rgba(32,96,61,.08));
+  border:1px solid rgba(0,161,222,.25);
+  font-size:22px;color:var(--blue);margin-bottom:14px;
+  transition:transform .4s ease;
+}
+.card:hover .card__icon{transform:rotate(-5deg) scale(1.05)}
+.card__head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
+.card h3{margin:6px 0}
+.card p{color:var(--mut);font-size:.93rem;flex-grow:1;margin:0}
+
+/* Feature card */
+.feature-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;display:flex;flex-direction:column;
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+}
+.feature-card:hover{transform:translateY(-5px);border-color:rgba(0,161,222,.5);box-shadow:0 14px 34px rgba(0,85,120,.18)}
+.feature-card__head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}
+.feature-card__icon{
+  width:52px;height:52px;border-radius:14px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(0,161,222,.15),rgba(32,96,61,.08));
+  border:1px solid rgba(0,161,222,.28);
+  font-size:24px;color:var(--blue);flex-shrink:0;
+}
+.feature-card h3{font-size:1.1rem;margin:0}
+.feature-card__tagline{color:var(--blue);font-weight:600;font-size:.85rem;margin:2px 0 8px}
+.feature-card p{color:var(--mut);font-size:.92rem;flex-grow:1;margin:0 0 16px}
+.feature-card__cta{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap}
+
+/* Ecosystem loop */
+.loop{
+  display:grid;gap:10px;margin-top:26px;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));
+}
+.loop__step{
+  padding:16px;border-radius:12px;
+  background:linear-gradient(135deg,rgba(0,161,222,.08),rgba(32,96,61,.04));
+  border:1px solid rgba(0,161,222,.24);
+  text-align:center;
+  position:relative;
+  transition:transform .25s,border-color .25s;
+}
+.loop__step:hover{transform:translateY(-4px);border-color:rgba(0,161,222,.5)}
+.loop__step::after{
+  content:"→";position:absolute;right:-18px;top:50%;transform:translateY(-50%);
+  color:var(--blue);font-weight:700;font-size:1.2rem;
+}
+.loop__step:last-child::after{display:none}
+@media(max-width:620px){
+  .loop__step::after{content:"↓";right:50%;top:auto;bottom:-22px;transform:translateX(50%)}
+}
+.loop__step b{display:block;color:var(--blue);font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.loop__step span{font-size:.92rem}
+
+/* Discovery tiles */
+.tile{
+  padding:20px;border-radius:var(--radius);
+  border:1px solid var(--line);background:var(--card);
+  cursor:pointer;transition:transform .25s,border-color .25s,box-shadow .25s;
+  text-align:left;display:flex;flex-direction:column;gap:8px;
+}
+.tile:hover{transform:translateY(-4px);border-color:rgba(0,161,222,.5);box-shadow:0 12px 30px rgba(0,85,120,.16)}
+.tile__icon{
+  width:44px;height:44px;border-radius:11px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(0,161,222,.15),rgba(32,96,61,.08));
+  border:1px solid rgba(0,161,222,.25);font-size:20px;color:var(--blue);
+}
+.tile h3{margin:6px 0 4px;font-size:1.02rem}
+.tile p{margin:0;color:var(--mut);font-size:.86rem;flex-grow:1}
+.tile__meta{margin-top:6px;font-size:11px;color:var(--mut);letter-spacing:.06em;text-transform:uppercase}
+
+/* Pricing */
+.price-card{
+  padding:28px;border-radius:var(--radius-lg);
+  border:1px solid var(--line);background:var(--card);
+  display:flex;flex-direction:column;
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+  position:relative;
+}
+.price-card:hover{transform:translateY(-5px);border-color:rgba(0,161,222,.5);box-shadow:0 20px 50px -20px rgba(0,161,222,.35)}
+.price-card--featured{
+  border-color:rgba(242,163,58,.55);
+  box-shadow:0 0 0 1px rgba(242,163,58,.2) inset;
+}
+.price-card__label{
+  display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--amb);margin-bottom:10px;
+}
+.price-card h3{font-size:1.35rem;margin:4px 0 6px}
+.price-card__for{color:var(--mut);font-size:.88rem;margin:0 0 14px}
+.price-card__price{
+  font-size:1.05rem;font-weight:700;color:var(--blue);
+  margin:14px 0;letter-spacing:.02em;
+}
+.price-card__price small{
+  display:block;color:var(--mut);font-size:.72rem;font-weight:500;
+  letter-spacing:.05em;text-transform:uppercase;margin-top:4px;
+}
+.price-card__features{list-style:none;padding:0;margin:14px 0;display:grid;gap:8px;font-size:.9rem}
+.price-card__features li{padding-left:22px;position:relative;color:var(--ink)}
+.price-card__features li::before{content:"✓";position:absolute;left:0;top:0;color:var(--blue);font-weight:700}
+.price-card__cta{margin-top:auto;padding-top:16px}
+
+/* FAQ */
+.faq{margin-top:26px;display:grid;gap:10px}
+.faq__item{border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden}
+.faq__q{
+  width:100%;text-align:left;padding:18px 22px;background:none;border:0;color:var(--ink);
+  font-size:1rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;gap:14px;align-items:center;
+}
+.faq__q::after{content:"+";color:var(--blue);font-size:1.4rem;line-height:1;transition:transform .3s}
+.faq__item[aria-expanded=true] .faq__q::after{transform:rotate(45deg)}
+.faq__a{padding:0 22px 18px;color:var(--mut);font-size:.94rem;display:none}
+.faq__item[aria-expanded=true] .faq__a{display:block}
+
+/* Flow */
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:22px;justify-content:center}
+.flow span{padding:10px 16px;border-radius:99px;background:var(--card);border:1px solid var(--line);font-size:.85rem;color:var(--ink)}
+.flow i{color:var(--blue);font-style:normal;font-size:1.1rem;font-weight:700}
+
+/* CTA block */
+.cta-block{
+  padding:48px 28px;border-radius:24px;border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(0,161,222,.12),rgba(32,96,61,.06));
+  text-align:center;
+}
+.cta-block .btn{margin:6px 4px 0}
+.cta-block h2{font-size:clamp(1.6rem,3.5vw,2.4rem)}
+
+/* Honest status banner */
+.honest-banner{
+  margin-top:26px;padding:14px 18px;border-radius:12px;
+  background:rgba(242,163,58,.06);border:1px solid rgba(242,163,58,.24);
+  font-size:.85rem;color:var(--mut);max-width:600px;
+}
+.honest-banner strong{color:var(--amb)}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+.modal{
+  position:fixed;inset:0;z-index:9100;
+  display:none;align-items:flex-start;justify-content:center;
+  padding:20px;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);
+  overflow-y:auto;
+}
+.modal.open{display:flex}
+.modal__box{
+  background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius-lg);
+  max-width:600px;width:100%;padding:28px;position:relative;
+  box-shadow:0 30px 80px rgba(0,0,0,.7);margin:auto;
+}
+.modal__close{
+  position:absolute;top:14px;right:14px;
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(255,255,255,.05);border:1px solid var(--line);
+  color:var(--ink);display:grid;place-items:center;font-size:16px;
+}
+.modal__close:hover{background:rgba(0,161,222,.15);color:var(--blue)}
+.modal h3{margin:0 0 6px;font-size:1.3rem;padding-right:44px}
+.modal__sub{color:var(--mut);font-size:.9rem;margin:0 0 20px}
+
+/* Auth tabs */
+.auth-tabs{display:flex;gap:4px;padding:4px;border-radius:10px;background:rgba(255,255,255,.03);margin-bottom:20px}
+.auth-tab{
+  flex:1;padding:10px;border-radius:8px;background:transparent;border:0;
+  color:var(--mut);font-size:13px;font-weight:600;transition:all .2s;
+}
+.auth-tab.on{background:var(--blue);color:#fff}
+
+/* Forms */
+.form{display:grid;gap:14px}
+.form .row{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+@media(max-width:520px){.form .row{grid-template-columns:1fr}}
+.form label{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:6px}
+.form input,.form select,.form textarea{
+  width:100%;padding:13px 16px;border-radius:10px;
+  border:1px solid var(--line);background:rgba(255,255,255,.04);
+  color:var(--ink);font-size:14px;min-height:48px;
+}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,161,222,.12)}
+.form select option{background:var(--bg2);color:var(--ink)}
+.form button[type=submit]{justify-self:start}
+.form .consent{display:flex;gap:10px;align-items:flex-start;font-size:.85rem;color:var(--mut)}
+.form .consent input{width:auto;min-height:auto;margin-top:3px;accent-color:var(--blue)}
+.form-status{font-size:.85rem;min-height:1.2em;margin:6px 0 0}
+.form-status.ok{color:#7be2a8}
+.form-status.err{color:#ff9a9a}
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+.empty-state{
+  padding:52px 24px;text-align:center;
+  border:1px dashed var(--line);border-radius:var(--radius);
+}
+.empty-state__icon{
+  width:56px;height:56px;border-radius:50%;
+  background:rgba(0,161,222,.08);color:var(--blue);
+  display:grid;place-items:center;margin:0 auto 14px;font-size:22px;
+}
+.empty-state h3{margin:0 0 6px;font-size:1.02rem}
+.empty-state p{color:var(--mut);font-size:.9rem;margin:0 0 18px;max-width:460px;margin-inline:auto}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{border-top:1px solid var(--line);padding:44px 0 28px;color:var(--mut);font-size:.9rem;background:rgba(8,10,15,.85);position:relative;z-index:1}
+footer a{text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--blue)}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px}
+@media(max-width:780px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr}}
+footer h4{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--mut);margin:0 0 12px}
+footer ul{list-style:none;padding:0;margin:0}
+footer li{margin-bottom:6px;font-size:.88rem}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+[data-reveal]{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+[data-reveal].is-visible{opacity:1;transform:translateY(0)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:900px){
+  nav{display:none}
+  nav.open{
+    display:flex;flex-direction:column;
+    position:absolute;top:68px;left:0;right:0;
+    background:rgba(8,10,15,.97);padding:22px;
+    gap:14px;border-bottom:1px solid var(--line);z-index:50;
+  }
+  #menu{display:block;margin-left:auto}
+  .aurora{filter:blur(60px);opacity:.30}
+}
+@media (max-width:620px){
+  section{padding:52px 0}
+  .hero{padding:40px 0 30px;min-height:auto}
+  .code-frag{display:none}
+  #c{opacity:.5}
+  h1{font-size:1.85rem}
+  .modal{padding:10px}
+  .modal__box{padding:22px 18px}
+}
+@media (max-width:380px){
+  h1{font-size:1.65rem}
+  .btn{padding:10px 16px;font-size:13px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  #c,.aurora,.grid-lines,.code-frag{display:none}
+  [data-reveal]{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div id="bg" aria-hidden="true"></div>
+<canvas id="c" aria-hidden="true"></canvas>
+
+<a class="skip-link" href="#main" style="position:absolute;left:-9999px;background:var(--blue);color:#fff;padding:.6rem 1rem;z-index:1000;font-weight:700">Skip to content</a>
+
+<!-- ==================== LOADER ==================== -->
+<div id="loader">
+  <div class="loader-spinner"></div>
+  <div class="loader-text">IKAZE CREATOR<br>Loading…</div>
+</div>
+
+<!-- ==================== HEADER ==================== -->
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="index.html" aria-label="Ikaze Digital home">
+      <img src="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png" alt="IKAZE Digital sunrise logo" width="56" height="44" />
+      <span>IKAZE CREATOR<small>Create · Connect · Earn</small></span>
+    </a>
+    <button id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="ikaze-creator.html" aria-current="page">Creator</a>
+      <a href="#discover">Discover</a>
+      <a href="#features">Features</a>
+      <a href="#ecosystem">Ecosystem</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <button class="btn o sm" id="signInBtn" type="button">Sign In</button>
+      <button class="btn sm" id="startBtn" type="button">Start Creating</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="hero">
+  <div class="wrap hero__inner">
+    <div data-reveal>
+      <p class="tag">IKAZE Creator · Global Creator Economy Platform</p>
+      <h1>Create. Connect. Earn. <span style="color:var(--blue)">Own Your Future.</span></h1>
+      <p class="lead">
+        IKAZE Creator gives creators the tools to publish their work, build communities, sell
+        digital products, discover opportunities, and grow creative businesses from Africa to the world.
+      </p>
+      <p class="lead" style="font-size:.95rem">
+        Your Creativity. Your Audience. Your Business.
+      </p>
+      <div class="hero__cta">
+        <button class="btn" id="heroStart" type="button">Start Creating</button>
+        <a class="btn o" href="#discover">Explore Creators</a>
+        <a class="btn o" href="#marketplace">Explore Marketplace</a>
+      </div>
+      <div class="hero__cta-group">
+        <a class="btn o sm" href="ikaze-academy.html">Learn with IKAZE Academy</a>
+        <button class="btn o sm" data-auth-open="signin" type="button">Sign In</button>
+      </div>
+
+      <div class="honest-banner">
+        <strong>Honest status:</strong> IKAZE Creator is in active development. Core creator
+        features are being built on the same Firebase infrastructure as the rest of the ecosystem.
+        Every feature is labelled AVAILABLE, IN DEVELOPMENT, COMING SOON, or NOT CONFIGURED —
+        we do not claim capabilities that are not actually built.
+      </div>
+    </div>
+    <div class="creator-visual" data-reveal>
+      <canvas id="creatorCanvas" aria-label="3D creator ecosystem visualization"></canvas>
+      <span class="creator-visual__label">Creator · Audience · Marketplace</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ECOSYSTEM LOOP ==================== -->
+<section id="ecosystem">
+  <div class="wrap">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="tag">The IKAZE Creator Loop</p>
+      <h2>Learn → Build → Store → Create → Publish → Connect → Sell → Earn → Grow</h2>
+      <p class="lead">
+        IKAZE Creator is not a standalone app. It is one node in a connected ecosystem —
+        Academy, Cloud, Marketplace and Opportunities work together around one IKAZE account.
+      </p>
+    </div>
+
+    <div class="loop" data-reveal>
+      <div class="loop__step"><b>Learn</b><span>IKAZE Academy</span></div>
+      <div class="loop__step"><b>Build</b><span>Projects + Skills</span></div>
+      <div class="loop__step"><b>Store</b><span>IKAZE Cloud</span></div>
+      <div class="loop__step"><b>Create</b><span>IKAZE Creator</span></div>
+      <div class="loop__step"><b>Publish</b><span>Content + Portfolio</span></div>
+      <div class="loop__step"><b>Connect</b><span>Audience + Community</span></div>
+      <div class="loop__step"><b>Sell</b><span>Marketplace + Services</span></div>
+      <div class="loop__step"><b>Collaborate</b><span>Creators + Brands</span></div>
+      <div class="loop__step"><b>Earn</b><span>Transactions + Memberships</span></div>
+      <div class="loop__step"><b>Grow</b><span>Analytics + Academy</span></div>
+    </div>
+
+    <div class="grid grid--three" style="margin-top:34px" data-reveal>
+      <div class="card">
+        <div class="card__icon">◇</div>
+        <h3>IKAZE Academy</h3>
+        <p>Learn digital skills — music, design, code, business, video. Finish courses and step straight into Creator with a portfolio and profile.</p>
+        <div style="margin-top:14px"><a class="btn o sm" href="ikaze-academy.html">Explore Academy</a></div>
+      </div>
+      <div class="card">
+        <div class="card__icon">◆</div>
+        <h3>IKAZE Cloud</h3>
+        <p>Store project files, connect GitHub, deploy websites, and host your creator portfolio on real infrastructure — not simulated.</p>
+        <div style="margin-top:14px"><a class="btn o sm" href="ikaze-cloud.html">Explore Cloud</a></div>
+      </div>
+      <div class="card">
+        <div class="card__icon">✦</div>
+        <h3>One IKAZE Account</h3>
+        <p>Sign in once — use the same account across Creator, Academy, Cloud, Marketplace and the whole ecosystem. No duplicate signups, no confusion.</p>
+        <div style="margin-top:14px"><button class="btn o sm" data-auth-open="signin" type="button">Sign In</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== DISCOVERY ==================== -->
+<section id="discover">
+  <div class="wrap">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="tag">Discover</p>
+      <h2>Explore creators, content, products and opportunities.</h2>
+      <p class="lead">Search across creators, videos, music, podcasts, articles, products, courses, services and events.</p>
+    </div>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:26px" data-reveal>
+      <input type="search" id="discoverSearch" placeholder="Search creators, content, products…" aria-label="Search"
+        style="padding:14px 20px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:15px;min-width:min(100%,320px);min-height:52px" />
+    </div>
+
+    <div class="grid grid--four" data-reveal id="discoverTiles"></div>
+
+    <p style="color:var(--mut);font-size:.85rem;text-align:center;margin-top:26px;max-width:600px;margin-inline:auto">
+      Discovery populates from Firebase as creators join. New platforms start empty — we
+      do not fabricate creators, products, views, or sales to make the page look populated.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== FEATURES ==================== -->
+<section id="features">
+  <div class="wrap">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="tag">Creator Tools</p>
+      <h2>Everything you need to build a creator business.</h2>
+      <p class="lead">Each tool is labelled with its real status — nothing is claimed as available before it works.</p>
+    </div>
+
+    <div class="grid grid--three" data-reveal>
+
+      <!-- Studio -->
+      <article class="feature-card">
+        <div class="feature-card__head">
+          <div class="feature-card__icon" aria-hidden="true">✎</div>
+          <span class="st st--dev">In Development</span>
+        </div>
+        <h3>Creator Studio</h3>
+        <p class="feature-card__tagline">Publish video, audio, images, articles, podcasts and events.</p>
+        <p>A full content management system — drafts, scheduled, published, archived. Upload media to Firebase Storage with real progress, retry, and validation.</p>
+        <div class="feature-card__cta">
+          <button class="btn o sm" data-detail="studio" type="button">Learn More</button>
+        </div>
+      </article>
+
+      <!-- Profile -->
+      <article class="feature-card">
+        <div class="feature-card__head">
+          <div class="feature-card__icon" aria-hidden="true">◉</div>
+          <span class="st st--dev">In Development</span>
+        </div>
+        <h3>Creator Profile</h3>
+        <p class="feature-card__tagline">A professional public page at your own URL.</p>
+        <p>Your bio, portfolio, published content, products, services, courses and events — with full privacy controls so you decide what is public.</p>
+        <div class="feature-card__cta">
+          <button class="btn o sm" data-detail="profile" type="button">Learn More</button>
+        </div>
+      </article>
+
+      <!-- Marketplace -->
+      <article class="feature-card">
+        <div class="feature-card__head">
+          <div class="feature-card__icon" aria-hidden="true">◆</div>
+          <span class="st st--soon">Coming Soon</span>
+        </div>
+        <h3>Creator Marketplace</h3>
+        <p class="feature-card__tagline">Sell digital products and services.</p>
+        <p>Ebooks, music, beats, templates, graphics, presets, courses. Service listings for design, development, video, music, writing, translation. Real payments verified server-side — never simulated.</p>
+        <div class="feature-card__cta">
+          <button class="btn o sm" data-detail="marketplace" type="button">Learn More</button>
+          <a class="btn sm" href="support.html">Notify Me</a>
+        </div>
+      </article>
+
+      <!-- Wallet -->
+      <article class="feature-card">
+        <div class="feature-card__head">
+          <div class="feature-card__icon" aria-hidden="true">◈</div>
+          <span class="st st--soon">Coming Soon</span>
+        </div>
+        <h3>Creator Wallet</h3>
+        <p class="feature-card__tagline">Earnings, transactions and payouts.</p>
+        <p>An immutable transaction ledger — sales, memberships, tips, event revenue, platform fees. Balance changes only from trusted backend logic, never editable by the creator.</p>
+        <div class="feature-card__cta">
+          <button class="btn o sm" data-detail="wallet" type="button">Learn More</button>
+          <a class="btn sm" href="support.html">Notify Me</a>
+        </div>
+      </article>
+
+      <!-- Community -->
+      <article class="feature-card">
+        <div class="feature-card__head">
+          <div class="feature-card__icon" aria-hidden="true">◎</div>
+          <span class="st st--soon">Coming Soon</span>
+        </div>
+        <h3>Creator Community</h3>
+        <p class="feature-card__tagline">Posts, discussions, groups, collaboration.</p>
+        <p>Publish announcements, ask questions, run polls, showcase projects, request collaborators. Moderation tools with reporting, blocking, and clear policies.</p>
+        <div class="feature-card__cta">
+          <button class="btn o sm" data-detail="community" type="button">Learn More</button>
+          <a class="btn sm" href="support.html">Notify Me</a>
+        </div>
+      </article>
+
+      <!-- Brand Hub -->
+      <article class="feature-card">
+        <div class="feature-card__head">
+          <div class="feature-card__icon" aria-hidden="true">◐</div>
+          <span class="st st--concept">Concept</span>
+        </div>
+        <h3>IKAZE Brand Hub</h3>
+        <p class="feature-card__tagline">Brand campaigns and creator collaborations.</p>
+        <p>Brands publish campaigns with budget, deliverables and deadline. Creators apply, propose, and get paid through real verified contracts and payments.</p>
+        <div class="feature-card__cta">
+          <button class="btn o sm" data-detail="brand" type="button">Learn More</button>
+          <a class="btn sm" href="support.html">Join Waitlist</a>
+        </div>
+      </article>
+
+      <!-- Analytics -->
+      <article class="feature-card">
+        <div class="feature-card__head">
+          <div class="feature-card__icon" aria-hidden="true">▲</div>
+          <span class="st st--soon">Coming Soon</span>
+        </div>
+        <h3>Creator Analytics</h3>
+        <p class="feature-card__tagline">Real data. Real numbers. No fabrication.</p>
+        <p>Views, followers, engagement, product sales, conversion rate, revenue, top content. Empty states are honest when a creator is new — not fake "10,000 views" fillers.</p>
+        <div class="feature-card__cta">
+          <button class="btn o sm" data-detail="analytics" type="button">Learn More</button>
+          <a class="btn sm" href="support.html">Notify Me</a>
+        </div>
+      </article>
+
+      <!-- AI -->
+      <article class="feature-card">
+        <div class="feature-card__head">
+          <div class="feature-card__icon" aria-hidden="true">✦</div>
+          <span class="st st--concept">Concept</span>
+        </div>
+        <h3>IKAZE Creator AI</h3>
+        <p class="feature-card__tagline">An assistant, not an autonomous manager.</p>
+        <p>Content ideas, captions, descriptions, outlines, scripts, SEO suggestions, translation. Runs on a secure backend with rate limits and abuse protection — never with API keys in the browser.</p>
+        <div class="feature-card__cta">
+          <button class="btn o sm" data-detail="ai" type="button">Learn More</button>
+          <a class="btn sm" href="support.html">Join Waitlist</a>
+        </div>
+      </article>
+
+      <!-- Opportunities -->
+      <article class="feature-card">
+        <div class="feature-card__head">
+          <div class="feature-card__icon" aria-hidden="true">★</div>
+          <span class="st st--soon">Coming Soon</span>
+        </div>
+        <h3>Creator Opportunities</h3>
+        <p class="feature-card__tagline">Jobs, grants, competitions, residencies.</p>
+        <p>Externally sourced and clearly labelled. Every listing links to the official source — IKAZE is never the application intermediary.</p>
+        <div class="feature-card__cta">
+          <button class="btn o sm" data-detail="opportunities" type="button">Learn More</button>
+          <a class="btn sm" href="opportunities.html">Open Center</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MARKETPLACE PREVIEW ==================== -->
+<section id="marketplace">
+  <div class="wrap">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="tag">Marketplace</p>
+      <h2>Digital products and creative services — sold directly by creators.</h2>
+      <p class="lead">Payment integration is being set up with regional settlement in mind.</p>
+    </div>
+
+    <div class="grid grid--three" data-reveal>
+      <div class="card">
+        <div class="card__icon">▣</div>
+        <h3>Digital Products</h3>
+        <p>Ebooks, music, beats, templates, graphics, presets, fonts, design resources, video/audio assets, software (where legally permitted).</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">✦</div>
+        <h3>Creative Services</h3>
+        <p>Graphic design, web design, logo design, photography, video editing, music production, writing, translation, consulting, tutoring.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">◇</div>
+        <h3>Creator Courses</h3>
+        <p>Premium learning products from creators — linked into IKAZE Academy with the same account and verified certificates where eligible.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:26px;padding:16px 20px;border-radius:12px;background:rgba(0,161,222,.06);border:1px solid rgba(0,161,222,.24);font-size:.88rem;color:var(--mut);max-width:820px;margin-inline:auto;text-align:center">
+      <strong style="color:var(--ink)">Honest note on payments:</strong> We are not yet accepting payments.
+      Once a payment provider is connected with real server-side verification, checkout will activate.
+      We never store card details in Firestore, we never trust frontend payment status, and we never
+      display a fake "Payment Successful" screen.
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ACADEMY + CLOUD INTEGRATION ==================== -->
+<section id="integration">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="tag">Deep Integration</p>
+      <h2>Creator is one node in a connected ecosystem.</h2>
+      <p class="lead">
+        Real integrations, not buttons linking separate pages. One IKAZE account, one Firebase
+        project, secure cross-product references.
+      </p>
+    </div>
+
+    <div class="grid grid--two" data-reveal>
+      <div class="card">
+        <h3 style="color:var(--blue)">Academy → Creator</h3>
+        <p style="margin-top:8px">A learner completing creator-related courses can step straight into Creator with:</p>
+        <ul style="color:var(--mut);font-size:.92rem;padding-left:20px;margin-top:8px">
+          <li>Creator profile and portfolio</li>
+          <li>Creator Studio access</li>
+          <li>Project Lab integration</li>
+          <li>Creator business tools</li>
+          <li>Instructor pathway if approved</li>
+        </ul>
+        <div style="margin-top:14px"><a class="btn o sm" href="ikaze-academy.html">Open Academy</a></div>
+      </div>
+
+      <div class="card">
+        <h3 style="color:var(--blue)">Creator → Cloud</h3>
+        <p style="margin-top:8px">A creator builds in Creator and stores / deploys via Cloud:</p>
+        <ul style="color:var(--mut);font-size:.92rem;padding-left:20px;margin-top:8px">
+          <li>Store portfolio assets in Cloud</li>
+          <li>Connect GitHub to deploy a portfolio site</li>
+          <li>Host a creator website with real infra</li>
+          <li>Manage project resources and backups</li>
+        </ul>
+        <div style="margin-top:14px"><a class="btn o sm" href="ikaze-cloud.html">Open Cloud</a></div>
+      </div>
+    </div>
+
+    <div style="margin-top:26px;padding:16px 20px;border-radius:12px;background:rgba(242,163,58,.06);border:1px solid rgba(242,163,58,.24);font-size:.88rem;color:var(--mut);max-width:820px;margin-inline:auto">
+      <strong style="color:var(--amb)">Fair billing:</strong> A Creator role does not automatically
+      grant Academy instructor or Cloud admin privileges. Each product enforces its own authorization
+      through Firebase custom claims and Security Rules.
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PRICING ==================== -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="tag">Pricing</p>
+      <h2>Free to start. Fair as you grow.</h2>
+      <p class="lead">Honest tiers — no fake discounts, no hidden fees.</p>
+    </div>
+
+    <div class="grid grid--four" data-reveal>
+
+      <div class="price-card">
+        <span class="price-card__label">Free</span>
+        <h3>Creator Free</h3>
+        <p class="price-card__for">For anyone starting their creator journey.</p>
+        <div class="price-card__price">
+          Free
+          <small>No card required</small>
+        </div>
+        <ul class="price-card__features">
+          <li>Public creator profile</li>
+          <li>Publish public content</li>
+          <li>Follow other creators</li>
+          <li>Comment and like</li>
+          <li>Academy integration</li>
+        </ul>
+        <div class="price-card__cta">
+          <button class="btn" data-auth-open="signup" type="button">Start Free</button>
+        </div>
+      </div>
+
+      <div class="price-card price-card--featured">
+        <span class="price-card__label">Recommended for creators</span>
+        <h3>Creator Pro</h3>
+        <p class="price-card__for">For creators building a real business.</p>
+        <div class="price-card__price">
+          Custom
+          <small>Regional pricing at launch</small>
+        </div>
+        <ul class="price-card__features">
+          <li>Everything in Free</li>
+          <li>Sell digital products</li>
+          <li>Service listings</li>
+          <li>Memberships and tiers</li>
+          <li>Full analytics</li>
+          <li>Creator AI (once live)</li>
+        </ul>
+        <div class="price-card__cta">
+          <a class="btn o" href="support.html">Register Interest</a>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <span class="price-card__label">Business</span>
+        <h3>Creator Business</h3>
+        <p class="price-card__for">For agencies, studios, teams.</p>
+        <div class="price-card__price">
+          Custom Quote
+          <small>Scoped per team</small>
+        </div>
+        <ul class="price-card__features">
+          <li>Team accounts</li>
+          <li>Shared studio workspace</li>
+          <li>Collaboration tools</li>
+          <li>Business analytics</li>
+          <li>Priority support where offered</li>
+        </ul>
+        <div class="price-card__cta">
+          <a class="btn o" href="contact.html">Request a Quote</a>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <span class="price-card__label">Brands</span>
+        <h3>Brand Hub</h3>
+        <p class="price-card__for">For brands running creator campaigns.</p>
+        <div class="price-card__price">
+          Custom
+          <small>Campaign-scoped</small>
+        </div>
+        <ul class="price-card__features">
+          <li>Publish campaigns</li>
+          <li>Discover creators</li>
+          <li>Application review</li>
+          <li>Campaign management</li>
+          <li>Deliverable tracking</li>
+        </ul>
+        <div class="price-card__cta">
+          <a class="btn o" href="contact.html">Request Info</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p style="color:var(--mut);font-size:.85rem;text-align:center;margin-top:26px;max-width:720px;margin-inline:auto">
+      <strong style="color:var(--amb)">Honest limits:</strong> We do not claim payout support in every
+      country, revenue share guarantees, or platform-wide monetization until real providers and
+      settlement infrastructure are configured. Final pricing is confirmed before any payment is charged.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section id="faq">
+  <div class="wrap wrap--narrow">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="tag">FAQ</p>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq" id="faqList"></div>
+  </div>
+</section>
+
+<!-- ==================== FINAL CTA ==================== -->
+<section id="final" style="padding-bottom:6rem">
+  <div class="wrap" data-reveal>
+    <div class="cta-block">
+      <p class="tag">Create. Connect. Earn. Own Your Future.</p>
+      <h2>Build your creator business from Africa to the world.</h2>
+      <p class="lead" style="margin-inline:auto">
+        One IKAZE account. Academy to learn, Cloud to store and deploy, Creator to publish,
+        connect, sell and grow.
+      </p>
+      <div style="margin-top:22px">
+        <button class="btn" id="finalStart" type="button">Start Creating Free</button>
+        <a class="btn o" href="ikaze-academy.html">Learn First</a>
+        <a class="btn o" href="contact.html">Contact IKAZE DIGITAL</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p><strong>IKAZE CREATOR</strong><br/>Create. Connect. Earn.<br/><span style="font-size:.8rem">Part of IKAZE DIGITAL — Building Africa's Digital Future.</span></p>
+      </div>
+      <div>
+        <h4>Creator</h4>
+        <ul>
+          <li><a href="#discover">Discover</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#marketplace">Marketplace</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="support.html">Get Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>IKAZE DIGITAL</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="ikaze-academy.html">Academy</a></li>
+          <li><a href="ikaze-cloud.html">Cloud</a></li>
+          <li><a href="ecosystem.html">Ecosystem</a></li>
+          <li><a href="opportunities.html">Opportunities</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact &amp; Legal</h4>
+        <ul>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Terms</a></li>
+        </ul>
+        <p style="font-size:.85rem;margin-top:10px">
+          <a href="mailto:theonosteniyibigira6@gmail.com">theonosteniyibigira6@gmail.com</a>
+        </p>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--mut);font-size:.8rem">
+      <small>© <span id="year"></span> IKAZE Creator · IKAZE DIGITAL. All rights reserved. · Authorization is enforced by Firebase Security Rules. No fake users, creators, sales, or statistics are shown anywhere on this platform.</small>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== MODAL ==================== -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal__box">
+    <button class="modal__close" id="modalClose" aria-label="Close dialog">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script type="module">
+/* ============================================================
+   IKAZE CREATOR — Application Script
+   ============================================================
+
+   SECURITY NOTES
+   ---------------
+   Delivered to the browser, inspectable by anyone. This script
+   does NOT enforce authorization. Real access control is
+   enforced by Firebase Security Rules + trusted backend
+   functions (see the comment block at the end of this file).
+   NEVER place Firebase Admin credentials, payment keys,
+   AI API keys, or provider secrets in this file.
+   ============================================================ */
+
+'use strict';
+
+/* ============================================================
+   FIREBASE CONFIG — replace with your real config
+   ============================================================ */
+const firebaseConfig = {
+  apiKey: "REPLACE_WITH_FIREBASE_API_KEY",
+  authDomain: "REPLACE_WITH.firebaseapp.com",
+  projectId: "REPLACE_WITH_PROJECT_ID",
+  storageBucket: "REPLACE_WITH.appspot.com",
+  messagingSenderId: "REPLACE_WITH",
+  appId: "REPLACE_WITH_APP_ID"
+};
+
+const isConfigured =
+  !firebaseConfig.apiKey.startsWith('REPLACE_WITH') &&
+  !firebaseConfig.projectId.startsWith('REPLACE_WITH');
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+const $  = (s, c=document) => c.querySelector(s);
+const $$ = (s, c=document) => Array.from(c.querySelectorAll(s));
+const escapeHTML = (s) => String(s ?? '').replace(/[&<>"']/g, m => ({
+  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+}[m]));
+const el = (tag, cls, html) => {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (html !== undefined) e.innerHTML = html;
+  return e;
+};
+
+/* ============================================================
+   LOADER
+   ============================================================ */
+function hideLoader(){
+  const l = $('#loader');
+  if (l) l.classList.add('hidden');
+}
+
+/* ============================================================
+   FIREBASE
+   ============================================================ */
+let fb = null;
+let currentUser = null;
+let currentUserProfile = null;
+
+async function initFirebase(){
+  if (!isConfigured) return false;
+  try {
+    const appMod = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js');
+    const authMod = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js');
+    const fsMod  = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
+    const stMod  = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js');
+
+    const app = appMod.initializeApp(firebaseConfig);
+    const auth = authMod.getAuth(app);
+    const db = fsMod.initializeFirestore(app, { ignoreUndefinedProperties: true });
+    const storage = stMod.getStorage(app);
+
+    fb = { app, auth, db, storage, ...authMod, ...fsMod, ...stMod };
+    return true;
+  } catch (err) {
+    console.error('[creator] Firebase init failed', err);
+    return false;
+  }
+}
+
+/* ============================================================
+   AUTH
+   ============================================================ */
+async function signInEmail(email, password){
+  const { signInWithEmailAndPassword } = fb;
+  await signInWithEmailAndPassword(fb.auth, email, password);
+}
+async function signUpEmail(email, password, name){
+  const { createUserWithEmailAndPassword, updateProfile, doc, setDoc, serverTimestamp } = fb;
+  const cred = await createUserWithEmailAndPassword(fb.auth, email, password);
+  await updateProfile(cred.user, { displayName: name });
+  await setDoc(doc(fb.db, 'users', cred.user.uid), {
+    fullName: name,
+    email: email,
+    role: 'creator',
+    createdAt: serverTimestamp()
+  }, { merge: true });
+  return cred;
+}
+async function signInGoogle(){
+  const { GoogleAuthProvider, signInWithPopup, doc, getDoc, setDoc, serverTimestamp } = fb;
+  const provider = new GoogleAuthProvider();
+  const cred = await signInWithPopup(fb.auth, provider);
+  const ref = doc(fb.db, 'users', cred.user.uid);
+  const snap = await getDoc(ref);
+  if (!snap.exists()) {
+    await setDoc(ref, {
+      fullName: cred.user.displayName || '',
+      email: cred.user.email || '',
+      role: 'creator',
+      createdAt: serverTimestamp()
+    });
+  }
+  return cred;
+}
+async function sendReset(email){
+  const { sendPasswordResetEmail } = fb;
+  await sendPasswordResetEmail(fb.auth, email);
+}
+async function signOutUser(){
+  const { signOut } = fb;
+  await signOut(fb.auth);
+  currentUser = null;
+  currentUserProfile = null;
+  renderAuthState();
+}
+
+async function loadUserProfile(){
+  if (!currentUser || !fb) return;
+  try {
+    const { doc, getDoc } = fsGet();
+    const snap = await getDoc(doc(fb.db, 'users', currentUser.uid));
+    currentUserProfile = snap.exists()
+      ? { id: snap.id, ...snap.data() }
+      : { id: currentUser.uid, fullName: currentUser.displayName || '', email: currentUser.email || '' };
+  } catch {
+    currentUserProfile = { id: currentUser.uid, fullName: currentUser.displayName || '', email: currentUser.email || '' };
+  }
+}
+function fsGet(){
+  return { doc: fb.doc, getDoc: fb.getDoc };
+}
+
+function renderAuthState(){
+  const sBtn = $('#signInBtn');
+  const startBtn = $('#startBtn');
+  const heroStart = $('#heroStart');
+  const finalStart = $('#finalStart');
+
+  if (currentUser) {
+    if (sBtn) { sBtn.textContent = 'Sign Out'; sBtn.onclick = () => signOutUser(); }
+    const dashFn = () => toast('Creator dashboard is in development. Your account is ready.', 'warn');
+    if (startBtn) { startBtn.textContent = 'My Studio'; startBtn.onclick = dashFn; }
+    if (heroStart) { heroStart.textContent = 'Open My Studio'; heroStart.onclick = dashFn; }
+    if (finalStart) { finalStart.textContent = 'Open My Studio'; finalStart.onclick = dashFn; }
+  } else {
+    if (sBtn) { sBtn.textContent = 'Sign In'; sBtn.onclick = () => openAuthModal('signin'); }
+    if (startBtn) { startBtn.textContent = 'Start Creating'; startBtn.onclick = () => openAuthModal('signup'); }
+    if (heroStart) { heroStart.textContent = 'Start Creating'; heroStart.onclick = () => openAuthModal('signup'); }
+    if (finalStart) { finalStart.textContent = 'Start Creating Free'; finalStart.onclick = () => openAuthModal('signup'); }
+  }
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+function toast(msg, type='ok'){
+  let wrap = $('#toastWrap');
+  if (!wrap) {
+    wrap = el('div');
+    wrap.id = 'toastWrap';
+    wrap.style.cssText = 'position:fixed;bottom:24px;right:16px;z-index:9500;display:grid;gap:10px;max-width:380px';
+    document.body.appendChild(wrap);
+  }
+  const t = el('div');
+  t.style.cssText = 'padding:14px 18px;border-radius:12px;background:rgba(11,16,23,.97);border:1px solid ' +
+    (type === 'ok' ? 'rgba(61,220,132,.4)' : type === 'err' ? 'rgba(200,85,61,.5)' : 'rgba(242,163,58,.4)') +
+    ';backdrop-filter:blur(10px);box-shadow:0 14px 40px rgba(0,0,0,.5);font-size:.9rem;display:flex;gap:10px;align-items:flex-start';
+  const icon = type === 'ok' ? '✓' : type === 'err' ? '✕' : '!';
+  t.innerHTML = `<span style="flex-shrink:0;font-size:16px">${icon}</span><div>${escapeHTML(msg)}</div>`;
+  wrap.appendChild(t);
+  setTimeout(() => {
+    t.style.transition = 'opacity .3s, transform .3s';
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(20px)';
+    setTimeout(() => t.remove(), 320);
+  }, 4200);
+}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+function openModal(){
+  const m = $('#modal');
+  m.hidden = false;
+  m.classList.add('open');
+  document.body.classList.add('lock');
+}
+function closeModal(){
+  const m = $('#modal');
+  m.classList.remove('open');
+  m.hidden = true;
+  document.body.classList.remove('lock');
+}
+document.addEventListener('click', e => {
+  if (e.target.closest('#modalClose')) closeModal();
+  if (e.target === $('#modal')) closeModal();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && $('#modal').classList.contains('open')) closeModal();
+});
+
+/* ============================================================
+   AUTH MODAL
+   ============================================================ */
+function openAuthModal(mode='signin'){
+  const body = $('#modalBody');
+  body.innerHTML = `
+    <h3 id="modalTitle">${mode === 'signup' ? 'Create Your IKAZE Account' : 'Sign In to IKAZE Creator'}</h3>
+    <p class="modal__sub">${mode === 'signup' ? 'One account works across Creator, Academy, Cloud and the whole IKAZE ecosystem.' : 'Welcome back — continue to your creator workspace.'}</p>
+
+    <div class="auth-tabs" role="tablist">
+      <button class="auth-tab ${mode==='signin'?'on':''}" data-auth-tab="signin" role="tab" aria-selected="${mode==='signin'}">Sign In</button>
+      <button class="auth-tab ${mode==='signup'?'on':''}" data-auth-tab="signup" role="tab" aria-selected="${mode==='signup'}">Create Account</button>
+    </div>
+
+    <form class="form" id="authForm" novalidate>
+      <div data-signup-only style="display:${mode==='signup'?'':'none'}">
+        <label for="authName">Full name</label>
+        <input id="authName" type="text" autocomplete="name" />
+      </div>
+      <div>
+        <label for="authEmail">Email</label>
+        <input id="authEmail" type="email" required autocomplete="email" />
+      </div>
+      <div>
+        <label for="authPassword">Password</label>
+        <input id="authPassword" type="password" required minlength="8" autocomplete="current-password" />
+        <div style="font-size:11.5px;color:var(--mut);margin-top:6px">At least 8 characters.</div>
+      </div>
+      <button class="btn" type="submit" id="authSubmit">${mode==='signup'?'Create Account':'Sign In'}</button>
+      <p class="form-status" id="authStatus" role="status" aria-live="polite"></p>
+    </form>
+
+    <div style="display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.15em">
+      <span style="flex:1;height:1px;background:var(--line)"></span>
+      or
+      <span style="flex:1;height:1px;background:var(--line)"></span>
+    </div>
+
+    <button class="btn o" id="authGoogle" type="button" style="width:100%;justify-content:center">
+      Continue with Google
+    </button>
+
+    <p style="text-align:center;font-size:.82rem;color:var(--mut);margin-top:18px">
+      <a href="#" id="forgotLink" style="color:var(--blue);text-decoration:underline">Forgot password?</a>
+      <span style="margin:0 6px">·</span>
+      <a href="privacy.html" style="color:var(--blue);text-decoration:underline">Privacy</a>
+      <span style="margin:0 6px">·</span>
+      <a href="terms.html" style="color:var(--blue);text-decoration:underline">Terms</a>
+    </p>
+  `;
+  openModal();
+
+  let currentMode = mode;
+  $$('.auth-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      $$('.auth-tab').forEach(t => { t.classList.remove('on'); t.setAttribute('aria-selected','false'); });
+      tab.classList.add('on'); tab.setAttribute('aria-selected','true');
+      currentMode = tab.dataset.authTab;
+      $$('[data-signup-only]').forEach(n => n.style.display = currentMode === 'signup' ? '' : 'none');
+      $('#authSubmit').textContent = currentMode === 'signup' ? 'Create Account' : 'Sign In';
+    });
+  });
+
+  $('#authForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const status = $('#authStatus');
+    status.className = 'form-status';
+    status.textContent = '';
+
+    if (!fb) {
+      status.className = 'form-status err';
+      status.textContent = 'Authentication is not connected yet. See the setup notes.';
+      return;
+    }
+
+    const email = $('#authEmail').value.trim();
+    const password = $('#authPassword').value;
+    const name = $('#authName') ? $('#authName').value.trim() : '';
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { status.className = 'form-status err'; status.textContent = 'Please enter a valid email.'; return; }
+    if (password.length < 8) { status.className = 'form-status err'; status.textContent = 'Password must be at least 8 characters.'; return; }
+    if (currentMode === 'signup' && !name) { status.className = 'form-status err'; status.textContent = 'Please enter your full name.'; return; }
+
+    $('#authSubmit').disabled = true;
+    try {
+      if (currentMode === 'signup') await signUpEmail(email, password, name);
+      else await signInEmail(email, password);
+      closeModal();
+      toast('Signed in successfully. Welcome to IKAZE Creator.', 'ok');
+    } catch (err) {
+      status.className = 'form-status err';
+      status.textContent = friendlyAuthError(err);
+    } finally {
+      $('#authSubmit').disabled = false;
+    }
+  });
+
+  $('#authGoogle').addEventListener('click', async () => {
+    if (!fb) { toast('Authentication is not connected yet.', 'warn'); return; }
+    try { await signInGoogle(); closeModal(); toast('Signed in with Google.', 'ok'); }
+    catch (err) { toast(friendlyAuthError(err), 'err'); }
+  });
+
+  $('#forgotLink').addEventListener('click', async (e) => {
+    e.preventDefault();
+    const email = $('#authEmail').value.trim();
+    if (!email) { toast('Enter your email first.', 'warn'); return; }
+    if (!fb) { toast('Authentication is not connected yet.', 'warn'); return; }
+    try { await sendReset(email); toast('If that email exists, a reset link has been sent.', 'ok'); }
+    catch (err) { toast(friendlyAuthError(err), 'err'); }
+  });
+}
+
+function friendlyAuthError(err){
+  const code = (err && err.code) || '';
+  const map = {
+    'auth/invalid-email': 'That email is not valid.',
+    'auth/user-not-found': 'No account with that email.',
+    'auth/wrong-password': 'Incorrect email or password.',
+    'auth/invalid-credential': 'Incorrect email or password.',
+    'auth/email-already-in-use': 'An account with that email already exists.',
+    'auth/weak-password': 'Please choose a stronger password.',
+    'auth/too-many-requests': 'Too many attempts. Wait a moment and try again.',
+    'auth/network-request-failed': 'Network problem. Check your connection.',
+    'auth/popup-closed-by-user': 'Sign-in popup closed.',
+    'auth/operation-not-allowed': 'This sign-in method is not enabled.'
+  };
+  return map[code] || 'Something went wrong. Please try again.';
+}
+
+/* ============================================================
+   FEATURE DETAIL MODAL
+   ============================================================ */
+const FEATURE_DETAILS = {
+  studio: {
+    title: 'Creator Studio',
+    tagline: 'Publish video, audio, images, articles, podcasts and events.',
+    status: 'st--dev', statusLabel: 'In Development',
+    about: 'A full content management system — create, draft, schedule, publish and archive your work across every format creators actually use.',
+    features: [
+      'Video: upload, thumbnail, title, description, tags, category, language, visibility',
+      'Audio: upload, cover artwork, artist, album, genre',
+      'Image / artwork: upload, category, license, price if selling',
+      'Article: rich text editor, images, categories, tags, SEO title + description',
+      'Podcast: episodes, cover, season and episode numbers',
+      'Event: title, description, date, time zone, location/virtual, ticketing if enabled'
+    ],
+    honest: 'Uploads go to Firebase Storage with real progress, retry, cancellation, MIME validation, size validation, and secure paths. Visibility (public / followers-only / members-only / private) is enforced by Firestore and Storage Security Rules — not just hidden in the UI.'
+  },
+  profile: {
+    title: 'Creator Profile',
+    tagline: 'A professional public page at your own URL.',
+    status: 'st--dev', statusLabel: 'In Development',
+    about: 'Every creator receives a professional public profile. Your bio, portfolio, published content, products, services, courses and events — organized cleanly.',
+    features: [
+      'Profile photo, cover image, name, username',
+      'Verification status, country, languages, bio, skills',
+      'Portfolio, published content, products, services, events',
+      'Social links and contact CTA',
+      'Follow button and share',
+      'Full privacy controls — you decide what is public'
+    ],
+    honest: 'Private email addresses and phone numbers are hidden by default. Verification is a real process — we do not sell meaningless badges, and we do not imply government identity verification unless an actual identity-verification process exists.'
+  },
+  marketplace: {
+    title: 'Creator Marketplace',
+    tagline: 'Sell digital products and creative services.',
+    status: 'st--soon', statusLabel: 'Coming Soon',
+    about: 'Sell digital products — ebooks, music, beats, templates, graphics, presets, fonts, design resources, video/audio assets, software (where legally permitted). Sell services — design, development, video, music, writing, translation, consulting, tutoring.',
+    features: [
+      'Product pages: title, description, preview, price, currency, license',
+      'Delivery method and refund info',
+      'Service listings with starting price and delivery time',
+      'Reviews only when genuine — no fabricated ratings',
+      'Digital delivery after verified payment',
+      'Creator earnings + immutable transaction ledger'
+    ],
+    honest: 'Payment integration is not yet live. We do not claim global payment support until actual providers are connected with real server-side verification. We never store card numbers or CVV. We never display a fake "Payment Successful" screen.'
+  },
+  wallet: {
+    title: 'Creator Wallet',
+    tagline: 'Earnings, transactions and payouts.',
+    status: 'st--soon', statusLabel: 'Coming Soon',
+    about: 'An immutable transaction ledger of everything that moved money: product sales, memberships, tips/support, event revenue, platform fees, refunds, payouts.',
+    features: [
+      'Available balance',
+      'Pending balance',
+      'Total earned',
+      'Transaction history',
+      'Payout request',
+      'Payout status: pending / processing / paid / failed / reversed',
+      'Payout method: bank transfer, mobile money, or payment-provider payouts (where supported)'
+    ],
+    honest: 'Creators cannot edit their own balance — all balance changes originate from trusted backend logic. Payout availability depends on the actual payment provider and the creator\'s country. We do not claim global payout support until providers are configured.'
+  },
+  community: {
+    title: 'Creator Community',
+    tagline: 'Posts, discussions, groups and collaboration.',
+    status: 'st--soon', statusLabel: 'Coming Soon',
+    about: 'A safe place for creators to publish announcements, discuss projects, ask questions, run polls, showcase work, and request collaborators.',
+    features: [
+      'Posts, discussions, questions, polls',
+      'Announcements and project showcases',
+      'Collaboration requests',
+      'Study groups and creator groups',
+      'Comment moderation tools for your own content',
+      'Reporting and blocking',
+      'Moderation center with review queue'
+    ],
+    honest: 'Moderation access is not automatic. Administrators do not get unrestricted access to private messages — any moderation access follows clearly defined policy and secure backend controls.'
+  },
+  brand: {
+    title: 'IKAZE Brand Hub',
+    tagline: 'Brand campaigns and creator collaborations.',
+    status: 'st--concept', statusLabel: 'Concept',
+    about: 'Brands publish campaigns with budget, deliverables, deadline and audience. Creators apply, propose, and get paid through real verified contracts.',
+    features: [
+      'Campaigns: brand, title, description, category, audience',
+      'Budget, deliverables, deadline, location/remote',
+      'Application requirements',
+      'Creator: discover, apply, propose, track applications',
+      'Brand: shortlist, accept/reject, manage deliverables',
+      'Real contracts and payments — outside or inside the platform as appropriate'
+    ],
+    honest: 'All financial agreements must use proper contracts and terms. We do not implement unsafe unverified escrow. Payout integration depends on configured payment providers.'
+  },
+  analytics: {
+    title: 'Creator Analytics',
+    tagline: 'Real data. Real numbers. No fabrication.',
+    status: 'st--soon', statusLabel: 'Coming Soon',
+    about: 'Views, followers, engagement, likes, comments, shares, saves, product views, product sales, conversion rate, revenue, top content, traffic sources, and audience geography where legally and technically available.',
+    features: [
+      'Views and unique viewers',
+      'Followers and engagement metrics',
+      'Product views, sales, conversion rate',
+      'Revenue and top content',
+      'Traffic sources where available',
+      'Audience geography where legally and technically available',
+      '7 / 30 / 90 day and 1 year ranges'
+    ],
+    honest: 'We do not fabricate analytics. For new creators, empty states explain that analytics will appear once content receives activity — not "fake 10,000 views". Analytics use aggregated counters and scheduled rollups — not browser downloads of every raw event.'
+  },
+  ai: {
+    title: 'IKAZE Creator AI',
+    tagline: 'An assistant, not an autonomous manager.',
+    status: 'st--concept', statusLabel: 'Concept',
+    about: 'A creator assistant for content ideas, captions, video descriptions, product descriptions, article outlines, script assistance, social content calendar, SEO suggestions, translation, and audience insights.',
+    features: [
+      'Content ideas and captions',
+      'Video and product descriptions',
+      'Article outlines and scripts',
+      'Social content calendar',
+      'SEO suggestions',
+      'Translation',
+      'Brand pitch drafts and proposal assistance',
+      'Portfolio improvement suggestions'
+    ],
+    honest: 'AI runs on a secure backend with rate limits, usage limits, abuse protection, and AI disclosure. AI provider secret keys never appear in frontend JavaScript. We do not pretend the AI is autonomous — it assists, you decide.'
+  },
+  opportunities: {
+    title: 'Creator Opportunities',
+    tagline: 'Jobs, grants, competitions, residencies.',
+    status: 'st--soon', statusLabel: 'Coming Soon',
+    about: 'A global opportunity section for creators: jobs, freelance work, grants, competitions, residencies, scholarships, brand campaigns, commissions and events.',
+    features: [
+      'Every listing shows source, deadline, location, eligibility, application method',
+      'Verification status clearly labelled',
+      'Externally sourced opportunities clearly marked',
+      'Direct link to the official application'
+    ],
+    honest: 'We do not fabricate opportunities. IKAZE is never the application intermediary — every listing links to the official organization. The existing Opportunity Center already serves this role.'
+  }
+};
+
+function openFeatureDetail(key){
+  const d = FEATURE_DETAILS[key];
+  if (!d) return;
+  const body = $('#modalBody');
+  body.innerHTML = `
+    <h3 id="modalTitle">${escapeHTML(d.title)}</h3>
+    <p class="modal__sub">${escapeHTML(d.tagline)}</p>
+
+    <div style="margin-bottom:16px">
+      <span class="st ${d.status}">${escapeHTML(d.statusLabel)}</span>
+    </div>
+
+    <h4 style="color:var(--blue);margin-top:6px">About this feature</h4>
+    <p style="color:var(--mut);font-size:.94rem">${escapeHTML(d.about)}</p>
+
+    <h4 style="color:var(--blue);margin-top:16px">Capabilities</h4>
+    <ul style="color:var(--mut);font-size:.92rem;padding-left:20px">
+      ${d.features.map(f => `<li>${escapeHTML(f)}</li>`).join('')}
+    </ul>
+
+    <div style="margin-top:18px;padding:14px 18px;border-radius:12px;background:rgba(242,163,58,.06);border:1px solid rgba(242,163,58,.24);font-size:.85rem;color:var(--mut)">
+      <strong style="color:var(--amb)">Honest note:</strong> ${escapeHTML(d.honest)}
+    </div>
+
+    <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
+      <button class="btn o" data-close-modal type="button">Close</button>
+      <a class="btn" href="support.html">Register Interest</a>
+    </div>
+  `;
+  openModal();
+}
+
+/* ============================================================
+   DISCOVERY TILES
+   ============================================================ */
+const DISCOVER_TILES = [
+  { icon:'◉', name:'Creators',       desc:'Discover musicians, designers, developers, writers, filmmakers and more.', meta:'Populates from Firebase' },
+  { icon:'◇', name:'Music',          desc:'Original tracks, beats, compositions and audio from African and global creators.', meta:'Coming with Studio' },
+  { icon:'▣', name:'Artwork',        desc:'Digital art, illustrations, design work and visual projects.', meta:'Coming with Studio' },
+  { icon:'✎', name:'Articles',       desc:'Writing, essays, journalism and long-form content from creators.', meta:'Coming with Studio' },
+  { icon:'◎', name:'Podcasts',       desc:'Audio shows, interviews and creator conversations.', meta:'Coming with Studio' },
+  { icon:'▲', name:'Video',          desc:'Film, music videos, tutorials, vlogs and short-form content.', meta:'Coming with Studio' },
+  { icon:'◆', name:'Products',       desc:'Digital products: ebooks, presets, templates, graphics.', meta:'Coming with Marketplace' },
+  { icon:'✦', name:'Services',       desc:'Design, development, music, video, writing and translation.', meta:'Coming with Marketplace' },
+  { icon:'◐', name:'Courses',        desc:'Premium courses from creators — linked into IKAZE Academy.', meta:'Coming with Academy' },
+  { icon:'★', name:'Opportunities',  desc:'Jobs, grants, competitions and residencies for creators.', meta:'Open the Opportunity Center' },
+  { icon:'⌘', name:'Events',         desc:'Creator-run workshops, shows and meetups.', meta:'Coming with Studio' },
+  { icon:'◈', name:'Collaborations', desc:'Find collaborators, co-create and build together.', meta:'Coming with Community' }
+];
+
+function renderDiscoverTiles(){
+  const grid = $('#discoverTiles');
+  if (!grid) return;
+  grid.innerHTML = '';
+  DISCOVER_TILES.forEach(t => {
+    const card = el('button', 'tile');
+    card.type = 'button';
+    card.innerHTML = `
+      <div class="tile__icon" aria-hidden="true">${t.icon}</div>
+      <h3>${escapeHTML(t.name)}</h3>
+      <p>${escapeHTML(t.desc)}</p>
+      <div class="tile__meta">${escapeHTML(t.meta)}</div>
+    `;
+    card.addEventListener('click', () => toast(`${t.name} — ${t.meta}`, 'warn'));
+    grid.appendChild(card);
+  });
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+const FAQS = [
+  { q:'What is IKAZE Creator?', a:'IKAZE Creator is a global creator economy platform from IKAZE DIGITAL. It gives creators the tools to publish work, build audiences, sell digital products and services, discover opportunities, and grow creative businesses from Africa to the world.' },
+  { q:'Is IKAZE Creator a social network?', a:'No. It is a creator business ecosystem, not another social feed. Publishing and community are supported, but the platform is built around helping creators run a real creative business — products, services, memberships, brand work, and career growth.' },
+  { q:'Is it live today?', a:'IKAZE Creator is in active development. Core features are being built on the same Firebase infrastructure as the rest of the IKAZE ecosystem. Every feature is clearly labelled AVAILABLE, IN DEVELOPMENT, COMING SOON, or NOT CONFIGURED — we do not claim capabilities that are not built.' },
+  { q:'Do I need a separate account?', a:'No. One IKAZE account works across Creator, Academy, Cloud, Marketplace and the entire ecosystem. Sign in once. A Creator role does not automatically grant Academy instructor or Cloud admin privileges — each product enforces its own authorization.' },
+  { q:'How does Creator connect to IKAZE Academy?', a:'A learner completing creator-related courses can step into Creator with a profile, portfolio, and studio access. Creators can also build courses and become instructors if approved. It is a shared Firebase identity, not a second signup.' },
+  { q:'How does Creator connect to IKAZE Cloud?', a:'Creators store portfolio assets, connect GitHub, deploy websites, and host their creator portfolio on IKAZE Cloud — real infrastructure, not simulation. Cross-product references use shared Firebase identity, not copied credentials.' },
+  { q:'When do payments and payouts go live?', a:'Payment and payout integration is being set up with regional settlement in mind. We will not accept payments until a secure provider is connected with server-side verification. Payout availability depends on the provider and the creator\'s country.' },
+  { q:'Is my data safe?', a:'Authorization is enforced by Firebase Security Rules and trusted backend functions — never by the browser alone. Private content stays private. Creators cannot edit their own balance. Transactions and payments are recorded by backend logic, not frontend.' },
+  { q:'Can I sell anything I want?', a:'Digital products and creative services as permitted by our Terms of Service and applicable law. We do not allow infringing content, malware, illegal goods, or anything that violates platform policy. Copyright and creator rights are respected.' },
+  { q:'What happens if I have an issue?', a:'Use the IKAZE Support Center at support.html. Reports about content, copyright, moderation, or abuse go through review before any action is taken.' }
+];
+
+function renderFAQ(){
+  const list = $('#faqList');
+  if (!list) return;
+  list.innerHTML = '';
+  FAQS.forEach((f, i) => {
+    const item = el('div','faq__item');
+    item.setAttribute('aria-expanded','false');
+    const qid = `faq-q-${i}`, aid = `faq-a-${i}`;
+    item.innerHTML = `
+      <button class="faq__q" aria-controls="${aid}" aria-expanded="false" id="${qid}">${escapeHTML(f.q)}</button>
+      <div class="faq__a" role="region" aria-labelledby="${qid}" id="${aid}">${escapeHTML(f.a)}</div>
+    `;
+    const btn = item.querySelector('.faq__q');
+    btn.addEventListener('click', () => {
+      const open = item.getAttribute('aria-expanded') === 'true';
+      item.setAttribute('aria-expanded', String(!open));
+      btn.setAttribute('aria-expanded', String(!open));
+    });
+    list.appendChild(item);
+  });
+}
+
+/* ============================================================
+   REVEAL ON SCROLL
+   ============================================================ */
+function initReveal(){
+  const els = $$('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('is-visible')); return; }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); }
+    });
+  }, { rootMargin:'0px 0px -8% 0px', threshold:0.06 });
+  els.forEach(e => io.observe(e));
+}
+
+/* ============================================================
+   MOBILE NAV
+   ============================================================ */
+function initMobileNav(){
+  const t = $('#menu'), n = $('#nav');
+  if (!t || !n) return;
+  t.addEventListener('click', () => {
+    const open = n.classList.toggle('open');
+    t.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('lock', open);
+  });
+  n.addEventListener('click', e => {
+    if (e.target.closest('a')) {
+      n.classList.remove('open');
+      t.setAttribute('aria-expanded','false');
+      document.body.classList.remove('lock');
+    }
+  });
+}
+
+/* ============================================================
+   CODE FRAGMENTS
+   ============================================================ */
+function initCodeFragments(){
+  if (matchMedia('(max-width:620px)').matches) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const frags = ['publish()','upload()','follow()','=>{}','{role:"creator"}','analytics.track','sell.create','collab.request','ai.assist()','pay.verify()','// creator','portfolio.add'];
+  for (let i = 0; i < 10; i++) {
+    const span = document.createElement('span');
+    span.className = 'code-frag';
+    span.textContent = frags[Math.floor(Math.random()*frags.length)];
+    span.style.left = (Math.random()*100) + '%';
+    span.style.bottom = '-40px';
+    span.style.animationDuration = (16 + Math.random()*16) + 's';
+    span.style.animationDelay = (-Math.random()*22) + 's';
+    span.style.opacity = (0.18 + Math.random()*0.35).toFixed(2);
+    document.body.appendChild(span);
+  }
+}
+
+/* ============================================================
+   3D CREATOR ECOSYSTEM VISUAL
+   ============================================================ */
+function initCreatorVisual(){
+  const canvas = document.getElementById('creatorCanvas');
+  if (!canvas) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const test = (()=>{try{const c=document.createElement('canvas');return !!(window.WebGLRenderingContext&&(c.getContext('webgl2')||c.getContext('webgl')));}catch{return false;}})();
+  if (!test) return;
+
+  const s = document.createElement('script');
+  s.type = 'module';
+  s.textContent = `
+    import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+    const canvas = document.getElementById('creatorCanvas');
+    const parent = canvas.parentElement;
+    const isSmall = matchMedia('(max-width:700px)').matches;
+
+    const renderer = new THREE.WebGLRenderer({canvas, antialias:!isSmall, alpha:true, powerPreference:'high-performance'});
+    renderer.setPixelRatio(Math.min(devicePixelRatio, isSmall ? 1.5 : 2));
+    renderer.setClearColor(0x000000, 0);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 200);
+    camera.position.set(0, 0, 8);
+
+    scene.add(new THREE.AmbientLight(0x00A1DE, 0.5));
+    const key = new THREE.DirectionalLight(0xffffff, 1.0); key.position.set(4, 6, 4); scene.add(key);
+    const rim = new THREE.DirectionalLight(0x20603D, 0.8); rim.position.set(-5, -3, -4); scene.add(rim);
+    const fill = new THREE.DirectionalLight(0xFAD201, 0.35); fill.position.set(2, -3, 3); scene.add(fill);
+
+    // Central creator node — a stylized cube representing the creator
+    const centerGeo = new THREE.IcosahedronGeometry(0.75, 2);
+    const centerMat = new THREE.MeshStandardMaterial({
+      color: 0x00A1DE, emissive: 0x00A1DE, emissiveIntensity: 0.4,
+      roughness: 0.35, metalness: 0.5
+    });
+    const center = new THREE.Mesh(centerGeo, centerMat);
+    scene.add(center);
+
+    // Glow sprite
+    const gc = document.createElement('canvas'); gc.width = gc.height = 256;
+    const gx = gc.getContext('2d');
+    const gg = gx.createRadialGradient(128,128,0,128,128,128);
+    gg.addColorStop(0,'rgba(0,161,222,0.5)');
+    gg.addColorStop(1,'rgba(0,161,222,0)');
+    gx.fillStyle = gg; gx.fillRect(0,0,256,256);
+    const glowTex = new THREE.CanvasTexture(gc);
+    const glowSprite = new THREE.Sprite(new THREE.SpriteMaterial({map:glowTex, transparent:true, blending:THREE.AdditiveBlending, depthWrite:false}));
+    glowSprite.scale.set(3.4, 3.4, 1);
+    scene.add(glowSprite);
+
+    // Orbiting creator-ecosystem nodes
+    const nodes = ['Audience','Community','Content','Marketplace','Services','Memberships','Campaigns','Analytics','Academy','Cloud'];
+    const meshes = [];
+    const nodeGeo = new THREE.SphereGeometry(0.13, 20, 20);
+    nodes.forEach((n, i) => {
+      const color = i % 3 === 0 ? 0x00A1DE : i % 3 === 1 ? 0x20603D : 0xFAD201;
+      const mat = new THREE.MeshStandardMaterial({ color, emissive:color, emissiveIntensity: 0.55, roughness: 0.3, metalness: 0.45 });
+      const mesh = new THREE.Mesh(nodeGeo, mat);
+      const angle = (i / nodes.length) * Math.PI * 2;
+      const radius = 2.7;
+      const y = Math.sin(i * 1.7) * 0.9;
+      mesh.userData = { angle, radius, y, speed: 0.14 + Math.random()*0.08 };
+      mesh.position.set(Math.cos(angle)*radius, y, Math.sin(angle)*radius);
+      scene.add(mesh);
+      meshes.push(mesh);
+
+      const lineGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,0,0), mesh.position.clone()]);
+      const lineMat = new THREE.LineBasicMaterial({ color, transparent:true, opacity: 0.28, blending: THREE.AdditiveBlending });
+      const line = new THREE.Line(lineGeo, lineMat);
+      scene.add(line);
+      mesh.userData.line = line;
+    });
+
+    // Particle field
+    const pCount = isSmall ? 70 : 160;
+    const pGeo = new THREE.BufferGeometry();
+    const pPos = new Float32Array(pCount * 3);
+    for (let i = 0; i < pCount; i++) {
+      const r = 2.8 + Math.random() * 4;
+      const t = Math.random() * Math.PI * 2;
+      const p = Math.acos(2 * Math.random() - 1);
+      pPos[i*3]   = r * Math.sin(p) * Math.cos(t);
+      pPos[i*3+1] = r * Math.sin(p) * Math.sin(t);
+      pPos[i*3+2] = r * Math.cos(p);
+    }
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+    const dustMat = new THREE.PointsMaterial({
+      color: 0x00A1DE, size: 0.03, transparent: true, opacity: 0.5,
+      depthWrite: false, blending: THREE.AdditiveBlending
+    });
+    const dust = new THREE.Points(pGeo, dustMat);
+    scene.add(dust);
+
+    function resize(){
+      const w = parent.clientWidth || 400;
+      const h = parent.clientHeight || 400;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    if ('ResizeObserver' in window) new ResizeObserver(resize).observe(parent);
+    else addEventListener('resize', resize);
+
+    let mx = 0, my = 0, tx = 0, ty = 0;
+    if (!isSmall) {
+      parent.addEventListener('pointermove', e => {
+        const r = parent.getBoundingClientRect();
+        tx = ((e.clientX - r.left) / r.width - 0.5) * 0.45;
+        ty = ((e.clientY - r.top) / r.height - 0.5) * 0.45;
+      });
+    }
+
+    let running = true;
+    document.addEventListener('visibilitychange', () => { running = !document.hidden; if (running) loop(); });
+
+    const clock = new THREE.Clock();
+    function loop(){
+      if (!running) return;
+      requestAnimationFrame(loop);
+      const t = clock.getElapsedTime();
+
+      center.rotation.y += 0.004;
+      center.rotation.x += 0.0018;
+      dust.rotation.y += 0.0008;
+
+      meshes.forEach((m, i) => {
+        const d = m.userData;
+        const angle = d.angle + t * d.speed;
+        m.position.set(
+          Math.cos(angle) * d.radius,
+          d.y + Math.sin(t * 0.6 + i) * 0.12,
+          Math.sin(angle) * d.radius
+        );
+        const arr = d.line.geometry.attributes.position.array;
+        arr[3] = m.position.x; arr[4] = m.position.y; arr[5] = m.position.z;
+        d.line.geometry.attributes.position.needsUpdate = true;
+      });
+
+      mx += (tx - mx) * 0.05;
+      my += (ty - my) * 0.05;
+      scene.rotation.y = mx;
+      scene.rotation.x = my;
+
+      renderer.render(scene, camera);
+    }
+    loop();
+  `;
+  document.body.appendChild(s);
+}
+
+/* ============================================================
+   WIRE BUTTONS + MODALS
+   ============================================================ */
+function wireButtons(){
+  document.addEventListener('click', e => {
+    const t = e.target.closest('[data-detail]');
+    if (t) { e.preventDefault(); openFeatureDetail(t.dataset.detail); }
+    const a = e.target.closest('[data-auth-open]');
+    if (a) { e.preventDefault(); openAuthModal(a.dataset.authOpen); }
+  });
+
+  const search = $('#discoverSearch');
+  if (search) {
+    search.addEventListener('input', () => {
+      const q = search.value.trim();
+      if (q.length > 2) toast('Discovery results populate from Firebase as creators join. Currently 0 items.', 'warn');
+    });
+  }
+}
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+async function boot(){
+  const y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  renderDiscoverTiles();
+  renderFAQ();
+  initMobileNav();
+  initCodeFragments();
+  initCreatorVisual();
+  wireButtons();
+
+  const ok = await initFirebase();
+  if (ok) {
+    const { onAuthStateChanged } = fb;
+    onAuthStateChanged(fb.auth, async (user) => {
+      currentUser = user;
+      if (user) await loadUserProfile();
+      renderAuthState();
+    });
+  } else {
+    renderAuthState(); // sign-in will show config-notice if not configured
+  }
+
+  initReveal();
+  hideLoader();
+}
+
+boot();
+
+/* ============================================================
+   DEVTOOLS DETERRENTS (not security)
+   ============================================================ */
+document.addEventListener('contextmenu', (e) => {
+  const t = e.target;
+  if (t.matches?.('input,textarea,select,[contenteditable="true"]')) return;
+  e.preventDefault();
+});
+document.addEventListener('keydown', (e) => {
+  const k = e.key.toLowerCase();
+  const block =
+    k === 'f12' ||
+    (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+    (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+    (e.ctrlKey && ['u','s'].includes(k)) ||
+    (e.metaKey && ['u','s'].includes(k));
+  if (block) { e.preventDefault(); e.stopPropagation(); return false; }
+}, true);
+(() => {
+  const toastEl = document.createElement('div');
+  toastEl.className = 'devtools-warning';
+  toastEl.setAttribute('role','alert');
+  toastEl.setAttribute('aria-live','polite');
+  toastEl.innerHTML = '<span class="devtools-warning__icon">!</span><span>Developer tools detected — this page is protected.</span>';
+  document.body.appendChild(toastEl);
+  let visible = false, warnUntil = 0;
+  const show = () => { warnUntil = Date.now() + 5000; if (!visible) { visible = true; toastEl.classList.add('is-visible'); } };
+  const hide = () => { if (visible && Date.now() > warnUntil) { visible = false; toastEl.classList.remove('is-visible'); } };
+  setInterval(() => {
+    const w = window.outerWidth - window.innerWidth;
+    const h = window.outerHeight - window.innerHeight;
+    if (w > 160 || h > 160) show();
+    hide();
+  }, 900);
+  document.addEventListener('keydown', (e) => {
+    const k = e.key.toLowerCase();
+    if (k === 'f12' ||
+        (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+        (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+        (e.ctrlKey && ['u','s'].includes(k)) ||
+        (e.metaKey && ['u','s'].includes(k))) show();
+  }, true);
+})();
+if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+  (() => { let n = 0; setInterval(() => { n++; if (n > 1) { console.clear(); n = 0; } }, 2000); })();
+}
+console.log('%c⚠️ STOP', 'color:#ff3b3b;font-size:32px;font-weight:900');
+console.log('%cThis is IKAZE Creator. Authorization is enforced by Firebase Security Rules and trusted backend functions. Modifying this file grants no privileges. No secrets are stored here.', 'font-size:13px;color:#ff9');
+</script>
+
+<!-- ============================================================
+     FIRESTORE SCHEMA + SECURITY RULES — REFERENCE
+     ============================================================
+     Deploy these to your Firebase project. All real access
+     control is enforced server-side by these rules and by
+     Cloud Functions. Provider secrets, payment keys and AI
+     keys are never in this file — they live in Secret Manager
+     and are only accessed by Cloud Functions.
+
+     --- FIRESTORE COLLECTIONS --------------------------------
+     users/{uid}                     — shared across the whole ecosystem
+     creatorProfiles/{uid}           — public creator profile
+     creatorContent/{contentId}      — published content (video/audio/etc.)
+     creatorFollows/{followId}       — follower relationships
+     creatorPosts/{postId}           — community posts
+     creatorComments/{commentId}     — comments
+     creatorLikes/{likeId}           — likes (composite: user_content)
+     creatorProducts/{productId}     — digital products
+     creatorServices/{serviceId}     — service listings
+     creatorOrders/{orderId}         — orders
+     creatorTransactions/{txId}      — immutable transaction ledger
+     creatorMemberships/{mId}        — memberships
+     creatorMembershipTiers/{tierId} — tier definitions
+     creatorCollaborations/{cId}     — collaboration requests / workspaces
+     creatorCampaigns/{campId}       — brand campaigns
+     creatorCampaignApplications/{aId}
+     creatorOpportunities/{oppId}    — externally sourced opportunities
+     creatorNotifications/{nId}      — notifications
+     creatorReports/{reportId}       — moderation reports
+     creatorAuditLogs/{logId}        — admin audit trail
+     creatorEarnings/{earnId}        — per-source aggregated earnings
+     creatorPayouts/{payoutId}       — payout requests
+
+     --- FIRESTORE SECURITY RULES -----------------------------
+     rules_version = '2';
+     service cloud.firestore {
+       match /databases/{database}/documents {
+
+         function signedIn() { return request.auth != null; }
+         function isSelf(uid) { return signedIn() && request.auth.uid == uid; }
+         function isAdmin() { return signedIn() && request.auth.token.admin == true; }
+
+         // Shared user doc — self-safe writes only
+         match /users/{uid} {
+           allow read: if isSelf(uid) || isAdmin();
+           allow create: if isSelf(uid);
+           allow update: if (isSelf(uid)
+             && !request.resource.data.diff(resource.data)
+                 .affectedKeys().hasAny(['role','admin','permissions','balance','verified']))
+             || isAdmin();
+           allow delete: if isAdmin();
+         }
+
+         // Public creator profile
+         match /creatorProfiles/{uid} {
+           allow read: if true;
+           allow write: if isSelf(uid) || isAdmin();
+         }
+
+         // Content — public read for public visibility; owner write
+         match /creatorContent/{contentId} {
+           allow read: if resource.data.visibility == 'public'
+                       || (signedIn() && resource.data.creatorId == request.auth.uid)
+                       || isAdmin();
+           allow create: if signedIn()
+                       && request.resource.data.creatorId == request.auth.uid;
+           allow update, delete: if (signedIn() && resource.data.creatorId == request.auth.uid) || isAdmin();
+         }
+
+         // Follows — anyone signed-in can create a follow for themselves
+         match /creatorFollows/{followId} {
+           allow read: if true;
+           allow create: if signedIn()
+                       && request.resource.data.followerId == request.auth.uid;
+           allow delete: if signedIn()
+                       && resource.data.followerId == request.auth.uid;
+         }
+
+         // Likes — same pattern
+         match /creatorLikes/{likeId} {
+           allow read: if true;
+           allow create: if signedIn()
+                       && request.resource.data.userId == request.auth.uid;
+           allow delete: if signedIn()
+                       && resource.data.userId == request.auth.uid;
+         }
+
+         // Comments — signed-in write, self-delete
+         match /creatorComments/{commentId} {
+           allow read: if true;
+           allow create: if signedIn()
+                       && request.resource.data.userId == request.auth.uid;
+           allow update: if isAdmin();
+           allow delete: if signedIn()
+                       && resource.data.userId == request.auth.uid;
+         }
+
+         // Posts — signed-in write
+         match /creatorPosts/{postId} {
+           allow read: if true;
+           allow create: if signedIn()
+                       && request.resource.data.userId == request.auth.uid;
+           allow update, delete: if signedIn()
+                       && resource.data.userId == request.auth.uid
+                       || isAdmin();
+         }
+
+         // Products — public read, owner write
+         match /creatorProducts/{productId} {
+           allow read: if resource.data.status == 'published' || isAdmin()
+                       || (signedIn() && resource.data.creatorId == request.auth.uid);
+           allow create: if signedIn()
+                       && request.resource.data.creatorId == request.auth.uid;
+           allow update, delete: if (signedIn() && resource.data.creatorId == request.auth.uid) || isAdmin();
+         }
+
+         // Services — same pattern
+         match /creatorServices/{serviceId} {
+           allow read: if true;
+           allow create: if signedIn()
+                       && request.resource.data.creatorId == request.auth.uid;
+           allow update, delete: if (signedIn() && resource.data.creatorId == request.auth.uid) || isAdmin();
+         }
+
+         // Orders — read by buyer or seller, write only by backend
+         match /creatorOrders/{orderId} {
+           allow read: if isAdmin()
+                       || (signedIn() && (resource.data.buyerId == request.auth.uid
+                                       || resource.data.sellerId == request.auth.uid));
+           allow write: if false; // created by Cloud Functions after verified payment
+         }
+
+         // Transactions — read by owner, write only by backend
+         match /creatorTransactions/{txId} {
+           allow read: if isAdmin()
+                       || (signedIn() && resource.data.creatorId == request.auth.uid);
+           allow write: if false;
+         }
+
+         // Memberships — read by buyer or seller
+         match /creatorMemberships/{mId} {
+           allow read: if isAdmin()
+                       || (signedIn() && (resource.data.memberId == request.auth.uid
+                                       || resource.data.creatorId == request.auth.uid));
+           allow write: if false;
+         }
+
+         match /creatorMembershipTiers/{tierId} {
+           allow read: if true;
+           allow write: if signedIn()
+                       && resource.data.creatorId == request.auth.uid
+                       || isAdmin();
+         }
+
+         // Collaborations — participants
+         match /creatorCollaborations/{cId} {
+           allow read: if isAdmin()
+                       || (signedIn() && request.auth.uid in resource.data.participantIds);
+           allow create: if signedIn()
+                       && request.resource.data.initiatorId == request.auth.uid;
+           allow update: if isAdmin()
+                       || (signedIn() && request.auth.uid in resource.data.participantIds);
+         }
+
+         // Campaigns — public read, brand-owner write
+         match /creatorCampaigns/{campId} {
+           allow read: if true;
+           allow create: if signedIn()
+                       && request.resource.data.brandId == request.auth.uid;
+           allow update, delete: if signedIn()
+                       && resource.data.brandId == request.auth.uid
+                       || isAdmin();
+         }
+
+         match /creatorCampaignApplications/{aId} {
+           allow read: if isAdmin()
+                       || (signedIn() && (resource.data.creatorId == request.auth.uid
+                                       || resource.data.brandId == request.auth.uid));
+           allow create: if signedIn()
+                       && request.resource.data.creatorId == request.auth.uid;
+           allow update: if isAdmin()
+                       || (signedIn() && resource.data.brandId == request.auth.uid);
+         }
+
+         // Opportunities — public read, admin write
+         match /creatorOpportunities/{oppId} {
+           allow read: if true;
+           allow write: if isAdmin();
+         }
+
+         // Notifications — owner read
+         match /creatorNotifications/{nId} {
+           allow read, update: if signedIn()
+                       && resource.data.ownerId == request.auth.uid;
+           allow create, delete: if isAdmin();
+         }
+
+         // Reports — signed-in create, admin read
+         match /creatorReports/{reportId} {
+           allow create: if signedIn()
+                       && request.resource.data.reporterId == request.auth.uid;
+           allow read, update: if isAdmin();
+         }
+
+         // Audit logs — admin read, backend write
+         match /creatorAuditLogs/{logId} {
+           allow read: if isAdmin();
+           allow write: if false;
+         }
+
+         // Earnings — owner read, backend write
+         match /creatorEarnings/{earnId} {
+           allow read: if signedIn()
+                       && resource.data.creatorId == request.auth.uid
+                       || isAdmin();
+           allow write: if false;
+         }
+
+         // Payouts — owner create, admin approve
+         match /creatorPayouts/{payoutId} {
+           allow read: if signedIn()
+                       && resource.data.creatorId == request.auth.uid
+                       || isAdmin();
+           allow create: if signedIn()
+                       && request.resource.data.creatorId == request.auth.uid
+                       && request.resource.data.status == 'pending';
+           allow update: if isAdmin();
+         }
+
+         // Default deny
+         match /{document=**} { allow read, write: if false; }
+       }
+     }
+
+     --- STORAGE RULES (storage.rules) ------------------------
+     rules_version = '2';
+     service firebase.storage {
+       match /b/{bucket}/o {
+         match /creator/{userId}/{allPaths=**} {
+           allow read: if true; // public assets — refine with metadata check if needed
+           allow write: if request.auth != null
+             && request.auth.uid == userId
+             && request.resource.size < 500 * 1024 * 1024
+             && (
+               request.resource.contentType.matches('image/.*')
+               || request.resource.contentType.matches('video/.*')
+               || request.resource.contentType.matches('audio/.*')
+               || request.resource.contentType == 'application/pdf'
+             );
+         }
+         match /creator-private/{userId}/{allPaths=**} {
+           allow read: if request.auth != null
+             && (request.auth.uid == userId || request.auth.token.admin == true);
+           allow write: if request.auth != null
+             && request.auth.uid == userId;
+         }
+         match /{allPaths=**} { allow read, write: if false; }
+       }
+     }
+
+     --- RECOMMENDED FIRESTORE INDEXES ------------------------
+     {
+       "indexes": [
+         { "collectionGroup": "creatorContent",
+           "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath": "creatorId", "order": "ASCENDING"},
+             {"fieldPath": "publishedAt", "order": "DESCENDING"}
+           ]
+         },
+         { "collectionGroup": "creatorContent",
+           "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath": "visibility", "order": "ASCENDING"},
+             {"fieldPath": "publishedAt", "order": "DESCENDING"}
+           ]
+         },
+         { "collectionGroup": "creatorFollows",
+           "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath": "followerId", "order": "ASCENDING"},
+             {"fieldPath": "createdAt", "order": "DESCENDING"}
+           ]
+         },
+         { "collectionGroup": "creatorProducts",
+           "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath": "creatorId", "order": "ASCENDING"},
+             {"fieldPath": "status", "order": "ASCENDING"}
+           ]
+         },
+         { "collectionGroup": "creatorNotifications",
+           "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath": "ownerId", "order": "ASCENDING"},
+             {"fieldPath": "read", "order": "ASCENDING"},
+             {"fieldPath": "createdAt", "order": "DESCENDING"}
+           ]
+         }
+       ]
+     }
+
+     --- BACKEND FUNCTIONS TO BUILD ---------------------------
+     Cloud Functions (or trusted backend) must handle:
+       - Payment verification (provider webhook → order → transaction)
+       - Payout processing (request → provider call → status update)
+       - Membership activation/verification
+       - Digital delivery (signed download URLs after verified purchase)
+       - Analytics aggregation (scheduled rollups, not client-side)
+       - Notification fanout (fan-out on write for followers)
+       - AI proxy (with rate limits + provider key from Secret Manager)
+       - Moderation actions (report → review → decision → audit log)
+       - Custom claim management (admin, verified-creator, brand)
+       - Content moderation (report queue processing)
+
+     --- PROVISIONING (run once, locally, not in browser) -----
+     // Set admin claim on Founder:
+     const admin = require('firebase-admin');
+     admin.initializeApp({ credential: admin.credential.applicationDefault() });
+     await admin.auth().setCustomUserClaims('FOUNDER_UID_HERE', {
+       admin: true,
+       role: 'founder'
+     });
+     // Set verified-creator claim on a creator:
+     await admin.auth().setCustomUserClaims('CREATOR_UID_HERE', {
+       verified: true,
+       role: 'verified_creator'
+     });
+
+     --- DEVELOPMENT PHASES -----------------------------------
+     Phase 1 — Creator Foundation:
+       Auth · Profiles · Dashboard · Discovery · Publishing ·
+       Storage · Follow · Like · Comment · Save · Notifications ·
+       Moderation
+     Phase 2 — Creator Commerce:
+       Products · Marketplace · Checkout · Orders · Transactions ·
+       Earnings · Payouts · Tips · Memberships
+     Phase 3 — Professional Creator Economy:
+       Services · Collaboration · Brand Hub · Opportunities ·
+       Portfolio · Analytics · Business dashboard
+     Phase 4 — Ecosystem:
+       Academy ←→ Creator ←→ Cloud ←→ Marketplace ←→ Jobs
+     Phase 5 — Global Scale:
+       International payments · More languages · Advanced search ·
+       Mobile apps · Advanced analytics · Verification program
+     ============================================================
+-->
+</body>
+</html>
