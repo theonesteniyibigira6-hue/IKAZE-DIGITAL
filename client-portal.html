@@ -1,0 +1,2754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Client Portal | IKAZE DIGITAL</title>
+<meta name="description" content="Private workspace for IKAZE DIGITAL clients — manage projects, messages, files, approvals, invoices and support." />
+<meta name="robots" content="noindex,nofollow" />
+<meta name="theme-color" content="#080A0F" />
+<link rel="canonical" href="https://ikaze-digital.vercel.app/client-portal.html" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><path d='M6 40 24 6l18 34-9-6-9-14-9 14z' fill='%23f2a33a'/><path d='M24 6 42 40l-9-6z' fill='%23c8553d'/><circle cx='24' cy='6' r='4' fill='%23FAD201'/></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --bg:#080A0F; --bg2:#0B1017; --bg3:#10151D;
+  --ink:#f4efe8; --mut:#a9a39b;
+  --amb:#f2a33a; --ter:#c8553d;
+  --blue:#00A1DE; --grn:#20603D; --yel:#FAD201;
+  --card:rgba(255,255,255,.04);
+  --card2:rgba(255,255,255,.06);
+  --line:rgba(255,255,255,.10);
+  --line2:rgba(255,255,255,.16);
+  --radius:14px;
+  --radius-lg:20px;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sidebar-w:250px;
+  --bottom-nav-h:62px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.55;
+  overflow-x:hidden;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  font-size:14px;
+}
+body.lock{overflow:hidden}
+input,textarea,select,button{-webkit-user-select:text;user-select:text}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+button{font:inherit;cursor:pointer}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px;font-size:.88em;font-family:var(--mono)}
+
+/* ============================================================
+   BACKGROUND LAYERS
+   ============================================================ */
+#bg{
+  position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(60% 50% at 20% 15%,rgba(0,161,222,.16),transparent 70%),
+    radial-gradient(50% 45% at 85% 80%,rgba(32,96,61,.14),transparent 70%),
+    linear-gradient(#0B1017,#080A0F);
+}
+.aurora{position:fixed;border-radius:50%;filter:blur(100px);opacity:.32;mix-blend-mode:screen;pointer-events:none;z-index:-1}
+.aurora-1{width:520px;height:520px;top:-140px;left:-100px;background:radial-gradient(circle,var(--blue),transparent 70%);animation:float1 24s ease-in-out infinite}
+.aurora-2{width:600px;height:600px;bottom:-200px;right:-120px;background:radial-gradient(circle,var(--grn),transparent 70%);animation:float2 28s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(60px,50px) scale(1.12)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-60px,-70px) scale(1.15)}}
+
+/* ============================================================
+   DEVTOOLS TOAST
+   ============================================================ */
+.devtools-warning{
+  position:fixed;top:0;left:50%;transform:translate(-50%,-140%);
+  z-index:9999;padding:.75rem 1.2rem;
+  background:linear-gradient(120deg,rgba(200,85,61,.95),rgba(150,40,20,.95));
+  color:#fff;font-weight:600;font-size:.85rem;
+  border-radius:0 0 14px 14px;letter-spacing:.03em;
+  box-shadow:0 14px 40px -10px rgba(200,85,61,.6);
+  display:flex;align-items:center;gap:.6rem;
+  transition:transform .5s cubic-bezier(.2,.7,.2,1);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  max-width:calc(100% - 24px);pointer-events:none;
+}
+.devtools-warning.is-visible{transform:translate(-50%,0)}
+.devtools-warning__icon{
+  width:20px;height:20px;border-radius:50%;
+  background:rgba(255,255,255,.18);
+  display:grid;place-items:center;font-size:12px;flex-shrink:0;
+}
+@media (max-width:620px){.devtools-warning{font-size:.75rem;padding:.65rem .9rem}}
+
+/* ============================================================
+   LOADING SCREEN
+   ============================================================ */
+#loader{
+  position:fixed;inset:0;z-index:8000;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:var(--bg);gap:22px;
+  transition:opacity .4s ease,visibility .4s;
+}
+#loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-spinner{
+  width:52px;height:52px;border-radius:50%;
+  border:3px solid rgba(255,255,255,.1);
+  border-top-color:var(--blue);
+  border-right-color:var(--yel);
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loader-text{
+  color:var(--mut);font-size:.82rem;letter-spacing:.35em;
+  text-transform:uppercase;font-weight:500;
+}
+
+/* ============================================================
+   AUTH GATE
+   ============================================================ */
+#authGate{
+  position:fixed;inset:0;z-index:7000;
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;background:rgba(8,10,15,.92);
+  backdrop-filter:blur(14px);
+  overflow-y:auto;
+}
+#authGate.hidden{display:none}
+.auth-card{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius-lg);padding:36px 32px;
+  max-width:420px;width:100%;
+  backdrop-filter:blur(12px);
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+}
+.auth-card__logo{
+  display:flex;align-items:center;gap:12px;margin-bottom:24px;
+}
+.auth-card__logo img{height:44px;width:auto}
+.auth-card__logo strong{
+  font-size:14px;letter-spacing:.08em;font-weight:800;display:block;
+}
+.auth-card__logo small{
+  display:block;font-size:10px;color:var(--mut);font-weight:500;letter-spacing:0;
+}
+.auth-card h1{
+  font-size:1.5rem;margin:0 0 6px;letter-spacing:-.01em;
+}
+.auth-card__sub{
+  color:var(--mut);font-size:.9rem;margin:0 0 24px;
+}
+.auth-tabs{
+  display:flex;gap:4px;padding:4px;border-radius:10px;
+  background:rgba(255,255,255,.03);margin-bottom:22px;
+}
+.auth-tab{
+  flex:1;padding:10px;border-radius:8px;background:transparent;
+  border:0;color:var(--mut);font-size:13px;font-weight:600;transition:all .2s;
+}
+.auth-tab.on{background:var(--blue);color:#fff}
+.auth-form{display:grid;gap:14px}
+.auth-form .field{display:grid;gap:6px}
+.auth-form label{
+  font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.1em;
+}
+.auth-form input{
+  width:100%;padding:13px 16px;border-radius:10px;
+  border:1px solid var(--line);background:rgba(255,255,255,.04);
+  color:var(--ink);font-size:14px;min-height:48px;
+}
+.auth-form input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,161,222,.12)}
+.auth-submit{
+  width:100%;padding:14px;border-radius:10px;
+  background:var(--blue);color:#fff;border:0;
+  font-weight:700;font-size:14px;min-height:48px;
+  transition:transform .2s,box-shadow .2s;
+}
+.auth-submit:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,161,222,.35)}
+.auth-submit:disabled{opacity:.5;cursor:not-allowed}
+.auth-divider{
+  display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--mut);font-size:11px;
+  text-transform:uppercase;letter-spacing:.15em;
+}
+.auth-divider::before,.auth-divider::after{
+  content:"";flex:1;height:1px;background:var(--line);
+}
+.auth-google{
+  width:100%;padding:13px;border-radius:10px;
+  background:rgba(255,255,255,.05);border:1px solid var(--line);
+  color:var(--ink);font-weight:600;font-size:14px;min-height:48px;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  transition:all .2s;
+}
+.auth-google:hover{border-color:var(--blue);color:var(--blue)}
+.auth-google svg{width:18px;height:18px}
+.auth-message{
+  padding:12px 14px;border-radius:10px;font-size:.85rem;
+  margin-top:14px;display:none;
+}
+.auth-message.err{display:block;background:rgba(200,85,61,.12);border:1px solid rgba(200,85,61,.35);color:#ffb3a3}
+.auth-message.ok{display:block;background:rgba(61,220,132,.1);border:1px solid rgba(61,220,132,.3);color:#8ee9b5}
+.auth-message.info{display:block;background:rgba(0,161,222,.1);border:1px solid rgba(0,161,222,.3);color:#7cd3f0}
+.auth-footer{
+  text-align:center;margin-top:22px;font-size:.82rem;color:var(--mut);
+}
+.auth-footer a{color:var(--blue);text-decoration:underline}
+
+/* Setup card (shown when Firebase not configured) */
+.setup-card{
+  background:linear-gradient(135deg,rgba(242,163,58,.08),rgba(200,85,61,.04));
+  border:1px solid rgba(242,163,58,.32);
+  border-radius:var(--radius-lg);padding:30px 28px;
+  max-width:560px;width:100%;
+}
+.setup-card h2{
+  color:var(--amb);margin:0 0 10px;font-size:1.2rem;
+}
+.setup-card p{color:var(--mut);font-size:.9rem;margin:0 0 14px;line-height:1.65}
+.setup-card ol{padding-left:22px;margin:14px 0;color:var(--mut);font-size:.88rem;line-height:1.85}
+.setup-card ol li{margin-bottom:4px}
+.setup-card code{
+  background:rgba(0,0,0,.35);padding:3px 8px;border-radius:6px;
+  font-family:var(--mono);font-size:12px;color:var(--amb);
+}
+.setup-card__actions{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 18px;border-radius:10px;
+  background:var(--blue);color:#fff;font-weight:600;text-decoration:none;
+  border:0;font-size:13.5px;
+  transition:transform .2s,box-shadow .2s;
+  min-height:40px;white-space:nowrap;
+}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,161,222,.3)}
+.btn.o{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.o:hover{border-color:var(--blue);color:var(--blue);box-shadow:none}
+.btn.amb{background:var(--amb);color:#1a0f05}
+.btn.amb:hover{box-shadow:0 6px 20px rgba(242,163,58,.3)}
+.btn.sm{padding:8px 14px;font-size:12.5px;min-height:34px}
+.btn.danger{background:rgba(200,85,61,.15);color:#ffb3a3;border:1px solid rgba(200,85,61,.4)}
+.btn.danger:hover{background:rgba(200,85,61,.25);box-shadow:none}
+.btn.ghost{background:transparent;color:var(--mut);border:0;padding:8px 12px}
+.btn.ghost:hover{color:var(--ink);box-shadow:none}
+
+:focus-visible{outline:2px solid var(--yel);outline-offset:2px;border-radius:6px}
+
+/* ============================================================
+   PORTAL SHELL
+   ============================================================ */
+#portal{display:none}
+#portal.ready{display:block}
+
+/* Mobile header */
+.mobile-header{
+  position:sticky;top:0;z-index:30;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 16px;
+  background:rgba(8,10,15,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+  min-height:58px;
+}
+.mobile-header__brand{
+  display:flex;align-items:center;gap:10px;
+  font-weight:800;letter-spacing:.08em;font-size:12px;
+}
+.mobile-header__brand img{height:34px;width:auto}
+.mobile-header__actions{display:flex;align-items:center;gap:8px}
+.icon-btn{
+  width:38px;height:38px;border-radius:10px;
+  background:var(--card);border:1px solid var(--line);
+  color:var(--ink);display:grid;place-items:center;
+  position:relative;font-size:16px;
+}
+.icon-btn:hover{border-color:var(--blue);color:var(--blue)}
+.icon-btn__badge{
+  position:absolute;top:-4px;right:-4px;
+  min-width:18px;height:18px;padding:0 5px;
+  border-radius:99px;background:var(--ter);color:#fff;
+  font-size:10px;font-weight:700;display:grid;place-items:center;
+  border:2px solid var(--bg);
+}
+
+/* Desktop sidebar */
+.sidebar{
+  position:fixed;top:0;left:0;bottom:0;width:var(--sidebar-w);
+  background:rgba(11,16,23,.92);
+  border-right:1px solid var(--line);
+  backdrop-filter:blur(14px);
+  display:none;flex-direction:column;
+  z-index:40;padding:18px 0;
+  overflow-y:auto;
+}
+@media(min-width:960px){.sidebar{display:flex}.mobile-header{display:none}}
+.sidebar__brand{
+  display:flex;align-items:center;gap:10px;
+  padding:0 20px 18px;border-bottom:1px solid var(--line);
+  margin-bottom:14px;
+}
+.sidebar__brand img{height:38px;width:auto}
+.sidebar__brand strong{font-size:12.5px;letter-spacing:.08em;display:block;font-weight:800}
+.sidebar__brand small{font-size:9.5px;color:var(--mut);font-weight:500;display:block}
+
+.sidebar__nav{flex:1;padding:0 10px}
+.nav-item{
+  display:flex;align-items:center;gap:12px;
+  padding:11px 14px;border-radius:10px;
+  color:var(--mut);font-size:13.5px;font-weight:500;
+  transition:all .15s;width:100%;
+  background:transparent;border:0;text-align:left;cursor:pointer;
+  margin-bottom:2px;
+}
+.nav-item:hover{background:rgba(255,255,255,.04);color:var(--ink)}
+.nav-item.on{background:rgba(0,161,222,.12);color:var(--blue);font-weight:600}
+.nav-item.on .nav-item__icon{color:var(--blue)}
+.nav-item__icon{
+  width:20px;height:20px;display:grid;place-items:center;
+  flex-shrink:0;color:inherit;font-size:15px;
+}
+.nav-item__badge{
+  margin-left:auto;min-width:20px;height:20px;padding:0 6px;
+  border-radius:99px;background:var(--ter);color:#fff;
+  font-size:10px;font-weight:700;display:grid;place-items:center;
+}
+.nav-divider{height:1px;background:var(--line);margin:12px 14px}
+
+.sidebar__footer{
+  padding:14px 10px 0;border-top:1px solid var(--line);
+  margin-top:14px;
+}
+.user-chip{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;border-radius:10px;
+  background:rgba(255,255,255,.03);border:1px solid var(--line);
+  width:100%;text-align:left;color:var(--ink);
+}
+.user-chip:hover{border-color:var(--blue)}
+.user-chip__avatar{
+  width:34px;height:34px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--grn));
+  display:grid;place-items:center;color:#fff;font-weight:700;font-size:13px;
+  flex-shrink:0;
+}
+.user-chip__info{flex:1;min-width:0}
+.user-chip__info b{
+  display:block;font-size:12.5px;font-weight:600;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.user-chip__info small{
+  display:block;font-size:10.5px;color:var(--mut);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+
+/* Main content */
+.main{
+  min-height:100vh;
+  padding-bottom:calc(var(--bottom-nav-h) + 16px);
+}
+@media(min-width:960px){
+  .main{margin-left:var(--sidebar-w);padding-bottom:32px}
+}
+
+.main-inner{
+  max-width:1240px;margin:0 auto;padding:20px 16px;
+}
+@media(min-width:640px){.main-inner{padding:26px 24px}}
+@media(min-width:960px){.main-inner{padding:32px 36px}}
+
+/* Bottom mobile nav */
+.bottom-nav{
+  position:fixed;bottom:0;left:0;right:0;
+  z-index:35;display:flex;
+  background:rgba(8,10,15,.95);
+  backdrop-filter:blur(14px);
+  border-top:1px solid var(--line);
+  height:var(--bottom-nav-h);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media(min-width:960px){.bottom-nav{display:none}}
+.bottom-nav__item{
+  flex:1;background:transparent;border:0;
+  color:var(--mut);font-size:10.5px;font-weight:500;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:3px;padding:6px;position:relative;cursor:pointer;
+}
+.bottom-nav__item.on{color:var(--blue)}
+.bottom-nav__item.on::before{
+  content:"";position:absolute;top:0;left:20%;right:20%;
+  height:2px;border-radius:2px;background:var(--blue);
+}
+.bottom-nav__icon{font-size:17px;line-height:1}
+.bottom-nav__item__badge{
+  position:absolute;top:4px;right:calc(50% - 20px);
+  min-width:16px;height:16px;padding:0 4px;
+  border-radius:99px;background:var(--ter);color:#fff;
+  font-size:9px;font-weight:700;display:grid;place-items:center;
+  border:2px solid var(--bg);
+}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+.section{display:none;animation:fadeIn .25s ease}
+.section.on{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.section-head{
+  display:flex;flex-wrap:wrap;align-items:flex-end;
+  justify-content:space-between;gap:14px;margin-bottom:22px;
+}
+.section-head h1{
+  font-size:1.6rem;margin:0;letter-spacing:-.01em;
+}
+@media(min-width:640px){.section-head h1{font-size:1.9rem}}
+.section-head p{
+  color:var(--mut);margin:4px 0 0;font-size:.9rem;
+}
+
+/* Cards */
+.card{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius);padding:20px;
+  backdrop-filter:blur(8px);
+  transition:border-color .2s;
+}
+.card:hover{border-color:var(--line2)}
+.card h3{margin:0 0 10px;font-size:1rem;letter-spacing:-.005em}
+
+/* Stat tiles */
+.stat-grid{
+  display:grid;gap:12px;margin-bottom:24px;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));
+}
+.stat{
+  padding:16px;border-radius:var(--radius);
+  background:var(--card);border:1px solid var(--line);
+  position:relative;overflow:hidden;
+  transition:transform .2s,border-color .2s;
+}
+.stat:hover{transform:translateY(-2px);border-color:var(--line2)}
+.stat__icon{
+  position:absolute;top:12px;right:12px;
+  font-size:20px;opacity:.28;color:var(--blue);
+}
+.stat__label{
+  font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--mut);margin-bottom:6px;font-weight:600;
+}
+.stat__value{
+  font-size:1.6rem;font-weight:800;letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums;line-height:1;
+}
+.stat__sub{
+  font-size:11.5px;color:var(--mut);margin-top:4px;
+}
+
+/* Action panel */
+.action-panel{
+  padding:18px 20px;border-radius:var(--radius);
+  background:linear-gradient(135deg,rgba(242,163,58,.10),rgba(200,85,61,.04));
+  border:1px solid rgba(242,163,58,.3);
+  margin-bottom:24px;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.action-panel__icon{
+  width:44px;height:44px;border-radius:12px;
+  background:rgba(242,163,58,.2);color:var(--amb);
+  display:grid;place-items:center;font-size:20px;flex-shrink:0;
+}
+.action-panel__body{flex:1}
+.action-panel h3{margin:0 0 4px;color:var(--amb);font-size:.98rem}
+.action-panel p{margin:0;color:var(--mut);font-size:.88rem}
+
+/* Data list */
+.data-list{display:grid;gap:10px}
+.data-item{
+  padding:16px;border-radius:var(--radius);
+  background:var(--card);border:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:12px;align-items:flex-start;
+  transition:border-color .2s,transform .2s;
+}
+.data-item:hover{border-color:var(--line2);transform:translateY(-1px)}
+.data-item__icon{
+  width:40px;height:40px;border-radius:10px;
+  display:grid;place-items:center;
+  background:rgba(0,161,222,.1);color:var(--blue);
+  font-size:18px;flex-shrink:0;
+}
+.data-item__body{flex:1;min-width:0}
+.data-item__title{
+  font-weight:600;font-size:.95rem;margin:0 0 4px;
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px;
+}
+.data-item__meta{
+  font-size:11.5px;color:var(--mut);
+  display:flex;flex-wrap:wrap;gap:10px;
+}
+.data-item__actions{
+  display:flex;gap:6px;flex-wrap:wrap;align-self:center;
+}
+
+/* Badges */
+.badge{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:3px 9px;border-radius:99px;border:1px solid;white-space:nowrap;
+}
+.badge::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}
+.badge--active{color:#3ddc84;border-color:rgba(61,220,132,.4);background:rgba(61,220,132,.08)}
+.badge--progress{color:#00A1DE;border-color:rgba(0,161,222,.4);background:rgba(0,161,222,.08)}
+.badge--waiting{color:#f2a33a;border-color:rgba(242,163,58,.4);background:rgba(242,163,58,.08)}
+.badge--urgent{color:#c8553d;border-color:rgba(200,85,61,.5);background:rgba(200,85,61,.12)}
+.badge--muted{color:#9aa0a6;border-color:rgba(154,160,166,.3);background:rgba(154,160,166,.06)}
+
+/* Empty state */
+.empty{
+  padding:52px 24px;text-align:center;
+  border:1px dashed var(--line);border-radius:var(--radius);
+  margin-top:16px;
+}
+.empty__icon{
+  width:56px;height:56px;border-radius:50%;
+  background:rgba(0,161,222,.08);color:var(--blue);
+  display:grid;place-items:center;margin:0 auto 14px;font-size:22px;
+}
+.empty h3{margin:0 0 6px;font-size:1.02rem}
+.empty p{color:var(--mut);font-size:.9rem;margin:0 0 18px;max-width:420px;margin-inline:auto}
+
+/* Skeleton */
+.skeleton{
+  padding:16px;border-radius:var(--radius);
+  background:var(--card);border:1px solid var(--line);
+}
+.sk-line{
+  height:12px;border-radius:6px;
+  background:linear-gradient(90deg,rgba(255,255,255,.04),rgba(255,255,255,.09),rgba(255,255,255,.04));
+  background-size:200% 100%;
+  animation:shimmer 1.4s linear infinite;margin-bottom:10px;
+}
+.sk-line.w40{width:40%}
+.sk-line.w60{width:60%}
+.sk-line.w80{width:80%}
+.sk-line.h20{height:20px}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* Progress bar */
+.progress{
+  height:8px;border-radius:99px;background:rgba(255,255,255,.06);
+  overflow:hidden;margin:8px 0;
+}
+.progress__fill{
+  height:100%;border-radius:99px;
+  background:linear-gradient(90deg,var(--blue),var(--grn));
+  transition:width .5s ease;
+}
+
+/* Step list */
+.steps{display:grid;gap:6px;margin-top:12px}
+.step{
+  display:flex;align-items:center;gap:12px;
+  padding:10px 14px;border-radius:10px;
+  background:rgba(255,255,255,.02);
+  font-size:.88rem;
+}
+.step__dot{
+  width:22px;height:22px;border-radius:50%;
+  display:grid;place-items:center;
+  background:rgba(255,255,255,.06);color:var(--mut);
+  font-size:11px;flex-shrink:0;font-weight:700;
+}
+.step.done .step__dot{background:rgba(61,220,132,.15);color:#3ddc84}
+.step.on .step__dot{background:rgba(0,161,222,.2);color:var(--blue)}
+.step.on{background:rgba(0,161,222,.06)}
+.step__label{flex:1}
+.step__date{font-size:11.5px;color:var(--mut)}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+.modal{
+  position:fixed;inset:0;z-index:9000;
+  display:none;align-items:flex-start;justify-content:center;
+  padding:20px;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);
+  overflow-y:auto;
+}
+.modal.open{display:flex}
+.modal__box{
+  background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius-lg);
+  max-width:600px;width:100%;padding:26px;position:relative;
+  box-shadow:0 30px 80px rgba(0,0,0,.7);
+  margin:auto;
+}
+.modal__close{
+  position:absolute;top:14px;right:14px;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,.05);border:1px solid var(--line);
+  color:var(--ink);display:grid;place-items:center;font-size:16px;
+}
+.modal__close:hover{background:rgba(0,161,222,.15);color:var(--blue)}
+.modal h3{margin:0 0 6px;font-size:1.2rem;padding-right:44px}
+.modal__sub{color:var(--mut);font-size:.88rem;margin:0 0 20px}
+.modal__form{display:grid;gap:12px}
+.modal__form label{
+  font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;
+}
+.modal__form input,.modal__form textarea,.modal__form select{
+  width:100%;padding:12px 14px;border-radius:10px;
+  border:1px solid var(--line);background:rgba(255,255,255,.04);
+  color:var(--ink);font-size:14px;min-height:44px;
+}
+.modal__form input:focus,.modal__form textarea:focus,.modal__form select:focus{
+  outline:none;border-color:var(--blue);
+}
+.modal__form textarea{min-height:100px;resize:vertical;font-family:inherit}
+.modal__actions{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+
+/* ============================================================
+   SEARCH BAR
+   ============================================================ */
+.search-bar{
+  position:relative;margin-bottom:20px;
+}
+.search-bar input{
+  width:100%;padding:12px 16px 12px 44px;border-radius:10px;
+  border:1px solid var(--line);background:var(--card);
+  color:var(--ink);font-size:14px;min-height:46px;
+}
+.search-bar input::placeholder{color:var(--mut)}
+.search-bar input:focus{outline:none;border-color:var(--blue)}
+.search-bar::before{
+  content:"⌕";position:absolute;left:16px;top:50%;transform:translateY(-50%);
+  color:var(--mut);font-size:18px;pointer-events:none;
+}
+
+/* ============================================================
+   SKIP LINK
+   ============================================================ */
+.skip-link{
+  position:absolute;left:-9999px;
+  background:var(--blue);color:#fff;padding:10px 16px;
+  z-index:9999;border-radius:6px;font-weight:600;
+}
+.skip-link:focus{left:16px;top:16px}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.001ms!important;
+  }
+  .aurora{display:none}
+}
+</style>
+</head>
+<body class="lock">
+
+<div id="bg" aria-hidden="true"></div>
+<div class="aurora aurora-1" aria-hidden="true"></div>
+<div class="aurora aurora-2" aria-hidden="true"></div>
+
+<a class="skip-link" href="#portalMain">Skip to portal</a>
+
+<!-- ============================================================
+     LOADING SCREEN
+     ============================================================ -->
+<div id="loader">
+  <div class="loader-spinner"></div>
+  <div class="loader-text">IKAZE DIGITAL</div>
+</div>
+
+<!-- ============================================================
+     AUTH GATE
+     ============================================================ -->
+<div id="authGate" class="hidden" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <div id="authContent"></div>
+</div>
+
+<!-- ============================================================
+     PORTAL SHELL
+     ============================================================ -->
+<div id="portal">
+
+  <!-- Mobile header -->
+  <div class="mobile-header">
+    <div class="mobile-header__brand">
+      <img src="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png" alt="" />
+      <span>CLIENT PORTAL</span>
+    </div>
+    <div class="mobile-header__actions">
+      <button class="icon-btn" id="notifBtnMobile" aria-label="Notifications">
+        <span aria-hidden="true">🔔</span>
+        <span class="icon-btn__badge" id="notifBadgeMobile" hidden>0</span>
+      </button>
+      <button class="icon-btn" id="userBtnMobile" aria-label="Account menu">
+        <span aria-hidden="true">◐</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Desktop sidebar -->
+  <aside class="sidebar" aria-label="Portal navigation">
+    <div class="sidebar__brand">
+      <img src="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png" alt="" />
+      <div>
+        <strong>IKAZE DIGITAL</strong>
+        <small>Client Portal</small>
+      </div>
+    </div>
+
+    <nav class="sidebar__nav" aria-label="Main sections">
+      <button class="nav-item" data-section="overview">
+        <span class="nav-item__icon">◈</span><span>Overview</span>
+      </button>
+      <button class="nav-item" data-section="projects">
+        <span class="nav-item__icon">▣</span><span>Projects</span>
+        <span class="nav-item__badge" data-badge="projects" hidden>0</span>
+      </button>
+      <button class="nav-item" data-section="messages">
+        <span class="nav-item__icon">✎</span><span>Messages</span>
+        <span class="nav-item__badge" data-badge="messages" hidden>0</span>
+      </button>
+      <button class="nav-item" data-section="files">
+        <span class="nav-item__icon">▤</span><span>Files</span>
+      </button>
+      <button class="nav-item" data-section="approvals">
+        <span class="nav-item__icon">✓</span><span>Approvals</span>
+        <span class="nav-item__badge" data-badge="approvals" hidden>0</span>
+      </button>
+      <button class="nav-item" data-section="meetings">
+        <span class="nav-item__icon">◉</span><span>Meetings</span>
+      </button>
+      <button class="nav-item" data-section="billing">
+        <span class="nav-item__icon">◇</span><span>Billing</span>
+        <span class="nav-item__badge" data-badge="billing" hidden>0</span>
+      </button>
+      <button class="nav-item" data-section="support">
+        <span class="nav-item__icon">✦</span><span>Support</span>
+      </button>
+      <button class="nav-item" data-section="activity">
+        <span class="nav-item__icon">◐</span><span>Activity</span>
+      </button>
+
+      <div class="nav-divider"></div>
+
+      <button class="nav-item" data-section="profile">
+        <span class="nav-item__icon">◎</span><span>Profile</span>
+      </button>
+      <button class="nav-item" data-section="security">
+        <span class="nav-item__icon">⚿</span><span>Security</span>
+      </button>
+      <button class="nav-item" data-section="settings">
+        <span class="nav-item__icon">⚙</span><span>Settings</span>
+      </button>
+      <a class="nav-item" href="support.html">
+        <span class="nav-item__icon">?</span><span>Help Center</span>
+      </a>
+    </nav>
+
+    <div class="sidebar__footer">
+      <button class="user-chip" id="userChip" aria-label="Account menu">
+        <span class="user-chip__avatar" id="userAvatar">—</span>
+        <span class="user-chip__info">
+          <b id="userName">Loading…</b>
+          <small id="userEmail">—</small>
+        </span>
+        <span aria-hidden="true" style="color:var(--mut)">▾</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main" id="portalMain">
+    <div class="main-inner" id="sectionRoot">
+
+      <!-- OVERVIEW -->
+      <section class="section on" data-section="overview" aria-labelledby="sOverTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sOverTitle">Welcome, <span id="firstName">there</span>.</h1>
+            <p>Your IKAZE DIGITAL workspace — everything in one place.</p>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <a class="btn o sm" href="start-project.html">+ New Project</a>
+            <button class="btn sm" data-open-modal="sendMessage">Send Message</button>
+          </div>
+        </div>
+
+        <div class="stat-grid" id="overviewStats">
+          <div class="skeleton"><div class="sk-line w60"></div><div class="sk-line h20 w40"></div></div>
+          <div class="skeleton"><div class="sk-line w60"></div><div class="sk-line h20 w40"></div></div>
+          <div class="skeleton"><div class="sk-line w60"></div><div class="sk-line h20 w40"></div></div>
+          <div class="skeleton"><div class="sk-line w60"></div><div class="sk-line h20 w40"></div></div>
+        </div>
+
+        <div id="overviewAction"></div>
+
+        <div style="display:grid;gap:20px;grid-template-columns:1fr;margin-top:8px">
+          <div class="card" id="overviewProjects">
+            <h3>Active Projects</h3>
+            <div class="data-list" id="overviewProjectsList"></div>
+          </div>
+          <div class="card" id="overviewActivity">
+            <h3>Recent Activity</h3>
+            <div class="data-list" id="overviewActivityList"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="section" data-section="projects" aria-labelledby="sProjTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sProjTitle">My Projects</h1>
+            <p>Every project you have access to.</p>
+          </div>
+          <a class="btn o sm" href="start-project.html">+ New Project</a>
+        </div>
+        <div class="search-bar">
+          <input type="search" id="projectsSearch" placeholder="Search projects…" aria-label="Search projects" />
+        </div>
+        <div class="data-list" id="projectsList"></div>
+      </section>
+
+      <!-- MESSAGES -->
+      <section class="section" data-section="messages" aria-labelledby="sMsgTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sMsgTitle">Messages</h1>
+            <p>Project conversations with the IKAZE DIGITAL team.</p>
+          </div>
+          <button class="btn sm" data-open-modal="sendMessage">New Message</button>
+        </div>
+        <div class="data-list" id="messagesList"></div>
+      </section>
+
+      <!-- FILES -->
+      <section class="section" data-section="files" aria-labelledby="sFileTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sFileTitle">Files &amp; Documents</h1>
+            <p>Proposals, contracts, deliverables, invoices and more.</p>
+          </div>
+          <button class="btn sm" data-open-modal="uploadFile">Upload File</button>
+        </div>
+        <div class="search-bar">
+          <input type="search" id="filesSearch" placeholder="Search files…" aria-label="Search files" />
+        </div>
+        <div class="data-list" id="filesList"></div>
+      </section>
+
+      <!-- APPROVALS -->
+      <section class="section" data-section="approvals" aria-labelledby="sAppTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sAppTitle">Reviews &amp; Approvals</h1>
+            <p>Items waiting for your review or decision.</p>
+          </div>
+        </div>
+        <div class="data-list" id="approvalsList"></div>
+      </section>
+
+      <!-- MEETINGS -->
+      <section class="section" data-section="meetings" aria-labelledby="sMeetTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sMeetTitle">Meetings</h1>
+            <p>Scheduled and past meetings.</p>
+          </div>
+        </div>
+        <div class="data-list" id="meetingsList"></div>
+      </section>
+
+      <!-- BILLING -->
+      <section class="section" data-section="billing" aria-labelledby="sBillTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sBillTitle">Billing &amp; Payments</h1>
+            <p>Invoices, receipts and payment history.</p>
+          </div>
+        </div>
+        <div class="data-list" id="billingList"></div>
+      </section>
+
+      <!-- SUPPORT -->
+      <section class="section" data-section="support" aria-labelledby="sSupTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sSupTitle">Support</h1>
+            <p>Your support requests and their status.</p>
+          </div>
+          <a class="btn sm" href="support.html">Create Support Request</a>
+        </div>
+        <div class="data-list" id="supportList"></div>
+      </section>
+
+      <!-- ACTIVITY -->
+      <section class="section" data-section="activity" aria-labelledby="sActTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sActTitle">Recent Activity</h1>
+            <p>Everything that has changed, in chronological order.</p>
+          </div>
+        </div>
+        <div class="data-list" id="activityList"></div>
+      </section>
+
+      <!-- PROFILE -->
+      <section class="section" data-section="profile" aria-labelledby="sProfileTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sProfileTitle">My Profile</h1>
+            <p>Your personal and organization information.</p>
+          </div>
+        </div>
+        <div class="card" style="max-width:640px">
+          <form id="profileForm" class="modal__form">
+            <div>
+              <label for="pfName">Full name</label>
+              <input id="pfName" name="fullName" type="text" autocomplete="name" />
+            </div>
+            <div>
+              <label for="pfEmail">Email</label>
+              <input id="pfEmail" name="email" type="email" disabled />
+            </div>
+            <div>
+              <label for="pfCountry">Country</label>
+              <input id="pfCountry" name="country" type="text" autocomplete="country-name" />
+            </div>
+            <div>
+              <label for="pfPhone">Phone (optional)</label>
+              <input id="pfPhone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+            <div>
+              <label for="pfLanguage">Preferred language</label>
+              <select id="pfLanguage" name="language">
+                <option value="en">English</option>
+                <option value="rw">Kinyarwanda</option>
+                <option value="fr">Français</option>
+                <option value="sw">Kiswahili</option>
+              </select>
+            </div>
+            <div>
+              <label for="pfTimezone">Time zone</label>
+              <input id="pfTimezone" name="timezone" type="text" placeholder="e.g. Africa/Kigali" />
+            </div>
+            <div>
+              <label for="pfCurrency">Preferred currency</label>
+              <select id="pfCurrency" name="currency">
+                <option>RWF</option><option>USD</option><option>EUR</option><option>GBP</option>
+                <option>KES</option><option>UGX</option><option>TZS</option><option>ZAR</option>
+              </select>
+            </div>
+            <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px">
+              <button class="btn" type="submit">Save Changes</button>
+            </div>
+            <p id="profileStatus" class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <!-- SECURITY -->
+      <section class="section" data-section="security" aria-labelledby="sSecTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sSecTitle">Security &amp; Account</h1>
+            <p>Manage access to your account and data.</p>
+          </div>
+        </div>
+        <div class="card" style="max-width:640px;margin-bottom:16px">
+          <h3>Account Security</h3>
+          <div class="data-list">
+            <div class="data-item">
+              <div class="data-item__icon">⚿</div>
+              <div class="data-item__body">
+                <div class="data-item__title">Sign-in method</div>
+                <div class="data-item__meta" id="secSignIn">—</div>
+              </div>
+            </div>
+            <div class="data-item">
+              <div class="data-item__icon">✉</div>
+              <div class="data-item__body">
+                <div class="data-item__title">Email verification</div>
+                <div class="data-item__meta" id="secEmail">—</div>
+              </div>
+            </div>
+            <div class="data-item">
+              <div class="data-item__icon">◐</div>
+              <div class="data-item__body">
+                <div class="data-item__title">Account created</div>
+                <div class="data-item__meta" id="secCreated">—</div>
+              </div>
+            </div>
+            <div class="data-item">
+              <div class="data-item__icon">◉</div>
+              <div class="data-item__body">
+                <div class="data-item__title">Last sign-in</div>
+                <div class="data-item__meta" id="secLast">—</div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn o sm" id="resetPasswordBtn">Reset Password</button>
+            <button class="btn danger sm" id="signOutBtn1">Sign Out</button>
+          </div>
+          <p style="color:var(--mut);font-size:.82rem;margin-top:12px">
+            Multi-factor authentication, trusted devices and session management are coming soon.
+            We will clearly state when these features are available.
+          </p>
+        </div>
+        <div class="card" style="max-width:640px">
+          <h3>Privacy &amp; Data</h3>
+          <p style="color:var(--mut);font-size:.9rem">
+            Review how we handle your information, or make a data request.
+          </p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+            <a class="btn o sm" href="privacy.html">Privacy Policy</a>
+            <a class="btn o sm" href="terms.html">Terms of Use</a>
+            <a class="btn o sm" href="support.html">Request Data</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="section" data-section="settings" aria-labelledby="sSetTitle">
+        <div class="section-head">
+          <div>
+            <h1 id="sSetTitle">Settings</h1>
+            <p>Notifications, preferences and account actions.</p>
+          </div>
+        </div>
+        <div class="card" style="max-width:640px;margin-bottom:16px">
+          <h3>Notification Preferences</h3>
+          <div style="display:grid;gap:10px;margin-top:12px">
+            <label style="display:flex;gap:10px;align-items:center;color:var(--mut);font-size:.9rem">
+              <input type="checkbox" checked disabled /> Project updates
+            </label>
+            <label style="display:flex;gap:10px;align-items:center;color:var(--mut);font-size:.9rem">
+              <input type="checkbox" checked disabled /> Messages and mentions
+            </label>
+            <label style="display:flex;gap:10px;align-items:center;color:var(--mut);font-size:.9rem">
+              <input type="checkbox" checked disabled /> Billing and invoices
+            </label>
+            <label style="display:flex;gap:10px;align-items:center;color:var(--mut);font-size:.9rem">
+              <input type="checkbox" disabled /> Marketing communications
+            </label>
+          </div>
+          <p style="color:var(--mut);font-size:.82rem;margin-top:12px">
+            Notification preferences are saved on your account. Email delivery requires a configured
+            notification service — we do not claim email delivery exists until it does.
+          </p>
+        </div>
+        <div class="card" style="max-width:640px;border-color:rgba(200,85,61,.3)">
+          <h3 style="color:var(--ter)">Danger Zone</h3>
+          <p style="color:var(--mut);font-size:.9rem">
+            Sign out of this device, or request account deletion. Some records may need to be
+            retained for legal and operational reasons — see <a href="privacy.html" style="color:var(--blue)">privacy.html</a>.
+          </p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+            <button class="btn o sm" id="signOutBtn2">Sign Out</button>
+            <a class="btn danger sm" href="support.html">Request Account Deletion</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Bottom mobile nav -->
+  <nav class="bottom-nav" aria-label="Primary">
+    <button class="bottom-nav__item" data-section="overview">
+      <span class="bottom-nav__icon">◈</span><span>Home</span>
+    </button>
+    <button class="bottom-nav__item" data-section="projects">
+      <span class="bottom-nav__icon">▣</span><span>Projects</span>
+    </button>
+    <button class="bottom-nav__item" data-section="messages">
+      <span class="bottom-nav__icon">✎</span><span>Messages</span>
+      <span class="bottom-nav__item__badge" data-badge="messagesMobile" hidden>0</span>
+    </button>
+    <button class="bottom-nav__item" data-section="billing">
+      <span class="bottom-nav__icon">◇</span><span>Billing</span>
+    </button>
+    <button class="bottom-nav__item" data-section="settings">
+      <span class="bottom-nav__icon">◎</span><span>More</span>
+    </button>
+  </nav>
+
+</div>
+
+<!-- ============================================================
+     GENERIC MODAL CONTAINER
+     ============================================================ -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal__box">
+    <button class="modal__close" id="modalClose" aria-label="Close dialog">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     FIREBASE SDK — loaded as needed
+     ============================================================ -->
+<script type="module">
+/* ============================================================
+   IKAZE DIGITAL CLIENT PORTAL — Application Script
+   ============================================================
+   SECURITY ARCHITECTURE NOTES
+   ============================================================
+   This portal does not enforce authorization on its own. All
+   real security must be enforced by Firebase Security Rules
+   and trusted backend logic. See the security rules template
+   at the bottom of this file — they must be deployed to
+   Firebase before this portal is production-ready.
+
+   NEVER rely on the JS in this file as a security boundary.
+   A determined user can modify everything here.
+   ============================================================ */
+
+'use strict';
+
+/* ============================================================
+   FIREBASE CONFIG
+   Placeholder values — replace with your real Firebase config.
+   See: https://console.firebase.google.com → Project Settings
+   ============================================================ */
+const firebaseConfig = {
+  apiKey: "REPLACE_WITH_FIREBASE_API_KEY",
+  authDomain: "REPLACE_WITH.firebaseapp.com",
+  projectId: "REPLACE_WITH_PROJECT_ID",
+  storageBucket: "REPLACE_WITH.appspot.com",
+  messagingSenderId: "REPLACE_WITH",
+  appId: "REPLACE_WITH_APP_ID"
+};
+
+/* Detect placeholder config → show setup card instead of broken app */
+const isConfigured = !firebaseConfig.apiKey.startsWith('REPLACE_WITH')
+                  && !firebaseConfig.projectId.startsWith('REPLACE_WITH');
+
+/* ============================================================
+   DOM HELPERS
+   ============================================================ */
+const $  = (s, c=document) => c.querySelector(s);
+const $$ = (s, c=document) => Array.from(c.querySelectorAll(s));
+const el = (tag, cls, html) => {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (html !== undefined) e.innerHTML = html;
+  return e;
+};
+const escapeHTML = (s) => String(s ?? '').replace(/[&<>"']/g, m => ({
+  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+}[m]));
+const formatDate = (ts) => {
+  if (!ts) return '—';
+  const d = ts.toDate ? ts.toDate() : new Date(ts);
+  if (isNaN(d)) return '—';
+  return d.toLocaleDateString(undefined, { day:'numeric', month:'short', year:'numeric' });
+};
+const formatDateTime = (ts) => {
+  if (!ts) return '—';
+  const d = ts.toDate ? ts.toDate() : new Date(ts);
+  if (isNaN(d)) return '—';
+  return d.toLocaleString(undefined, { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
+};
+const initials = (name) => {
+  if (!name) return '—';
+  return name.split(/\s+/).map(x => x[0]).filter(Boolean).slice(0,2).join('').toUpperCase();
+};
+
+/* ============================================================
+   LOADING SCREEN
+   ============================================================ */
+function hideLoader() {
+  const l = $('#loader');
+  if (l) l.classList.add('hidden');
+  document.body.classList.remove('lock');
+}
+
+/* ============================================================
+   AUTH GATE — Setup card (Firebase not configured)
+   ============================================================ */
+function showSetupCard() {
+  $('#authContent').innerHTML = `
+    <div class="setup-card">
+      <h2>⚙ Portal Setup Required</h2>
+      <p>This Client Portal is production-ready but requires a Firebase project before it can accept sign-ins. No fake data is shown — the portal will start empty and populate from your Firestore collections.</p>
+      <p><strong>To connect the portal:</strong></p>
+      <ol>
+        <li>Create a Firebase project at <code>console.firebase.google.com</code></li>
+        <li>Enable <strong>Authentication → Email/Password</strong> and <strong>Google</strong></li>
+        <li>Enable <strong>Firestore Database</strong></li>
+        <li>Enable <strong>Storage</strong></li>
+        <li>Copy your web app config into the <code>firebaseConfig</code> object in this file</li>
+        <li>Deploy the Security Rules template documented at the bottom of this file</li>
+        <li>Reload this page</li>
+      </ol>
+      <div class="setup-card__actions">
+        <a class="btn" href="support.html">Get Help Setting Up</a>
+        <a class="btn o" href="index.html">Back to Website</a>
+      </div>
+    </div>
+  `;
+  $('#authGate').classList.remove('hidden');
+  hideLoader();
+}
+
+/* ============================================================
+   AUTH GATE — Sign-in form
+   ============================================================ */
+function showAuthForm() {
+  $('#authContent').innerHTML = `
+    <div class="auth-card">
+      <div class="auth-card__logo">
+        <img src="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png" alt="" />
+        <div>
+          <strong>IKAZE DIGITAL</strong>
+          <small>Client Portal</small>
+        </div>
+      </div>
+      <h1 id="authTitle">Sign in to your workspace</h1>
+      <p class="auth-card__sub">Secure access to your projects, files, invoices and support.</p>
+
+      <div class="auth-tabs" role="tablist">
+        <button class="auth-tab on" data-auth-tab="signin" role="tab" aria-selected="true">Sign In</button>
+        <button class="auth-tab" data-auth-tab="signup" role="tab" aria-selected="false">Create Account</button>
+      </div>
+
+      <form class="auth-form" id="authForm" novalidate>
+        <div class="field" data-signup-only style="display:none">
+          <label for="authName">Full name</label>
+          <input id="authName" type="text" autocomplete="name" />
+        </div>
+        <div class="field">
+          <label for="authEmail">Email</label>
+          <input id="authEmail" type="email" required autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="authPassword">Password</label>
+          <input id="authPassword" type="password" required autocomplete="current-password" minlength="8" />
+        </div>
+        <button class="auth-submit" type="submit" id="authSubmit">Sign In</button>
+      </form>
+
+      <div class="auth-divider">or</div>
+
+      <button class="auth-google" id="authGoogle" type="button">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8.1 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-8.9 20-20 0-1.3-.1-2.3-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.9 1.2 8.1 3.1l5.7-5.7C34.6 6.1 29.6 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.5 0 10.4-2.1 14.1-5.4l-6.5-5.5C29.7 34.7 27 36 24 36c-5.1 0-9.5-3.2-11.2-7.7l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4.1 5.5l6.5 5.5C41 35.6 44 30.3 44 24c0-1.3-.1-2.3-.4-3.5z"/></svg>
+        Continue with Google
+      </button>
+
+      <div class="auth-message" id="authMsg" role="alert" aria-live="polite"></div>
+
+      <div class="auth-footer">
+        <a href="#" id="forgotLink">Forgot password?</a>
+        <span style="margin:0 8px">·</span>
+        <a href="privacy.html">Privacy</a>
+        <span style="margin:0 8px">·</span>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+  `;
+  $('#authGate').classList.remove('hidden');
+  hideLoader();
+
+  /* Wire up tabs */
+  let mode = 'signin';
+  $$('.auth-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      $$('.auth-tab').forEach(t => {
+        t.classList.remove('on');
+        t.setAttribute('aria-selected','false');
+      });
+      tab.classList.add('on');
+      tab.setAttribute('aria-selected','true');
+      mode = tab.dataset.authTab;
+      const signupOnly = $$('[data-signup-only]');
+      signupOnly.forEach(e => e.style.display = mode === 'signup' ? '' : 'none');
+      $('#authSubmit').textContent = mode === 'signup' ? 'Create Account' : 'Sign In';
+      $('#authPassword').setAttribute('autocomplete', mode === 'signup' ? 'new-password' : 'current-password');
+      setAuthMsg('');
+    });
+  });
+
+  /* Form submission */
+  $('#authForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    setAuthMsg('');
+    const email = $('#authEmail').value.trim();
+    const password = $('#authPassword').value;
+    const name = $('#authName') ? $('#authName').value.trim() : '';
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setAuthMsg('Please enter a valid email address.', 'err');
+      return;
+    }
+    if (!password || password.length < 8) {
+      setAuthMsg('Password must be at least 8 characters.', 'err');
+      return;
+    }
+    if (mode === 'signup' && !name) {
+      setAuthMsg('Please enter your full name.', 'err');
+      return;
+    }
+
+    const btn = $('#authSubmit');
+    btn.disabled = true;
+    btn.textContent = mode === 'signup' ? 'Creating account…' : 'Signing in…';
+
+    try {
+      if (mode === 'signup') {
+        await createUser(email, password, name);
+      } else {
+        await signInUser(email, password);
+      }
+    } catch (err) {
+      setAuthMsg(friendlyAuthError(err), 'err');
+      btn.disabled = false;
+      btn.textContent = mode === 'signup' ? 'Create Account' : 'Sign In';
+    }
+  });
+
+  /* Google sign-in */
+  $('#authGoogle').addEventListener('click', async () => {
+    setAuthMsg('');
+    try {
+      await signInWithGoogle();
+    } catch (err) {
+      setAuthMsg(friendlyAuthError(err), 'err');
+    }
+  });
+
+  /* Forgot password */
+  $('#forgotLink').addEventListener('click', async (e) => {
+    e.preventDefault();
+    const email = $('#authEmail').value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setAuthMsg('Enter your email first, then click "Forgot password".', 'err');
+      return;
+    }
+    try {
+      await sendReset(email);
+      setAuthMsg('If that email exists, a password reset link has been sent. Check your inbox and spam folder.', 'ok');
+    } catch (err) {
+      setAuthMsg(friendlyAuthError(err), 'err');
+    }
+  });
+}
+
+function setAuthMsg(msg, type) {
+  const el = $('#authMsg');
+  if (!el) return;
+  el.className = 'auth-message' + (type ? ' ' + type : '');
+  el.textContent = msg;
+}
+
+function friendlyAuthError(err) {
+  const code = err && err.code ? err.code : '';
+  switch (code) {
+    case 'auth/invalid-email': return 'That email address is not valid.';
+    case 'auth/user-not-found': return 'No account found with that email. Try Create Account.';
+    case 'auth/wrong-password':
+    case 'auth/invalid-credential': return 'Incorrect email or password.';
+    case 'auth/email-already-in-use': return 'An account with that email already exists. Try Sign In.';
+    case 'auth/weak-password': return 'Please choose a stronger password (at least 8 characters).';
+    case 'auth/too-many-requests': return 'Too many attempts. Please wait a moment and try again.';
+    case 'auth/network-request-failed': return 'Network problem. Check your connection and try again.';
+    case 'auth/popup-closed-by-user': return 'Sign-in popup was closed. Try again.';
+    case 'auth/operation-not-allowed': return 'This sign-in method is not enabled. Please contact support.';
+    default: return 'Something went wrong. Please try again.';
+  }
+}
+
+/* ============================================================
+   FIREBASE MODULE LOADING
+   ============================================================ */
+let fb = null; // holds the imported modules + services
+
+async function initFirebase() {
+  if (!isConfigured) { showSetupCard(); return false; }
+  try {
+    const appMod = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js');
+    const authMod = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js');
+    const fsMod  = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
+    const stMod  = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js');
+
+    const app = appMod.initializeApp(firebaseConfig);
+    const auth = authMod.getAuth(app);
+    const db = fsMod.initializeFirestore(app, { ignoreUndefinedProperties: true });
+    const storage = stMod.getStorage(app);
+
+    fb = { app, auth, db, storage, ...authMod, ...fsMod, ...stMod };
+    return true;
+  } catch (err) {
+    console.error('[portal] Firebase init failed', err);
+    $('#authContent').innerHTML = `
+      <div class="setup-card">
+        <h2>⚠ Firebase Initialization Failed</h2>
+        <p>The portal could not connect to Firebase. This usually means the configuration values are incorrect or the project is not accessible.</p>
+        <p>Please check your <code>firebaseConfig</code> object and reload.</p>
+        <div class="setup-card__actions">
+          <a class="btn o" href="support.html">Get Help</a>
+          <button class="btn" onclick="location.reload()">Reload</button>
+        </div>
+      </div>
+    `;
+    $('#authGate').classList.remove('hidden');
+    hideLoader();
+    return false;
+  }
+}
+
+/* Firebase auth wrappers */
+async function createUser(email, password, name) {
+  const { createUserWithEmailAndPassword, updateProfile } = fb;
+  const cred = await createUserWithEmailAndPassword(fb.auth, email, password);
+  await updateProfile(cred.user, { displayName: name });
+  // Create user profile document
+  const { doc, setDoc, serverTimestamp } = fb;
+  await setDoc(doc(fb.db, 'users', cred.user.uid), {
+    fullName: name,
+    email: email,
+    createdAt: serverTimestamp(),
+    role: 'client'
+  }, { merge: true });
+}
+
+async function signInUser(email, password) {
+  const { signInWithEmailAndPassword } = fb;
+  await signInWithEmailAndPassword(fb.auth, email, password);
+}
+
+async function signInWithGoogle() {
+  const { GoogleAuthProvider, signInWithPopup } = fb;
+  const provider = new GoogleAuthProvider();
+  const cred = await signInWithPopup(fb.auth, provider);
+  // Ensure user doc exists
+  const { doc, getDoc, setDoc, serverTimestamp } = fb;
+  const userRef = doc(fb.db, 'users', cred.user.uid);
+  const snap = await getDoc(userRef);
+  if (!snap.exists()) {
+    await setDoc(userRef, {
+      fullName: cred.user.displayName || '',
+      email: cred.user.email || '',
+      createdAt: serverTimestamp(),
+      role: 'client'
+    });
+  }
+}
+
+async function sendReset(email) {
+  const { sendPasswordResetEmail } = fb;
+  await sendPasswordResetEmail(fb.auth, email);
+}
+
+async function doSignOut() {
+  const { signOut } = fb;
+  detachAllListeners();
+  await signOut(fb.auth);
+  // Clear any cached state
+  currentUser = null;
+  currentUserDoc = null;
+  renderAuth();
+}
+
+/* ============================================================
+   AUTH STATE + PORTAL INITIALIZATION
+   ============================================================ */
+let currentUser = null;
+let currentUserDoc = null;
+let activeSection = 'overview';
+const listeners = []; // track Firestore listeners for cleanup
+
+function detachAllListeners() {
+  listeners.forEach(unsub => { try { unsub(); } catch {} });
+  listeners.length = 0;
+}
+
+function renderAuth() {
+  if (currentUser) {
+    $('#authGate').classList.add('hidden');
+    $('#portal').classList.add('ready');
+    hydrateUserChip();
+    switchSection('overview');
+  } else {
+    $('#authGate').classList.remove('hidden');
+    $('#portal').classList.remove('ready');
+    showAuthForm();
+  }
+}
+
+async function loadUserDoc() {
+  if (!currentUser) return;
+  try {
+    const { doc, getDoc } = fb;
+    const ref = doc(fb.db, 'users', currentUser.uid);
+    const snap = await getDoc(ref);
+    if (snap.exists()) {
+      currentUserDoc = { id: snap.id, ...snap.data() };
+    } else {
+      currentUserDoc = {
+        fullName: currentUser.displayName || '',
+        email: currentUser.email || '',
+        role: 'client'
+      };
+    }
+  } catch (err) {
+    console.error('[portal] Failed to load user doc', err);
+    currentUserDoc = {
+      fullName: currentUser.displayName || currentUser.email || 'Client',
+      email: currentUser.email || ''
+    };
+  }
+}
+
+function hydrateUserChip() {
+  const name = (currentUserDoc && currentUserDoc.fullName) || currentUser.displayName || currentUser.email || 'Client';
+  const email = currentUser.email || '';
+  const first = name.split(/\s+/)[0] || 'there';
+
+  $('#userAvatar').textContent = initials(name);
+  $('#userName').textContent = name;
+  $('#userEmail').textContent = email;
+  $('#firstName').textContent = first;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+function switchSection(id) {
+  activeSection = id;
+
+  // Update nav highlights
+  $$('[data-section]').forEach(n => {
+    if (n.tagName === 'BUTTON') n.classList.toggle('on', n.dataset.section === id);
+  });
+
+  // Update visible section
+  $$('.section').forEach(s => {
+    s.classList.toggle('on', s.dataset.section === id);
+  });
+
+  // Update URL hash (safe — no sensitive data)
+  if (history.replaceState) history.replaceState(null, '', '#' + id);
+
+  // Load section data
+  loadSection(id);
+
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function wireNav() {
+  $$('[data-section]').forEach(el => {
+    if (el.tagName === 'BUTTON') {
+      el.addEventListener('click', () => switchSection(el.dataset.section));
+    }
+  });
+
+  // Handle URL hash on load
+  const initial = (location.hash || '').replace('#','') || 'overview';
+  if (initial && document.querySelector(`.section[data-section="${initial}"]`)) {
+    activeSection = initial;
+  }
+}
+
+/* ============================================================
+   SECTION DATA LOADERS
+   Each loader queries only data the client is authorized to
+   access. Firebase Security Rules enforce this server-side.
+   ============================================================ */
+async function loadSection(id) {
+  if (!fb || !currentUser) return;
+  try {
+    switch (id) {
+      case 'overview':  await loadOverview(); break;
+      case 'projects':  await loadProjects(); break;
+      case 'messages':  await loadMessages(); break;
+      case 'files':     await loadFiles(); break;
+      case 'approvals': await loadApprovals(); break;
+      case 'meetings':  await loadMeetings(); break;
+      case 'billing':   await loadBilling(); break;
+      case 'support':   await loadSupport(); break;
+      case 'activity':  await loadActivity(); break;
+      case 'profile':   await loadProfile(); break;
+      case 'security':  await loadSecurity(); break;
+      case 'settings':  await loadSettings(); break;
+    }
+  } catch (err) {
+    console.error('[portal] Section load error', id, err);
+    showSectionError(id);
+  }
+}
+
+/* ---------- OVERVIEW ---------- */
+async function loadOverview() {
+  const { collection, query, where, getDocs, limit, orderBy } = fb;
+  const uid = currentUser.uid;
+
+  // Query: projects where user is a member
+  const projectsQ = query(
+    collection(fb.db, 'projects'),
+    where('memberIds', 'array-contains', uid),
+    limit(50)
+  );
+  const projectsSnap = await getDocs(projectsQ);
+  const projects = projectsSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+
+  // Compute stats
+  const active = projects.filter(p => ['in_progress','review','client_approval','planned'].includes(p.status));
+  const pendingApproval = projects.filter(p => p.status === 'client_approval');
+
+  // Stat tiles
+  const statsEl = $('#overviewStats');
+  statsEl.innerHTML = `
+    <div class="stat">
+      <span class="stat__icon">▣</span>
+      <div class="stat__label">Active Projects</div>
+      <div class="stat__value">${active.length}</div>
+      <div class="stat__sub">${projects.length} total</div>
+    </div>
+    <div class="stat">
+      <span class="stat__icon">✓</span>
+      <div class="stat__label">Pending Approvals</div>
+      <div class="stat__value">${pendingApproval.length}</div>
+      <div class="stat__sub">Waiting for your review</div>
+    </div>
+    <div class="stat">
+      <span class="stat__icon">✎</span>
+      <div class="stat__label">Messages</div>
+      <div class="stat__value">—</div>
+      <div class="stat__sub">Open Messages to view</div>
+    </div>
+    <div class="stat">
+      <span class="stat__icon">◇</span>
+      <div class="stat__label">Billing</div>
+      <div class="stat__value">—</div>
+      <div class="stat__sub">Open Billing to view invoices</div>
+    </div>
+  `;
+
+  // Action panel
+  const actionEl = $('#overviewAction');
+  if (pendingApproval.length) {
+    actionEl.innerHTML = `
+      <div class="action-panel">
+        <div class="action-panel__icon">!</div>
+        <div class="action-panel__body">
+          <h3>Action Required</h3>
+          <p>${pendingApproval.length} item${pendingApproval.length === 1 ? '' : 's'} waiting for your review. Open Approvals to proceed.</p>
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn sm" data-nav="approvals">Open Approvals</button>
+          </div>
+        </div>
+      </div>
+    `;
+    actionEl.querySelector('[data-nav]').addEventListener('click', () => switchSection('approvals'));
+  } else {
+    actionEl.innerHTML = '';
+  }
+
+  // Projects list
+  const listEl = $('#overviewProjectsList');
+  listEl.innerHTML = '';
+  if (!projects.length) {
+    listEl.innerHTML = `
+      <div class="empty" style="border:0;padding:24px 0;margin:0;text-align:left">
+        <p style="margin:0 0 12px">Your project workspace will appear here when a project is created and connected to your account.</p>
+        <a class="btn o sm" href="start-project.html">Start a Project</a>
+      </div>
+    `;
+  } else {
+    projects.slice(0, 4).forEach(p => {
+      listEl.appendChild(renderProjectItem(p));
+    });
+  }
+
+  // Activity (recent)
+  const actEl = $('#overviewActivityList');
+  actEl.innerHTML = '';
+  try {
+    const actQ = query(
+      collection(fb.db, 'activityLogs'),
+      where('memberIds', 'array-contains', uid),
+      orderBy('timestamp', 'desc'),
+      limit(6)
+    );
+    const actSnap = await getDocs(actQ);
+    if (actSnap.empty) {
+      actEl.innerHTML = `<p style="color:var(--mut);font-size:.9rem;margin:0">No recent activity yet.</p>`;
+    } else {
+      actSnap.forEach(d => {
+        const a = d.data();
+        actEl.appendChild(renderActivityItem(a));
+      });
+    }
+  } catch (err) {
+    // May be missing index on first deploy — show a helpful message
+    actEl.innerHTML = `<p style="color:var(--mut);font-size:.9rem;margin:0">Activity feed will appear once configured.</p>`;
+  }
+}
+
+function renderProjectItem(p) {
+  const item = el('div', 'data-item');
+  const statusBadge = statusBadgeFor(p.status);
+  item.innerHTML = `
+    <div class="data-item__icon">▣</div>
+    <div class="data-item__body">
+      <div class="data-item__title">
+        ${escapeHTML(p.name || 'Untitled project')}
+        ${statusBadge}
+      </div>
+      <div class="data-item__meta">
+        ${p.reference ? `<span>Ref: ${escapeHTML(p.reference)}</span>` : ''}
+        ${p.service ? `<span>${escapeHTML(p.service)}</span>` : ''}
+        ${p.updatedAt ? `<span>Updated ${formatDate(p.updatedAt)}</span>` : ''}
+      </div>
+    </div>
+    <div class="data-item__actions">
+      <button class="btn o sm" data-project="${escapeHTML(p.id)}">Open</button>
+    </div>
+  `;
+  const openBtn = item.querySelector('[data-project]');
+  openBtn.addEventListener('click', () => openProjectModal(p));
+  return item;
+}
+
+function statusBadgeFor(status) {
+  const map = {
+    in_progress: ['progress', 'In Progress'],
+    planned:     ['progress', 'Planned'],
+    review:      ['waiting', 'Review'],
+    client_approval: ['waiting', 'Awaiting Approval'],
+    launched:    ['active', 'Launched'],
+    completed:   ['active', 'Completed'],
+    paused:      ['muted', 'Paused'],
+    cancelled:   ['muted', 'Cancelled'],
+    inquiry:     ['muted', 'Inquiry'],
+    discovery:   ['muted', 'Discovery'],
+    proposal:    ['muted', 'Proposal']
+  };
+  const [cls, label] = map[status] || ['muted', status ? String(status).replace(/_/g,' ') : 'Draft'];
+  return `<span class="badge badge--${cls}">${escapeHTML(label)}</span>`;
+}
+
+function renderActivityItem(a) {
+  const item = el('div', 'data-item');
+  item.innerHTML = `
+    <div class="data-item__icon">◐</div>
+    <div class="data-item__body">
+      <div class="data-item__title">${escapeHTML(a.title || a.action || 'Activity')}</div>
+      <div class="data-item__meta">
+        ${a.timestamp ? `<span>${formatDateTime(a.timestamp)}</span>` : ''}
+        ${a.actorName ? `<span>by ${escapeHTML(a.actorName)}</span>` : ''}
+      </div>
+    </div>
+  `;
+  return item;
+}
+
+/* ---------- PROJECTS ---------- */
+async function loadProjects() {
+  const { collection, query, where, getDocs, limit } = fb;
+  const uid = currentUser.uid;
+
+  const q = query(
+    collection(fb.db, 'projects'),
+    where('memberIds', 'array-contains', uid),
+    limit(50)
+  );
+  const snap = await getDocs(q);
+  const list = $('#projectsList');
+  list.innerHTML = '';
+
+  if (snap.empty) {
+    list.innerHTML = `
+      <div class="empty">
+        <div class="empty__icon">▣</div>
+        <h3>No Projects Yet</h3>
+        <p>Your project workspace will appear here when a project is created and connected to your account.</p>
+        <a class="btn" href="start-project.html">Start a Project</a>
+      </div>
+    `;
+    return;
+  }
+
+  snap.forEach(d => {
+    const p = { id: d.id, ...d.data() };
+    list.appendChild(renderProjectItem(p));
+  });
+
+  // Wire search
+  const search = $('#projectsSearch');
+  if (search) {
+    search.addEventListener('input', () => {
+      const q = search.value.toLowerCase();
+      $$('#projectsList .data-item').forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  }
+}
+
+function openProjectModal(p) {
+  const { doc, getDoc, collection, query, where, getDocs } = fb;
+  const modal = $('#modal');
+  const body = $('#modalBody');
+  body.innerHTML = `<h3>${escapeHTML(p.name || 'Project')}</h3><p class="modal__sub">Loading project details…</p>`;
+  modal.hidden = false;
+  modal.classList.add('open');
+
+  (async () => {
+    // Load milestones + tasks for this project, filtered by client access
+    let milestones = [], tasks = [], files = [];
+    try {
+      const mSnap = await getDocs(query(collection(fb.db, 'projects', p.id, 'milestones'), limit(20)));
+      milestones = mSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+    } catch {}
+    try {
+      const tSnap = await getDocs(query(collection(fb.db, 'projects', p.id, 'tasks'), where('clientVisible','==', true), limit(20)));
+      tasks = tSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+    } catch {}
+
+    body.innerHTML = `
+      <h3>${escapeHTML(p.name || 'Project')}</h3>
+      <p class="modal__sub">${escapeHTML(p.reference || '')} · ${escapeHTML(p.service || 'Project')}</p>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">
+        ${statusBadgeFor(p.status)}
+        ${p.targetDate ? `<span class="badge badge--muted">Target: ${formatDate(p.targetDate)}</span>` : ''}
+      </div>
+
+      ${p.description ? `<p style="color:var(--mut);font-size:.9rem">${escapeHTML(p.description)}</p>` : ''}
+
+      <div style="margin-top:20px">
+        <h4 style="font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);margin:0 0 10px">Progress</h4>
+        <div class="steps">
+          ${(milestones.length ? milestones : [
+            { title:'Discovery', status:'pending' },
+            { title:'Planning', status:'pending' },
+            { title:'Design', status:'pending' },
+            { title:'Development', status:'pending' },
+            { title:'Testing', status:'pending' },
+            { title:'Launch', status:'pending' }
+          ]).map(m => `
+            <div class="step ${m.status === 'completed' ? 'done' : m.status === 'in_progress' ? 'on' : ''}">
+              <div class="step__dot">${m.status === 'completed' ? '✓' : '○'}</div>
+              <span class="step__label">${escapeHTML(m.title || 'Milestone')}</span>
+              ${m.dueDate ? `<span class="step__date">${formatDate(m.dueDate)}</span>` : ''}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      ${tasks.length ? `
+        <div style="margin-top:20px">
+          <h4 style="font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);margin:0 0 10px">Open Tasks (yours)</h4>
+          <div class="data-list">
+            ${tasks.map(t => `
+              <div class="data-item">
+                <div class="data-item__icon">✓</div>
+                <div class="data-item__body">
+                  <div class="data-item__title">${escapeHTML(t.title || 'Task')}</div>
+                  <div class="data-item__meta">
+                    ${t.dueDate ? `<span>Due ${formatDate(t.dueDate)}</span>` : ''}
+                    ${t.priority ? `<span>${escapeHTML(t.priority)}</span>` : ''}
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      ` : ''}
+
+      <div class="modal__actions">
+        <button class="btn o sm" data-close-modal>Close</button>
+      </div>
+    `;
+  })();
+}
+
+/* ---------- MESSAGES ---------- */
+async function loadMessages() {
+  const { collection, query, where, getDocs, limit, orderBy } = fb;
+  const uid = currentUser.uid;
+
+  const list = $('#messagesList');
+  list.innerHTML = '<div class="skeleton"><div class="sk-line w60"></div><div class="sk-line w80"></div><div class="sk-line w40"></div></div>';
+
+  try {
+    const q = query(
+      collection(fb.db, 'messages'),
+      where('participantIds', 'array-contains', uid),
+      orderBy('lastMessageAt', 'desc'),
+      limit(30)
+    );
+    const snap = await getDocs(q);
+    list.innerHTML = '';
+
+    if (snap.empty) {
+      list.innerHTML = `
+        <div class="empty">
+          <div class="empty__icon">✎</div>
+          <h3>No Messages Yet</h3>
+          <p>Your project conversations will appear here.</p>
+          <button class="btn" data-open-modal="sendMessage">Send a Message</button>
+        </div>
+      `;
+      wireModalButtons();
+      return;
+    }
+
+    snap.forEach(d => {
+      const m = { id: d.id, ...d.data() };
+      list.appendChild(renderMessageItem(m));
+    });
+  } catch (err) {
+    // Likely missing index — show helpful message
+    list.innerHTML = `
+      <div class="empty">
+        <div class="empty__icon">✎</div>
+        <h3>Messages Coming Soon</h3>
+        <p>Real-time messaging activates once your project conversations are configured.</p>
+      </div>
+    `;
+  }
+}
+
+function renderMessageItem(m) {
+  const item = el('div', 'data-item');
+  item.innerHTML = `
+    <div class="data-item__icon">✎</div>
+    <div class="data-item__body">
+      <div class="data-item__title">${escapeHTML(m.subject || 'Conversation')}</div>
+      <div class="data-item__meta">
+        ${m.projectName ? `<span>${escapeHTML(m.projectName)}</span>` : ''}
+        ${m.lastMessageAt ? `<span>${formatDateTime(m.lastMessageAt)}</span>` : ''}
+      </div>
+    </div>
+    <div class="data-item__actions">
+      <button class="btn o sm" disabled>Open</button>
+    </div>
+  `;
+  return item;
+}
+
+/* ---------- FILES ---------- */
+async function loadFiles() {
+  const { collection, query, where, getDocs, limit, orderBy } = fb;
+  const uid = currentUser.uid;
+
+  const list = $('#filesList');
+  list.innerHTML = '<div class="skeleton"><div class="sk-line w60"></div><div class="sk-line w80"></div></div>';
+
+  try {
+    const q = query(
+      collection(fb.db, 'files'),
+      where('memberIds', 'array-contains', uid),
+      orderBy('uploadedAt', 'desc'),
+      limit(50)
+    );
+    const snap = await getDocs(q);
+    list.innerHTML = '';
+
+    if (snap.empty) {
+      list.innerHTML = `
+        <div class="empty">
+          <div class="empty__icon">▤</div>
+          <h3>No Files Yet</h3>
+          <p>Proposals, contracts, deliverables and reports will appear here as your project progresses.</p>
+        </div>
+      `;
+      return;
+    }
+
+    snap.forEach(d => {
+      const f = { id: d.id, ...d.data() };
+      list.appendChild(renderFileItem(f));
+    });
+  } catch (err) {
+    list.innerHTML = `
+      <div class="empty">
+        <div class="empty__icon">▤</div>
+        <h3>Files Coming Soon</h3>
+        <p>File storage activates once your project workspace is configured.</p>
+      </div>
+    `;
+  }
+}
+
+function renderFileItem(f) {
+  const item = el('div', 'data-item');
+  item.innerHTML = `
+    <div class="data-item__icon">▤</div>
+    <div class="data-item__body">
+      <div class="data-item__title">${escapeHTML(f.name || 'File')}</div>
+      <div class="data-item__meta">
+        ${f.category ? `<span>${escapeHTML(f.category)}</span>` : ''}
+        ${f.uploadedAt ? `<span>${formatDate(f.uploadedAt)}</span>` : ''}
+        ${f.size ? `<span>${Math.round(f.size/1024)} KB</span>` : ''}
+      </div>
+    </div>
+    <div class="data-item__actions">
+      <button class="btn o sm" disabled title="Download requires Storage Rules deployment">Download</button>
+    </div>
+  `;
+  return item;
+}
+
+/* ---------- APPROVALS ---------- */
+async function loadApprovals() {
+  const { collection, query, where, getDocs, limit } = fb;
+  const uid = currentUser.uid;
+  const list = $('#approvalsList');
+  list.innerHTML = '';
+
+  try {
+    const q = query(
+      collection(fb.db, 'approvals'),
+      where('memberIds', 'array-contains', uid),
+      where('status', '==', 'pending'),
+      limit(30)
+    );
+    const snap = await getDocs(q);
+
+    if (snap.empty) {
+      list.innerHTML = `
+        <div class="empty">
+          <div class="empty__icon">✓</div>
+          <h3>No Pending Approvals</h3>
+          <p>Items needing your review will appear here. You are all caught up.</p>
+        </div>
+      `;
+      return;
+    }
+
+    snap.forEach(d => {
+      const a = { id: d.id, ...d.data() };
+      list.appendChild(renderApprovalItem(a));
+    });
+  } catch (err) {
+    list.innerHTML = `
+      <div class="empty">
+        <div class="empty__icon">✓</div>
+        <h3>Approvals Coming Soon</h3>
+        <p>Approval workflows activate once configured.</p>
+      </div>
+    `;
+  }
+}
+
+function renderApprovalItem(a) {
+  const item = el('div', 'data-item');
+  item.innerHTML = `
+    <div class="data-item__icon">✓</div>
+    <div class="data-item__body">
+      <div class="data-item__title">${escapeHTML(a.title || 'Approval request')}</div>
+      <div class="data-item__meta">
+        ${a.version ? `<span>Version ${escapeHTML(a.version)}</span>` : ''}
+        ${a.submittedAt ? `<span>Submitted ${formatDate(a.submittedAt)}</span>` : ''}
+      </div>
+    </div>
+    <div class="data-item__actions">
+      <button class="btn sm" data-approve="${escapeHTML(a.id)}">Approve</button>
+      <button class="btn o sm" data-changes="${escapeHTML(a.id)}">Request Changes</button>
+    </div>
+  `;
+  return item;
+}
+
+/* ---------- MEETINGS ---------- */
+async function loadMeetings() {
+  const { collection, query, where, getDocs, limit, orderBy } = fb;
+  const uid = currentUser.uid;
+  const list = $('#meetingsList');
+  list.innerHTML = '';
+
+  try {
+    const q = query(
+      collection(fb.db, 'meetings'),
+      where('participantIds', 'array-contains', uid),
+      orderBy('date', 'desc'),
+      limit(30)
+    );
+    const snap = await getDocs(q);
+
+    if (snap.empty) {
+      list.innerHTML = `
+        <div class="empty">
+          <div class="empty__icon">◉</div>
+          <h3>No Meetings Scheduled</h3>
+          <p>Scheduled meetings with the IKAZE DIGITAL team will appear here.</p>
+        </div>
+      `;
+      return;
+    }
+
+    snap.forEach(d => {
+      const m = { id: d.id, ...d.data() };
+      list.appendChild(renderMeetingItem(m));
+    });
+  } catch (err) {
+    list.innerHTML = `
+      <div class="empty">
+        <div class="empty__icon">◉</div>
+        <h3>Meetings Coming Soon</h3>
+        <p>Meeting scheduling activates once configured.</p>
+      </div>
+    `;
+  }
+}
+
+function renderMeetingItem(m) {
+  const item = el('div', 'data-item');
+  item.innerHTML = `
+    <div class="data-item__icon">◉</div>
+    <div class="data-item__body">
+      <div class="data-item__title">${escapeHTML(m.title || 'Meeting')}</div>
+      <div class="data-item__meta">
+        ${m.date ? `<span>${formatDateTime(m.date)}</span>` : ''}
+        ${m.duration ? `<span>${escapeHTML(m.duration)} min</span>` : ''}
+        ${m.status ? `<span>${escapeHTML(m.status)}</span>` : ''}
+      </div>
+    </div>
+  `;
+  return item;
+}
+
+/* ---------- BILLING ---------- */
+async function loadBilling() {
+  const { collection, query, where, getDocs, limit, orderBy } = fb;
+  const uid = currentUser.uid;
+  const list = $('#billingList');
+  list.innerHTML = '';
+
+  try {
+    const q = query(
+      collection(fb.db, 'invoices'),
+      where('memberIds', 'array-contains', uid),
+      orderBy('issuedAt', 'desc'),
+      limit(50)
+    );
+    const snap = await getDocs(q);
+
+    if (snap.empty) {
+      list.innerHTML = `
+        <div class="empty">
+          <div class="empty__icon">◇</div>
+          <h3>No Invoices Yet</h3>
+          <p>Invoices and payment history will appear here.</p>
+        </div>
+      `;
+      return;
+    }
+
+    snap.forEach(d => {
+      const inv = { id: d.id, ...d.data() };
+      list.appendChild(renderInvoiceItem(inv));
+    });
+  } catch (err) {
+    list.innerHTML = `
+      <div class="empty">
+        <div class="empty__icon">◇</div>
+        <h3>Billing Coming Soon</h3>
+        <p>Invoices appear here once billing is configured for your account.</p>
+      </div>
+    `;
+  }
+}
+
+function renderInvoiceItem(inv) {
+  const statusMap = {
+    paid: ['active', 'Paid'],
+    due: ['waiting', 'Due'],
+    overdue: ['urgent', 'Overdue'],
+    draft: ['muted', 'Draft'],
+    sent: ['progress', 'Sent'],
+    cancelled: ['muted', 'Cancelled']
+  };
+  const [cls, label] = statusMap[inv.status] || ['muted', inv.status || 'Draft'];
+  const amount = inv.amount != null ? `${inv.amount.toLocaleString()} ${inv.currency || 'RWF'}` : '—';
+  const item = el('div', 'data-item');
+  item.innerHTML = `
+    <div class="data-item__icon">◇</div>
+    <div class="data-item__body">
+      <div class="data-item__title">
+        Invoice ${escapeHTML(inv.number || inv.id)}
+        <span class="badge badge--${cls}">${label}</span>
+      </div>
+      <div class="data-item__meta">
+        <span>${amount}</span>
+        ${inv.issuedAt ? `<span>Issued ${formatDate(inv.issuedAt)}</span>` : ''}
+        ${inv.dueAt ? `<span>Due ${formatDate(inv.dueAt)}</span>` : ''}
+      </div>
+    </div>
+    <div class="data-item__actions">
+      ${inv.status !== 'paid'
+        ? `<button class="btn sm" disabled title="Payment processing will be enabled once a payment provider is connected">Pay</button>`
+        : `<button class="btn o sm" disabled title="Receipt download requires backend">Receipt</button>`}
+    </div>
+  `;
+  return item;
+}
+
+/* ---------- SUPPORT ---------- */
+async function loadSupport() {
+  const { collection, query, where, getDocs, limit, orderBy } = fb;
+  const uid = currentUser.uid;
+  const list = $('#supportList');
+  list.innerHTML = '';
+
+  try {
+    const q = query(
+      collection(fb.db, 'supportTickets'),
+      where('userId', '==', uid),
+      orderBy('createdAt', 'desc'),
+      limit(30)
+    );
+    const snap = await getDocs(q);
+
+    if (snap.empty) {
+      list.innerHTML = `
+        <div class="empty">
+          <div class="empty__icon">✦</div>
+          <h3>No Support Requests</h3>
+          <p>Your support tickets will appear here. Need help with something?</p>
+          <a class="btn" href="support.html">Create Support Request</a>
+        </div>
+      `;
+      return;
+    }
+
+    snap.forEach(d => {
+      const t = { id: d.id, ...d.data() };
+      list.appendChild(renderSupportItem(t));
+    });
+  } catch (err) {
+    list.innerHTML = `
+      <div class="empty">
+        <div class="empty__icon">✦</div>
+        <h3>Support Integration Coming Soon</h3>
+        <p>Your support history appears here once support tickets are enabled for your account.</p>
+        <a class="btn" href="support.html">Visit Support Center</a>
+      </div>
+    `;
+  }
+}
+
+function renderSupportItem(t) {
+  const statusMap = {
+    new: ['progress', 'New'],
+    acknowledged: ['progress', 'Acknowledged'],
+    in_review: ['waiting', 'In Review'],
+    in_progress: ['waiting', 'In Progress'],
+    waiting_for_user: ['waiting', 'Waiting on You'],
+    resolved: ['active', 'Resolved'],
+    closed: ['muted', 'Closed']
+  };
+  const [cls, label] = statusMap[t.status] || ['muted', t.status || 'New'];
+  const item = el('div', 'data-item');
+  item.innerHTML = `
+    <div class="data-item__icon">✦</div>
+    <div class="data-item__body">
+      <div class="data-item__title">
+        ${escapeHTML(t.subject || 'Support Request')}
+        <span class="badge badge--${cls}">${label}</span>
+      </div>
+      <div class="data-item__meta">
+        ${t.ticketId ? `<span>Ref: ${escapeHTML(t.ticketId)}</span>` : ''}
+        ${t.createdAt ? `<span>${formatDate(t.createdAt)}</span>` : ''}
+        ${t.priority ? `<span>${escapeHTML(t.priority)}</span>` : ''}
+      </div>
+    </div>
+  `;
+  return item;
+}
+
+/* ---------- ACTIVITY ---------- */
+async function loadActivity() {
+  const { collection, query, where, getDocs, limit, orderBy } = fb;
+  const uid = currentUser.uid;
+  const list = $('#activityList');
+  list.innerHTML = '';
+
+  try {
+    const q = query(
+      collection(fb.db, 'activityLogs'),
+      where('memberIds', 'array-contains', uid),
+      orderBy('timestamp', 'desc'),
+      limit(50)
+    );
+    const snap = await getDocs(q);
+
+    if (snap.empty) {
+      list.innerHTML = `
+        <div class="empty">
+          <div class="empty__icon">◐</div>
+          <h3>No Activity Yet</h3>
+          <p>Activity across your projects will appear here.</p>
+        </div>
+      `;
+      return;
+    }
+
+    snap.forEach(d => {
+      const a = d.data();
+      list.appendChild(renderActivityItem(a));
+    });
+  } catch (err) {
+    list.innerHTML = `
+      <div class="empty">
+        <div class="empty__icon">◐</div>
+        <h3>Activity Feed Coming Soon</h3>
+        <p>Activity appears here once your projects are active.</p>
+      </div>
+    `;
+  }
+}
+
+/* ---------- PROFILE ---------- */
+async function loadProfile() {
+  if (!currentUserDoc) await loadUserDoc();
+  const u = currentUserDoc || {};
+  $('#pfName').value = u.fullName || currentUser.displayName || '';
+  $('#pfEmail').value = currentUser.email || '';
+  $('#pfCountry').value = u.country || '';
+  $('#pfPhone').value = u.phone || '';
+  $('#pfLanguage').value = u.language || 'en';
+  $('#pfTimezone').value = u.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+  $('#pfCurrency').value = u.currency || 'RWF';
+}
+
+function wireProfileForm() {
+  const form = $('#profileForm');
+  if (!form) return;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const status = $('#profileStatus');
+    status.className = 'form-status';
+    status.textContent = 'Saving…';
+
+    try {
+      const { doc, updateDoc, serverTimestamp } = fb;
+      const ref = doc(fb.db, 'users', currentUser.uid);
+      await updateDoc(ref, {
+        fullName: $('#pfName').value.trim(),
+        country: $('#pfCountry').value.trim(),
+        phone: $('#pfPhone').value.trim(),
+        language: $('#pfLanguage').value,
+        timezone: $('#pfTimezone').value.trim(),
+        currency: $('#pfCurrency').value,
+        updatedAt: serverTimestamp()
+      });
+      status.className = 'form-status ok';
+      status.textContent = 'Profile saved.';
+      await loadUserDoc();
+      hydrateUserChip();
+    } catch (err) {
+      console.error('[portal] Profile save failed', err);
+      status.className = 'form-status err';
+      status.textContent = 'We could not save your changes right now. Please try again.';
+    }
+  });
+}
+
+/* ---------- SECURITY ---------- */
+async function loadSecurity() {
+  const u = currentUser;
+  if (!u) return;
+  $('#secSignIn').textContent = u.providerData && u.providerData[0]
+    ? ({ 'password': 'Email & Password', 'google.com': 'Google Sign-In' }[u.providerData[0].providerId] || u.providerData[0].providerId)
+    : 'Email & Password';
+  $('#secEmail').textContent = u.emailVerified ? '✓ Verified' : 'Not verified — check your inbox';
+  $('#secCreated').textContent = u.metadata && u.metadata.creationTime
+    ? new Date(u.metadata.creationTime).toLocaleDateString()
+    : '—';
+  $('#secLast').textContent = u.metadata && u.metadata.lastSignInTime
+    ? new Date(u.metadata.lastSignInTime).toLocaleString()
+    : '—';
+}
+
+/* ---------- SETTINGS ---------- */
+async function loadSettings() {
+  // Static for now — preferences to be wired to Firestore in a future iteration
+}
+
+/* ============================================================
+   MODALS
+   ============================================================ */
+function openModal(id) {
+  const modal = $('#modal');
+  const body = $('#modalBody');
+
+  if (id === 'sendMessage') {
+    body.innerHTML = `
+      <h3 id="modalTitle">Send a Message</h3>
+      <p class="modal__sub">Your message will be delivered to the IKAZE DIGITAL team.</p>
+      <form class="modal__form" id="sendMessageForm">
+        <div>
+          <label for="msgSubject">Subject</label>
+          <input id="msgSubject" type="text" required maxlength="160" />
+        </div>
+        <div>
+          <label for="msgBody">Message</label>
+          <textarea id="msgBody" required maxlength="4000" placeholder="Write your message…"></textarea>
+        </div>
+        <p style="color:var(--mut);font-size:.82rem;margin:0">
+          Please do not include passwords, private keys or sensitive credentials. Use the secure
+          workflows we provide for those.
+        </p>
+        <div class="modal__actions">
+          <button class="btn o sm" type="button" data-close-modal>Cancel</button>
+          <button class="btn sm" type="submit">Send</button>
+        </div>
+      </form>
+    `;
+    const form = $('#sendMessageForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type=submit]');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      try {
+        const { collection, addDoc, serverTimestamp } = fb;
+        await addDoc(collection(fb.db, 'messages'), {
+          subject: $('#msgSubject').value.trim(),
+          body: $('#msgBody').value.trim(),
+          senderId: currentUser.uid,
+          participantIds: [currentUser.uid],
+          lastMessageAt: serverTimestamp(),
+          createdAt: serverTimestamp()
+        });
+        closeModal();
+        if (activeSection === 'messages') loadMessages();
+      } catch (err) {
+        console.error('[portal] Message send failed', err);
+        btn.disabled = false;
+        btn.textContent = 'Send';
+        alert('We could not send your message right now. Please try again.');
+      }
+    });
+  } else if (id === 'uploadFile') {
+    body.innerHTML = `
+      <h3 id="modalTitle">Upload a File</h3>
+      <p class="modal__sub">File upload requires Firebase Storage Security Rules to be deployed. Contact us if you need to send a file now.</p>
+      <p style="color:var(--mut);font-size:.9rem">
+        Permitted file types (once enabled): PDF, DOC/DOCX, XLS/XLSX, PPT/PPTX, JPG, PNG, SVG, WebP, ZIP.
+        Maximum size limit is enforced server-side.
+      </p>
+      <div class="modal__actions">
+        <button class="btn o sm" data-close-modal>Close</button>
+        <a class="btn sm" href="support.html">Contact Support</a>
+      </div>
+    `;
+  }
+
+  modal.hidden = false;
+  modal.classList.add('open');
+  document.body.classList.add('lock');
+}
+
+function closeModal() {
+  const modal = $('#modal');
+  modal.classList.remove('open');
+  modal.hidden = true;
+  document.body.classList.remove('lock');
+}
+
+function wireModalButtons() {
+  $$('[data-open-modal]').forEach(btn => {
+    btn.onclick = () => openModal(btn.dataset.openModal);
+  });
+}
+
+document.addEventListener('click', e => {
+  if (e.target.closest('#modalClose') || e.target.closest('[data-close-modal]')) {
+    closeModal();
+  }
+  if (e.target === $('#modal')) closeModal();
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && $('#modal').classList.contains('open')) closeModal();
+});
+
+/* ============================================================
+   SIGN OUT
+   ============================================================ */
+function wireSignOut() {
+  ['#signOutBtn1','#signOutBtn2'].forEach(sel => {
+    const btn = $(sel);
+    if (btn) btn.addEventListener('click', doSignOut);
+  });
+  const rp = $('#resetPasswordBtn');
+  if (rp) rp.addEventListener('click', async () => {
+    if (!currentUser || !currentUser.email) return;
+    try {
+      await sendReset(currentUser.email);
+      alert('Password reset email sent. Check your inbox.');
+    } catch (err) {
+      alert('We could not send the reset email right now. Please try again.');
+    }
+  });
+}
+
+/* ============================================================
+   ERROR STATE
+   ============================================================ */
+function showSectionError(id) {
+  const section = document.querySelector(`.section[data-section="${id}"]`);
+  if (!section) return;
+  const list = section.querySelector('.data-list');
+  if (list) {
+    list.innerHTML = `
+      <div class="empty">
+        <div class="empty__icon">⚠</div>
+        <h3>Something went wrong</h3>
+        <p>We could not load this information right now. Please try again.</p>
+        <button class="btn o sm" onclick="location.reload()">Retry</button>
+      </div>
+    `;
+  }
+}
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+async function boot() {
+  const ok = await initFirebase();
+  if (!ok) return;
+
+  wireNav();
+  wireModalButtons();
+  wireSignOut();
+  wireProfileForm();
+
+  // Listen to auth changes
+  const { onAuthStateChanged } = fb;
+  onAuthStateChanged(fb.auth, async (user) => {
+    currentUser = user;
+    if (user) {
+      await loadUserDoc();
+    } else {
+      currentUserDoc = null;
+    }
+    renderAuth();
+  });
+}
+
+boot();
+
+/* ============================================================
+   DEVTOOLS DETERRENTS
+   (these are UI deterrents, not security)
+   ============================================================ */
+document.addEventListener('contextmenu', e => {
+  const t = e.target;
+  if (t.matches?.('input,textarea,select,[contenteditable="true"]')) return;
+  e.preventDefault();
+});
+
+document.addEventListener('keydown', e => {
+  const k = e.key.toLowerCase();
+  const block =
+    k === 'f12' ||
+    (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+    (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+    (e.ctrlKey && ['u','s'].includes(k)) ||
+    (e.metaKey && ['u','s'].includes(k));
+  if (block) { e.preventDefault(); e.stopPropagation(); return false; }
+}, true);
+
+(() => {
+  const toast = document.createElement('div');
+  toast.className = 'devtools-warning';
+  toast.setAttribute('role','alert');
+  toast.setAttribute('aria-live','polite');
+  toast.innerHTML = '<span class="devtools-warning__icon">!</span><span>Developer tools detected — this page is protected.</span>';
+  document.body.appendChild(toast);
+
+  let visible = false, warnUntil = 0;
+  const show = () => { warnUntil = Date.now() + 5000; if (!visible) { visible = true; toast.classList.add('is-visible'); } };
+  const hide = () => { if (visible && Date.now() > warnUntil) { visible = false; toast.classList.remove('is-visible'); } };
+
+  setInterval(() => {
+    const w = window.outerWidth - window.innerWidth;
+    const h = window.outerHeight - window.innerHeight;
+    if (w > 160 || h > 160) show();
+    hide();
+  }, 900);
+
+  document.addEventListener('keydown', e => {
+    const k = e.key.toLowerCase();
+    if (k === 'f12' ||
+        (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+        (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+        (e.ctrlKey && ['u','s'].includes(k)) ||
+        (e.metaKey && ['u','s'].includes(k))) show();
+  }, true);
+})();
+
+if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+  (() => { let n = 0; setInterval(() => { n++; if (n > 1) { console.clear(); n = 0; } }, 2000); })();
+}
+console.log('%c⚠️ STOP', 'color:#ff3b3b;font-size:32px;font-weight:900');
+console.log('%cThis is a private Client Portal. All data access is enforced by Firebase Security Rules. Modifying this page cannot grant access to unauthorized data.', 'font-size:13px;color:#ff9');
+</script>
+
+<!-- ============================================================
+     FIREBASE SECURITY RULES — TEMPLATE
+     ============================================================
+     Deploy these to your Firebase project. They enforce
+     authorization server-side. The frontend cannot bypass them.
+
+     Copy into Firestore Rules and Storage Rules in your
+     Firebase console.
+
+     FIRESTORE RULES (firestore.rules):
+     ============================================================
+     rules_version = '2';
+     service cloud.firestore {
+       match /databases/{database}/documents {
+
+         function isSignedIn() {
+           return request.auth != null;
+         }
+         function isSelf(uid) {
+           return isSignedIn() && request.auth.uid == uid;
+         }
+         function isMember(ids) {
+           return isSignedIn() && request.auth.uid in ids;
+         }
+         function isAdmin() {
+           return isSignedIn() &&
+             request.auth.token.admin == true;
+         }
+
+         // USERS — self read/write only on safe fields
+         match /users/{userId} {
+           allow read: if isSelf(userId) || isAdmin();
+           allow create: if isSelf(userId);
+           allow update: if isSelf(userId)
+             && !request.resource.data.diff(resource.data)
+                .affectedKeys().hasAny(['role','admin']);
+           allow delete: if isAdmin();
+         }
+
+         // ORGANIZATIONS — members only
+         match /organizations/{orgId} {
+           allow read: if isMember(resource.data.memberIds) || isAdmin();
+           allow write: if isAdmin();
+         }
+
+         // PROJECTS — members only
+         match /projects/{projectId} {
+           allow read: if isMember(resource.data.memberIds) || isAdmin();
+           allow write: if isAdmin();
+           match /milestones/{mId} {
+             allow read: if isMember(get(/databases/$(database)/documents/projects/$(projectId)).data.memberIds);
+             allow write: if isAdmin();
+           }
+           match /tasks/{taskId} {
+             allow read: if isMember(get(/databases/$(database)/documents/projects/$(projectId)).data.memberIds);
+             allow write: if isAdmin();
+           }
+         }
+
+         // MESSAGES — participant only
+         match /messages/{msgId} {
+           allow read: if isMember(resource.data.participantIds);
+           allow create: if isSignedIn()
+             && request.auth.uid in request.resource.data.participantIds;
+           allow update: if isAdmin()
+             || (isMember(resource.data.participantIds)
+                 && request.resource.data.diff(resource.data)
+                    .affectedKeys().hasOnly(['read']));
+           allow delete: if isAdmin();
+         }
+
+         // FILES — member access
+         match /files/{fileId} {
+           allow read: if isMember(resource.data.memberIds);
+           allow write: if isAdmin();
+         }
+
+         // APPROVALS — member access, self decision only
+         match /approvals/{approvalId} {
+           allow read: if isMember(resource.data.memberIds);
+           allow update: if isAdmin()
+             || (isMember(resource.data.memberIds)
+                 && request.resource.data.diff(resource.data)
+                    .affectedKeys().hasOnly(['decision','decidedBy','decidedAt','comment'])
+                 && request.resource.data.decidedBy == request.auth.uid);
+           allow create, delete: if isAdmin();
+         }
+
+         // INVOICES — billing members only
+         match /invoices/{invId} {
+           allow read: if isMember(resource.data.billingMemberIds);
+           allow write: if isAdmin();
+         }
+
+         // PAYMENTS — no client write
+         match /payments/{paymentId} {
+           allow read: if isMember(resource.data.memberIds);
+           allow write: if false; // webhooks only, via Admin SDK
+         }
+
+         // SUPPORT TICKETS — owner only
+         match /supportTickets/{ticketId} {
+           allow read: if isSelf(resource.data.userId) || isAdmin();
+           allow create: if isSignedIn()
+             && request.resource.data.userId == request.auth.uid;
+           allow update: if isAdmin();
+           allow delete: if isAdmin();
+         }
+
+         // ACTIVITY LOGS — read-only for members
+         match /activityLogs/{logId} {
+           allow read: if isMember(resource.data.memberIds);
+           allow write: if false; // written via Admin SDK
+         }
+
+         // DEFAULT — deny
+         match /{document=**} {
+           allow read, write: if false;
+         }
+       }
+     }
+
+     STORAGE RULES (storage.rules):
+     ============================================================
+     rules_version = '2';
+     service firebase.storage {
+       match /b/{bucket}/o {
+         match /projects/{projectId}/{allPaths=**} {
+           allow read: if request.auth != null;
+           allow write: if false; // uploads go via signed URLs / Cloud Functions
+         }
+         match /{allPaths=**} {
+           allow read, write: if false;
+         }
+       }
+     }
+     ============================================================
+-->
+</body>
+</html>
