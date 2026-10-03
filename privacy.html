@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Privacy Policy | IKAZE DIGITAL</title>
+<meta name="description" content="Learn how IKAZE DIGITAL handles personal information, privacy, cookies, security, forms, authentication, third-party services and user privacy requests." />
+<meta name="theme-color" content="#080A0F" />
+<link rel="canonical" href="https://ikaze-digital.vercel.app/privacy.html" />
+
+<meta property="og:title" content="Privacy Policy | IKAZE DIGITAL" />
+<meta property="og:description" content="How IKAZE DIGITAL handles personal information — transparently and responsibly." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://i.postimg.cc/tJ9QydF2/Theoneste.png" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><path d='M6 40 24 6l18 34-9-6-9-14-9 14z' fill='%23f2a33a'/><path d='M24 6 42 40l-9-6z' fill='%23c8553d'/><circle cx='24' cy='6' r='4' fill='%23FAD201'/></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Privacy Policy | IKAZE DIGITAL",
+  "url": "https://ikaze-digital.vercel.app/privacy.html",
+  "description": "How IKAZE DIGITAL handles personal information, privacy, cookies, security, forms, authentication and third-party services.",
+  "isPartOf": {
+    "@type": "Organization",
+    "name": "Ikaze Digital",
+    "url": "https://ikaze-digital.vercel.app/"
+  }
+}
+</script>
+
+<style>
+/* ============================================================
+   TOKENS (matched to all other IKAZE pages)
+   ============================================================ */
+:root{
+  --bg:#080A0F; --bg2:#0B1017; --bg3:#10151D;
+  --ink:#f4efe8; --mut:#a9a39b;
+  --amb:#f2a33a; --ter:#c8553d;
+  --blue:#00A1DE; --grn:#20603D; --yel:#FAD201;
+  --card:rgba(255,255,255,.04);
+  --line:rgba(255,255,255,.10);
+  --radius:18px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(80px + env(safe-area-inset-top,0px))}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.7;
+  overflow-x:hidden;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+body.lock{overflow:hidden}
+input,textarea,select{-webkit-user-select:text;user-select:text}
+a{color:inherit}
+img{max-width:100%;height:auto;display:block}
+button{font:inherit}
+
+/* ============================================================
+   BACKGROUND LAYERS
+   ============================================================ */
+#bg{
+  position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(60% 50% at 20% 15%,rgba(0,161,222,.20),transparent 70%),
+    radial-gradient(50% 45% at 85% 80%,rgba(32,96,61,.16),transparent 70%),
+    radial-gradient(45% 45% at 50% 50%,rgba(242,163,58,.08),transparent 70%),
+    linear-gradient(#10151D,#080A0F);
+}
+#c{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+
+.aurora{position:fixed;border-radius:50%;filter:blur(90px);opacity:.40;mix-blend-mode:screen;pointer-events:none;z-index:-1}
+.aurora-1{width:520px;height:520px;top:-120px;left:-80px;background:radial-gradient(circle,var(--blue),transparent 70%);animation:float1 22s ease-in-out infinite}
+.aurora-2{width:600px;height:600px;bottom:-180px;right:-100px;background:radial-gradient(circle,var(--grn),transparent 70%);animation:float2 26s ease-in-out infinite}
+.aurora-3{width:420px;height:420px;top:40%;left:50%;background:radial-gradient(circle,var(--amb),transparent 70%);opacity:.12;animation:float3 30s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(80px,60px) scale(1.15)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-70px,-90px) scale(1.2)}}
+@keyframes float3{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-40%,-60%) scale(1.3)}}
+
+.grid-lines{
+  position:fixed;inset:0;opacity:.09;pointer-events:none;z-index:-1;
+  background-image:
+    linear-gradient(rgba(0,161,222,.35) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,161,222,.35) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(circle at 50% 40%,#000 0%,transparent 75%);
+  -webkit-mask-image:radial-gradient(circle at 50% 40%,#000 0%,transparent 75%);
+  animation:gridMove 40s linear infinite;
+}
+@keyframes gridMove{0%{background-position:0 0,0 0}100%{background-position:64px 64px,64px 64px}}
+
+.scanline{
+  position:fixed;left:0;right:0;height:2px;z-index:-1;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--blue),transparent);
+  opacity:.24;filter:blur(1px);
+  animation:scanSweep 9s linear infinite;
+}
+@keyframes scanSweep{0%{top:0}100%{top:100%}}
+
+.code-frag{
+  position:fixed;font-size:11px;
+  color:rgba(0,161,222,.35);letter-spacing:.05em;white-space:nowrap;
+  pointer-events:none;z-index:-1;
+  animation:codeFloat linear infinite;will-change:transform,opacity;
+}
+@keyframes codeFloat{
+  0%{transform:translateY(0) translateX(0);opacity:0}
+  10%{opacity:.7}
+  90%{opacity:.7}
+  100%{transform:translateY(-100vh) translateX(30px);opacity:0}
+}
+
+/* ============================================================
+   DEVTOOLS TOAST
+   ============================================================ */
+.devtools-warning{
+  position:fixed;top:0;left:50%;transform:translate(-50%,-140%);
+  z-index:9999;padding:.85rem 1.4rem;
+  background:linear-gradient(120deg,rgba(200,85,61,.95),rgba(150,40,20,.95));
+  color:#fff;font-weight:600;font-size:.9rem;
+  border-radius:0 0 14px 14px;letter-spacing:.03em;
+  box-shadow:0 14px 40px -10px rgba(200,85,61,.6);
+  display:flex;align-items:center;gap:.7rem;
+  transition:transform .5s cubic-bezier(.2,.7,.2,1);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  max-width:calc(100% - 24px);pointer-events:none;
+}
+.devtools-warning.is-visible{transform:translate(-50%,0)}
+.devtools-warning__icon{
+  width:22px;height:22px;border-radius:50%;
+  background:rgba(255,255,255,.18);
+  display:grid;place-items:center;font-size:13px;flex-shrink:0;
+}
+@media (max-width:620px){.devtools-warning{font-size:.78rem;padding:.7rem 1rem}}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.wrap--narrow{max-width:820px}
+
+header{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+  backdrop-filter:blur(14px);
+  background:rgba(8,10,15,.78);
+  border-bottom:1px solid var(--line);
+}
+.bar{display:flex;align-items:center;gap:16px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.08em;font-size:14px}
+.logo img{height:44px;width:auto;max-width:56px;object-fit:contain}
+.logo small{display:block;font-weight:500;letter-spacing:0;font-size:10px;color:var(--mut)}
+nav{margin-left:auto;display:flex;gap:16px;align-items:center}
+nav a{text-decoration:none;font-size:14px;color:var(--mut);transition:color .2s}
+nav a:hover,nav a[aria-current]{color:var(--blue)}
+
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 22px;border-radius:999px;
+  background:var(--amb);color:#1a0f05;font-weight:700;text-decoration:none;
+  border:0;cursor:pointer;font-size:14px;
+  transition:transform .2s,box-shadow .2s;min-height:44px;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(242,163,58,.35)}
+.btn.o{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.sm{padding:10px 16px;font-size:13px;min-height:40px}
+.btn.blue{background:linear-gradient(120deg,var(--blue),#007bb8);color:#fff}
+
+:focus-visible{outline:3px solid var(--yel);outline-offset:2px;border-radius:6px}
+
+#menu{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:12px 16px;min-height:44px;cursor:pointer}
+
+section{padding:60px 0;position:relative;z-index:1}
+h1{font-size:clamp(2rem,6vw,3.6rem);line-height:1.05;margin:0 0 16px;letter-spacing:-.02em}
+h2{font-size:clamp(1.4rem,3.2vw,2rem);margin:0 0 12px;letter-spacing:-.01em}
+h3{font-size:1.1rem;margin:20px 0 8px}
+h4{font-size:1rem;margin:16px 0 6px;color:var(--amb)}
+p{margin:0 0 14px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin-bottom:6px}
+.tag{color:var(--blue);font-weight:600;letter-spacing:.06em;font-size:.82rem;text-transform:uppercase}
+.lead{color:var(--mut);max-width:680px;font-size:clamp(1rem,1.4vw,1.1rem)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{padding:60px 0 30px;position:relative}
+.hero__inner{display:grid;gap:40px;grid-template-columns:1fr;align-items:center}
+@media(min-width:900px){.hero__inner{grid-template-columns:1.2fr .8fr}}
+.hero__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.hero__meta{
+  display:flex;flex-wrap:wrap;gap:16px;margin-top:20px;
+  font-size:.82rem;color:var(--mut);
+}
+.hero__meta span b{color:var(--ink)}
+
+.shield-visual{
+  position:relative;aspect-ratio:1/1;max-width:400px;width:100%;margin:0 auto;
+  border-radius:24px;overflow:hidden;
+  border:1px solid var(--line);
+  background:radial-gradient(circle at 50% 50%,rgba(0,161,222,.10),transparent 60%),var(--card);
+  backdrop-filter:blur(10px);
+}
+.shield-visual canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.shield-visual__label{
+  position:absolute;bottom:14px;left:0;right:0;text-align:center;
+  font-size:.72rem;color:var(--mut);letter-spacing:.14em;text-transform:uppercase;
+  pointer-events:none;z-index:2;
+}
+
+/* ============================================================
+   GLANCE CARDS
+   ============================================================ */
+.glance{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));margin-top:24px}
+.gcard{
+  padding:20px;border-radius:16px;border:1px solid var(--line);
+  background:var(--card);backdrop-filter:blur(10px);
+  transition:transform .3s,border-color .3s;
+}
+.gcard:hover{transform:translateY(-4px);border-color:rgba(0,161,222,.4)}
+.gcard__icon{
+  width:40px;height:40px;border-radius:10px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(0,161,222,.15),rgba(32,96,61,.08));
+  border:1px solid rgba(0,161,222,.25);
+  font-size:18px;margin-bottom:12px;color:var(--blue);
+}
+.gcard h3{margin:0 0 6px;font-size:.98rem;color:var(--ink)}
+.gcard p{margin:0;color:var(--mut);font-size:.88rem;line-height:1.55}
+
+/* ============================================================
+   LAYOUT (TOC + CONTENT)
+   ============================================================ */
+.doc-layout{display:grid;gap:32px;grid-template-columns:1fr}
+@media(min-width:1000px){.doc-layout{grid-template-columns:260px 1fr;gap:48px;align-items:start}}
+
+.toc{
+  padding:20px;border-radius:16px;border:1px solid var(--line);
+  background:var(--card);backdrop-filter:blur(10px);
+}
+@media(min-width:1000px){
+  .toc{position:sticky;top:calc(88px + env(safe-area-inset-top,0px));max-height:calc(100vh - 110px);overflow-y:auto;}
+}
+.toc h3{margin:0 0 14px;font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--mut)}
+.toc ol{list-style:none;padding:0;margin:0;counter-reset:toc}
+.toc li{counter-increment:toc;margin-bottom:4px}
+.toc a{
+  display:block;padding:7px 10px;border-radius:8px;
+  color:var(--mut);font-size:.85rem;text-decoration:none;
+  transition:color .2s,background .2s;
+}
+.toc a::before{content:counter(toc) ". ";color:var(--blue);font-weight:600;margin-right:4px}
+.toc a:hover{color:var(--ink);background:rgba(0,161,222,.06)}
+.toc a.active{color:var(--blue);background:rgba(0,161,222,.08)}
+
+.toc-toggle{
+  display:flex;justify-content:space-between;align-items:center;width:100%;
+  padding:14px 18px;border-radius:14px;background:var(--card);border:1px solid var(--line);
+  color:var(--ink);font-weight:600;font-size:14px;cursor:pointer;
+}
+.toc-toggle::after{content:"▾";color:var(--blue);transition:transform .2s}
+.toc-toggle[aria-expanded=true]::after{transform:rotate(180deg)}
+@media(min-width:1000px){.toc-toggle{display:none}}
+
+.content section{
+  padding:32px 0;border-bottom:1px solid var(--line);
+}
+.content section:last-child{border-bottom:0}
+.content h2{display:flex;align-items:center;gap:12px}
+.content h2 .num{
+  display:inline-grid;place-items:center;min-width:34px;height:34px;
+  border-radius:10px;background:rgba(0,161,222,.10);
+  border:1px solid rgba(0,161,222,.28);
+  color:var(--blue);font-size:.85rem;font-weight:700;
+}
+
+/* ============================================================
+   CALLOUTS
+   ============================================================ */
+.callout{
+  display:flex;gap:14px;padding:18px 22px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(242,163,58,.08),rgba(200,85,61,.04));
+  border:1px solid rgba(242,163,58,.28);
+  margin:16px 0;
+}
+.callout--blue{
+  background:linear-gradient(135deg,rgba(0,161,222,.08),rgba(32,96,61,.04));
+  border-color:rgba(0,161,222,.28);
+}
+.callout--warn{
+  background:linear-gradient(135deg,rgba(200,85,61,.10),rgba(150,40,20,.05));
+  border-color:rgba(200,85,61,.4);
+}
+.callout__icon{
+  width:32px;height:32px;border-radius:10px;display:grid;place-items:center;
+  background:rgba(242,163,58,.18);color:var(--amb);flex-shrink:0;font-size:16px;
+}
+.callout--blue .callout__icon{background:rgba(0,161,222,.18);color:var(--blue)}
+.callout--warn .callout__icon{background:rgba(200,85,61,.22);color:var(--ter)}
+.callout p{margin:0;font-size:.94rem;color:var(--ink)}
+.callout p + p{margin-top:8px}
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+.table-scroll{overflow-x:auto;margin:16px 0;border:1px solid var(--line);border-radius:14px;-webkit-overflow-scrolling:touch}
+table.priv{width:100%;border-collapse:collapse;font-size:.9rem;min-width:520px}
+table.priv th,table.priv td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+table.priv thead th{background:rgba(0,161,222,.06);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--blue);font-weight:700}
+table.priv tr:last-child td{border-bottom:0}
+table.priv td:first-child{color:var(--ink);font-weight:600}
+table.priv td:last-child{color:var(--mut)}
+
+/* ============================================================
+   FORM
+   ============================================================ */
+.form{display:grid;gap:14px;margin-top:22px;grid-template-columns:1fr 1fr}
+.form .full{grid-column:1/-1}
+.form label{display:block;font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.form input,.form select,.form textarea{
+  width:100%;padding:13px 16px;border-radius:12px;border:1px solid var(--line);
+  background:rgba(255,255,255,.04);color:var(--ink);font-size:14px;min-height:48px;
+  transition:border-color .2s;
+}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--blue)}
+.form select option{background:var(--bg2);color:var(--ink)}
+.form .consent{display:flex;gap:10px;align-items:flex-start;grid-column:1/-1;font-size:.88rem;color:var(--mut)}
+.form .consent input{width:auto;min-height:auto;margin-top:3px;accent-color:var(--blue)}
+.form button[type=submit]{grid-column:1/-1;justify-self:start}
+.form-status{grid-column:1/-1;font-size:.9rem;min-height:1.2em}
+.form-status.ok{color:#7be2a8}
+.form-status.err{color:#ff9a9a}
+@media(max-width:600px){.form{grid-template-columns:1fr}}
+
+/* ============================================================
+   CTA BLOCK
+   ============================================================ */
+.cta-block{
+  padding:44px 28px;border-radius:24px;border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(0,161,222,.10),rgba(32,96,61,.05));
+  text-align:center;
+}
+.cta-block .btn{margin:6px 4px 0}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{border-top:1px solid var(--line);padding:44px 0 28px;color:var(--mut);font-size:.9rem;background:rgba(8,10,15,.85);position:relative;z-index:1}
+footer a{text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--blue)}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px}
+@media(max-width:780px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr}}
+footer h4{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--mut);margin:0 0 12px}
+footer ul{list-style:none;padding:0;margin:0}
+footer li{margin-bottom:6px;font-size:.88rem}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+[data-reveal]{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+[data-reveal].is-visible{opacity:1;transform:translateY(0)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:900px){
+  nav{display:none}
+  nav.open{
+    display:flex;flex-direction:column;
+    position:absolute;top:68px;left:0;right:0;
+    background:rgba(8,10,15,.97);padding:22px;
+    gap:14px;border-bottom:1px solid var(--line);
+    z-index:50;
+  }
+  #menu{display:block;margin-left:auto}
+  .aurora{filter:blur(60px);opacity:.32}
+}
+@media (max-width:620px){
+  section{padding:48px 0}
+  .hero{padding:40px 0 20px}
+  .code-frag{display:none}
+  #c{opacity:.5}
+  h1{font-size:1.8rem}
+  h2{font-size:1.35rem}
+  .content section{padding:24px 0}
+}
+@media (max-width:380px){
+  h1{font-size:1.6rem}
+  .btn{padding:10px 16px;font-size:13px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  #c,.aurora,.grid-lines,.scanline,.code-frag{display:none}
+  [data-reveal]{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div id="bg" aria-hidden="true"></div>
+<canvas id="c" aria-hidden="true"></canvas>
+
+<a class="skip-link" href="#main" style="position:absolute;left:-9999px;background:var(--blue);color:#fff;padding:.6rem 1rem;z-index:1000">Skip to content</a>
+
+<!-- ==================== HEADER ==================== -->
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="index.html" aria-label="Ikaze Digital home">
+      <img src="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png" alt="IKAZE Digital sunrise logo" width="56" height="44" />
+      <span>IKAZE DIGITAL<small>Digital Technology &amp; Creative Solutions</small></span>
+    </a>
+    <button id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="ecosystem.html">Ecosystem</a>
+      <a href="portfolio.html">Work</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn" href="start-project.html">Start a Project</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="top">
+  <div class="wrap hero__inner">
+    <div data-reveal>
+      <p class="tag">Privacy &amp; Data Protection</p>
+      <h1>Your Privacy <span style="color:var(--blue)">Matters.</span></h1>
+      <p class="lead">
+        We aim to collect only the information needed to provide, improve and secure our digital experiences,
+        while explaining clearly how information is handled.
+      </p>
+      <div class="hero__meta">
+        <span>Last updated: <b>10 October 2026</b></span>
+        <span>Policy version: <b>v1.0</b></span>
+      </div>
+      <div class="hero__cta">
+        <a class="btn" href="contact.html?inquiry=privacy">Contact Us About Privacy</a>
+        <a class="btn o" href="index.html">Back to IKAZE DIGITAL</a>
+      </div>
+    </div>
+    <div class="shield-visual" data-reveal>
+      <canvas id="shieldCanvas" aria-label="3D shield visualization representing data protection"></canvas>
+      <span class="shield-visual__label">Secure · Transparent · Honest</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== AT A GLANCE ==================== -->
+<section id="glance">
+  <div class="wrap" data-reveal>
+    <p class="tag">Privacy at a Glance</p>
+    <h2>A simple summary before the details.</h2>
+    <p class="lead">If you only read one section, read this one.</p>
+    <div class="glance">
+      <div class="gcard">
+        <div class="gcard__icon">◐</div>
+        <h3>We collect</h3>
+        <p>Only information reasonably needed for the relevant interaction or service.</p>
+      </div>
+      <div class="gcard">
+        <div class="gcard__icon">◈</div>
+        <h3>We use it for</h3>
+        <p>Providing services, responding to requests, improving experiences, security and legitimate operational purposes.</p>
+      </div>
+      <div class="gcard">
+        <div class="gcard__icon">◇</div>
+        <h3>We do not sell</h3>
+        <p>IKAZE DIGITAL does not sell personal information.</p>
+      </div>
+      <div class="gcard">
+        <div class="gcard__icon">☼</div>
+        <h3>You have choices</h3>
+        <p>You can choose what information to provide where a field is optional.</p>
+      </div>
+      <div class="gcard">
+        <div class="gcard__icon">⌘</div>
+        <h3>We protect information</h3>
+        <p>We use reasonable technical and organizational safeguards appropriate to the systems involved.</p>
+      </div>
+      <div class="gcard">
+        <div class="gcard__icon">◉</div>
+        <h3>We explain changes</h3>
+        <p>Material privacy-policy changes will be reflected on this page.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== DOC LAYOUT ==================== -->
+<section id="policy" style="padding-top:20px">
+  <div class="wrap doc-layout">
+
+    <!-- TOC -->
+    <aside class="toc" aria-label="Table of contents">
+      <button class="toc-toggle" aria-expanded="false" aria-controls="tocList">Table of Contents</button>
+      <h3 id="tocList" style="margin-top:14px">Sections</h3>
+      <ol id="tocList-ol">
+        <li><a href="#scope">Scope</a></li>
+        <li><a href="#collect">Information We Collect</a></li>
+        <li><a href="#how">How Information Is Collected</a></li>
+        <li><a href="#why">Why We Use Information</a></li>
+        <li><a href="#legal">Legal Basis &amp; User Choices</a></li>
+        <li><a href="#consent">Consent</a></li>
+        <li><a href="#cookies">Cookies &amp; Similar Technologies</a></li>
+        <li><a href="#cookie-control">Cookie Control</a></li>
+        <li><a href="#local-storage">Local Storage</a></li>
+        <li><a href="#firebase">Firebase &amp; Cloud Services</a></li>
+        <li><a href="#auth">Firebase Authentication</a></li>
+        <li><a href="#forms">Forms &amp; Information You Submit</a></li>
+        <li><a href="#attachments">Attachments</a></li>
+        <li><a href="#analytics">Analytics &amp; Performance</a></li>
+        <li><a href="#third-party">Third-Party Services</a></li>
+        <li><a href="#payment">Payment Information</a></li>
+        <li><a href="#ai">AI &amp; Automated Services</a></li>
+        <li><a href="#sharing">When Information May Be Shared</a></li>
+        <li><a href="#sale">Data Sale</a></li>
+        <li><a href="#retention">Data Retention</a></li>
+        <li><a href="#deletion">Requesting Deletion</a></li>
+        <li><a href="#rights">Your Privacy Rights</a></li>
+        <li><a href="#verify">Verifying Requests</a></li>
+        <li><a href="#international">International Privacy</a></li>
+        <li><a href="#context">Privacy in Our Context</a></li>
+        <li><a href="#children">Children's Privacy</a></li>
+        <li><a href="#security">How We Protect Information</a></li>
+        <li><a href="#incidents">Security Incidents</a></li>
+        <li><a href="#passwords">Password Security</a></li>
+        <li><a href="#external">External Links</a></li>
+        <li><a href="#embeds">Embedded Content</a></li>
+        <li><a href="#marketing">Marketing &amp; Communications</a></li>
+        <li><a href="#ugc">Public &amp; User-Generated Content</a></li>
+        <li><a href="#accuracy">Data Accuracy</a></li>
+        <li><a href="#automated">Automated Decision-Making</a></li>
+        <li><a href="#minimize">Collect Less. Protect Better.</a></li>
+        <li><a href="#changes">Changes to This Policy</a></li>
+        <li><a href="#request">Submit a Privacy Request</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#legal-notice">Legal Notice</a></li>
+      </ol>
+    </aside>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+<!-- 1 -->
+<section id="scope" data-reveal>
+  <h2><span class="num">01</span>Scope</h2>
+  <p>This policy explains how IKAZE DIGITAL handles personal information across:</p>
+  <ul>
+    <li>The IKAZE DIGITAL website (<code>ikaze-digital.vercel.app</code> and any custom domain it is served from)</li>
+    <li>Related pages including <em>services</em>, <em>ecosystem</em>, <em>portfolio</em>, <em>pricing</em>, <em>about</em>, <em>contact</em>, <em>start-project</em>, <em>tools</em>, <em>opportunities</em>, <em>insights</em>, <em>product-details</em></li>
+    <li>Forms you submit through the site (contact, project requests, pricing, early-access, feedback, privacy requests)</li>
+    <li>Future IKAZE DIGITAL digital products where this policy is explicitly adopted</li>
+  </ul>
+  <div class="callout callout--blue">
+    <div class="callout__icon">i</div>
+    <p><strong>Separate products may eventually have additional privacy terms.</strong> If a future product needs its own policy, we will publish it alongside that product and link to it clearly.</p>
+  </div>
+  <p>This policy is written to be readable across borders. It is not legal advice and does not replace formal legal review where required.</p>
+</section>
+
+<!-- 2 -->
+<section id="collect" data-reveal>
+  <h2><span class="num">02</span>Information We Collect</h2>
+  <p>We aim to collect only what is reasonably needed. The exact information collected depends on what you use.</p>
+
+  <h3>A. Information you provide</h3>
+  <ul>
+    <li>Name</li>
+    <li>Email address</li>
+    <li>Phone number (where you choose to provide it)</li>
+    <li>Country</li>
+    <li>Organization or company name (where relevant)</li>
+    <li>Role or user type (where you select one)</li>
+    <li>Project information — project type, service, goals, audience, budget range, timeline, references</li>
+    <li>Messages and free-text content you write in forms</li>
+    <li>Feedback and preferences you choose to share</li>
+  </ul>
+
+  <h3>B. Account information</h3>
+  <p>If accounts are introduced for a given product or page:</p>
+  <ul>
+    <li>Name and email associated with the account</li>
+    <li>Authentication provider (for example, email/password or Google sign-in — only providers actually enabled)</li>
+    <li>Account identifier assigned by the authentication system</li>
+    <li>Basic profile information you choose to provide</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">As of the current version of this policy, general account registration is not enabled across the main IKAZE DIGITAL website. Where a product enables accounts, it will state so.</p>
+
+  <h3>C. Project and request information</h3>
+  <p>When you submit a project or pricing request, we collect the details you enter so we can understand the project and respond. Do not submit information that is not relevant to your request.</p>
+
+  <h3>D. Technical information</h3>
+  <p>Depending on the technologies enabled, we may receive limited technical information such as:</p>
+  <ul>
+    <li>IP address (as seen by our hosting provider)</li>
+    <li>Browser type and version</li>
+    <li>Device type and operating system</li>
+    <li>Approximate technical location (from IP, not precise GPS unless a feature explicitly requests it)</li>
+    <li>Language setting</li>
+    <li>Referring page</li>
+    <li>Timestamps of requests</li>
+    <li>Error information when the site fails to render or a request fails</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">We do not claim all of the above are always collected. What is actually logged depends on the hosting provider and the specific services in use.</p>
+</section>
+
+<!-- 3 -->
+<section id="how" data-reveal>
+  <h2><span class="num">03</span>How Information Is Collected</h2>
+  <p>Information reaches us in two ways:</p>
+  <ul>
+    <li><strong>Information you provide directly</strong> — through forms, direct email, or contact channels.</li>
+    <li><strong>Information generated by using the site</strong> — such as technical logs produced by the hosting infrastructure when your browser requests pages.</li>
+  </ul>
+  <p>Common collection points include:</p>
+  <ul>
+    <li>The contact form</li>
+    <li>The start-a-project form</li>
+    <li>Pricing and estimate requests</li>
+    <li>Early-access and interest forms</li>
+    <li>Feedback submissions</li>
+    <li>Direct email to the addresses listed on this site</li>
+    <li>Cookies and local storage (see sections 07 and 09)</li>
+    <li>Server logs at the hosting level</li>
+    <li>Analytics, where enabled (see section 14)</li>
+  </ul>
+</section>
+
+<!-- 4 -->
+<section id="why" data-reveal>
+  <h2><span class="num">04</span>Why We Use Information</h2>
+  <p>We use information for the following purposes — and only where relevant to your interaction:</p>
+
+  <h4>Providing services</h4>
+  <p>To respond to your request and, where agreed, to deliver work.</p>
+
+  <h4>Communication</h4>
+  <p>To reply to inquiries and discuss projects you have asked us about.</p>
+
+  <h4>Project planning</h4>
+  <p>To understand requirements and prepare estimates or proposals.</p>
+
+  <h4>Account management</h4>
+  <p>To authenticate users and maintain account functionality where a product enables accounts.</p>
+
+  <h4>Security</h4>
+  <p>To detect abuse, fraud, unauthorized access and other security issues.</p>
+
+  <h4>Website improvement</h4>
+  <p>To understand technical performance and improve usability.</p>
+
+  <h4>Product development</h4>
+  <p>To understand requests and improve future products.</p>
+
+  <h4>Legal and operational requirements</h4>
+  <p>Where necessary and legally appropriate.</p>
+
+  <p style="color:var(--mut);font-size:.9rem">We do not use your information for a purpose the website does not perform.</p>
+</section>
+
+<!-- 5 -->
+<section id="legal" data-reveal>
+  <h2><span class="num">05</span>Legal Basis &amp; User Choices</h2>
+  <p>Different laws describe lawful processing in different ways. Rather than pretend one framework applies to every visitor, we describe the concepts generally:</p>
+  <ul>
+    <li><strong>Consent</strong> — where you have clearly agreed to something specific</li>
+    <li><strong>Contractual necessity</strong> — where processing is needed to deliver something you requested</li>
+    <li><strong>Legitimate interests</strong> — where processing supports reasonable operational or security needs</li>
+    <li><strong>Legal obligation</strong> — where a specific law requires a specific action</li>
+    <li><strong>Other applicable legal grounds</strong> — as defined by the law that applies to you</li>
+  </ul>
+  <p>Where you have a choice, we try to make that choice clear. Where a field is optional, it is marked as such in the form.</p>
+</section>
+
+<!-- 6 -->
+<section id="consent" data-reveal>
+  <h2><span class="num">06</span>Consent</h2>
+  <p>Where we ask for consent, we aim to:</p>
+  <ul>
+    <li>Explain what you are consenting to in plain language</li>
+    <li>Keep optional consent (such as marketing) separate from necessary processing</li>
+    <li>Allow consent to be withdrawn where applicable</li>
+  </ul>
+  <p>We do not:</p>
+  <ul>
+    <li>Pre-check optional marketing boxes</li>
+    <li>Use confusing wording to imply consent was given</li>
+    <li>Hide the option to decline</li>
+  </ul>
+</section>
+
+<!-- 7 -->
+<section id="cookies" data-reveal>
+  <h2><span class="num">07</span>Cookies &amp; Similar Technologies</h2>
+  <p>Cookies and similar technologies (such as browser local storage) may be used for:</p>
+
+  <h4>Essential technologies</h4>
+  <ul>
+    <li>Security</li>
+    <li>Session handling where an account feature exists</li>
+    <li>Preferences you set (such as language or theme)</li>
+    <li>Core site functionality</li>
+  </ul>
+
+  <h4>Preference technologies</h4>
+  <ul>
+    <li>Remembering your language selection</li>
+    <li>Remembering interface choices you have made</li>
+  </ul>
+
+  <h4>Analytics technologies</h4>
+  <p style="color:var(--mut);font-size:.9rem">Enabled only if analytics are actually configured (see section 14). If no analytics are active, this category does not apply.</p>
+
+  <h4>Marketing technologies</h4>
+  <p style="color:var(--mut);font-size:.9rem">We do not currently use advertising or marketing cookies on this site.</p>
+</section>
+
+<!-- 8 -->
+<section id="cookie-control" data-reveal>
+  <h2><span class="num">08</span>Cookie Control</h2>
+  <p>At this time, the IKAZE DIGITAL site uses essential and preference cookies only. There is no advertising or third-party tracking that requires a cookie consent banner.</p>
+  <div class="callout">
+    <div class="callout__icon">⚙</div>
+    <p><strong>Manage cookies in your browser.</strong> You can clear cookies and local storage at any time through your browser's privacy settings. Doing so may reset preferences such as language selection.</p>
+  </div>
+  <p style="color:var(--mut);font-size:.9rem">If a consent management interface is added later, it will be provided here. It is not shown as a fake control now.</p>
+</section>
+
+<!-- 9 -->
+<section id="local-storage" data-reveal>
+  <h2><span class="num">09</span>Local Storage</h2>
+  <p>Browser local storage may be used for non-sensitive things such as:</p>
+  <ul>
+    <li>Interface preferences</li>
+    <li>Language selection</li>
+    <li>Temporary drafts you enter in a form (where supported)</li>
+    <li>Other non-sensitive settings</li>
+  </ul>
+  <p><strong>We do not store passwords, tokens or sensitive information in local storage.</strong></p>
+</section>
+
+<!-- 10 -->
+<section id="firebase" data-reveal>
+  <h2><span class="num">10</span>Firebase &amp; Cloud Services</h2>
+  <p>IKAZE DIGITAL uses Firebase (Google Cloud) for various platform functions as they are introduced, which may include:</p>
+  <ul>
+    <li>Authentication</li>
+    <li>Cloud database services (for example, Firestore)</li>
+    <li>File storage (where configured)</li>
+    <li>Hosting of some services</li>
+    <li>Infrastructure related to application functionality and security</li>
+  </ul>
+  <p>The exact set of Firebase services used depends on the specific page or product. When you submit information through a form connected to Firebase, that information is stored in cloud infrastructure subject to the security rules configured for that service.</p>
+  <p style="color:var(--mut);font-size:.9rem">No Firebase Admin credentials or private server keys are ever included in the browser-delivered code. Frontend Firebase configuration (project ID, API key for client SDK) is public by design and protected by security rules.</p>
+</section>
+
+<!-- 11 -->
+<section id="auth" data-reveal>
+  <h2><span class="num">11</span>Firebase Authentication</h2>
+  <p>Where authentication is enabled, the following methods may be available, depending on the product:</p>
+  <ul>
+    <li>Email and password</li>
+    <li>Google sign-in</li>
+    <li>Other providers, if a specific product enables them</li>
+  </ul>
+  <p>Authentication providers process account information according to their own privacy policies. IKAZE DIGITAL does not control these third-party providers — it uses them as a service.</p>
+  <p style="color:var(--mut);font-size:.9rem">As of this policy version, general IKAZE DIGITAL website access does not require an account. Authentication is reserved for future product functionality.</p>
+</section>
+
+<!-- 12 -->
+<section id="forms" data-reveal>
+  <h2><span class="num">12</span>Forms &amp; Information You Submit</h2>
+  <p>Information submitted through a form is used for the purpose associated with that form. For example:</p>
+  <ul>
+    <li><strong>Contact form:</strong> to reply to your message</li>
+    <li><strong>Start-a-project form:</strong> to understand your project and prepare a response or proposal</li>
+    <li><strong>Pricing / estimate form:</strong> to prepare a quote or discuss pricing</li>
+    <li><strong>Early-access / interest form:</strong> to follow up about the relevant product</li>
+    <li><strong>Feedback form:</strong> to understand your feedback about a product or page</li>
+    <li><strong>Privacy request form:</strong> to process a privacy-related request</li>
+  </ul>
+  <div class="callout callout--warn">
+    <div class="callout__icon">!</div>
+    <p><strong>Please do not submit unnecessary sensitive information.</strong></p>
+    <p>Avoid sending passwords, financial credentials, government identification numbers, health information, authentication codes, private keys or confidential business secrets through ordinary contact forms unless specifically requested and securely supported.</p>
+  </div>
+  <p>Submitting a project request does not automatically subscribe you to marketing communications.</p>
+</section>
+
+<!-- 13 -->
+<section id="attachments" data-reveal>
+  <h2><span class="num">13</span>Attachments</h2>
+  <p>Where file attachments are supported, they are collected only for the purpose of understanding your project or request. Please:</p>
+  <ul>
+    <li>Send only files relevant to your request</li>
+    <li>Do not upload documents containing unnecessary sensitive personal information</li>
+    <li>Prefer a summary or redacted version if the full document contains private data</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">Attachment handling depends on the specific storage service configured. Access is limited to those who need it for the request.</p>
+</section>
+
+<!-- 14 -->
+<section id="analytics" data-reveal>
+  <h2><span class="num">14</span>Analytics &amp; Performance</h2>
+  <p>Analytics capabilities may be introduced in the future to understand technical performance and improve the site.</p>
+  <p><strong>At this time, no third-party analytics scripts (such as Google Analytics or Meta Pixel) are enabled on the IKAZE DIGITAL site.</strong></p>
+  <p>If analytics are added later, this section will be updated to describe:</p>
+  <ul>
+    <li>Which tool is used</li>
+    <li>What information is collected</li>
+    <li>Why it is used</li>
+    <li>How you can control it</li>
+  </ul>
+</section>
+
+<!-- 15 -->
+<section id="third-party" data-reveal>
+  <h2><span class="num">15</span>Third-Party Services</h2>
+  <p>Where third-party services are used to operate parts of the site, they may process information in order to provide that service. Categories include:</p>
+  <ul>
+    <li><strong>Hosting providers</strong> — for serving the site</li>
+    <li><strong>Firebase / Google Cloud</strong> — for authentication, storage and cloud functions where enabled</li>
+    <li><strong>Authentication providers</strong> — where sign-in options are enabled</li>
+    <li><strong>Payment processors</strong> — only where payment functionality is actually introduced</li>
+    <li><strong>Email or SMS providers</strong> — where used for communication</li>
+    <li><strong>AI providers</strong> — only where AI features are enabled</li>
+    <li><strong>CDN providers</strong> — for font or asset delivery</li>
+  </ul>
+  <p>Third-party providers have their own privacy policies. We do not control them.</p>
+  <p style="color:var(--mut);font-size:.9rem">Additional third-party services may be introduced as new functionality becomes available, and this section will be updated when they are.</p>
+</section>
+
+<!-- 16 -->
+<section id="payment" data-reveal>
+  <h2><span class="num">16</span>Payment Information</h2>
+  <p>Payment processing may be introduced for applicable services and products. Details will be provided when payment functionality becomes available.</p>
+  <p>Where a third-party payment provider processes payments:</p>
+  <ul>
+    <li>Payment card data is handled by the payment processor, not stored on IKAZE DIGITAL systems</li>
+    <li>We do not ask users to send card numbers, PINs or payment passwords through ordinary forms or email</li>
+    <li>Only the minimum information needed to reconcile a payment is retained on our side</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">At this time, no payment provider is active on the IKAZE DIGITAL website.</p>
+</section>
+
+<!-- 17 -->
+<section id="ai" data-reveal>
+  <h2><span class="num">17</span>AI &amp; Automated Services</h2>
+  <p>Some IKAZE DIGITAL products are planned to include AI-powered functionality. Where AI features exist:</p>
+  <ul>
+    <li>Inputs you provide may be processed to generate the requested output</li>
+    <li>You should avoid submitting unnecessary confidential information</li>
+    <li>Specific AI products may have additional terms or privacy information</li>
+    <li>Third-party AI providers may process information where they are used to deliver the feature</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">We do not claim that user data is or is not used for AI model training, because that depends on the specific provider configuration of a given feature. Where relevant, we will describe the configuration of that feature.</p>
+</section>
+
+<!-- 18 -->
+<section id="sharing" data-reveal>
+  <h2><span class="num">18</span>When Information May Be Shared</h2>
+  <p>We do not share personal information for advertising purposes and we do not sell it. Information may be shared only in the following situations:</p>
+  <ul>
+    <li><strong>Service providers</strong> — providers necessary to operate a specific service you are using</li>
+    <li><strong>Infrastructure providers</strong> — hosting, database, authentication, security and related infrastructure</li>
+    <li><strong>Legal requirements</strong> — where required by applicable law or a valid legal request</li>
+    <li><strong>Security</strong> — to investigate abuse, fraud or security incidents where appropriate</li>
+    <li><strong>Business changes</strong> — if the business structure changes, subject to applicable law</li>
+  </ul>
+</section>
+
+<!-- 19 -->
+<section id="sale" data-reveal>
+  <h2><span class="num">19</span>Data Sale</h2>
+  <div class="callout callout--blue">
+    <div class="callout__icon">✓</div>
+    <p><strong>IKAZE DIGITAL does not sell personal information.</strong></p>
+  </div>
+  <p>We do not sell, rent or trade personal information to third parties. We do not share personal information for cross-context behavioral advertising.</p>
+</section>
+
+<!-- 20 -->
+<section id="retention" data-reveal>
+  <h2><span class="num">20</span>Data Retention</h2>
+  <p>We aim to retain information only for as long as reasonably necessary for the purpose for which it was collected, subject to applicable legal and operational requirements.</p>
+  <p>Retention depends on:</p>
+  <ul>
+    <li>The purpose of collection</li>
+    <li>The type of information</li>
+    <li>Account status (where accounts exist)</li>
+    <li>Legal requirements</li>
+    <li>Operational needs</li>
+    <li>Security requirements</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">We do not publish specific retention periods unless they are formally established, because they depend on the specific interaction and any applicable legal obligations.</p>
+</section>
+
+<!-- 21 -->
+<section id="deletion" data-reveal>
+  <h2><span class="num">21</span>Requesting Deletion</h2>
+  <p>Where applicable, you can request deletion of personal information using the request form on this page or by contacting us at the address in section 39.</p>
+  <p>Some information may not be immediately deletable if:</p>
+  <ul>
+    <li>A legal retention obligation applies</li>
+    <li>Security records need to be retained for a period</li>
+    <li>Contractual obligations exist</li>
+    <li>Backups cannot be modified immediately</li>
+  </ul>
+  <p>Where deletion cannot be fully completed immediately, we will explain what remains and why.</p>
+</section>
+
+<!-- 22 -->
+<section id="rights" data-reveal>
+  <h2><span class="num">22</span>Your Privacy Rights</h2>
+  <p>Depending on your location and applicable law, you may have rights such as:</p>
+  <ul>
+    <li><strong>Access</strong> — request a copy of personal information we hold about you</li>
+    <li><strong>Correction</strong> — request correction of inaccurate information</li>
+    <li><strong>Deletion</strong> — request deletion, subject to legal retention</li>
+    <li><strong>Restriction</strong> — request that processing be limited in certain circumstances</li>
+    <li><strong>Objection</strong> — object to certain processing</li>
+    <li><strong>Portability</strong> — request a machine-readable copy where applicable</li>
+    <li><strong>Withdraw consent</strong> — where processing relies on your consent</li>
+    <li><strong>Complaint</strong> — lodge a complaint with a relevant authority</li>
+  </ul>
+  <p>These rights are not automatic for every visitor in every jurisdiction. The rights that apply to you depend on your location and the applicable law.</p>
+  <p>To make a request, use the form in section 38 or contact us directly.</p>
+</section>
+
+<!-- 23 -->
+<section id="verify" data-reveal>
+  <h2><span class="num">23</span>Verifying Requests</h2>
+  <p>To protect your information, we may need to verify your identity before acting on certain privacy requests. Verification typically means confirming you can access the email address associated with your request.</p>
+  <p>We will never ask you for:</p>
+  <ul>
+    <li>Your password</li>
+    <li>Authentication codes or one-time passwords</li>
+    <li>Full payment card details</li>
+  </ul>
+  <p>We may ask for additional information where necessary to confirm we are acting on the right person's data, but we aim to keep verification as light as possible while still protecting you.</p>
+</section>
+
+<!-- 24 -->
+<section id="international" data-reveal>
+  <h2><span class="num">24</span>International Privacy</h2>
+  <p>IKAZE DIGITAL is rooted in Rwanda and may serve users beyond Rwanda through digital services. Data may be processed using infrastructure located in different countries depending on the technologies and providers used.</p>
+  <p>For example, Firebase and Google Cloud infrastructure may process data in data centers outside Rwanda. Where this happens, the processing is subject to the terms of those providers.</p>
+  <p style="color:var(--mut);font-size:.9rem">We do not claim specific international transfer mechanisms (such as Standard Contractual Clauses) unless they have been formally implemented for a specific service.</p>
+</section>
+
+<!-- 25 -->
+<section id="context" data-reveal>
+  <h2><span class="num">25</span>Privacy in Our Context</h2>
+  <p>IKAZE DIGITAL aims to build technology responsibly from Rwanda and Africa. That means treating privacy as part of the design of every product, not an afterthought.</p>
+  <p>Where specific legal frameworks apply — such as Rwanda's data protection framework or international standards — we aim to work in a way that is consistent with them, and we will update this page as specific compliance measures are adopted and verified.</p>
+  <p style="color:var(--mut);font-size:.9rem">We do not claim formal certification under any specific privacy law unless such certification exists.</p>
+</section>
+
+<!-- 26 -->
+<section id="children" data-reveal>
+  <h2><span class="num">26</span>Children's Privacy</h2>
+  <p>The IKAZE DIGITAL website is designed for general audiences — creators, businesses, students and organizations.</p>
+  <ul>
+    <li>Users should not submit personal information belonging to children through ordinary contact forms</li>
+    <li>Where an educational product is specifically designed for use by or with children, its privacy approach will be described separately, alongside that product</li>
+    <li>Additional protections may apply to educational services and will be documented in the relevant product's terms</li>
+  </ul>
+  <p>If you believe a child's information has been submitted to us without appropriate consent, please contact us so we can review and remove it where appropriate.</p>
+</section>
+
+<!-- 27 -->
+<section id="security" data-reveal>
+  <h2><span class="num">27</span>How We Protect Information</h2>
+  <p>We use reasonable technical and organizational safeguards appropriate to the systems involved. These can include:</p>
+  <ul>
+    <li>Authentication and authorization controls</li>
+    <li>Firebase Security Rules, where Firebase is used</li>
+    <li>Access control limited to those who need it</li>
+    <li>Input validation</li>
+    <li>Secure communication over HTTPS</li>
+    <li>Least-privilege principles</li>
+    <li>Secure backend operations</li>
+    <li>Monitoring where available</li>
+    <li>Abuse prevention</li>
+    <li>Careful credential management</li>
+  </ul>
+  <div class="callout">
+    <div class="callout__icon">!</div>
+    <p>No internet service can guarantee absolute security. We aim to use safeguards appropriate to the information and systems involved, but we do not claim our systems are "100% secure."</p>
+  </div>
+</section>
+
+<!-- 28 -->
+<section id="incidents" data-reveal>
+  <h2><span class="num">28</span>Security Incidents</h2>
+  <p>If a significant security incident occurs, IKAZE DIGITAL will handle it according to applicable requirements and the circumstances of the incident.</p>
+  <p style="color:var(--mut);font-size:.9rem">We do not promise a specific notification window here, because that depends on the applicable legal framework and the specific nature of the incident. Where a legal framework requires notification within a specific period, we will follow it.</p>
+</section>
+
+<!-- 29 -->
+<section id="passwords" data-reveal>
+  <h2><span class="num">29</span>Password Security</h2>
+  <p>Where account features exist, please:</p>
+  <ul>
+    <li>Use a strong, unique password</li>
+    <li>Never share your password</li>
+    <li>Avoid sending passwords through forms, email or chat</li>
+    <li>Enable additional security features where available</li>
+  </ul>
+  <p><strong>IKAZE DIGITAL will never ask you to send your password through email or a contact form.</strong></p>
+</section>
+
+<!-- 30 -->
+<section id="external" data-reveal>
+  <h2><span class="num">30</span>External Links</h2>
+  <p>Our website may contain links to third-party websites or services. We are not responsible for the privacy practices of websites we do not control.</p>
+  <p>When you follow an external link, review the privacy information of the destination site.</p>
+</section>
+
+<!-- 31 -->
+<section id="embeds" data-reveal>
+  <h2><span class="num">31</span>Embedded Content</h2>
+  <p>If embedded content is used in the future — such as videos, maps, forms or AI widgets — the embedded provider may interact with your browser and process technical information under its own privacy policy.</p>
+  <p style="color:var(--mut);font-size:.9rem">At this time, the IKAZE DIGITAL site does not embed third-party interactive widgets by default.</p>
+</section>
+
+<!-- 32 -->
+<section id="marketing" data-reveal>
+  <h2><span class="num">32</span>Marketing &amp; Communications</h2>
+  <p>We distinguish between:</p>
+  <ul>
+    <li><strong>Transactional and project communications</strong> — messages necessary to deliver a service or discuss a project you have asked about</li>
+    <li><strong>Optional marketing communications</strong> — messages about new products, updates or opportunities</li>
+  </ul>
+  <p>We do not add you to marketing lists automatically. Where optional marketing exists, we ask for consent, keep it separate from other consent, and provide a way to unsubscribe.</p>
+</section>
+
+<!-- 33 -->
+<section id="ugc" data-reveal>
+  <h2><span class="num">33</span>Public &amp; User-Generated Content</h2>
+  <p>Future IKAZE DIGITAL products may include features such as creator profiles, community posts, marketplace listings or reviews.</p>
+  <p>Where a feature is designed to publish content publicly, information you choose to publish may be visible to other users and, potentially, the wider internet.</p>
+  <p>Please do not publish through public features:</p>
+  <ul>
+    <li>Passwords or authentication codes</li>
+    <li>Private contact information</li>
+    <li>Financial credentials</li>
+    <li>Confidential documents</li>
+    <li>Sensitive personal information about yourself or others</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">These features are not yet live on the current site. This section is provided so the policy remains accurate when they are introduced.</p>
+</section>
+
+<!-- 34 -->
+<section id="accuracy" data-reveal>
+  <h2><span class="num">34</span>Keeping Your Information Accurate</h2>
+  <p>Please provide accurate information where accuracy matters for what you are asking us to do — for example, an email address we can reply to.</p>
+  <p>If information you have submitted becomes inaccurate, you can request a correction using the request form.</p>
+</section>
+
+<!-- 35 -->
+<section id="automated" data-reveal>
+  <h2><span class="num">35</span>Automated Decision-Making</h2>
+  <p>Some future services may use automated technologies to assist with recommendations, search, organization or workflow decisions.</p>
+  <p>Where automated decision-making with legal or similarly significant effects is introduced, additional information will be provided by the relevant product.</p>
+  <p style="color:var(--mut);font-size:.9rem">We do not currently operate decision-making systems that produce legal or similarly significant effects on individuals.</p>
+</section>
+
+<!-- 36 -->
+<section id="minimize" data-reveal>
+  <h2><span class="num">36</span>Collect Less. Protect Better.</h2>
+  <div class="callout callout--blue">
+    <div class="callout__icon">◆</div>
+    <p>We aim to collect information that is reasonably relevant to the service or interaction, instead of requesting unnecessary personal information.</p>
+    <p>Data minimization reduces risk — for you and for us.</p>
+  </div>
+</section>
+
+<!-- 37 -->
+<section id="changes" data-reveal>
+  <h2><span class="num">37</span>Changes to This Policy</h2>
+  <p>This privacy policy may be updated as our services, technologies or legal obligations evolve.</p>
+  <ul>
+    <li>The updated version and date will appear at the top of this page</li>
+    <li>Material changes may be communicated through appropriate channels where we are able to do so</li>
+    <li>Please review this page periodically for updates</li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">We do not claim every minor change will trigger an email notification.</p>
+</section>
+
+<!-- 38 -->
+<section id="request" data-reveal>
+  <h2><span class="num">38</span>Submit a Privacy Request</h2>
+  <p>Use this form for any privacy-related request: access, correction, deletion, consent withdrawal, objection, or a general question.</p>
+
+  <form class="form" id="privacyForm" novalidate>
+    <div>
+      <label for="prType">Request type *</label>
+      <select id="prType" name="requestType" required>
+        <option value="">Select a type…</option>
+        <option>General privacy question</option>
+        <option>Access my information</option>
+        <option>Correct my information</option>
+        <option>Delete my information</option>
+        <option>Withdraw consent</option>
+        <option>Object to processing</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div>
+      <label for="prName">Name *</label>
+      <input id="prName" name="name" type="text" required autocomplete="name" />
+    </div>
+    <div>
+      <label for="prEmail">Email *</label>
+      <input id="prEmail" name="email" type="email" required autocomplete="email" />
+    </div>
+    <div>
+      <label for="prCountry">Country</label>
+      <input id="prCountry" name="country" type="text" autocomplete="country-name" />
+    </div>
+    <div class="full">
+      <label for="prMessage">Additional details</label>
+      <textarea id="prMessage" name="message" rows="4" placeholder="Tell us what you need. Do not include passwords or sensitive credentials."></textarea>
+    </div>
+    <label class="consent">
+      <input type="checkbox" id="prConsent" required />
+      <span>I confirm the information above is accurate and I am authorised to make this request.</span>
+    </label>
+    <button class="btn" type="submit">Submit Request</button>
+    <p class="form-status" id="prStatus" role="status" aria-live="polite"></p>
+  </form>
+
+  <p style="color:var(--mut);font-size:.82rem;margin-top:14px">
+    At this time, this form opens your email client as a fallback. A dedicated backend for privacy requests will be connected once the required infrastructure is available.
+  </p>
+  <p style="color:var(--mut);font-size:.82rem">
+    <strong>Reminder:</strong> we will never ask you for your password or authentication codes.
+  </p>
+</section>
+
+<!-- 39 -->
+<section id="contact" data-reveal>
+  <h2><span class="num">39</span>Contact Us</h2>
+  <p>If you have a privacy question, want to understand how your information is handled, or wish to make a privacy-related request, contact IKAZE DIGITAL:</p>
+  <ul>
+    <li>Email: <a href="mailto:theonesteniyibigira6@gmail.com" style="color:var(--blue)">theonesteniyibigira6@gmail.com</a></li>
+    <li>Contact form: <a href="contact.html?inquiry=privacy" style="color:var(--blue)">contact.html</a></li>
+  </ul>
+  <p style="color:var(--mut);font-size:.9rem">We aim to respond to privacy inquiries within a reasonable time. Response times may vary depending on the nature of the request.</p>
+</section>
+
+<!-- 40 -->
+<section id="legal-notice" data-reveal>
+  <h2><span class="num">40</span>Legal Notice</h2>
+  <p>This privacy information is intended to explain how IKAZE DIGITAL handles information through its digital services. It is not a substitute for professional legal advice.</p>
+  <p>Where applicable law grants you rights that are not described here, those rights remain in effect. Where this policy describes practices that differ from a specific applicable law, the applicable law governs to the extent required.</p>
+</section>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FINAL CTA ==================== -->
+<section id="final" style="padding:40px 0 6rem">
+  <div class="wrap wrap--narrow" data-reveal>
+    <div class="cta-block">
+      <p class="tag">Continue</p>
+      <h2>Privacy should be understandable, not hidden behind complicated language.</h2>
+      <p class="lead" style="margin-inline:auto">
+        If anything on this page is unclear, or if you want to make a privacy request, get in touch.
+      </p>
+      <div style="margin-top:22px">
+        <a class="btn" href="contact.html?inquiry=privacy">Contact Us About Privacy</a>
+        <a class="btn o" href="terms.html">Read Our Terms</a>
+        <a class="btn o" href="index.html">Back to IKAZE DIGITAL</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p><strong>IKAZE DIGITAL</strong><br/>Digital Technology &amp; Creative Solutions<br/>Building Africa's Digital Future</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="ecosystem.html">Ecosystem</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Privacy &amp; Data</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="#cookies">Cookies</a></li>
+          <li><a href="#request">Data Request</a></li>
+          <li><a href="#security">Security</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>NIYIBIGIRA THEONESTE<br/>Founder &amp; Owner — IKAZE DIGITAL</p>
+        <p>
+          <a href="mailto:theonesteniyibigira6@gmail.com">theonesteniyibigira6@gmail.com</a><br/>
+          <a href="tel:+250794204258">+250 794 204 258</a>
+        </p>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--mut);font-size:.8rem">
+      <small>© <span id="year"></span> Ikaze Digital. All rights reserved. · Last updated: 10 October 2026 · v1.0</small>
+    </div>
+  </div>
+</footer>
+
+<script>
+(()=>{'use strict';
+
+/* ============================================================
+   YEAR
+   ============================================================ */
+const yEl = document.getElementById('year');
+if (yEl) yEl.textContent = new Date().getFullYear();
+
+/* ============================================================
+   TOC: mobile toggle + active-section highlighting
+   ============================================================ */
+(()=>{
+  const toggle = document.querySelector('.toc-toggle');
+  const list = document.getElementById('tocList-ol');
+  if (toggle && list) {
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      list.style.display = open ? 'none' : 'block';
+      // On mobile default is expanded via CSS grid, so this is opt-in only.
+    });
+    // On first render on mobile, collapse by default
+    if (matchMedia('(max-width:999px)').matches) {
+      toggle.setAttribute('aria-expanded','false');
+      list.style.display = 'none';
+    } else {
+      toggle.setAttribute('aria-expanded','true');
+    }
+  }
+
+  const links = Array.from(document.querySelectorAll('.toc a'));
+  const sections = links
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+
+  if ('IntersectionObserver' in window && sections.length) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          links.forEach(a => a.classList.remove('active'));
+          const active = links.find(a => a.getAttribute('href') === '#' + en.target.id);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+    sections.forEach(s => io.observe(s));
+  }
+})();
+
+/* ============================================================
+   MOBILE NAV
+   ============================================================ */
+(()=>{
+  const t = document.getElementById('menu');
+  const n = document.getElementById('nav');
+  if (!t || !n) return;
+  t.addEventListener('click', () => {
+    const open = n.classList.toggle('open');
+    t.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('lock', open);
+  });
+  n.addEventListener('click', e => {
+    if (e.target.closest('a')) {
+      n.classList.remove('open'); t.setAttribute('aria-expanded','false');
+      document.body.classList.remove('lock');
+    }
+  });
+})();
+
+/* ============================================================
+   REVEAL ON SCROLL
+   ============================================================ */
+(()=>{
+  const els = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(e=>e.classList.add('is-visible')); return; }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+  els.forEach(e => io.observe(e));
+})();
+
+/* ============================================================
+   PRIVACY FORM
+   ============================================================ */
+(()=>{
+  const form = document.getElementById('privacyForm');
+  if (!form) return;
+  const status = document.getElementById('prStatus');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    status.className = 'form-status';
+    status.textContent = '';
+
+    const data = {
+      requestType: form.elements.requestType.value,
+      name: form.elements.name.value.trim(),
+      email: form.elements.email.value.trim(),
+      country: form.elements.country.value.trim(),
+      message: form.elements.message.value.trim(),
+      consent: form.elements.prConsent.checked
+    };
+
+    if (!data.requestType)      return err('Please select a request type.');
+    if (!data.name)             return err('Please enter your name.');
+    if (data.name.length > 120) return err('Name is too long.');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) return err('Please enter a valid email.');
+    if (!data.consent)          return err('Please confirm the accuracy statement.');
+
+    // Fallback: open the user's mail client. A real backend will store this
+    // in a Firestore `privacyRequests` collection with restricted rules.
+    const subject = encodeURIComponent(`Privacy request: ${data.requestType}`);
+    const body = encodeURIComponent(
+      `Request type: ${data.requestType}\n` +
+      `Name: ${data.name}\nEmail: ${data.email}\nCountry: ${data.country}\n\n${data.message}`
+    );
+    window.location.href = `mailto:theonesteniyibigira6@gmail.com?subject=${subject}&body=${body}`;
+
+    status.className = 'form-status ok';
+    status.textContent = 'Opening your email client… You can also email theonesteniyibigira6@gmail.com directly.';
+    form.reset();
+  });
+
+  function err(msg) {
+    status.className = 'form-status err';
+    status.textContent = msg;
+  }
+})();
+
+/* ============================================================
+   FLOATING CODE FRAGMENTS
+   ============================================================ */
+(()=>{
+  if (matchMedia('(max-width:620px)').matches) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const frags = ['<privacy>','secure=true','encrypt()','=>{}','rules.allow()','auth.uid','token()','//protect','hash()','shield.on()','verify()','return null;'];
+  for (let i = 0; i < 12; i++) {
+    const span = document.createElement('span');
+    span.className = 'code-frag';
+    span.textContent = frags[Math.floor(Math.random()*frags.length)];
+    span.style.left = (Math.random()*100) + '%';
+    span.style.bottom = '-40px';
+    span.style.animationDuration = (14 + Math.random()*18) + 's';
+    span.style.animationDelay = (-Math.random()*20) + 's';
+    span.style.opacity = (0.20 + Math.random()*0.4).toFixed(2);
+    document.body.appendChild(span);
+  }
+})();
+
+/* ============================================================
+   3D SHIELD VISUAL
+   ============================================================ */
+(()=>{
+  const canvas = document.getElementById('shieldCanvas');
+  if (!canvas) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const test = (()=>{try{const c=document.createElement('canvas');return !!(window.WebGLRenderingContext&&(c.getContext('webgl2')||c.getContext('webgl')));}catch{return false;}})();
+  if (!test) return;
+
+  const s = document.createElement('script');
+  s.type = 'module';
+  s.textContent = `
+    import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+    const canvas = document.getElementById('shieldCanvas');
+    const parent = canvas.parentElement;
+    const isSmall = matchMedia('(max-width:700px)').matches;
+
+    const renderer = new THREE.WebGLRenderer({canvas, antialias:!isSmall, alpha:true, powerPreference:'high-performance'});
+    renderer.setPixelRatio(Math.min(devicePixelRatio, isSmall ? 1.5 : 2));
+    renderer.setClearColor(0x000000, 0);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 200);
+    camera.position.set(0, 0, 7);
+
+    scene.add(new THREE.AmbientLight(0x00a1de, 0.6));
+    const key = new THREE.DirectionalLight(0xffffff, 1.0); key.position.set(4, 6, 4); scene.add(key);
+    const rim = new THREE.DirectionalLight(0x20603d, 0.7); rim.position.set(-5, -3, -4); scene.add(rim);
+
+    // Shield shape: an extruded rounded polygon approximating a shield
+    const shape = new THREE.Shape();
+    const w = 1.4, h = 1.8;
+    shape.moveTo(-w, h*0.4);
+    shape.lineTo(0, h);
+    shape.lineTo(w, h*0.4);
+    shape.lineTo(w, -h*0.2);
+    shape.quadraticCurveTo(w, -h*0.8, 0, -h);
+    shape.quadraticCurveTo(-w, -h*0.8, -w, -h*0.2);
+    shape.lineTo(-w, h*0.4);
+
+    const shieldGeo = new THREE.ExtrudeGeometry(shape, {
+      depth: 0.3, bevelEnabled: true, bevelSize: 0.08, bevelThickness: 0.08, bevelSegments: 3, curveSegments: 24
+    });
+    shieldGeo.center();
+
+    const shieldMat = new THREE.MeshStandardMaterial({
+      color: 0x00A1DE, emissive: 0x00A1DE, emissiveIntensity: 0.35,
+      roughness: 0.35, metalness: 0.55,
+      transparent: true, opacity: 0.92
+    });
+    const shield = new THREE.Mesh(shieldGeo, shieldMat);
+    scene.add(shield);
+
+    // Inner keyhole / lock element
+    const lockGeo = new THREE.TorusGeometry(0.28, 0.06, 12, 32);
+    const lockMat = new THREE.MeshStandardMaterial({ color: 0xFAD201, emissive: 0xFAD201, emissiveIntensity: 0.7, roughness: 0.3, metalness: 0.6 });
+    const lock = new THREE.Mesh(lockGeo, lockMat);
+    lock.position.set(0, 0.12, 0.25);
+    shield.add(lock);
+
+    const barGeo = new THREE.BoxGeometry(0.14, 0.35, 0.1);
+    const bar = new THREE.Mesh(barGeo, lockMat);
+    bar.position.set(0, -0.32, 0.25);
+    shield.add(bar);
+
+    // Orbiting particles
+    const count = isSmall ? 80 : 200;
+    const pGeo = new THREE.BufferGeometry();
+    const pPos = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      const r = 2 + Math.random() * 3.5;
+      const t = Math.random() * Math.PI * 2;
+      const p = Math.acos(2 * Math.random() - 1);
+      pPos[i*3]   = r * Math.sin(p) * Math.cos(t);
+      pPos[i*3+1] = r * Math.sin(p) * Math.sin(t);
+      pPos[i*3+2] = r * Math.cos(p);
+    }
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+    const pMat = new THREE.PointsMaterial({
+      color: 0x00A1DE, size: 0.03, transparent: true, opacity: 0.5,
+      depthWrite: false, blending: THREE.AdditiveBlending
+    });
+    const dust = new THREE.Points(pGeo, pMat);
+    scene.add(dust);
+
+    // Outer wireframe sphere
+    const sphereGeo = new THREE.SphereGeometry(2.6, 16, 16);
+    const sphereMat = new THREE.MeshBasicMaterial({ color: 0x00A1DE, wireframe: true, transparent: true, opacity: 0.08 });
+    const sphere = new THREE.Mesh(sphereGeo, sphereMat);
+    scene.add(sphere);
+
+    function resize() {
+      const w = parent.clientWidth || 400;
+      const h = parent.clientHeight || 400;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    if ('ResizeObserver' in window) new ResizeObserver(resize).observe(parent);
+    else addEventListener('resize', resize);
+
+    let mx = 0, my = 0, tx = 0, ty = 0;
+    if (!isSmall) {
+      parent.addEventListener('pointermove', e => {
+        const r = parent.getBoundingClientRect();
+        tx = ((e.clientX - r.left) / r.width - 0.5) * 0.5;
+        ty = ((e.clientY - r.top) / r.height - 0.5) * 0.5;
+      });
+    }
+
+    let running = true;
+    document.addEventListener('visibilitychange', () => { running = !document.hidden; if (running) loop(); });
+
+    const clock = new THREE.Clock();
+    function loop() {
+      if (!running) return;
+      requestAnimationFrame(loop);
+      const t = clock.getElapsedTime();
+
+      shield.rotation.y = Math.sin(t * 0.4) * 0.25;
+      shield.rotation.x = Math.sin(t * 0.3) * 0.05;
+      lock.rotation.z += 0.005;
+
+      dust.rotation.y += 0.0009;
+      sphere.rotation.y += 0.0006;
+      sphere.rotation.x += 0.0003;
+
+      mx += (tx - mx) * 0.05;
+      my += (ty - my) * 0.05;
+      scene.rotation.y = mx;
+      scene.rotation.x = my;
+
+      renderer.render(scene, camera);
+    }
+    loop();
+  `;
+  document.body.appendChild(s);
+})();
+
+/* ============================================================
+   SOURCE-CODE DETERRENTS (not real security)
+   ============================================================ */
+document.addEventListener('contextmenu', e => {
+  const t = e.target;
+  if (t.matches?.('input,textarea,select,[contenteditable="true"]')) return;
+  e.preventDefault();
+});
+
+document.addEventListener('keydown', e => {
+  const k = e.key.toLowerCase();
+  const block =
+    k === 'f12' ||
+    (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+    (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+    (e.ctrlKey && ['u','s'].includes(k)) ||
+    (e.metaKey && ['u','s'].includes(k));
+  if (block) { e.preventDefault(); e.stopPropagation(); return false; }
+}, true);
+
+(()=>{
+  const toast = document.createElement('div');
+  toast.className = 'devtools-warning';
+  toast.setAttribute('role','alert');
+  toast.setAttribute('aria-live','polite');
+  toast.innerHTML = '<span class="devtools-warning__icon">!</span><span>Developer tools detected — this page is protected.</span>';
+  document.body.appendChild(toast);
+
+  let visible = false, warnUntil = 0;
+  const show = () => { warnUntil = Date.now() + 5000; if (!visible) { visible = true; toast.classList.add('is-visible'); } };
+  const hide = () => { if (visible && Date.now() > warnUntil) { visible = false; toast.classList.remove('is-visible'); } };
+
+  setInterval(() => {
+    const w = window.outerWidth - window.innerWidth;
+    const h = window.outerHeight - window.innerHeight;
+    if (w > 160 || h > 160) show();
+    hide();
+  }, 900);
+
+  document.addEventListener('keydown', e => {
+    const k = e.key.toLowerCase();
+    if (k === 'f12' ||
+        (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+        (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+        (e.ctrlKey && ['u','s'].includes(k)) ||
+        (e.metaKey && ['u','s'].includes(k))) show();
+  }, true);
+})();
+
+if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+  (() => { let n = 0; setInterval(() => { n++; if (n > 1) { console.clear(); n = 0; } }, 2000); })();
+}
+console.log('%c⚠️ STOP', 'color:#ff3b3b;font-size:32px;font-weight:900');
+console.log('%cNo secrets are stored here. If someone told you to paste something here, it is a scam.', 'font-size:13px;color:#ff9');
+
+})();
+</script>
+
+</body>
+</html>
