@@ -1,0 +1,2030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>IKAZE DIGITAL Pricing | Digital Services, Packages &amp; Custom Solutions</title>
+<meta name="description" content="Explore IKAZE DIGITAL pricing, project packages, custom technology solutions, digital services and project estimation for individuals, creators, businesses and organizations." />
+<meta name="theme-color" content="#080A0F" />
+<link rel="canonical" href="https://ikaze-digital.vercel.app/pricing.html" />
+
+<meta property="og:title" content="IKAZE DIGITAL Pricing — Choose the Right Digital Path" />
+<meta property="og:description" content="Flexible technology and creative solutions designed around your goals, your stage and your future." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://i.postimg.cc/tJ9QydF2/Theoneste.png" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><path d='M6 40 24 6l18 34-9-6-9-14-9 14z' fill='%23f2a33a'/><path d='M24 6 42 40l-9-6z' fill='%23c8553d'/><circle cx='24' cy='6' r='4' fill='%23FAD201'/></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "IKAZE DIGITAL Pricing",
+  "url": "https://ikaze-digital.vercel.app/pricing.html",
+  "description": "Pricing, packages, digital investment and custom solutions from IKAZE DIGITAL.",
+  "isPartOf": {
+    "@type": "Organization",
+    "name": "Ikaze Digital",
+    "url": "https://ikaze-digital.vercel.app/"
+  }
+}
+</script>
+
+<style>
+/* ============================================================
+   TOKENS (match homepage / ecosystem / product-details)
+   ============================================================ */
+:root{
+  --bg:#080A0F; --bg2:#0B1017; --bg3:#10151D;
+  --ink:#f4efe8; --mut:#a9a39b;
+  --amb:#f2a33a; --ter:#c8553d;
+  --blue:#00A1DE; --grn:#20603D; --yel:#FAD201;
+  --card:rgba(255,255,255,.04);
+  --line:rgba(255,255,255,.10);
+  --radius:18px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.6;
+  overflow-x:hidden;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+body.lock{overflow:hidden}
+input,textarea,select{-webkit-user-select:text;user-select:text}
+a{color:inherit}
+img{max-width:100%;height:auto;display:block}
+button{font:inherit}
+
+/* ============================================================
+   BACKGROUND LAYERS
+   ============================================================ */
+#bg{
+  position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(60% 50% at 20% 15%,rgba(242,163,58,.20),transparent 70%),
+    radial-gradient(50% 45% at 85% 80%,rgba(200,85,61,.16),transparent 70%),
+    radial-gradient(45% 45% at 50% 50%,rgba(32,96,61,.10),transparent 70%),
+    linear-gradient(#10151D,#080A0F);
+}
+#c{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+
+.aurora{position:fixed;border-radius:50%;filter:blur(90px);opacity:.42;mix-blend-mode:screen;pointer-events:none;z-index:-1}
+.aurora-1{width:520px;height:520px;top:-120px;left:-80px;background:radial-gradient(circle,var(--amb),transparent 70%);animation:float1 22s ease-in-out infinite}
+.aurora-2{width:600px;height:600px;bottom:-180px;right:-100px;background:radial-gradient(circle,var(--grn),transparent 70%);animation:float2 26s ease-in-out infinite}
+.aurora-3{width:420px;height:420px;top:40%;left:50%;background:radial-gradient(circle,var(--yel),transparent 70%);opacity:.14;animation:float3 30s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(80px,60px) scale(1.15)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-70px,-90px) scale(1.2)}}
+@keyframes float3{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-40%,-60%) scale(1.3)}}
+
+.grid-lines{
+  position:fixed;inset:0;opacity:.11;pointer-events:none;z-index:-1;
+  background-image:
+    linear-gradient(rgba(242,163,58,.35) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(242,163,58,.35) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(circle at 50% 40%,#000 0%,transparent 75%);
+  -webkit-mask-image:radial-gradient(circle at 50% 40%,#000 0%,transparent 75%);
+  animation:gridMove 40s linear infinite;
+}
+@keyframes gridMove{0%{background-position:0 0,0 0}100%{background-position:64px 64px,64px 64px}}
+
+.scanline{
+  position:fixed;left:0;right:0;height:2px;z-index:-1;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--amb),transparent);
+  opacity:.28;filter:blur(1px);
+  animation:scanSweep 9s linear infinite;
+}
+@keyframes scanSweep{0%{top:0}100%{top:100%}}
+
+.code-frag{
+  position:fixed;font-size:11px;
+  color:rgba(242,163,58,.38);letter-spacing:.05em;white-space:nowrap;
+  pointer-events:none;z-index:-1;
+  animation:codeFloat linear infinite;will-change:transform,opacity;
+}
+@keyframes codeFloat{
+  0%{transform:translateY(0) translateX(0);opacity:0}
+  10%{opacity:.7}
+  90%{opacity:.7}
+  100%{transform:translateY(-100vh) translateX(30px);opacity:0}
+}
+
+/* ============================================================
+   DEVTOOLS TOAST
+   ============================================================ */
+.devtools-warning{
+  position:fixed;top:0;left:50%;transform:translate(-50%,-140%);
+  z-index:9999;padding:.85rem 1.4rem;
+  background:linear-gradient(120deg,rgba(200,85,61,.95),rgba(150,40,20,.95));
+  color:#fff;font-weight:600;font-size:.9rem;
+  border-radius:0 0 14px 14px;letter-spacing:.03em;
+  box-shadow:0 14px 40px -10px rgba(200,85,61,.6);
+  display:flex;align-items:center;gap:.7rem;
+  transition:transform .5s cubic-bezier(.2,.7,.2,1);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  max-width:calc(100% - 24px);pointer-events:none;
+}
+.devtools-warning.is-visible{transform:translate(-50%,0)}
+.devtools-warning__icon{
+  width:22px;height:22px;border-radius:50%;
+  background:rgba(255,255,255,.18);
+  display:grid;place-items:center;font-size:13px;flex-shrink:0;
+}
+@media (max-width:620px){.devtools-warning{font-size:.78rem;padding:.7rem 1rem}}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.wrap--narrow{max-width:780px}
+
+header{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+  backdrop-filter:blur(14px);
+  background:rgba(8,10,15,.75);
+  border-bottom:1px solid var(--line);
+}
+.bar{display:flex;align-items:center;gap:16px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.08em;font-size:14px}
+.logo img{height:44px;width:auto;max-width:56px;object-fit:contain}
+.logo small{display:block;font-weight:500;letter-spacing:0;font-size:10px;color:var(--mut)}
+nav{margin-left:auto;display:flex;gap:16px;align-items:center}
+nav a{text-decoration:none;font-size:14px;color:var(--mut);transition:color .2s}
+nav a:hover,nav a[aria-current]{color:var(--amb)}
+
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 22px;border-radius:999px;
+  background:var(--amb);color:#1a0f05;font-weight:700;text-decoration:none;
+  border:0;cursor:pointer;font-size:14px;
+  transition:transform .2s,box-shadow .2s;
+  min-height:44px;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(242,163,58,.35)}
+.btn.o{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.sm{padding:10px 16px;font-size:13px;min-height:40px}
+
+:focus-visible{outline:3px solid var(--yel);outline-offset:2px;border-radius:6px}
+
+#menu{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:12px 16px;min-height:44px;cursor:pointer}
+
+section{padding:84px 0;position:relative;z-index:1}
+h1{font-size:clamp(2rem,6.5vw,4rem);line-height:1.05;margin:0 0 16px;letter-spacing:-.02em}
+h2{font-size:clamp(1.5rem,3.8vw,2.4rem);margin:0 0 10px;letter-spacing:-.01em}
+h3{font-size:1.1rem;margin:6px 0}
+.tag{color:var(--amb);font-weight:600;letter-spacing:.06em;font-size:.82rem;text-transform:uppercase}
+.lead{color:var(--mut);max-width:660px;font-size:clamp(1rem,1.4vw,1.12rem)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{padding:60px 0 40px;min-height:88vh;display:flex;align-items:center}
+.hero__inner{display:grid;gap:40px;grid-template-columns:1fr;align-items:center;width:100%}
+@media(min-width:900px){.hero__inner{grid-template-columns:1.1fr .9fr}}
+.hero__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+
+.pricing-visual{
+  position:relative;aspect-ratio:1/1;max-width:520px;width:100%;margin:0 auto;
+  border-radius:24px;overflow:hidden;
+  border:1px solid var(--line);
+  background:radial-gradient(circle at 50% 50%,rgba(242,163,58,.10),transparent 60%),var(--card);
+  backdrop-filter:blur(10px);
+}
+.pricing-visual canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.pricing-visual__label{
+  position:absolute;bottom:14px;left:0;right:0;text-align:center;
+  font-size:.72rem;color:var(--mut);letter-spacing:.14em;text-transform:uppercase;
+  pointer-events:none;z-index:2;
+}
+
+/* ============================================================
+   SECTION NAV (sticky pills)
+   ============================================================ */
+.secnav{
+  position:sticky;top:calc(68px + env(safe-area-inset-top,0px));
+  z-index:15;
+  padding:14px 0;
+  background:rgba(8,10,15,.85);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+  overflow-x:auto;
+  white-space:nowrap;
+  -webkit-overflow-scrolling:touch;
+}
+.secnav__inner{display:inline-flex;gap:8px;padding:0 20px}
+.secnav a{
+  display:inline-flex;padding:8px 14px;border-radius:99px;
+  background:rgba(255,255,255,.03);border:1px solid var(--line);
+  color:var(--mut);font-size:13px;text-decoration:none;transition:all .2s;
+}
+.secnav a:hover{border-color:var(--amb);color:var(--amb)}
+
+/* ============================================================
+   CARDS / GRIDS
+   ============================================================ */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));margin-top:26px}
+.grid--two{grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))}
+.grid--three{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;backdrop-filter:blur(10px);transition:transform .3s,border-color .3s,box-shadow .3s;
+}
+.card:hover{transform:translateY(-5px);border-color:rgba(242,163,58,.4);box-shadow:0 14px 34px rgba(200,85,61,.14)}
+.card p{color:var(--mut);font-size:.94rem;margin:6px 0}
+.card h3{margin:6px 0}
+.card__head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
+
+/* Status badges */
+.st{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:5px 12px;border-radius:99px;border:1px solid;white-space:nowrap;
+}
+.st::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+.st--available{color:#3ddc84;border-color:rgba(61,220,132,.4);background:rgba(61,220,132,.08)}
+.st--dev{color:#00A1DE;border-color:rgba(0,161,222,.4);background:rgba(0,161,222,.08)}
+.st--soon{color:#f2a33a;border-color:rgba(242,163,58,.4);background:rgba(242,163,58,.08)}
+.st--concept{color:#9aa0a6;border-color:rgba(154,160,166,.35);background:rgba(154,160,166,.06)}
+.st--estimate{color:#c084fc;border-color:rgba(192,132,252,.4);background:rgba(192,132,252,.08)}
+.st--quote{color:#7dd3ff;border-color:rgba(125,211,255,.4);background:rgba(125,211,255,.08)}
+
+/* ============================================================
+   AUDIENCE SELECTOR
+   ============================================================ */
+.aud-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.aud-chip{
+  padding:10px 16px;border-radius:99px;background:rgba(255,255,255,.03);
+  border:1px solid var(--line);color:var(--ink);cursor:pointer;font-size:13px;
+  min-height:42px;transition:all .2s;
+}
+.aud-chip:hover{border-color:rgba(242,163,58,.5)}
+.aud-chip[aria-pressed=true]{background:var(--amb);color:#1a0f05;border-color:var(--amb);font-weight:600}
+.aud-detail{
+  margin-top:20px;padding:22px;border-radius:16px;
+  border:1px solid var(--line);background:var(--card);
+}
+.aud-detail h3{color:var(--amb);margin-top:0}
+
+/* ============================================================
+   PACKAGE CARDS
+   ============================================================ */
+.packages{display:grid;gap:20px;margin-top:30px;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.pkg{
+  display:flex;flex-direction:column;
+  padding:28px;border-radius:22px;
+  background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+  border:1px solid var(--line);
+  position:relative;overflow:hidden;
+  transition:transform .35s,border-color .3s,box-shadow .35s;
+  transform-style:preserve-3d;
+}
+.pkg:hover{transform:translateY(-6px);border-color:rgba(242,163,58,.5);box-shadow:0 20px 50px -20px rgba(242,163,58,.4)}
+.pkg--featured{border-color:rgba(242,163,58,.55);box-shadow:0 0 0 1px rgba(242,163,58,.2) inset}
+.pkg__rec{
+  display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--amb);margin-bottom:10px;
+}
+.pkg h3{font-size:1.3rem;margin:4px 0 6px}
+.pkg__for{color:var(--mut);font-size:.88rem;margin:0 0 14px}
+.pkg__price{
+  font-size:1.05rem;font-weight:700;color:var(--amb);
+  margin:14px 0;letter-spacing:.02em;
+}
+.pkg__price small{display:block;color:var(--mut);font-size:.75rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;margin-top:4px}
+.pkg__features{list-style:none;padding:0;margin:14px 0;display:grid;gap:8px;font-size:.9rem}
+.pkg__features li{padding-left:22px;position:relative;color:var(--ink)}
+.pkg__features li::before{
+  content:"✓";position:absolute;left:0;top:0;color:var(--amb);font-weight:700;
+}
+.pkg__cta{margin-top:auto;padding-top:16px;display:flex;gap:8px;flex-wrap:wrap}
+
+/* ============================================================
+   COMPARISON TABLE
+   ============================================================ */
+.table-scroll{overflow-x:auto;margin-top:26px;border:1px solid var(--line);border-radius:var(--radius);-webkit-overflow-scrolling:touch}
+table.cmp{width:100%;border-collapse:collapse;min-width:720px;font-size:.9rem}
+table.cmp th,table.cmp td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line)}
+table.cmp thead th{background:rgba(242,163,58,.06);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--amb);font-weight:700}
+table.cmp td:first-child{color:var(--mut)}
+table.cmp .yes{color:#3ddc84;font-weight:700}
+table.cmp .no{color:var(--mut);opacity:.6}
+table.cmp .custom{color:#7dd3ff;font-weight:600;font-size:.85rem}
+table.cmp tr:last-child td{border-bottom:0}
+.cmp-note{color:var(--mut);font-size:.82rem;margin-top:12px}
+
+/* Mobile stacked comparison */
+.cmp-cards{display:none;margin-top:22px}
+@media(max-width:760px){
+  .table-scroll{display:none}
+  .cmp-cards{display:grid;gap:14px}
+}
+.cmp-card{padding:20px;border-radius:16px;border:1px solid var(--line);background:var(--card)}
+.cmp-card h4{margin:0 0 12px;color:var(--amb);font-size:1rem}
+.cmp-card dl{display:grid;grid-template-columns:1fr auto;gap:8px 14px;margin:0;font-size:.88rem}
+.cmp-card dt{color:var(--mut)}
+.cmp-card dd{margin:0;text-align:right}
+
+/* ============================================================
+   SERVICES GRID
+   ============================================================ */
+.svc{padding:20px;border-radius:16px;border:1px solid var(--line);background:var(--card);transition:transform .3s,border-color .3s}
+.svc:hover{transform:translateY(-4px);border-color:rgba(242,163,58,.4)}
+.svc h3{margin-top:0;font-size:1.05rem}
+.svc p{font-size:.9rem;margin:6px 0}
+.svc__meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;font-size:11px;color:var(--mut);align-items:center}
+
+/* ============================================================
+   ESTIMATOR
+   ============================================================ */
+.estimator{
+  margin-top:30px;padding:32px;border-radius:22px;
+  border:1px solid var(--line);
+  background:linear-gradient(160deg,rgba(242,163,58,.06),rgba(200,85,61,.03));
+  display:grid;gap:24px;
+}
+.est-steps{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.est-step{
+  display:flex;gap:8px;align-items:center;
+  padding:8px 14px;border-radius:99px;
+  background:rgba(255,255,255,.03);border:1px solid var(--line);
+  color:var(--mut);font-size:12px;
+}
+.est-step.on{background:rgba(242,163,58,.15);border-color:var(--amb);color:var(--amb);font-weight:600}
+.est-step.done{border-color:rgba(61,220,132,.4);color:#3ddc84}
+.est-step__n{font-weight:700}
+
+.est-panel{display:none}
+.est-panel.on{display:block}
+.est-panel h3{margin-top:0;color:var(--amb);font-size:1.05rem;letter-spacing:.04em}
+
+.est-grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));margin-top:14px}
+.est-opt{
+  padding:14px 16px;border-radius:14px;border:1px solid var(--line);
+  background:rgba(255,255,255,.03);color:var(--ink);
+  cursor:pointer;font:inherit;font-size:14px;text-align:left;
+  transition:all .2s;min-height:52px;
+}
+.est-opt:hover{border-color:rgba(242,163,58,.5)}
+.est-opt[aria-pressed=true]{background:rgba(242,163,58,.15);border-color:var(--amb);color:#fff;font-weight:600}
+
+.est-checks{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));margin-top:14px}
+.est-check{
+  display:flex;gap:10px;align-items:center;
+  padding:12px 14px;border-radius:12px;border:1px solid var(--line);
+  background:rgba(255,255,255,.03);cursor:pointer;font-size:14px;
+}
+.est-check input{margin:0;accent-color:var(--amb);width:18px;height:18px}
+.est-check.on{border-color:var(--amb);background:rgba(242,163,58,.08)}
+
+.est-nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;justify-content:space-between;align-items:center}
+
+.est-result{
+  padding:24px;border-radius:16px;
+  background:linear-gradient(135deg,rgba(242,163,58,.15),rgba(200,85,61,.06));
+  border:1px solid rgba(242,163,58,.35);
+}
+.est-result__range{font-size:1.4rem;font-weight:800;color:var(--amb);margin:10px 0;letter-spacing:.02em}
+.est-result__note{color:var(--mut);font-size:.85rem}
+
+.est-summary{list-style:none;padding:0;margin:16px 0;display:grid;gap:6px;font-size:.9rem}
+.est-summary li{color:var(--mut)}
+.est-summary li b{color:var(--ink);font-weight:600}
+
+/* ============================================================
+   FLOW
+   ============================================================ */
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:24px;justify-content:center}
+.flow span{padding:10px 18px;border-radius:99px;background:var(--card);border:1px solid var(--line);font-size:.88rem;color:var(--ink)}
+.flow i{color:var(--amb);font-style:normal;font-size:1.2rem;font-weight:700}
+
+/* ============================================================
+   PROCESS STEPS
+   ============================================================ */
+.process{display:grid;gap:12px;margin-top:26px}
+.proc{
+  padding:20px 22px;border-radius:14px;border:1px solid var(--line);
+  background:linear-gradient(90deg,rgba(242,163,58,.06),transparent);
+  display:grid;grid-template-columns:50px 1fr;gap:16px;align-items:center;
+}
+.proc__n{font-size:22px;font-weight:800;color:var(--amb);letter-spacing:.05em}
+.proc b{display:block;margin-bottom:4px}
+.proc span{color:var(--mut);font-size:.92rem}
+@media(min-width:700px){.proc{grid-template-columns:60px 220px 1fr}}
+
+/* ============================================================
+   PRODUCT PRICING
+   ============================================================ */
+.prod{padding:18px 20px;border-radius:14px;border:1px solid var(--line);background:var(--card);display:flex;flex-direction:column;gap:8px}
+.prod h4{margin:0;font-size:1rem}
+.prod__row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;font-size:.85rem;color:var(--mut)}
+.prod a{color:var(--amb);text-decoration:none;font-size:13px}
+.prod a:hover{text-decoration:underline}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq{margin-top:26px;display:grid;gap:10px}
+.faq__item{border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden}
+.faq__q{
+  width:100%;text-align:left;padding:18px 22px;background:none;border:0;color:var(--ink);
+  font-size:1rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;gap:14px;align-items:center;
+}
+.faq__q::after{content:"+";color:var(--amb);font-size:1.4rem;line-height:1;transition:transform .3s}
+.faq__item[aria-expanded=true] .faq__q::after{transform:rotate(45deg)}
+.faq__a{padding:0 22px 18px;color:var(--mut);font-size:.94rem;display:none}
+.faq__item[aria-expanded=true] .faq__a{display:block}
+
+/* ============================================================
+   TRUST PRINCIPLES
+   ============================================================ */
+.principles{display:grid;gap:16px;margin-top:26px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.principle{padding:22px;border-radius:16px;border:1px solid var(--line);background:var(--card);transition:transform .3s,border-color .3s}
+.principle:hover{transform:translateY(-4px);border-color:rgba(242,163,58,.4)}
+.principle .n{font-size:22px;font-weight:800;color:var(--amb);letter-spacing:.05em;display:block;margin-bottom:8px}
+
+/* ============================================================
+   CTA
+   ============================================================ */
+.cta-block{
+  padding:44px 28px;border-radius:24px;border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(242,163,58,.10),rgba(200,85,61,.05));
+  text-align:center;
+}
+.cta-block .btn{margin:6px 4px 0}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{border-top:1px solid var(--line);padding:44px 0 28px;color:var(--mut);font-size:.9rem;background:rgba(8,10,15,.85);position:relative;z-index:1}
+footer a{text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--amb)}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px}
+@media(max-width:780px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr}}
+footer h4{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--mut);margin:0 0 12px}
+footer ul{list-style:none;padding:0;margin:0}
+footer li{margin-bottom:6px;font-size:.88rem}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+[data-reveal]{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+[data-reveal].is-visible{opacity:1;transform:translateY(0)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:900px){
+  nav{display:none}
+  nav.open{
+    display:flex;flex-direction:column;
+    position:absolute;top:68px;left:0;right:0;
+    background:rgba(8,10,15,.97);padding:22px;
+    gap:14px;border-bottom:1px solid var(--line);
+    z-index:50;
+  }
+  #menu{display:block;margin-left:auto}
+  .aurora{filter:blur(60px);opacity:.35}
+}
+@media (max-width:620px){
+  section{padding:60px 0}
+  .hero{padding:40px 0 30px;min-height:auto}
+  .code-frag{display:none}
+  #c{opacity:.5}
+  h1{font-size:1.85rem}
+  .estimator{padding:22px}
+  .pkg{padding:22px}
+}
+@media (max-width:380px){
+  h1{font-size:1.65rem}
+  .btn{padding:10px 16px;font-size:13px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  #c,.aurora,.grid-lines,.scanline,.code-frag{display:none}
+  [data-reveal]{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div id="bg" aria-hidden="true"></div>
+<canvas id="c" aria-hidden="true"></canvas>
+
+<!-- ==================== HEADER ==================== -->
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="index.html" aria-label="Ikaze Digital home">
+      <img src="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png" alt="IKAZE Digital sunrise logo" width="56" height="44" />
+      <span>IKAZE DIGITAL<small>Digital Technology &amp; Creative Solutions</small></span>
+    </a>
+    <button id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="ecosystem.html">Ecosystem</a>
+      <a href="portfolio.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn" href="start-project.html">Start a Project</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ==================== SECTION NAV ==================== -->
+<div class="secnav" role="navigation" aria-label="Page sections">
+  <div class="secnav__inner">
+    <a href="#packages">Packages</a>
+    <a href="#services">Services</a>
+    <a href="#estimator">Estimator</a>
+    <a href="#included">What's Included</a>
+    <a href="#addons">Add-ons</a>
+    <a href="#process">Process</a>
+    <a href="#products">Products</a>
+    <a href="#faq">FAQ</a>
+    <a href="#quote">Request Quote</a>
+  </div>
+</div>
+
+<main>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="hero">
+  <div class="wrap hero__inner">
+    <div data-reveal>
+      <p class="tag">Pricing &amp; Packages</p>
+      <h1>Choose the Right <span style="color:var(--amb)">Digital Path.</span></h1>
+      <p class="lead">
+        Flexible technology and creative solutions designed around your goals, your stage and your future.
+      </p>
+      <p class="lead" style="margin-top:10px">
+        IKAZE DIGITAL serves individuals, creators, students, startups, small and growing businesses, schools, organizations, institutions and technology teams.
+      </p>
+      <div class="hero__cta">
+        <a class="btn" href="start-project.html">Start a Project</a>
+        <a class="btn o" href="services.html">Explore Services</a>
+        <a class="btn o" href="contact.html">Talk to Us</a>
+      </div>
+    </div>
+    <div class="pricing-visual" data-reveal>
+      <canvas id="priceCanvas" aria-label="3D visualization of the IKAZE DIGITAL pricing journey"></canvas>
+      <span class="pricing-visual__label">Start · Build · Grow · Scale</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PHILOSOPHY ==================== -->
+<section id="philosophy">
+  <div class="wrap wrap--narrow" data-reveal>
+    <p class="tag">Our Pricing Philosophy</p>
+    <h2>The right solution depends on your goals.</h2>
+    <p class="lead">
+      The right digital solution depends on your goals, complexity, audience, technology requirements and long-term needs.
+    </p>
+    <p style="color:var(--mut)">
+      Final pricing can depend on project scope, functionality, integrations, design complexity, custom software requirements,
+      AI features, database needs, authentication, payment systems, cloud infrastructure, third-party services, content,
+      security requirements, maintenance, timeline, support, localization, number of users and organization size.
+    </p>
+    <p style="color:var(--mut)">
+      This page is designed to be transparent about that without pretending every project can be priced from a simple table.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== AUDIENCE ==================== -->
+<section id="audience">
+  <div class="wrap" data-reveal>
+    <p class="tag">What Are You Building?</p>
+    <h2>Pick the path that fits you.</h2>
+    <p class="lead">Select who you are and we'll highlight the most relevant packages below.</p>
+    <div class="aud-chips" id="audChips" role="group" aria-label="Audience selector"></div>
+    <div class="aud-detail" id="audDetail" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ==================== PACKAGES ==================== -->
+<section id="packages">
+  <div class="wrap" data-reveal>
+    <p class="tag">Core Packages</p>
+    <h2>Four paths, one clear direction.</h2>
+    <p class="lead">Structured starting points. Nothing here is a fixed price — it is a starting estimate so you can plan.</p>
+
+    <div class="packages">
+
+      <article class="pkg" data-aud="individual creator student">
+        <span class="pkg__rec">Start small</span>
+        <h3>Digital Start</h3>
+        <p class="pkg__for">For individuals, students, personal brands and small initiatives.</p>
+        <div class="pkg__price">
+          Starting Estimate
+          <small>Scope-based</small>
+        </div>
+        <ul class="pkg__features">
+          <li>Responsive website</li>
+          <li>Modern UI</li>
+          <li>Essential pages</li>
+          <li>Contact functionality</li>
+          <li>Basic SEO</li>
+          <li>Mobile optimization</li>
+          <li>Deployment support</li>
+        </ul>
+        <div class="pkg__cta">
+          <a class="btn sm" href="start-project.html?package=digital-start">Plan This Package</a>
+        </div>
+      </article>
+
+      <article class="pkg pkg--featured" data-aud="creator startup small-business org">
+        <span class="pkg__rec">Recommended for many growing projects</span>
+        <h3>Digital Growth</h3>
+        <p class="pkg__for">For creators, startups, small businesses and growing organizations.</p>
+        <div class="pkg__price">
+          Starting Estimate
+          <small>Scope-based</small>
+        </div>
+        <ul class="pkg__features">
+          <li>Advanced website</li>
+          <li>Stronger branding</li>
+          <li>Forms and integrations</li>
+          <li>Analytics</li>
+          <li>SEO</li>
+          <li>Content architecture</li>
+          <li>Interactive components</li>
+          <li>Basic automation</li>
+        </ul>
+        <div class="pkg__cta">
+          <a class="btn sm" href="start-project.html?package=digital-growth">Plan This Package</a>
+        </div>
+      </article>
+
+      <article class="pkg" data-aud="business org school">
+        <span class="pkg__rec">Custom scope</span>
+        <h3>Digital Pro</h3>
+        <p class="pkg__for">For professional businesses, organizations and advanced education platforms.</p>
+        <div class="pkg__price">
+          Custom Quote
+          <small>Scoped after discovery</small>
+        </div>
+        <ul class="pkg__features">
+          <li>Custom web application</li>
+          <li>Dashboards</li>
+          <li>Authentication</li>
+          <li>Database</li>
+          <li>Advanced workflows</li>
+          <li>Integrations</li>
+          <li>Advanced UI/UX</li>
+          <li>Security architecture</li>
+          <li>Deployment</li>
+          <li>Support options</li>
+        </ul>
+        <div class="pkg__cta">
+          <a class="btn sm" href="start-project.html?package=digital-pro">Plan This Package</a>
+        </div>
+      </article>
+
+      <article class="pkg" data-aud="enterprise institution org">
+        <span class="pkg__rec">Enterprise grade</span>
+        <h3>Digital Scale</h3>
+        <p class="pkg__for">For larger organizations, institutions, complex platforms and transformation projects.</p>
+        <div class="pkg__price">
+          Custom Quote
+          <small>Scoped after discovery</small>
+        </div>
+        <ul class="pkg__features">
+          <li>Custom platform</li>
+          <li>Advanced architecture</li>
+          <li>Multiple user roles</li>
+          <li>Complex workflows</li>
+          <li>APIs</li>
+          <li>Cloud infrastructure</li>
+          <li>Advanced security</li>
+          <li>Integrations</li>
+          <li>Analytics</li>
+          <li>Ongoing support</li>
+        </ul>
+        <div class="pkg__cta">
+          <a class="btn sm" href="start-project.html?package=digital-scale">Plan This Package</a>
+        </div>
+      </article>
+
+    </div>
+
+    <p style="color:var(--mut);font-size:.85rem;margin-top:18px">
+      No fixed prices are shown because every project is different. A detailed quotation is provided before development begins.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== COMPARISON ==================== -->
+<section id="compare">
+  <div class="wrap" data-reveal>
+    <p class="tag">Compare</p>
+    <h2>What's in each package?</h2>
+    <p class="lead">Indicative inclusions. Actual scope is confirmed in the project agreement.</p>
+
+    <div class="table-scroll" role="region" aria-label="Package comparison">
+      <table class="cmp">
+        <thead>
+          <tr>
+            <th scope="col">Feature</th>
+            <th scope="col">Digital Start</th>
+            <th scope="col">Digital Growth</th>
+            <th scope="col">Digital Pro</th>
+            <th scope="col">Digital Scale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Responsive design</td>       <td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Custom UI/UX</td>            <td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>SEO foundations</td>         <td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Forms</td>                   <td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Database</td>                <td class="no">—</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Authentication</td>          <td class="no">—</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Dashboard</td>               <td class="no">—</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Integrations</td>            <td class="no">—</td><td class="custom">Custom</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>AI features</td>             <td class="no">—</td><td class="custom">Custom</td><td class="custom">Custom</td><td class="yes">✓</td></tr>
+          <tr><td>Payments</td>                <td class="no">—</td><td class="custom">Custom</td><td class="custom">Custom</td><td class="yes">✓</td></tr>
+          <tr><td>Advanced security</td>       <td class="no">—</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Support options</td>         <td class="custom">Basic</td><td class="custom">Standard</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Custom architecture</td>     <td class="no">—</td><td class="no">—</td><td class="custom">Scoped</td><td class="yes">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Mobile: stacked cards -->
+    <div class="cmp-cards" aria-hidden="true">
+      <div class="cmp-card"><h4>Digital Start</h4><dl>
+        <dt>Responsive design</dt><dd>✓</dd>
+        <dt>Custom UI/UX</dt><dd>—</dd>
+        <dt>SEO</dt><dd>✓</dd>
+        <dt>Forms</dt><dd>—</dd>
+        <dt>Database</dt><dd>—</dd>
+        <dt>Auth</dt><dd>—</dd>
+        <dt>Dashboard</dt><dd>—</dd>
+        <dt>Support</dt><dd>Basic</dd>
+      </dl></div>
+      <div class="cmp-card"><h4>Digital Growth</h4><dl>
+        <dt>Responsive design</dt><dd>✓</dd>
+        <dt>Custom UI/UX</dt><dd>✓</dd>
+        <dt>SEO</dt><dd>✓</dd>
+        <dt>Forms</dt><dd>✓</dd>
+        <dt>Database</dt><dd>—</dd>
+        <dt>Auth</dt><dd>—</dd>
+        <dt>Dashboard</dt><dd>—</dd>
+        <dt>Support</dt><dd>Standard</dd>
+      </dl></div>
+      <div class="cmp-card"><h4>Digital Pro</h4><dl>
+        <dt>Responsive design</dt><dd>✓</dd>
+        <dt>Custom UI/UX</dt><dd>✓</dd>
+        <dt>SEO</dt><dd>✓</dd>
+        <dt>Forms</dt><dd>✓</dd>
+        <dt>Database</dt><dd>✓</dd>
+        <dt>Auth</dt><dd>✓</dd>
+        <dt>Dashboard</dt><dd>✓</dd>
+        <dt>Support</dt><dd>✓</dd>
+      </dl></div>
+      <div class="cmp-card"><h4>Digital Scale</h4><dl>
+        <dt>Responsive design</dt><dd>✓</dd>
+        <dt>Custom UI/UX</dt><dd>✓</dd>
+        <dt>SEO</dt><dd>✓</dd>
+        <dt>Forms</dt><dd>✓</dd>
+        <dt>Database</dt><dd>✓</dd>
+        <dt>Auth</dt><dd>✓</dd>
+        <dt>Dashboard</dt><dd>✓</dd>
+        <dt>Support</dt><dd>Ongoing</dd>
+      </dl></div>
+    </div>
+
+    <p class="cmp-note">"Custom" means the feature can be added to that package after scoping. "—" means it is not part of that package by default.</p>
+  </div>
+</section>
+
+<!-- ==================== SERVICES ==================== -->
+<section id="services">
+  <div class="wrap" data-reveal>
+    <p class="tag">Services</p>
+    <h2>Service-based pricing</h2>
+    <p class="lead">Every service has a pricing model — most are estimate-based or custom quote.</p>
+    <div class="grid grid--three" id="servicesGrid"></div>
+  </div>
+</section>
+
+<!-- ==================== ESTIMATOR ==================== -->
+<section id="estimator">
+  <div class="wrap" data-reveal>
+    <p class="tag">Project Estimator</p>
+    <h2>Estimate Your Project</h2>
+    <p class="lead">A quick planning tool. This is not a quotation — it is a starting range so you know what to expect.</p>
+
+    <div class="estimator" id="estimatorApp">
+      <div class="est-steps" id="estSteps" aria-hidden="true"></div>
+
+      <div class="est-panel on" data-panel="1">
+        <h3>01 · What are you building?</h3>
+        <div class="est-grid" id="estType"></div>
+      </div>
+
+      <div class="est-panel" data-panel="2">
+        <h3>02 · Complexity &amp; size</h3>
+        <p style="color:var(--mut);font-size:.9rem;margin-top:0">How complex is the project?</p>
+        <div class="est-grid" id="estComplexity"></div>
+        <p style="color:var(--mut);font-size:.9rem;margin-top:16px">Roughly how many pages or screens?</p>
+        <div class="est-grid" id="estSize"></div>
+      </div>
+
+      <div class="est-panel" data-panel="3">
+        <h3>03 · Features</h3>
+        <p style="color:var(--mut);font-size:.9rem;margin-top:0">Tick anything you think you'll need.</p>
+        <div class="est-checks" id="estFeatures"></div>
+      </div>
+
+      <div class="est-panel" data-panel="4">
+        <h3>04 · Support &amp; timeline</h3>
+        <p style="color:var(--mut);font-size:.9rem;margin-top:0">Ongoing support?</p>
+        <div class="est-grid" id="estSupport"></div>
+        <p style="color:var(--mut);font-size:.9rem;margin-top:16px">Timeline preference?</p>
+        <div class="est-grid" id="estTimeline"></div>
+      </div>
+
+      <div class="est-panel" data-panel="5">
+        <h3>05 · Indicative range</h3>
+        <div class="est-result" id="estResult"></div>
+        <ul class="est-summary" id="estSummary"></ul>
+        <p class="est-result__note">
+          This estimate is for planning purposes only. Final pricing depends on confirmed requirements and project scope.
+        </p>
+        <div class="est-nav" style="justify-content:center">
+          <a class="btn" href="start-project.html" id="estCta">Turn This Estimate Into a Real Project</a>
+          <button class="btn o" type="button" id="estReset">Start Over</button>
+        </div>
+      </div>
+
+      <div class="est-nav">
+        <button class="btn o sm" type="button" id="estPrev" disabled>← Back</button>
+        <span style="color:var(--mut);font-size:.85rem" id="estStepLabel">Step 1 of 5</span>
+        <button class="btn sm" type="button" id="estNext">Next →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CUSTOM SOLUTIONS ==================== -->
+<section id="custom">
+  <div class="wrap wrap--narrow" data-reveal>
+    <p class="tag">Custom Solutions</p>
+    <h2>Need something beyond a package?</h2>
+    <p class="lead">
+      Complex projects require custom planning. If your project involves any of the following, we scope it together:
+    </p>
+    <div class="grid" style="margin-top:20px">
+      <div class="card"><p>Custom software</p></div>
+      <div class="card"><p>Web applications</p></div>
+      <div class="card"><p>Mobile applications</p></div>
+      <div class="card"><p>AI systems</p></div>
+      <div class="card"><p>Automation</p></div>
+      <div class="card"><p>CRM</p></div>
+      <div class="card"><p>E-commerce</p></div>
+      <div class="card"><p>Education platforms</p></div>
+      <div class="card"><p>Community platforms</p></div>
+      <div class="card"><p>Cloud infrastructure</p></div>
+      <div class="card"><p>APIs</p></div>
+      <div class="card"><p>Dashboards</p></div>
+      <div class="card"><p>Digital transformation</p></div>
+      <div class="card"><p>Cybersecurity architecture</p></div>
+      <div class="card"><p>Specialized business systems</p></div>
+    </div>
+    <div style="margin-top:24px">
+      <a class="btn" href="start-project.html?type=custom">Request a Custom Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== WHAT'S INCLUDED ==================== -->
+<section id="included">
+  <div class="wrap" data-reveal>
+    <p class="tag">What's Included</p>
+    <h2>What your project can include</h2>
+    <p class="lead">Inclusion depends on the selected package and confirmed scope.</p>
+    <div class="grid grid--three" style="margin-top:22px">
+      <div class="card">
+        <h3>Strategy</h3>
+        <p>Discovery, requirements, planning.</p>
+      </div>
+      <div class="card">
+        <h3>Design</h3>
+        <p>UI/UX, responsive design, visual system.</p>
+      </div>
+      <div class="card">
+        <h3>Development</h3>
+        <p>Frontend, backend, database, integrations.</p>
+      </div>
+      <div class="card">
+        <h3>Quality</h3>
+        <p>Testing, responsive testing, accessibility, performance.</p>
+      </div>
+      <div class="card">
+        <h3>Deployment</h3>
+        <p>Hosting setup, domain support, deployment.</p>
+      </div>
+      <div class="card">
+        <h3>Growth</h3>
+        <p>SEO, analytics, maintenance, support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== POSSIBLE EXTRA COSTS ==================== -->
+<section id="extra">
+  <div class="wrap wrap--narrow" data-reveal>
+    <p class="tag">Transparency</p>
+    <h2>Possible additional costs</h2>
+    <p class="lead">
+      Some costs live outside IKAZE DIGITAL's control. We identify them clearly before development begins.
+    </p>
+    <div class="grid" style="margin-top:20px">
+      <div class="card"><p>Domain registration</p></div>
+      <div class="card"><p>Premium hosting</p></div>
+      <div class="card"><p>Third-party APIs</p></div>
+      <div class="card"><p>Payment gateway charges</p></div>
+      <div class="card"><p>SMS / email providers</p></div>
+      <div class="card"><p>Premium software licenses</p></div>
+      <div class="card"><p>Stock assets</p></div>
+      <div class="card"><p>Specialized integrations</p></div>
+      <div class="card"><p>External licenses</p></div>
+      <div class="card"><p>Advanced infrastructure</p></div>
+      <div class="card"><p>Ongoing maintenance</p></div>
+      <div class="card"><p>Content production</p></div>
+      <div class="card"><p>Advertising spend</p></div>
+    </div>
+
+    <h3 style="margin-top:32px">Third-party vs IKAZE DIGITAL</h3>
+    <div class="grid grid--two" style="margin-top:16px">
+      <div class="card">
+        <h4 style="color:var(--amb);margin-top:0">IKAZE DIGITAL project cost</h4>
+        <p>Design, development, project management, testing, deployment and support we deliver.</p>
+      </div>
+      <div class="card">
+        <h4 style="color:var(--amb);margin-top:0">Third-party / external cost</h4>
+        <p>Domain registrar, cloud provider, payment processor, email/SMS provider, API provider, advertising platform.</p>
+      </div>
+    </div>
+    <p style="color:var(--mut);font-size:.85rem;margin-top:12px">Third-party costs are not automatically included unless the project agreement states otherwise.</p>
+  </div>
+</section>
+
+<!-- ==================== ADD-ONS ==================== -->
+<section id="addons">
+  <div class="wrap" data-reveal>
+    <p class="tag">Add-ons</p>
+    <h2>Flexible extras</h2>
+    <p class="lead">Add these to any package. Available on request — no fixed price is shown here.</p>
+    <div class="grid grid--three" style="margin-top:22px">
+      <div class="card"><p>Additional pages</p></div>
+      <div class="card"><p>Advanced animations</p></div>
+      <div class="card"><p>Additional languages</p></div>
+      <div class="card"><p>SEO</p></div>
+      <div class="card"><p>Analytics</p></div>
+      <div class="card"><p>Maintenance</p></div>
+      <div class="card"><p>Hosting</p></div>
+      <div class="card"><p>Domain</p></div>
+      <div class="card"><p>Content support</p></div>
+      <div class="card"><p>Branding</p></div>
+      <div class="card"><p>Logo design</p></div>
+      <div class="card"><p>Copywriting</p></div>
+      <div class="card"><p>AI integration</p></div>
+      <div class="card"><p>Payment integration</p></div>
+      <div class="card"><p>Advanced authentication</p></div>
+      <div class="card"><p>Custom dashboard</p></div>
+      <div class="card"><p>Additional user roles</p></div>
+      <div class="card"><p>API integrations</p></div>
+    </div>
+    <p style="color:var(--mut);font-size:.85rem;margin-top:16px">
+      Additional options will be published as they become available. Ask about any add-on via the project form.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== PAYMENT PROCESS ==================== -->
+<section id="payment">
+  <div class="wrap wrap--narrow" data-reveal>
+    <p class="tag">Payment</p>
+    <h2>How payment works</h2>
+    <p class="lead">Payment terms are confirmed in the project agreement — not assumed.</p>
+    <div class="flow">
+      <span>Discovery</span><i>→</i>
+      <span>Scope</span><i>→</i>
+      <span>Quote</span><i>→</i>
+      <span>Agreement</span><i>→</i>
+      <span>Initial Payment</span><i>→</i>
+      <span>Development</span><i>→</i>
+      <span>Testing</span><i>→</i>
+      <span>Delivery</span><i>→</i>
+      <span>Final Payment</span><i>→</i>
+      <span>Support</span>
+    </div>
+    <p style="color:var(--mut);font-size:.85rem;margin-top:16px">
+      Exact percentages and stages are set in the project agreement. Nothing is charged before you have approved the scope.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== NO SURPRISES ==================== -->
+<section id="no-surprises">
+  <div class="wrap wrap--narrow" data-reveal>
+    <p class="tag">Trust</p>
+    <h2>Clear scope. Clear expectations.</h2>
+    <ul style="color:var(--mut);line-height:1.9;padding-left:20px">
+      <li>Requirements are discussed before final pricing.</li>
+      <li>Scope changes may affect pricing — they are discussed before implementation.</li>
+      <li>External costs are identified up front.</li>
+      <li>Deliverables are defined in writing.</li>
+      <li>Timelines depend on scope and are agreed together.</li>
+      <li>Major changes are agreed before implementation.</li>
+    </ul>
+    <p style="color:var(--mut);font-size:.85rem;margin-top:14px">
+      We do not promise "no extra costs ever" — we promise clarity on what is included and what is not.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== MAINTENANCE ==================== -->
+<section id="maintenance">
+  <div class="wrap" data-reveal>
+    <p class="tag">After Launch</p>
+    <h2>Support that continues</h2>
+    <p class="lead">Three support paths, scoped to what you actually need.</p>
+    <div class="grid grid--three" style="margin-top:22px">
+      <div class="card">
+        <span class="st st--estimate">Custom Quote</span>
+        <h3 style="margin-top:12px">Basic Maintenance</h3>
+        <p>Updates, bug fixes and minor adjustments.</p>
+      </div>
+      <div class="card">
+        <span class="st st--estimate">Custom Quote</span>
+        <h3 style="margin-top:12px">Growth Support</h3>
+        <p>Improvements, content changes, performance optimization and feature enhancements.</p>
+      </div>
+      <div class="card">
+        <span class="st st--quote">Custom Quote</span>
+        <h3 style="margin-top:12px">Technical Partnership</h3>
+        <p>Ongoing development, infrastructure, product evolution and technical strategy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PRODUCT PRICING ==================== -->
+<section id="products">
+  <div class="wrap" data-reveal>
+    <p class="tag">Products</p>
+    <h2>IKAZE DIGITAL ecosystem products</h2>
+    <p class="lead">Statuses and pricing states are shown honestly. Nothing is presented as launched if it is not.</p>
+    <div class="grid grid--three" style="margin-top:22px">
+      <div class="prod">
+        <div class="card__head"><h4>IKAZE AI</h4><span class="st st--dev">In Development</span></div>
+        <p style="color:var(--mut);font-size:.88rem;margin:0">Pricing will be announced as the product approaches availability.</p>
+        <div class="prod__row"><span>Access</span><span>Not yet available</span></div>
+        <a href="product-details.html?product=ikaze-ai">View product →</a>
+      </div>
+      <div class="prod">
+        <div class="card__head"><h4>IKAZE Cloud</h4><span class="st st--dev">In Development</span></div>
+        <p style="color:var(--mut);font-size:.88rem;margin:0">Pricing will be announced as the product approaches availability.</p>
+        <div class="prod__row"><span>Access</span><span>Not yet available</span></div>
+        <a href="product-details.html?product=ikaze-cloud">View product →</a>
+      </div>
+      <div class="prod">
+        <div class="card__head"><h4>IKAZE Forms</h4><span class="st st--dev">In Development</span></div>
+        <p style="color:var(--mut);font-size:.88rem;margin:0">Pricing will be announced as the product approaches availability.</p>
+        <div class="prod__row"><span>Access</span><span>Not yet available</span></div>
+        <a href="product-details.html?product=ikaze-forms">View product →</a>
+      </div>
+      <div class="prod">
+        <div class="card__head"><h4>IKAZE CRM</h4><span class="st st--soon">Coming Soon</span></div>
+        <p style="color:var(--mut);font-size:.88rem;margin:0">Pricing will be announced as the product approaches availability.</p>
+        <div class="prod__row"><span>Access</span><span>Planned</span></div>
+        <a href="product-details.html?product=ikaze-crm">View product →</a>
+      </div>
+      <div class="prod">
+        <div class="card__head"><h4>IKAZE Creator</h4><span class="st st--dev">In Development</span></div>
+        <p style="color:var(--mut);font-size:.88rem;margin:0">Pricing will be announced as the product approaches availability.</p>
+        <div class="prod__row"><span>Access</span><span>Not yet available</span></div>
+        <a href="product-details.html?product=ikaze-creator">View product →</a>
+      </div>
+      <div class="prod">
+        <div class="card__head"><h4>IKAZE Jobs</h4><span class="st st--soon">Coming Soon</span></div>
+        <p style="color:var(--mut);font-size:.88rem;margin:0">Pricing will be announced as the product approaches availability.</p>
+        <div class="prod__row"><span>Access</span><span>Planned</span></div>
+        <a href="product-details.html?product=ikaze-jobs">View product →</a>
+      </div>
+      <div class="prod">
+        <div class="card__head"><h4>IKAZE Marketplace</h4><span class="st st--soon">Coming Soon</span></div>
+        <p style="color:var(--mut);font-size:.88rem;margin:0">Pricing will be announced as the product approaches availability.</p>
+        <div class="prod__row"><span>Access</span><span>Planned</span></div>
+        <a href="product-details.html?product=ikaze-marketplace">View product →</a>
+      </div>
+      <div class="prod">
+        <div class="card__head"><h4>IKAZE Academy</h4><span class="st st--dev">In Development</span></div>
+        <p style="color:var(--mut);font-size:.88rem;margin:0">Pricing will be announced as the product approaches availability.</p>
+        <div class="prod__row"><span>Access</span><span>Not yet available</span></div>
+        <a href="product-details.html?product=ikaze-academy">View product →</a>
+      </div>
+      <div class="prod">
+        <div class="card__head"><h4>IKAZE Labs</h4><span class="st st--concept">Concept</span></div>
+        <p style="color:var(--mut);font-size:.88rem;margin:0">IKAZE Labs is experimental — nothing to purchase. Ideas are explored here.</p>
+        <div class="prod__row"><span>Access</span><span>Experimental</span></div>
+        <a href="product-details.html?product=ikaze-labs">View product →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== AFRICA / GLOBAL ==================== -->
+<section id="markets">
+  <div class="wrap wrap--narrow" data-reveal>
+    <p class="tag">Designed for Different Markets</p>
+    <h2>Rwanda → East Africa → Africa → Global</h2>
+    <p class="lead">
+      IKAZE DIGITAL is rooted in Rwanda. Digital collaboration lets us work with clients across locations
+      where practical — but we do not claim offices we do not have.
+    </p>
+    <p style="color:var(--mut)">
+      Pricing and project requirements can differ based on location, payment infrastructure, local requirements,
+      project complexity, taxes, third-party costs, hosting, domain registration and external services.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== SMART RECOMMENDATION ==================== -->
+<section id="recommend">
+  <div class="wrap wrap--narrow" data-reveal>
+    <p class="tag">Which Path Is Right for You?</p>
+    <h2>Answer five quick questions</h2>
+    <p class="lead">A starting recommendation, not a final quotation.</p>
+
+    <div class="estimator" id="recApp" style="margin-top:26px">
+      <div class="est-panel on" data-panel="1">
+        <h3>1 · What are you building?</h3>
+        <div class="est-grid" id="recQ1"></div>
+      </div>
+      <div class="est-panel" data-panel="2">
+        <h3>2 · Who is it for?</h3>
+        <div class="est-grid" id="recQ2"></div>
+      </div>
+      <div class="est-panel" data-panel="3">
+        <h3>3 · How complex is it?</h3>
+        <div class="est-grid" id="recQ3"></div>
+      </div>
+      <div class="est-panel" data-panel="4">
+        <h3>4 · Do you need custom software?</h3>
+        <div class="est-grid" id="recQ4"></div>
+      </div>
+      <div class="est-panel" data-panel="5">
+        <h3>5 · Do you need ongoing support?</h3>
+        <div class="est-grid" id="recQ5"></div>
+      </div>
+      <div class="est-panel" data-panel="6">
+        <h3>Our Recommendation</h3>
+        <div class="est-result" id="recResult"></div>
+        <p class="est-result__note">This is a starting recommendation, not a final quotation. Final scope and pricing are agreed together.</p>
+        <div class="est-nav" style="justify-content:center">
+          <a class="btn" href="start-project.html" id="recCta">Start This Project</a>
+          <button class="btn o" type="button" id="recReset">Start Over</button>
+        </div>
+      </div>
+      <div class="est-nav">
+        <button class="btn o sm" type="button" id="recPrev" disabled>← Back</button>
+        <span style="color:var(--mut);font-size:.85rem" id="recStepLabel">Step 1 of 5</span>
+        <button class="btn sm" type="button" id="recNext">Next →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PROJECT PROCESS ==================== -->
+<section id="process">
+  <div class="wrap" data-reveal>
+    <p class="tag">Project Journey</p>
+    <h2>How we work together</h2>
+    <p class="lead">A structured path from first conversation to launch and beyond.</p>
+    <div class="process">
+      <div class="proc"><span class="proc__n">01</span><b>Discover</b><span>Understand the problem, the goals and the people behind the project.</span></div>
+      <div class="proc"><span class="proc__n">02</span><b>Plan</b><span>Define requirements, architecture and scope — agreed in writing.</span></div>
+      <div class="proc"><span class="proc__n">03</span><b>Design</b><span>Create UX/UI and the visual system that fits the product.</span></div>
+      <div class="proc"><span class="proc__n">04</span><b>Build</b><span>Develop the solution, with regular check-ins and demo checkpoints.</span></div>
+      <div class="proc"><span class="proc__n">05</span><b>Test</b><span>Security, performance, accessibility and usability testing.</span></div>
+      <div class="proc"><span class="proc__n">06</span><b>Launch</b><span>Deploy professionally with monitoring and backup set up.</span></div>
+      <div class="proc"><span class="proc__n">07</span><b>Grow</b><span>Maintenance, optimization and new features as needed.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PRICING WITH CLARITY ==================== -->
+<section id="clarity">
+  <div class="wrap" data-reveal>
+    <p class="tag">Pricing With Clarity</p>
+    <h2>How we think about pricing</h2>
+    <div class="principles">
+      <div class="principle"><span class="n">01</span><h3>Transparent</h3><p>Understand what you are paying for.</p></div>
+      <div class="principle"><span class="n">02</span><h3>Flexible</h3><p>Solutions adapt to project requirements.</p></div>
+      <div class="principle"><span class="n">03</span><h3>Scalable</h3><p>Start small and grow when needed.</p></div>
+      <div class="principle"><span class="n">04</span><h3>Practical</h3><p>Technology choices should serve real goals.</p></div>
+      <div class="principle"><span class="n">05</span><h3>Honest</h3><p>No invented metrics or misleading promises.</p></div>
+      <div class="principle"><span class="n">06</span><h3>Human</h3><p>Projects begin with understanding the people behind them.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section id="faq">
+  <div class="wrap wrap--narrow" data-reveal>
+    <p class="tag">FAQ</p>
+    <h2>Pricing questions, answered honestly</h2>
+    <div class="faq" id="faqList"></div>
+  </div>
+</section>
+
+<!-- ==================== PORTFOLIO CONNECTION ==================== -->
+<section id="portfolio">
+  <div class="wrap wrap--narrow" data-reveal style="text-align:center">
+    <p class="tag">See What We Build</p>
+    <h2>Real projects behind the work</h2>
+    <p class="lead" style="margin-inline:auto">
+      Real projects, clearly labelled — nothing fabricated, no invented project costs or client results.
+    </p>
+    <div style="margin-top:24px">
+      <a class="btn o" href="portfolio.html">View Portfolio</a>
+      <a class="btn o" href="services.html">Compare Services</a>
+      <a class="btn o" href="ecosystem.html">Explore Ecosystem</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== REQUEST QUOTE ==================== -->
+<section id="quote">
+  <div class="wrap wrap--narrow" data-reveal>
+    <p class="tag">Have Questions About Pricing?</p>
+    <h2>Request a quote</h2>
+    <p class="lead">
+      Tell us about your project. We'll respond with a clear, honest starting point — no pressure.
+    </p>
+    <div style="margin-top:22px">
+      <a class="btn" href="start-project.html">Start a Project</a>
+      <a class="btn o" href="contact.html">Contact IKAZE DIGITAL</a>
+    </div>
+    <p style="color:var(--mut);font-size:.85rem;margin-top:16px">
+      There is no live chat — conversations happen by email or scheduled call.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== FINAL CTA ==================== -->
+<section id="final" style="padding-bottom:6rem">
+  <div class="wrap" data-reveal>
+    <div class="cta-block">
+      <p class="tag">Your Next Digital Move Starts Here</p>
+      <h2>Let's figure out the right path together.</h2>
+      <p class="lead" style="margin-inline:auto">
+        Whether you need a simple digital presence, a growing platform, a custom application or a long-term
+        technology partner — start with a conversation about what you are trying to achieve.
+      </p>
+      <div style="margin-top:24px">
+        <a class="btn" href="start-project.html">Start a Project</a>
+        <a class="btn o" href="contact.html">Contact IKAZE DIGITAL</a>
+        <a class="btn o" href="ecosystem.html">Explore the Ecosystem</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p><strong>IKAZE DIGITAL</strong><br/>Digital Technology &amp; Creative Solutions<br/>Building Africa's Digital Future</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="ecosystem.html">Ecosystem</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Ecosystem</h4>
+        <ul>
+          <li><a href="product-details.html?product=ikaze-ai">IKAZE AI</a></li>
+          <li><a href="product-details.html?product=ikaze-cloud">IKAZE Cloud</a></li>
+          <li><a href="product-details.html?product=ikaze-forms">IKAZE Forms</a></li>
+          <li><a href="product-details.html?product=ikaze-crm">IKAZE CRM</a></li>
+          <li><a href="product-details.html?product=ikaze-creator">IKAZE Creator</a></li>
+          <li><a href="product-details.html?product=ikaze-academy">Academy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>NIYIBIGIRA THEONESTE<br/>Founder &amp; Owner — IKAZE DIGITAL</p>
+        <p>
+          <a href="mailto:theonesteniyibigira6@gmail.com">theonesteniyibigira6@gmail.com</a><br/>
+          <a href="tel:+250794204258">+250 794 204 258</a>
+        </p>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--mut);font-size:.8rem">
+      <small>© <span id="year"></span> Ikaze Digital. All rights reserved.</small>
+    </div>
+  </div>
+</footer>
+
+<script>
+(()=>{'use strict';
+
+/* ============================================================
+   YEAR
+   ============================================================ */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ============================================================
+   HELPER
+   ============================================================ */
+const $  = (s, c=document) => c.querySelector(s);
+const $$ = (s, c=document) => Array.from(c.querySelectorAll(s));
+const el = (tag, cls, html) => {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (html !== undefined) e.innerHTML = html;
+  return e;
+};
+
+/* ============================================================
+   AUDIENCE DATA
+   ============================================================ */
+const AUDIENCE = {
+  individual:     { label:'Individual',       desc:'Personal websites, portfolios, digital identity, creative projects.',     rec:'digital-start' },
+  creator:        { label:'Creator',          desc:'Creator platforms, portfolios, publishing, digital products, personal brands.', rec:'digital-growth' },
+  student:        { label:'Student',          desc:'Learning projects, portfolios, educational websites, digital tools.',     rec:'digital-start' },
+  startup:        { label:'Startup',          desc:'MVPs, landing pages, web applications, product design.',                  rec:'digital-growth' },
+  'small-business':{label:'Small Business',   desc:'Business websites, booking systems, e-commerce, automation, CRM.',        rec:'digital-growth' },
+  'growing-business':{label:'Growing Business', desc:'Custom platforms, integrations, dashboards, digital transformation.',   rec:'digital-pro' },
+  school:         { label:'School / Education',desc:'Educational platforms, learning systems, school websites, digital resources.', rec:'digital-pro' },
+  org:            { label:'Organization / NGO',desc:'Community platforms, information systems, forms, dashboards and transformation.', rec:'digital-pro' },
+  enterprise:     { label:'Enterprise / Institution',desc:'Complex systems, integrations, infrastructure, security and custom technology.', rec:'digital-scale' }
+};
+
+/* ============================================================
+   AUDIENCE SELECTOR
+   ============================================================ */
+(()=>{
+  const chips = $('#audChips'); const detail = $('#audDetail');
+  if (!chips || !detail) return;
+  const keys = Object.keys(AUDIENCE);
+  keys.forEach((k, i) => {
+    const a = AUDIENCE[k];
+    const chip = el('button', 'aud-chip', a.label);
+    chip.type = 'button';
+    chip.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+    chip.addEventListener('click', () => {
+      chips.querySelectorAll('.aud-chip').forEach(c => c.setAttribute('aria-pressed','false'));
+      chip.setAttribute('aria-pressed','true');
+      renderDetail(k);
+      highlightPackages(k);
+    });
+    chips.appendChild(chip);
+  });
+  renderDetail(keys[0]);
+
+  function renderDetail(k) {
+    const a = AUDIENCE[k];
+    detail.innerHTML = `
+      <h3>${a.label}</h3>
+      <p>${a.desc}</p>
+      <p style="color:var(--mut);font-size:.85rem;margin:0">
+        Suggested starting point: <b style="color:var(--amb)">${a.rec.replace('-',' ').replace(/\b\w/g,c=>c.toUpperCase())}</b>
+      </p>
+    `;
+  }
+
+  function highlightPackages(k) {
+    const rec = AUDIENCE[k].rec;
+    $$('#packages .pkg').forEach(p => {
+      p.classList.remove('pkg--featured');
+      const link = p.querySelector('a');
+      if (!link) return;
+      const href = link.getAttribute('href') || '';
+      if (href.includes(rec)) p.classList.add('pkg--featured');
+    });
+  }
+})();
+
+/* ============================================================
+   SERVICES GRID
+   ============================================================ */
+(()=>{
+  const grid = $('#servicesGrid');
+  if (!grid) return;
+  const services = [
+    { name:'Web Development',             model:'Package / Estimate', desc:'Corporate sites, portals, platforms and custom web apps.' },
+    { name:'Software Development',        model:'Custom Quote',       desc:'Business systems, management platforms and custom software.' },
+    { name:'Mobile App Development',      model:'Custom Quote',       desc:'Android, iOS and cross-platform apps.' },
+    { name:'AI & Automation',             model:'Custom Quote',       desc:'AI assistants, automation and intelligent features.' },
+    { name:'E-Commerce',                  model:'Package / Estimate', desc:'Online stores, marketplaces and commerce systems.' },
+    { name:'UI/UX & Product Design',      model:'Package / Estimate', desc:'Interfaces, experience systems and prototypes.' },
+    { name:'Branding & Creative Design',  model:'Package / Estimate', desc:'Logo, visual identity and brand systems.' },
+    { name:'Digital Marketing & SEO',     model:'Subscription',       desc:'Search visibility, content strategy and campaigns.' },
+    { name:'Cloud, Hosting & Domains',    model:'Usage-Based',        desc:'Hosting, deployment, domains and infrastructure guidance.' },
+    { name:'Cybersecurity & Protection',  model:'Custom Quote',       desc:'Security review, architecture and best practices.' },
+    { name:'Education Technology',        model:'Custom Quote',       desc:'Learning platforms, school systems and digital resources.' },
+    { name:'Digital Transformation',      model:'Consultation-Based', desc:'Move from manual processes to digital systems.' },
+    { name:'Business & Tech Strategy',    model:'Consultation-Based', desc:'Planning, product strategy and technology direction.' },
+    { name:'Maintenance & Support',       model:'Subscription',       desc:'Ongoing updates, monitoring and improvements.' }
+  ];
+  services.forEach(s => {
+    grid.appendChild(el('article','svc',`
+      <h3>${s.name}</h3>
+      <p>${s.desc}</p>
+      <div class="svc__meta">
+        <span>Pricing:</span>
+        <span style="color:var(--amb);font-weight:600">${s.model}</span>
+      </div>
+      <div style="margin-top:12px">
+        <a class="btn o sm" href="start-project.html?service=${s.name.toLowerCase().replace(/[^a-z0-9]+/g,'-')}">Start →</a>
+      </div>
+    `));
+  });
+})();
+
+/* ============================================================
+   PROJECT ESTIMATOR
+   ============================================================ */
+(()=>{
+  const app = $('#estimatorApp');
+  if (!app) return;
+
+  const state = {
+    step: 1,
+    type: '',
+    complexity: '',
+    size: '',
+    features: new Set(),
+    support: '',
+    timeline: ''
+  };
+
+  const OPTIONS = {
+    type: ['Website','Web Application','Mobile App','E-Commerce','AI','Automation','Branding','Education Platform','Community Platform','Business Platform','Other'],
+    complexity: ['Basic','Standard','Advanced','Complex'],
+    size: ['1–5 pages/screens','6–10 pages/screens','11–20 pages/screens','20+ pages/screens'],
+    support: ['None','Basic','Ongoing'],
+    timeline: ['Flexible','Standard','Priority'],
+    features: ['Authentication','Database','Dashboard','Payments','AI','Search','Messaging','Notifications','Analytics','Admin panel','Multi-language','API integrations','File storage','Live features','Advanced security']
+  };
+
+  /* Build step pills */
+  const stepsEl = $('#estSteps');
+  const stepTitles = ['Project','Scope','Features','Support','Estimate'];
+  stepTitles.forEach((t, i) => {
+    stepsEl.appendChild(el('div','est-step', `<span class="est-step__n">0${i+1}</span>${t}`));
+  });
+
+  /* Build option groups */
+  function buildOptions(target, options, key, isMulti=false) {
+    const c = $(target);
+    if (!c) return;
+    c.innerHTML = '';
+    options.forEach(opt => {
+      const btn = el('button','est-opt', opt);
+      btn.type = 'button';
+      btn.setAttribute('aria-pressed','false');
+      btn.addEventListener('click', () => {
+        if (isMulti) {
+          if (state.features.has(opt)) state.features.delete(opt);
+          else state.features.add(opt);
+          btn.setAttribute('aria-pressed', state.features.has(opt) ? 'true' : 'false');
+        } else {
+          state[key] = opt;
+          c.querySelectorAll('.est-opt').forEach(b => b.setAttribute('aria-pressed','false'));
+          btn.setAttribute('aria-pressed','true');
+        }
+      });
+      c.appendChild(btn);
+    });
+  }
+
+  buildOptions('#estType',       OPTIONS.type,       'type');
+  buildOptions('#estComplexity', OPTIONS.complexity, 'complexity');
+  buildOptions('#estSize',       OPTIONS.size,       'size');
+  buildOptions('#estSupport',    OPTIONS.support,    'support');
+  buildOptions('#estTimeline',   OPTIONS.timeline,   'timeline');
+
+  /* Features checkboxes */
+  const featWrap = $('#estFeatures');
+  OPTIONS.features.forEach(f => {
+    const label = el('label','est-check', `<input type="checkbox" value="${f}" /> <span>${f}</span>`);
+    const cb = label.querySelector('input');
+    cb.addEventListener('change', () => {
+      if (cb.checked) state.features.add(f); else state.features.delete(f);
+      label.classList.toggle('on', cb.checked);
+    });
+    featWrap.appendChild(label);
+  });
+
+  const panels = $$('.est-panel', app);
+  const prev = $('#estPrev');
+  const next = $('#estNext');
+  const stepLabel = $('#estStepLabel');
+
+  function updatePills() {
+    $$('.est-step', stepsEl).forEach((p, i) => {
+      p.classList.toggle('on', i + 1 === state.step);
+      p.classList.toggle('done', i + 1 < state.step);
+    });
+  }
+
+  function show() {
+    panels.forEach(p => {
+      p.classList.toggle('on', Number(p.dataset.panel) === state.step);
+    });
+    prev.disabled = state.step === 1;
+    next.textContent = state.step === 5 ? 'Done' : 'Next →';
+    next.style.display = state.step === 5 ? 'none' : '';
+    stepLabel.textContent = `Step ${Math.min(state.step, 5)} of 5`;
+    updatePills();
+    if (state.step === 5) computeResult();
+  }
+
+  function computeResult() {
+    const result = $('#estResult');
+    const summary = $('#estSummary');
+    if (!result) return;
+
+    // A very rough indicative range. Not a quotation.
+    let base = 0;
+    const typeScore = {
+      'Website': 1, 'Web Application': 3, 'Mobile App': 4, 'E-Commerce': 3,
+      'AI': 5, 'Automation': 3, 'Branding': 1, 'Education Platform': 4,
+      'Community Platform': 4, 'Business Platform': 4, 'Other': 2
+    }[state.type] || 2;
+
+    const compScore = { 'Basic': 1, 'Standard': 2, 'Advanced': 3, 'Complex': 4 }[state.complexity] || 2;
+    const sizeScore = { '1–5 pages/screens': 1, '6–10 pages/screens': 2, '11–20 pages/screens': 3, '20+ pages/screens': 4 }[state.size] || 2;
+
+    base = typeScore * compScore * sizeScore * 1.6;
+    base += state.features.size * 0.8;
+    if (state.support === 'Ongoing') base *= 1.15;
+    if (state.timeline === 'Priority') base *= 1.2;
+
+    // Map to a band. Nothing here claims to be official IKAZE DIGITAL pricing.
+    let band = 'Starting Estimate';
+    if (base < 6) band = 'Digital Start range';
+    else if (base < 14) band = 'Digital Growth range';
+    else if (base < 28) band = 'Digital Pro range';
+    else band = 'Digital Scale range';
+
+    result.innerHTML = `
+      <div class="est-result__range">${band}</div>
+      <p style="margin:0;color:var(--ink);font-size:.95rem">
+        A project like this usually falls in the <b>${band}</b> bracket. The exact scope drives the final number.
+      </p>
+    `;
+
+    const lines = [];
+    lines.push(`<li>Type: <b>${state.type || '—'}</b></li>`);
+    lines.push(`<li>Complexity: <b>${state.complexity || '—'}</b></li>`);
+    lines.push(`<li>Size: <b>${state.size || '—'}</b></li>`);
+    lines.push(`<li>Features: <b>${state.features.size}</b> selected</li>`);
+    lines.push(`<li>Support: <b>${state.support || '—'}</b></li>`);
+    lines.push(`<li>Timeline: <b>${state.timeline || '—'}</b></li>`);
+    summary.innerHTML = lines.join('');
+
+    const cta = $('#estCta');
+    if (cta) {
+      const params = new URLSearchParams({
+        package: band.split(' ').slice(0,2).join('-').toLowerCase(),
+        type: state.type || 'custom',
+        estimate: band
+      });
+      cta.href = `start-project.html?${params.toString()}`;
+    }
+  }
+
+  prev.addEventListener('click', () => { if (state.step > 1) { state.step--; show(); } });
+  next.addEventListener('click', () => { if (state.step < 5) { state.step++; show(); } });
+  $('#estReset').addEventListener('click', () => {
+    state.step = 1; state.type = ''; state.complexity = ''; state.size = '';
+    state.features = new Set(); state.support = ''; state.timeline = '';
+    app.querySelectorAll('.est-opt').forEach(b => b.setAttribute('aria-pressed','false'));
+    app.querySelectorAll('.est-check').forEach(l => { l.classList.remove('on'); const c = l.querySelector('input'); if (c) c.checked = false; });
+    show();
+  });
+
+  show();
+})();
+
+/* ============================================================
+   SMART RECOMMENDATION (5 questions)
+   ============================================================ */
+(()=>{
+  const app = $('#recApp');
+  if (!app) return;
+  const state = { step:1, q1:'', q2:'', q3:'', q4:'', q5:'' };
+
+  const QUESTIONS = {
+    1: { id:'q1', title:'What are you building?', opts:['Website','Web application','Mobile app','E-commerce','Branding','Education platform','Community platform','Business system','Other'] },
+    2: { id:'q2', title:'Who is it for?', opts:['Me / individual','A creator or artist','Students','A business','An organization','An institution'] },
+    3: { id:'q3', title:'How complex is it?', opts:['Simple','Standard','Advanced','Complex'] },
+    4: { id:'q4', title:'Do you need custom software?', opts:['No','Maybe','Yes'] },
+    5: { id:'q5', title:'Do you need ongoing support?', opts:['No','Sometimes','Yes'] }
+  };
+
+  Object.values(QUESTIONS).forEach(({id, opts}) => {
+    const target = $(`#rec${id.charAt(1)}`);
+    if (!target) return;
+    opts.forEach(opt => {
+      const btn = el('button','est-opt', opt);
+      btn.type = 'button';
+      btn.setAttribute('aria-pressed','false');
+      btn.addEventListener('click', () => {
+        state[id] = opt;
+        target.querySelectorAll('.est-opt').forEach(b => b.setAttribute('aria-pressed','false'));
+        btn.setAttribute('aria-pressed','true');
+      });
+      target.appendChild(btn);
+    });
+  });
+
+  const panels = $$('.est-panel', app);
+  const prev = $('#recPrev');
+  const next = $('#recNext');
+  const stepLabel = $('#recStepLabel');
+
+  function show() {
+    panels.forEach(p => p.classList.toggle('on', Number(p.dataset.panel) === state.step));
+    prev.disabled = state.step === 1;
+    next.textContent = state.step === 6 ? 'Done' : 'Next →';
+    next.style.display = state.step === 6 ? 'none' : '';
+    stepLabel.textContent = state.step <= 5 ? `Step ${state.step} of 5` : 'Recommendation';
+    if (state.step === 6) recommend();
+  }
+
+  function recommend() {
+    let pkg = 'digital-start';
+    const complex = ['Advanced','Complex'].includes(state.q3);
+    const wantsCustom = state.q4 === 'Yes';
+    const wantsSupport = state.q5 === 'Yes';
+    const isBig = ['A business','An organization','An institution'].includes(state.q2);
+    const isEnterprise = state.q3 === 'Complex' && isBig;
+
+    if (isEnterprise) pkg = 'digital-scale';
+    else if (complex || wantsCustom || isBig) pkg = 'digital-pro';
+    else if (['A creator or artist','Students'].includes(state.q2) || state.q3 === 'Standard') pkg = 'digital-growth';
+    else pkg = 'digital-start';
+
+    const names = {
+      'digital-start':'Digital Start',
+      'digital-growth':'Digital Growth',
+      'digital-pro':'Digital Pro',
+      'digital-scale':'Digital Scale'
+    };
+
+    const r = $('#recResult');
+    if (r) {
+      r.innerHTML = `
+        <div class="est-result__range">${names[pkg]}</div>
+        <p style="margin:0;color:var(--ink);font-size:.95rem">
+          Based on your answers, <b>${names[pkg]}</b> looks like the right starting point.
+          ${wantsSupport ? 'Ongoing support can be added.' : ''}
+        </p>
+      `;
+    }
+    const cta = $('#recCta');
+    if (cta) cta.href = `start-project.html?package=${pkg}`;
+  }
+
+  prev.addEventListener('click', () => { if (state.step > 1) { state.step--; show(); } });
+  next.addEventListener('click', () => { if (state.step < 6) { state.step++; show(); } });
+  $('#recReset').addEventListener('click', () => {
+    state.step = 1; state.q1=''; state.q2=''; state.q3=''; state.q4=''; state.q5='';
+    app.querySelectorAll('.est-opt').forEach(b => b.setAttribute('aria-pressed','false'));
+    show();
+  });
+
+  show();
+})();
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+(()=>{
+  const list = $('#faqList');
+  if (!list) return;
+  const faqs = [
+    { q:'Are the prices fixed?', a:'No. We do not publish fixed prices because every project is different. What you see on this page are starting estimates or Custom Quote labels. A detailed quotation is provided after we understand your scope.' },
+    { q:'What does "starting estimate" mean?', a:'It means the package is priced based on the confirmed scope of your specific project. The estimate gives you a realistic band — the final number depends on the details.' },
+    { q:'Can I request a custom quote?', a:'Yes. Every package above Digital Start can be scoped as a custom quote. Use the Start a Project form or email us directly.' },
+    { q:'Do you work with international clients?', a:'Yes — we work with clients across locations where digital collaboration is practical. We are based in Rwanda and do not claim offices in other countries.' },
+    { q:'Can I pay in Rwandan francs?', a:'Yes. RWF is the natural base for local clients. Other currencies may be used depending on the project and payment infrastructure available.' },
+    { q:'What currencies are supported?', a:'RWF is the primary currency. USD, EUR and other currencies may be used depending on the client and the payment channel. Currency conversion, where applicable, is for reference only.' },
+    { q:'Are hosting and domains included?', a:'Hosting and domain costs are typically third-party costs. In some packages they can be bundled into the project, but they are always identified separately in writing.' },
+    { q:'Are third-party services included?', a:'Only if the project agreement states so. Third-party services (payment processors, SMS, email, APIs, cloud providers) usually carry their own charges.' },
+    { q:'Can project requirements change the price?', a:'Yes. If the scope changes significantly after agreement, we discuss the impact before implementing anything.' },
+    { q:'Do you offer maintenance?', a:'Yes — Basic Maintenance, Growth Support and Technical Partnership paths are available. Pricing is quoted per project.' },
+    { q:'Do you build MVPs?', a:'Yes. Digital Growth and Digital Pro are the typical starting points for MVPs.' },
+    { q:'Do you work with startups?', a:'Yes. Startups are one of our core audiences.' },
+    { q:'Do you work with schools and organizations?', a:'Yes. Education technology and organization platforms are a focus area.' },
+    { q:'Do you offer AI integration?', a:'Yes. AI features are available as add-ons or as part of Digital Pro and Digital Scale. Our own IKAZE AI product is also in development.' },
+    { q:'Are future IKAZE products already available?', a:'No. Products shown as In Development, Coming Soon or Concept are not yet available. Statuses are honest.' },
+    { q:'How do I start?', a:'Use Start a Project, or email us at theonesteniyibigira6@gmail.com. We respond with a scope conversation and a clear next step.' }
+  ];
+  faqs.forEach((f, i) => {
+    const item = el('div','faq__item');
+    item.setAttribute('aria-expanded','false');
+    const qid = `faq-q-${i}`, aid = `faq-a-${i}`;
+    item.innerHTML = `
+      <button class="faq__q" aria-controls="${aid}" aria-expanded="false" id="${qid}">${f.q}</button>
+      <div class="faq__a" role="region" aria-labelledby="${qid}" id="${aid}">${f.a}</div>
+    `;
+    const btn = item.querySelector('.faq__q');
+    btn.addEventListener('click', () => {
+      const open = item.getAttribute('aria-expanded') === 'true';
+      item.setAttribute('aria-expanded', String(!open));
+      btn.setAttribute('aria-expanded', String(!open));
+    });
+    list.appendChild(item);
+  });
+})();
+
+/* ============================================================
+   REVEAL ON SCROLL
+   ============================================================ */
+(()=>{
+  const els = $$('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(e=>e.classList.add('is-visible')); return; }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); }
+    });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+  els.forEach(e => io.observe(e));
+})();
+
+/* ============================================================
+   MOBILE NAV
+   ============================================================ */
+(()=>{
+  const t = $('#menu'); const n = $('#nav');
+  if (!t || !n) return;
+  t.addEventListener('click', () => {
+    const open = n.classList.toggle('open');
+    t.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('lock', open);
+  });
+  n.addEventListener('click', e => {
+    if (e.target.closest('a')) {
+      n.classList.remove('open'); t.setAttribute('aria-expanded','false');
+      document.body.classList.remove('lock');
+    }
+  });
+})();
+
+/* ============================================================
+   FLOATING CODE FRAGMENTS
+   ============================================================ */
+(()=>{
+  if (matchMedia('(max-width:620px)').matches) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const frags = ['pricing()','=>{}','{tier:"growth"}','import','await quote()','<pkg>','estimate','ikaze.pricing','//plan','cloud.tier()','return "$";','calc()'];
+  for (let i=0;i<12;i++){
+    const span = document.createElement('span');
+    span.className = 'code-frag';
+    span.textContent = frags[Math.floor(Math.random()*frags.length)];
+    span.style.left = (Math.random()*100) + '%';
+    span.style.bottom = '-40px';
+    span.style.animationDuration = (14 + Math.random()*18) + 's';
+    span.style.animationDelay = (-Math.random()*20) + 's';
+    span.style.opacity = (0.25 + Math.random()*0.5).toFixed(2);
+    document.body.appendChild(span);
+  }
+})();
+
+/* ============================================================
+   3D HERO VISUAL
+   ============================================================ */
+(()=>{
+  const canvas = document.getElementById('priceCanvas');
+  if (!canvas) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const test = (()=>{try{const c=document.createElement('canvas');return !!(window.WebGLRenderingContext&&(c.getContext('webgl2')||c.getContext('webgl')));}catch{return false;}})();
+  if (!test) return;
+
+  const s = document.createElement('script');
+  s.type = 'module';
+  s.textContent = `
+    import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+    const canvas = document.getElementById('priceCanvas');
+    const parent = canvas.parentElement;
+    const isSmall = matchMedia('(max-width:700px)').matches;
+
+    const renderer = new THREE.WebGLRenderer({canvas, antialias:!isSmall, alpha:true, powerPreference:'high-performance'});
+    renderer.setPixelRatio(Math.min(devicePixelRatio, isSmall ? 1.5 : 2));
+    renderer.setClearColor(0x000000, 0);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 200);
+    camera.position.set(0, 0, 9);
+
+    scene.add(new THREE.AmbientLight(0xf2a33a, 0.45));
+    const key = new THREE.DirectionalLight(0xf2a33a, 1.1); key.position.set(5,6,4); scene.add(key);
+    const rim = new THREE.DirectionalLight(0x20603d, 0.8); rim.position.set(-6,-2,-5); scene.add(rim);
+
+    // Central pyramid (Start → Build → Grow → Scale metaphor)
+    const pyramid = new THREE.Group();
+
+    const tierColors = [0x20603D, 0xFAD201, 0xf2a33a, 0xc8553d];
+    const tierSizes = [0.55, 0.75, 0.95, 1.15];
+    tierSizes.forEach((size, i) => {
+      const geo = new THREE.BoxGeometry(size, 0.22, size);
+      const mat = new THREE.MeshStandardMaterial({
+        color: tierColors[i], emissive: tierColors[i], emissiveIntensity: 0.35,
+        roughness: .4, metalness: .35
+      });
+      const box = new THREE.Mesh(geo, mat);
+      box.position.y = -0.9 + i * 0.35;
+      pyramid.add(box);
+    });
+    scene.add(pyramid);
+
+    // Orbiting labels
+    const labels = ['Web','Software','AI','Design','Cloud','Education','Business','Creative'];
+    const nodes = [];
+    const nodeGeo = new THREE.SphereGeometry(0.13, 20, 20);
+    labels.forEach((name, i) => {
+      const color = i % 3 === 0 ? 0x00A1DE : i % 3 === 1 ? 0x20603D : 0xFAD201;
+      const mat = new THREE.MeshStandardMaterial({ color, emissive:color, emissiveIntensity:.55, roughness:.3, metalness:.4 });
+      const mesh = new THREE.Mesh(nodeGeo, mat);
+      const angle = (i / labels.length) * Math.PI * 2;
+      const radius = 2.9;
+      const y = Math.sin(i * 1.6) * 0.9;
+      mesh.userData = { angle, radius, y, speed: 0.14 + Math.random()*0.08 };
+      mesh.position.set(Math.cos(angle)*radius, y, Math.sin(angle)*radius);
+      scene.add(mesh);
+      nodes.push(mesh);
+
+      const lineGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,0,0), mesh.position.clone()]);
+      const lineMat = new THREE.LineBasicMaterial({ color, transparent:true, opacity:.28, blending:THREE.AdditiveBlending });
+      const line = new THREE.Line(lineGeo, lineMat);
+      scene.add(line);
+      mesh.userData.line = line;
+    });
+
+    // Dust
+    const pCount = isSmall ? 70 : 160;
+    const pGeo = new THREE.BufferGeometry();
+    const pPos = new Float32Array(pCount * 3);
+    for (let i=0;i<pCount;i++){
+      const r = 3 + Math.random()*5;
+      const t = Math.random()*Math.PI*2;
+      const p = Math.acos(2*Math.random()-1);
+      pPos[i*3] = r*Math.sin(p)*Math.cos(t);
+      pPos[i*3+1] = r*Math.sin(p)*Math.sin(t);
+      pPos[i*3+2] = r*Math.cos(p);
+    }
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos,3));
+    const dust = new THREE.Points(pGeo, new THREE.PointsMaterial({
+      color:0xf2a33a, size:0.03, transparent:true, opacity:.5, depthWrite:false, blending:THREE.AdditiveBlending
+    }));
+    scene.add(dust);
+
+    function resize() {
+      const w = parent.clientWidth || 400;
+      const h = parent.clientHeight || 400;
+      renderer.setSize(w,h,false);
+      camera.aspect = w/h;
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    if ('ResizeObserver' in window) new ResizeObserver(resize).observe(parent);
+    else addEventListener('resize', resize);
+
+    let mx=0,my=0,tx=0,ty=0;
+    if (!isSmall) {
+      parent.addEventListener('pointermove', e => {
+        const r = parent.getBoundingClientRect();
+        tx = ((e.clientX - r.left)/r.width - 0.5)*0.7;
+        ty = ((e.clientY - r.top)/r.height - 0.5)*0.7;
+      });
+    }
+
+    let running = true;
+    document.addEventListener('visibilitychange', () => { running = !document.hidden; if (running) loop(); });
+
+    const clock = new THREE.Clock();
+    function loop() {
+      if (!running) return;
+      requestAnimationFrame(loop);
+      const t = clock.getElapsedTime();
+
+      pyramid.rotation.y += 0.005;
+
+      nodes.forEach((m, i) => {
+        const d = m.userData;
+        const angle = d.angle + t * d.speed;
+        m.position.set(
+          Math.cos(angle)*d.radius,
+          d.y + Math.sin(t*0.6 + i)*0.12,
+          Math.sin(angle)*d.radius
+        );
+        const arr = d.line.geometry.attributes.position.array;
+        arr[3] = m.position.x; arr[4] = m.position.y; arr[5] = m.position.z;
+        d.line.geometry.attributes.position.needsUpdate = true;
+      });
+
+      mx += (tx - mx)*0.06;
+      my += (ty - my)*0.06;
+      scene.rotation.y = mx;
+      scene.rotation.x = my;
+      dust.rotation.y += 0.0008;
+
+      renderer.render(scene, camera);
+    }
+    loop();
+  `;
+  document.body.appendChild(s);
+})();
+
+/* ============================================================
+   SOURCE-CODE DETERRENTS (not real security)
+   ============================================================ */
+document.addEventListener('contextmenu', e => {
+  const t = e.target;
+  if (t.matches?.('input,textarea,select,[contenteditable="true"]')) return;
+  e.preventDefault();
+});
+
+document.addEventListener('keydown', e => {
+  const k = e.key.toLowerCase();
+  const block =
+    k === 'f12' ||
+    (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+    (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+    (e.ctrlKey && ['u','s'].includes(k)) ||
+    (e.metaKey && ['u','s'].includes(k));
+  if (block) { e.preventDefault(); e.stopPropagation(); return false; }
+}, true);
+
+(()=>{
+  const toast = document.createElement('div');
+  toast.className = 'devtools-warning';
+  toast.setAttribute('role','alert');
+  toast.setAttribute('aria-live','polite');
+  toast.innerHTML = '<span class="devtools-warning__icon">!</span><span>Developer tools detected — this page is protected.</span>';
+  document.body.appendChild(toast);
+
+  let visible = false, warnUntil = 0;
+  const show = () => { warnUntil = Date.now() + 5000; if (!visible) { visible = true; toast.classList.add('is-visible'); } };
+  const hide = () => { if (visible && Date.now() > warnUntil) { visible = false; toast.classList.remove('is-visible'); } };
+
+  setInterval(() => {
+    const w = window.outerWidth - window.innerWidth;
+    const h = window.outerHeight - window.innerHeight;
+    if (w > 160 || h > 160) show();
+    hide();
+  }, 900);
+
+  document.addEventListener('keydown', e => {
+    const k = e.key.toLowerCase();
+    if (k === 'f12' ||
+        (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+        (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+        (e.ctrlKey && ['u','s'].includes(k)) ||
+        (e.metaKey && ['u','s'].includes(k))) show();
+  }, true);
+})();
+
+if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+  (() => { let n = 0; setInterval(() => { n++; if (n > 1) { console.clear(); n = 0; } }, 2000); })();
+}
+console.log('%c⚠️ STOP', 'color:#ff3b3b;font-size:32px;font-weight:900');
+console.log('%cNo secrets are stored here. If someone told you to paste something here, it is a scam.', 'font-size:13px;color:#ff9');
+
+})();
+</script>
+
+</body>
+</html>
