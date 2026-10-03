@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ikaze Digital</title>
+<title>Ikaze Digital | Digital Technology & Creative Solutions</title>
 <meta name="description" content="Ikaze Digital builds modern websites, software, mobile apps, AI solutions, e-commerce platforms, branding and digital experiences from Rwanda for Africa and the world.">
 <meta property="og:title" content="Ikaze Digital | Digital Technology & Creative Solutions"><meta property="og:description" content="Building Africa's Digital Future."><meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#080A0F">
@@ -72,6 +72,9 @@ footer{border-top:1px solid var(--line);padding:44px 0 28px;color:var(--mut);fon
 .copy{margin-top:28px;padding-top:18px;border-top:1px solid var(--line)}
 @media(max-width:900px){nav{display:none;position:fixed;top:calc(68px + env(safe-area-inset-top,0px));left:0;right:0;bottom:0;flex-direction:column;background:#080A0F;padding:24px;align-items:flex-start;overflow:auto;gap:6px}nav a{font-size:20px;padding:10px 0}nav.open{display:flex}#menu{display:block}section{padding:56px 0}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}.step{opacity:1;transform:none}}
+dialog{background:#10151D;color:var(--ink);border:1px solid var(--line);border-radius:18px;width:min(92vw,420px)}dialog::backdrop{background:rgba(0,0,0,.65)}
+button.card{text-align:left;width:100%;font:inherit;color:inherit;cursor:pointer}
+.opt input{width:auto;margin-right:8px}.opt label{display:flex;align-items:center;color:var(--ink);font-size:15px}
 </style>
 </head>
 <body>
@@ -82,7 +85,7 @@ footer{border-top:1px solid var(--line);padding:44px 0 28px;color:var(--mut);fon
 <svg style="display:none" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 40 24 6l18 34-9-6-9-14-9 14z" fill="#f2a33a"/><path d="M24 6 42 40l-9-6z" fill="#c8553d"/><circle cx="24" cy="6" r="4" fill="#FAD201"/></svg>
 <span>IKAZE DIGITAL<small>Digital Technology & Creative Solutions</small></span></a>
 <button id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
-<nav id="nav" aria-label="Main"><a href="#top">Home</a><a href="#services">Services</a><a href="#solutions">Solutions</a><a href="#ecosystem">Ecosystem</a><a href="#portfolio">Work</a><a href="#founder">About</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a><a class="btn" data-r="hire">Start a Project</a></nav>
+<nav id="nav" aria-label="Main"><a href="#top">Home</a><a href="#services">Services</a><a href="#solutions">Solutions</a><a href="#ecosystem">Ecosystem</a><a href="#portfolio">Work</a><a href="#founder">About</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a><select id="lang" aria-label="Language" style="width:auto;padding:8px"></select><a class="btn" data-r="hire">Start a Project</a></nav>
 </div></header>
 
 <main id="top">
@@ -101,11 +104,25 @@ footer{border-top:1px solid var(--line);padding:44px 0 28px;color:var(--mut);fon
 
 <section id="ecosystem"><div class="wrap"><h2>The Ikaze Ecosystem</h2><p class="lead">An honest view of what exists today and what we are building next.</p>
 <div class="hub"><b>IKAZE DIGITAL</b></div>
-<div class="chips" role="group" aria-label="Filter ecosystem by status" id="ef"></div><div class="grid" id="eco"></div>
+<div class="row"><input id="q" type="search" placeholder="Search products, descriptions, categories" aria-label="Search ecosystem" style="max-width:360px"><select id="cat" aria-label="Category" style="max-width:260px"></select><button class="chip" id="clr" type="button">Clear filters</button></div><div class="chips" role="group" aria-label="Filter ecosystem by status" id="ef"></div><div class="grid" id="eco"></div>
 <div class="row"><a class="btn o" data-r="ecosystem">Explore the Ikaze Ecosystem →</a></div></div></section>
 
 <section id="portfolio"><div class="wrap"><h2>Selected Work &amp; Case Studies</h2><p class="lead">Ownership is labelled clearly: my projects, collaborations and partners. No invented outcomes.</p>
 <div class="chips" role="group" aria-label="Filter projects" id="filters"></div><div class="grid" id="proj"></div></div></section>
+
+<section id="aud"><div class="wrap"><h2>Technology for Every Community</h2><p class="lead">Pick who you are to see relevant parts of the ecosystem.</p><div class="chips" id="ac"></div><p class="note" id="ap" role="status">Select an audience above.</p></div></section>
+
+<section id="estimator"><div class="wrap"><h2>Project Estimator</h2><p class="lead">Tick what you need for a starting estimate.</p><div class="grid opt" id="est"></div><label class="opt" style="display:flex;gap:8px;margin-top:12px;color:var(--ink)"><input type="checkbox" id="mt"> Maintenance (from 50,000 RWF/month)</label><p class="price" id="eo" role="status" style="margin-top:14px">Select options to see an estimate.</p>
+<div class="row"><button class="btn" id="eq">Request a Quote</button><button class="btn o" id="ec">Book a Consultation</button></div>
+<p class="note">Prices shown are starting estimates for planning purposes. Final pricing depends on project scope, complexity, integrations, content, hosting, third-party services, timeline and support requirements. A detailed quotation will be provided before development begins.</p></div></section>
+
+<section id="tools"><div class="wrap"><h2>Free Digital Tools</h2><div class="grid"><div class="card"><span class="st AVAILABLE">AVAILABLE</span><h3>Word Counter</h3><textarea id="wc" rows="3" aria-label="Text to count" placeholder="Paste text…"></textarea><p id="wo">0 words · 0 characters</p></div><div id="tl" style="display:contents"></div></div></div></section>
+
+<section id="opps"><div class="wrap"><h2>Global Opportunity Center</h2><p class="lead">Jobs, internships, scholarships, fellowships, grants, hackathons and mentorship.</p><div class="card"><span class="st SOON">COMING SOON</span><p>No verified listings yet. We only publish opportunities with a title, region, eligibility, deadline, application link, source and last-verified date, and we mark expired ones. Nothing here is invented.</p></div></div></section>
+
+<section id="vision"><div class="wrap"><h2>From Rwanda to the World</h2><p class="lead">From Rwanda to the world, IKAZE DIGITAL connects technology, creativity, people, and opportunities to build meaningful digital solutions.</p>
+<svg viewBox="0 0 600 260" role="img" aria-label="Illustrative connection map radiating from Rwanda" style="width:100%;max-width:760px;margin-top:20px"><g stroke="#f2a33a" stroke-opacity=".4" fill="none"><path d="M300 150 120 80M300 150 480 70M300 150 160 200M300 150 470 190M300 150 300 30M300 150 40 150M300 150 560 140"/></g><g fill="#f4efe8"><circle cx="120" cy="80" r="5"/><circle cx="480" cy="70" r="5"/><circle cx="160" cy="200" r="5"/><circle cx="470" cy="190" r="5"/><circle cx="300" cy="30" r="5"/><circle cx="40" cy="150" r="5"/><circle cx="560" cy="140" r="5"/></g><circle cx="300" cy="150" r="12" fill="#f2a33a"/><text x="300" y="182" fill="#f4efe8" font-size="13" text-anchor="middle">Rwanda</text></svg>
+<p class="note">Illustrative concept only. It does not show real offices, customers or partnerships.</p><p class="tag">One Ecosystem. Limitless Possibilities.</p></div></section>
 
 <section id="tech"><div class="wrap"><h2>Technologies We Work With</h2><div class="chips" id="tc"></div></div></section>
 
@@ -143,18 +160,20 @@ footer{border-top:1px solid var(--line);padding:44px 0 28px;color:var(--mut);fon
 </div></section>
 </main>
 
+<dialog id="dlg" aria-labelledby="dt"><h3 id="dt"></h3><p id="dd" class="note"></p><p><strong>Coming Soon — Join the Early Access List</strong></p><form id="wl"><label for="wm">Email</label><input id="wm" type="email" required maxlength="120"><button class="btn" type="submit">Join Early Access</button></form><p class="note">Opens your email app to send your request.</p><button class="chip" id="dx" type="button">Close</button></dialog>
 <footer><div class="wrap"><div class="fg" id="fg"></div>
 <div class="copy"><strong>IKAZE DIGITAL</strong> — Building Africa's Digital Future<br>NIYIBIGIRA THEONESTE, Founder &amp; Owner<br>© <span id="y">2026</span> IKAZE DIGITAL. All rights reserved.</div></div></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 /* Central config: replace destinations and contact details here. */
-const IKAZE_ROUTES={ecosystem:"ecosystem.html",pricing:"pricing.html",hire:"hire.html",contact:"contact.html",about:"about.html",portfolio:"portfolio.html",ai:"ikaze-ai.html",cloud:"ikaze-cloud.html",forms:"ikaze-forms.html",crm:"ikaze-crm.html",creator:"ikaze-creator.html",jobs:"ikaze-jobs.html",marketplace:"ikaze-marketplace.html",academy:"ikaze-academy.html",labs:"ikaze-labs.html",support:"support.html",clientPortal:"client-portal.html",digitalAudit:"digital-audit.html",businessHub:"business-hub.html",events:"events.html",community:"community.html"};
+/* Paste each real URL below. null = not connected yet: product cards open a Coming Soon dialog and other links fall back to #contact (no 404s). */
+const IKAZE_ROUTES={ecosystem:null,pricing:null,hire:null,contact:null,about:null,portfolio:null,ai:null,cloud:null,forms:null,crm:null,creator:null,jobs:null,marketplace:null,academy:null,labs:null,support:null,clientPortal:null,digitalAudit:null,businessHub:null,events:null,community:null};
 const CONTACT={email:"theonesteniyibigira@gmail.com",phone:"+250 794 204 582"};
 /* TODO: replace each with the real profile URL. These point to the platforms' home pages until then. */
 const SOCIALS=[["WhatsApp","https://wa.me/"+CONTACT.phone.replace(/\D/g,"")],["Email","mailto:"+CONTACT.email],["Instagram","https://www.instagram.com/"],["LinkedIn","https://www.linkedin.com/"],["Facebook","https://www.facebook.com/"],["X","https://x.com/"],["TikTok","https://www.tiktok.com/"]];
 const $=s=>document.querySelector(s),esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const R=k=>IKAZE_ROUTES[k]||"#";
+const R=k=>IKAZE_ROUTES[k]||(k=="pricing"?"#pricing":k=="ecosystem"?"#ecosystem":k=="portfolio"?"#portfolio":k=="about"?"#founder":"#contact");
 document.querySelectorAll('[data-r]').forEach(a=>a.href=R(a.dataset.r));
 document.querySelectorAll('img[data-fb]').forEach(i=>{const f=()=>{if(i.dataset.t){i.replaceWith(i.dataset.t)}else{i.style.display='none';i.nextElementSibling.style.display='block'}};i.addEventListener('error',f);if(i.complete&&!i.naturalWidth)f()});
 const SV=[["Web Development","Corporate sites, portals and custom web apps."],["Software Development","Business systems and management platforms."],["Mobile Applications","Android, iOS and cross-platform."],["AI Solutions","Assistants, automation and knowledge systems."],["E-Commerce","Stores, marketplaces and payments."],["UI/UX Design","Interfaces, product design and prototypes."],["Branding","Logos, identity and brand systems."],["Digital Marketing & SEO","Content, campaigns and search visibility."],["Cloud & Hosting","Domains, deployment and infrastructure."],["Cybersecurity","Security-conscious architecture and authorization."],["Education Technology","Digital learning platforms."],["Consulting","Product strategy and digital transformation."]];
@@ -162,11 +181,22 @@ $('#svc').innerHTML=SV.map(([a,b])=>`<a class="card" href="#contact"><h3>${esc(a
 $('#s').innerHTML=SV.map(([a])=>`<option>${esc(a)}</option>`).join('');
 $('#sol').innerHTML=[["Business","Systems that streamline operations."],["Startups","MVPs and product launches."],["Education","Learning platforms and school systems."],["NGOs","Platforms for community impact."],["Creators","Tools for content creators."],["Enterprise","Custom platforms at scale."],["Communities","Spaces that connect people."],["Digital Transformation","From manual processes to digital systems."]].map(([a,b])=>`<a class="card" href="${R('hire')}"><h3>${a}</h3><p>${b}</p><span class="go">Learn more →</span></a>`).join('');
 $('#ind').innerHTML=["Education","Technology","Business","Agriculture","Healthcare","Finance","Hospitality","Tourism","Media","Creative Industries","NGOs","Startups","Professional Services"].map(x=>`<span class="chip">${x}</span>`).join('');
-const EC=[["ai","Ikaze AI","AI assistants and intelligent digital systems.","SOON","AI"],["cloud","Ikaze Cloud","Cloud and digital infrastructure.","SOON","Infrastructure"],["forms","Ikaze Forms","Digital forms and workflow tools.","SOON","Tools"],["crm","Ikaze CRM","Customer relationship management.","CONCEPT","Business"],["creator","Ikaze Creator","Creator-focused technology.","DEV","Creators"],["jobs","Ikaze Jobs","Jobs, opportunities and discovery.","SOON","Opportunity"],["marketplace","Ikaze Marketplace","Digital marketplace ecosystem.","CONCEPT","Commerce"],["academy","Ikaze Academy","Technology and digital learning.","SOON","Education"],["labs","Ikaze Labs","Innovation and future technology.","DEV","Innovation"],["support","Ikaze Support","Support center.","SOON","Support"],["clientPortal","Ikaze Client Portal","Client project management.","SOON","Clients"],["digitalAudit","Ikaze Digital Audit","Digital assessment and audit tools.","SOON","Consulting"],["businessHub","Ikaze Business Hub","Business technology ecosystem.","CONCEPT","Business"],["events","Ikaze Events","Events and tech community.","SOON","Community"],["community","Ikaze Community","Community ecosystem.","SOON","Community"]];
+const EC=[["ai","Ikaze AI","AI assistant, research, summarization and custom business AI agents.","SOON","Artificial Intelligence"],["cloud","Ikaze Cloud","Storage, hosting, backups and deployment tools.","SOON","Cloud and Infrastructure"],["forms","Ikaze Forms","Registration forms, surveys and automated workflows.","SOON","Business Tools"],["crm","Ikaze CRM","Customers, leads, pipelines and invoices.","CONCEPT","Business Tools"],["creator","Ikaze Creator","Creator profiles, portfolios and digital products.","DEV","Creator Economy"],["jobs","Ikaze Jobs","Jobs, internships, scholarships and CV builder.","SOON","Careers"],["marketplace","Ikaze Marketplace","Digital products, services and vendor storefronts.","CONCEPT","Commerce"],["academy","Ikaze Academy","Technology, AI, business and creative learning.","SOON","Education"],["labs","Ikaze Labs","Research, prototypes, hackathons and open source.","DEV","Innovation"],["support","Ikaze Support","Help center, documentation and tickets.","SOON","Digital Services"],["clientPortal","Ikaze Client Portal","Project progress, files, messages and invoices.","SOON","Digital Services"],["digitalAudit","Ikaze Digital Audit","Website, SEO, performance and accessibility reviews.","SOON","Digital Services"],["businessHub","Ikaze Business Hub","Business resources and digital tools.","CONCEPT","Business Tools"],["events","Ikaze Events","Webinars, workshops and challenges.","SOON","Community"],["community","Ikaze Community","Developer, creator and country groups; mentorship.","SOON","Community"]];
 const SL={AVAILABLE:"AVAILABLE",DEV:"IN DEVELOPMENT",SOON:"COMING SOON",CONCEPT:"CONCEPT"};let ef="all";
-function re(){const l=EC.filter(e=>ef=="all"||e[3]==ef);$('#eco').innerHTML=l.length?l.map(e=>`<a class="card" href="${R(e[0])}"><span class="st ${e[3]}">${SL[e[3]]}</span> <span class="badge">${e[4]}</span><h3>${e[1]}</h3><p>${e[2]}</p><span class="go">Explore →</span></a>`).join(''):'<p class="note">Nothing in this status yet.</p>'}
+let q="",cat="all";const CATS=["all",...new Set(EC.map(e=>e[4]))];
+$('#cat').innerHTML=CATS.map(c=>`<option value="${c}">${c=="all"?"All categories":c}</option>`).join('');
+function re(){const l=EC.filter(e=>(ef=="all"||e[3]==ef)&&(cat=="all"||e[4]==cat)&&(e[1]+" "+e[2]+" "+e[4]).toLowerCase().includes(q));
+$('#eco').innerHTML=l.length?l.map(e=>`<button class="card" data-k="${e[0]}"><span class="st ${e[3]}">${SL[e[3]]}</span> <span class="badge">${e[4]}</span><h3>${e[1]}</h3><p>${e[2]}</p><span class="go">Explore →</span></button>`).join(''):'<p class="note">No products match. Try clearing filters.</p>'}
 $('#ef').innerHTML=["all","AVAILABLE","DEV","SOON","CONCEPT"].map(k=>`<button class="chip" data-k="${k}" aria-pressed="${k==ef}">${k=="all"?"ALL":SL[k]}</button>`).join('');
-$('#ef').onclick=e=>{const k=e.target.dataset.k;if(!k)return;ef=k;document.querySelectorAll('#ef .chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.k==k));re()};re();
+const sf=()=>document.querySelectorAll('#ef .chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.k==ef));
+$('#ef').onclick=e=>{const k=e.target.dataset.k;if(!k)return;ef=k;sf();re()};
+$('#q').oninput=e=>{q=e.target.value.toLowerCase().trim();re()};$('#cat').onchange=e=>{cat=e.target.value;re()};
+$('#clr').onclick=()=>{ef="all";cat="all";q="";$('#q').value="";$('#cat').value="all";sf();re()};
+const dlg=$('#dlg');
+$('#eco').onclick=e=>{const b=e.target.closest('[data-k]');if(!b)return;const k=b.dataset.k,u=IKAZE_ROUTES[k];if(u){location.href=u;return}const x=EC.find(i=>i[0]==k);$('#dt').textContent=x[1];$('#dd').textContent=x[2]+" ("+SL[x[3]]+")";dlg.showModal()};
+$('#dx').onclick=()=>dlg.close();
+$('#wl').onsubmit=ev=>{ev.preventDefault();const m=$('#wm').value.trim();if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m))return;location.href="mailto:"+CONTACT.email+"?subject="+encodeURIComponent("Early access: "+$('#dt').textContent)+"&body="+encodeURIComponent("Please add me to the early access list: "+m)};
+re();
 const PJ=[["Personal Portfolio of NIYIBIGIRA Theoneste","My Project","web","Musician, artist, technology innovator and educator portfolio.","https://theonesteniyibigira6-hue.github.io/NIYIBIGIRA-/","Live"],
 ["Rwanda Tech E-Learning Hub","My Project","education","A growing digital learning ecosystem: courses, e-library, E-Teacher, E-Class and opportunities.","https://theonesteniyibigira6-hue.github.io/RWANDA-TECH-LEARNING-HUB./","Live"],
 ["African Content Creators","My Project","community","Creator-platform project. Status shown per repository state.","","Development / Concept"],
@@ -183,7 +213,7 @@ $('#tr').innerHTML=["Security-conscious architecture","Firebase-ready infrastruc
 const PP=[["Websites","150,000"],["E-Commerce","600,000"],["Mobile Apps","1,500,000"],["Branding","50,000"],["AI Solutions","250,000"],["Digital Audit","100,000"]];
 $('#price').innerHTML=PP.map(([a,b])=>`<article class="card"><h3>${a}</h3><small>From</small><div class="price">${b} <small>RWF</small></div></article>`).join('');
 $('#soc').innerHTML=SOCIALS.map(([a,u])=>`<a href="${u}" ${u.startsWith('http')?'target="_blank" rel="noopener noreferrer"':''}>${a}</a>`).join('')+`<span class="note" style="width:100%;margin:0">${esc(CONTACT.phone)} · ${esc(CONTACT.email)}</span>`;
-const FG={Company:[["About","about"],["Founder","#founder"],["Portfolio","portfolio"],["Partners","#portfolio"]],Services:[["Web, Software & Mobile","#services"],["AI & E-Commerce","#services"],["UI/UX & Branding","#services"],["SEO","#services"]],Ecosystem:[["Ikaze AI","ai"],["Ikaze Cloud","cloud"],["Ikaze Creator","creator"],["Ikaze Academy","academy"],["Ikaze Labs","labs"],["Marketplace","marketplace"]],Resources:[["Support","support"],["Digital Audit","digitalAudit"],["Client Portal","clientPortal"]],Contact:[["Email","mailto:"+CONTACT.email],["WhatsApp",SOCIALS[0][1]],["Start a Project","hire"]]};
+const FG={Company:[["About","about"],["Founder","#founder"],["Portfolio","portfolio"],["Partners","#portfolio"]],Services:[["Web, Software & Mobile","#services"],["AI & E-Commerce","#services"],["UI/UX & Branding","#services"],["SEO","#services"]],Ecosystem:[["Ikaze AI","ai"],["Ikaze Cloud","cloud"],["Ikaze Creator","creator"],["Ikaze Academy","academy"],["Ikaze Labs","labs"],["Marketplace","marketplace"]],Explore:[["Opportunities","#opps"],["Community","#aud"],["Free Tools","#tools"],["Support","support"],["Client Portal","clientPortal"]],Contact:[["Email","mailto:"+CONTACT.email],["WhatsApp",SOCIALS[0][1]],["Start a Project","hire"]]};
 $('#fg').innerHTML=Object.entries(FG).map(([h,l])=>`<div><h4>${h}</h4>${l.map(([t,k])=>`<a href="${k[0]=='#'||k.startsWith('mailto')||k.startsWith('http')?k:R(k)}">${t}</a>`).join('')}</div>`).join('');
 $('#y').textContent=new Date().getFullYear();
 $('#f').onsubmit=e=>{e.preventDefault();const n=$('#n').value.trim(),m=$('#m').value.trim(),em=$('#e').value.trim();
@@ -192,6 +222,25 @@ $('#st').textContent="Opening your email app…";location.href="mailto:"+CONTACT
 const nv=$('#nav'),mb=$('#menu'),tg=o=>{nv.classList.toggle('open',o);document.body.classList.toggle('lock',o);mb.setAttribute('aria-expanded',o);mb.textContent=o?'Close':'Menu'};
 mb.onclick=()=>tg(!nv.classList.contains('open'));nv.onclick=e=>{if(e.target.tagName=='A')tg(false)};addEventListener('keydown',e=>e.key=='Escape'&&tg(false));
 const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)nv.querySelectorAll('a').forEach(a=>a.toggleAttribute('aria-current',a.getAttribute('href')=='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});document.querySelectorAll('main section[id]').forEach(s=>so.observe(s));
+
+const AUD={"Students and learners":"Ikaze Academy, Ikaze Jobs, Free Tools","Teachers and educators":"Ikaze Academy, Ikaze Forms, Ikaze Community","Developers":"Ikaze Labs, Ikaze Community, Ikaze Cloud","Designers":"Ikaze Creator, Ikaze Marketplace, Ikaze Community","Creators":"Ikaze Creator, Ikaze Marketplace","Entrepreneurs":"Ikaze Business Hub, Ikaze CRM, Digital Audit","Small businesses":"Ikaze CRM, Ikaze Forms, Websites and E-Commerce","Startups":"Ikaze Labs, Ikaze Cloud, Custom Software","Institutions":"Ikaze Forms, Ikaze Academy, Client Portal","NGOs":"Ikaze Forms, Ikaze Community, Digital Transformation","Organizations":"Ikaze Client Portal, Ikaze CRM, Ikaze AI","Global partners":"Ikaze Labs, Ikaze Events, Contact us","Communities":"Ikaze Community, Ikaze Events"};
+$('#ac').innerHTML=Object.keys(AUD).map(k=>`<button class="chip" data-a="${esc(k)}" aria-pressed="false">${esc(k)}</button>`).join('');
+$('#ac').onclick=e=>{const k=e.target.dataset.a;if(!k)return;document.querySelectorAll('#ac .chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.a==k));$('#ap').textContent=k+": relevant — "+AUD[k]+" (availability varies; see the ecosystem statuses)."};
+const EST=[["Website",150000],["Web application",1500000],["Mobile application",1500000],["E-commerce",600000],["Branding",50000],["AI integration",250000]];
+$('#est').innerHTML=EST.map((x,i)=>`<label><input type="checkbox" value="${i}">${x[0]}&nbsp;<small>from ${x[1].toLocaleString()} RWF</small></label>`).join('');
+const sel=()=>[...document.querySelectorAll('#est input:checked')].map(i=>EST[i.value]);
+function ce(){const c=sel(),t=c.reduce((a,x)=>a+x[1],0),m=$('#mt').checked;$('#eo').textContent=c.length||m?`Combined starting estimate: from ${t.toLocaleString()} RWF${m?" + 50,000 RWF/month":""}`:"Select options to see an estimate."}
+$('#est').onchange=ce;$('#mt').onchange=ce;
+const qm=s=>{location.href="mailto:"+CONTACT.email+"?subject="+encodeURIComponent(s)+"&body="+encodeURIComponent("Interested in: "+(sel().map(x=>x[0]).join(", ")||"to be discussed")+($('#mt').checked?", Maintenance":""))};
+$('#eq').onclick=()=>qm("Quote request");$('#ec').onclick=()=>qm("Consultation booking");
+$('#tl').innerHTML=["QR Code Generator","Color Palette Generator","Image Compressor","CV Builder","Invoice Generator","Website Checklist","SEO Checklist","Accessibility Checklist"].map(t=>`<div class="card"><span class="st SOON">COMING SOON</span><h3>${t}</h3></div>`).join('');
+$('#wc').oninput=e=>{const v=e.target.value.trim();$('#wo').textContent=(v?v.split(/\s+/).length:0)+" words · "+e.target.value.length+" characters"};
+/* Interface languages. Only the navigation and headline are translated so far; other languages are not offered yet. Native-speaker review recommended. */
+const T={en:["Home","Services","Solutions","Ecosystem","Work","About","Pricing","Contact","Start a Project","Building Africa's Digital Future"],fr:["Accueil","Services","Solutions","Écosystème","Projets","À propos","Tarifs","Contact","Démarrer un projet","Bâtir l'avenir numérique de l'Afrique"],sw:["Nyumbani","Huduma","Suluhisho","Mfumo","Kazi","Kuhusu","Bei","Wasiliana","Anza Mradi","Tunajenga Mustakabali wa Kidijitali wa Afrika"],rw:["Ahabanza","Serivisi","Ibisubizo","Urusobe","Imishinga","Abo turi bo","Ibiciro","Twandikire","Tangira Umushinga","Twubaka Ejo Hazaza h'Ikoranabuhanga rya Afurika"]};
+const LN={en:"English",rw:"Kinyarwanda",fr:"Français",sw:"Kiswahili"};
+$('#lang').innerHTML=Object.keys(LN).map(k=>`<option value="${k}">${LN[k]}</option>`).join('');
+function sl(l){const t=T[l]||T.en,a=nv.querySelectorAll('a');a.forEach((x,i)=>{if(t[i])x.textContent=t[i]});$('h1').textContent=t[9];document.documentElement.lang=l;$('#lang').value=l;try{localStorage.setItem('ikl',l)}catch(e){}}
+$('#lang').onchange=e=>sl(e.target.value);let sv="en";try{sv=localStorage.getItem('ikl')||"en"}catch(e){}if(sv!="en")sl(sv);
 
 /* Warm cinematic scene: amber/terracotta glass forms + haze, scroll-driven. Enhancement only. */
 (()=>{
