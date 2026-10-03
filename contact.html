@@ -1,0 +1,211 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import React, { useState, useEffect } from 'react';
+import { Background3D } from './components/Background3D';
+import { Header } from './components/Header';
+import { CommunicationSphereCanvas } from './components/CommunicationSphereCanvas';
+import { ContactPathways } from './components/ContactPathways';
+import { ChannelsAndClock } from './components/ChannelsAndClock';
+import { ProjectEstimator } from './components/ProjectEstimator';
+import { CommunityAudienceFilter } from './components/CommunityAudienceFilter';
+import { FounderSection } from './components/FounderSection';
+import { ContactForm } from './components/ContactForm';
+import { SubmissionSuccessModal } from './components/SubmissionSuccessModal';
+import { TrustAndGovernance } from './components/TrustAndGovernance';
+import { FAQSection } from './components/FAQSection';
+import { EcosystemSection } from './components/EcosystemSection';
+import { Footer } from './components/Footer';
+import { Language, Background3DMode, InquiryType, SubmittedInquiry } from './types';
+import { TRANSLATIONS } from './i18n/translations';
+import { ArrowUpRight, Compass, ShieldCheck, Sparkles } from 'lucide-react';
+
+export default function App() {
+  const [language, setLanguage] = useState<Language>('en');
+  const [bgMode, setBgMode] = useState<Background3DMode>('constellation');
+  const [presetInquiryType, setPresetInquiryType] = useState<InquiryType>('General Inquiry');
+  const [appliedServices, setAppliedServices] = useState<string[]>([]);
+  const [appliedBudget, setAppliedBudget] = useState<string>('');
+  const [submittedInquiry, setSubmittedInquiry] = useState<SubmittedInquiry | null>(null);
+
+  // Load language preference if saved
+  useEffect(() => {
+    const saved = localStorage.getItem('ikaze_lang') as Language;
+    if (saved && ['en', 'rw', 'fr', 'sw'].includes(saved)) {
+      setLanguage(saved);
+    }
+  }, []);
+
+  const handleLanguageChange = (lang: Language) => {
+    setLanguage(lang);
+    localStorage.setItem('ikaze_lang', lang);
+  };
+
+  const handleSelectPathway = (type: InquiryType) => {
+    setPresetInquiryType(type);
+    const formElement = document.getElementById('contact-form-section');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleApplyEstimate = (services: string[], budget: string) => {
+    setAppliedServices(services);
+    setAppliedBudget(budget);
+    setPresetInquiryType('Start a Project');
+    const formElement = document.getElementById('contact-form-section');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleAudiencePathway = (audience: string) => {
+    setPresetInquiryType('Start a Project');
+    setAppliedServices([`${audience} Solution`]);
+    const formElement = document.getElementById('contact-form-section');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const t = TRANSLATIONS[language];
+
+  return (
+    <div className="relative min-h-screen bg-[#080A0F] text-[#f4efe8] selection:bg-[#f2a33a]/30 selection:text-white font-sans antialiased overflow-x-hidden">
+      {/* Three.js 3D Animated Background with Amber/Terracotta Haze & Floating Glass Geometries */}
+      <Background3D mode={bgMode} showGlows={true} />
+
+      {/* Top Header with Authentic Sunrise Logo */}
+      <Header
+        language={language}
+        onLanguageChange={handleLanguageChange}
+        bgMode={bgMode}
+        onBgModeChange={setBgMode}
+        onNavigatePathway={(pathway) => handleSelectPathway(pathway as InquiryType)}
+      />
+
+      <main id="main-content" className="relative z-10">
+        {/* HERO SECTION */}
+        <section
+          className="relative px-4 sm:px-6 pt-12 pb-16 sm:pt-20 sm:pb-24 max-w-[1380px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+          aria-label="Global Communication Center Hero"
+        >
+          {/* Left Column: Hero Text & Call to Action */}
+          <div className="lg:col-span-7 flex flex-col items-start">
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#10151D]/85 border border-[#f2a33a]/40 text-xs font-semibold text-slate-200 backdrop-blur-md mb-6 shadow-[0_0_15px_rgba(242,163,58,0.15)]">
+              <span className="w-2 h-2 rounded-full bg-[#f2a33a] shadow-[0_0_8px_#f2a33a] animate-pulse" />
+              <span className="text-[#f2a33a] font-bold">Technology. Creativity. Innovation. Growth.</span>
+              <span className="text-slate-600">·</span>
+              <span className="text-slate-300">Kigali, Rwanda</span>
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-display leading-[1.08] mb-6">
+              <span className="gradient-text-hero">Building Africa's Digital Future</span>
+            </h1>
+
+            <p className="text-slate-300 text-sm sm:text-lg leading-relaxed max-w-2xl mb-8">
+              We design and build modern digital experiences, software, AI solutions, mobile applications, e-commerce platforms, brands and technology ecosystems from Rwanda for Africa and the world.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href="#contact-form-section"
+                onClick={() => handleSelectPathway('Start a Project')}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-sm font-bold text-[#1a0f05] bg-[#f2a33a] hover:bg-[#ffb653] shadow-[0_6px_22px_rgba(242,163,58,0.38)] hover:shadow-[0_8px_30px_rgba(242,163,58,0.6)] hover:-translate-y-0.5 transition-all cursor-pointer"
+              >
+                <span>{t.btnStartProject}</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+
+              <a
+                href="#estimator-section"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-sm font-semibold text-slate-200 bg-[#10151D]/80 border border-slate-700 hover:border-[#f2a33a] hover:text-white hover:-translate-y-0.5 transition-all"
+              >
+                <Compass className="w-4 h-4 text-[#f2a33a]" />
+                <span>Explore Project Estimator</span>
+              </a>
+
+              <a
+                href="#founder-section"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-sm font-semibold text-slate-300 hover:text-white transition-all text-xs"
+              >
+                <span>Meet the Founder →</span>
+              </a>
+            </div>
+
+            {/* Quick trust metrics indicator */}
+            <div className="mt-10 pt-6 border-t border-slate-800/80 flex flex-wrap items-center gap-6 text-xs text-slate-400">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                <span>Verified Direct Response</span>
+              </div>
+              <div className="hidden sm:block text-slate-700">|</div>
+              <div className="flex items-center gap-1.5 text-slate-300">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00A1DE]" />
+                <span>Pan-African Tech · Global Delivery</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: 3D Interactive Communication Sphere */}
+          <div className="lg:col-span-5 flex items-center justify-center">
+            <CommunicationSphereCanvas language={language} />
+          </div>
+        </section>
+
+        {/* 6 GLOBAL CONTACT PATHWAYS */}
+        <ContactPathways
+          language={language}
+          onSelectPathway={handleSelectPathway}
+        />
+
+        {/* PROJECT ESTIMATOR WITH RWF STARTING PRICES FROM IKAZE-DIGITAL.VERCEL.APP */}
+        <ProjectEstimator onApplyEstimateToForm={handleApplyEstimate} />
+
+        {/* TECHNOLOGY FOR EVERY COMMUNITY AUDIENCE SELECTOR */}
+        <CommunityAudienceFilter onSelectAudiencePathway={handleAudiencePathway} />
+
+        {/* MEET THE FOUNDER: NIYIBIGIRA THEONESTE */}
+        <FounderSection onContactFounder={() => handleSelectPathway('Start a Project')} />
+
+        {/* DIRECT COMMUNICATION CHANNELS & KIGALI LIVE TIME */}
+        <ChannelsAndClock language={language} />
+
+        {/* MAIN INTERACTIVE FORM */}
+        <ContactForm
+          language={language}
+          presetInquiryType={presetInquiryType}
+          appliedServices={appliedServices}
+          appliedBudget={appliedBudget}
+          onSubmitSuccess={(record) => setSubmittedInquiry(record)}
+        />
+
+        {/* TRUST & DATA GOVERNANCE */}
+        <TrustAndGovernance />
+
+        {/* FREQUENTLY ASKED QUESTIONS */}
+        <FAQSection language={language} />
+
+        {/* IKAZE DIGITAL ECOSYSTEM */}
+        <EcosystemSection
+          language={language}
+          onSelectProject={() => handleSelectPathway('Start a Project')}
+        />
+      </main>
+
+      {/* FOOTER */}
+      <Footer />
+
+      {/* SUBMISSION SUCCESS MODAL */}
+      {submittedInquiry && (
+        <SubmissionSuccessModal
+          inquiry={submittedInquiry}
+          language={language}
+          onClose={() => setSubmittedInquiry(null)}
+        />
+      )}
+    </div>
+  );
+}
