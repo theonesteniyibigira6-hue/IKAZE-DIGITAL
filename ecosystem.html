@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>IKAZE DIGITAL Ecosystem | Technology, Products, Services &amp; Innovation</title>
+<meta name="description" content="Explore the IKAZE DIGITAL ecosystem connecting technology, AI, cloud, education, creators, business tools, digital services, opportunities and innovation from Rwanda to the world." />
+<meta name="theme-color" content="#080A0F" />
+<link rel="canonical" href="https://ikaze-digital.vercel.app/ecosystem.html" />
+
+<meta property="og:title" content="IKAZE DIGITAL Ecosystem — One Ecosystem. Many Possibilities." />
+<meta property="og:description" content="Technology, creativity, education, digital services and emerging products connected through one growing ecosystem." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://i.postimg.cc/tJ9QydF2/Theoneste.png" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><path d='M6 40 24 6l18 34-9-6-9-14-9 14z' fill='%23f2a33a'/><path d='M24 6 42 40l-9-6z' fill='%23c8553d'/><circle cx='24' cy='6' r='4' fill='%23FAD201'/></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "IKAZE DIGITAL Ecosystem",
+  "url": "https://ikaze-digital.vercel.app/ecosystem.html",
+  "description": "Technology, creativity, education and digital services from Rwanda.",
+  "isPartOf": {
+    "@type": "Organization",
+    "name": "Ikaze Digital",
+    "url": "https://ikaze-digital.vercel.app/"
+  }
+}
+</script>
+
+<style>
+/* ============================================================
+   IKAZE DIGITAL — DESIGN TOKENS (matched to homepage)
+   ============================================================ */
+:root{
+  --bg:#080A0F;
+  --bg2:#0B1017;
+  --bg3:#10151D;
+  --ink:#f4efe8;
+  --mut:#a9a39b;
+  --amb:#f2a33a;
+  --ter:#c8553d;
+  --blue:#00A1DE;
+  --grn:#20603D;
+  --yel:#FAD201;
+  --card:rgba(255,255,255,.04);
+  --line:rgba(255,255,255,.1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  overflow-x:hidden;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+body.lock{overflow:hidden}
+input,textarea,select{-webkit-user-select:text;user-select:text}
+a{color:inherit}
+img{max-width:100%;height:auto;display:block}
+
+/* ============================================================
+   BACKGROUND — MAGIC TECH ANIMATED LAYERS
+   ============================================================ */
+#bg{
+  position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(60% 50% at 20% 15%,rgba(242,163,58,.20),transparent 70%),
+    radial-gradient(50% 45% at 85% 80%,rgba(200,85,61,.16),transparent 70%),
+    radial-gradient(40% 40% at 50% 50%,rgba(32,96,61,.10),transparent 70%),
+    linear-gradient(#10151D,#080A0F);
+}
+#c{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+
+.aurora{
+  position:fixed;border-radius:50%;filter:blur(90px);opacity:.45;
+  mix-blend-mode:screen;pointer-events:none;z-index:-1;
+}
+.aurora-1{width:520px;height:520px;top:-120px;left:-80px;background:radial-gradient(circle,var(--amb),transparent 70%);animation:float1 22s ease-in-out infinite}
+.aurora-2{width:600px;height:600px;bottom:-180px;right:-100px;background:radial-gradient(circle,var(--grn),transparent 70%);animation:float2 26s ease-in-out infinite}
+.aurora-3{width:420px;height:420px;top:40%;left:50%;background:radial-gradient(circle,var(--yel),transparent 70%);opacity:.15;animation:float3 30s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(80px,60px) scale(1.15)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-70px,-90px) scale(1.2)}}
+@keyframes float3{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-40%,-60%) scale(1.3)}}
+
+.grid-lines{
+  position:fixed;inset:0;opacity:.12;pointer-events:none;z-index:-1;
+  background-image:
+    linear-gradient(rgba(242,163,58,.35) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(242,163,58,.35) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(circle at 50% 40%,#000 0%,transparent 75%);
+  -webkit-mask-image:radial-gradient(circle at 50% 40%,#000 0%,transparent 75%);
+  animation:gridMove 40s linear infinite;
+}
+@keyframes gridMove{0%{background-position:0 0,0 0}100%{background-position:64px 64px,64px 64px}}
+
+.scanline{
+  position:fixed;left:0;right:0;height:2px;z-index:-1;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--amb),transparent);
+  opacity:.3;filter:blur(1px);
+  animation:scanSweep 9s linear infinite;
+}
+@keyframes scanSweep{0%{top:0}100%{top:100%}}
+
+.code-frag{
+  position:fixed;font-size:11px;
+  color:rgba(242,163,58,.4);letter-spacing:.05em;white-space:nowrap;
+  pointer-events:none;z-index:-1;
+  animation:codeFloat linear infinite;will-change:transform,opacity;
+}
+@keyframes codeFloat{
+  0%{transform:translateY(0) translateX(0);opacity:0}
+  10%{opacity:.7}
+  90%{opacity:.7}
+  100%{transform:translateY(-100vh) translateX(30px);opacity:0}
+}
+
+/* ============================================================
+   DEVTOOLS WARNING TOAST
+   ============================================================ */
+.devtools-warning{
+  position:fixed;top:0;left:50%;transform:translate(-50%,-140%);
+  z-index:9999;padding:.85rem 1.4rem;
+  background:linear-gradient(120deg,rgba(200,85,61,.95),rgba(150,40,20,.95));
+  color:#fff;font-weight:600;font-size:.9rem;
+  border-radius:0 0 14px 14px;letter-spacing:.03em;
+  box-shadow:0 14px 40px -10px rgba(200,85,61,.6);
+  display:flex;align-items:center;gap:.7rem;
+  transition:transform .5s cubic-bezier(.2,.7,.2,1);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  max-width:calc(100% - 24px);pointer-events:none;
+}
+.devtools-warning.is-visible{transform:translate(-50%,0)}
+.devtools-warning__icon{
+  width:22px;height:22px;border-radius:50%;
+  background:rgba(255,255,255,.18);
+  display:grid;place-items:center;font-size:13px;flex-shrink:0;
+}
+@media (max-width:620px){
+  .devtools-warning{font-size:.78rem;padding:.7rem 1rem}
+}
+
+/* ============================================================
+   LAYOUT (match homepage)
+   ============================================================ */
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+header{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+  backdrop-filter:blur(14px);
+  background:rgba(8,10,15,.75);
+  border-bottom:1px solid var(--line);
+}
+.bar{display:flex;align-items:center;gap:16px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.08em;font-size:14px}
+.logo img{height:44px;width:auto;max-width:56px;object-fit:contain}
+.logo small{display:block;font-weight:500;letter-spacing:0;font-size:10px;color:var(--mut)}
+nav{margin-left:auto;display:flex;gap:16px;align-items:center}
+nav a{text-decoration:none;font-size:14px;color:var(--mut)}
+nav a:hover,nav a[aria-current]{color:var(--amb)}
+
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 22px;border-radius:999px;
+  background:var(--amb);color:#1a0f05;font-weight:700;text-decoration:none;
+  border:0;cursor:pointer;font:inherit;font-size:14px;
+  transition:transform .2s,box-shadow .2s;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(242,163,58,.35)}
+.btn.o{background:transparent;color:var(--ink);border:1px solid var(--line)}
+
+:focus-visible{outline:3px solid var(--yel);outline-offset:2px}
+
+#menu{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:12px 16px;font:inherit;min-height:44px;cursor:pointer}
+
+section{padding:84px 0;position:relative;z-index:1}
+h1{font-size:clamp(2.2rem,7vw,4.2rem);line-height:1.05;margin:0 0 16px;letter-spacing:-.02em}
+h2{font-size:clamp(1.6rem,4vw,2.5rem);margin:0 0 10px;letter-spacing:-.01em}
+h3{font-size:1.15rem;margin:6px 0}
+.tag{color:var(--amb);font-weight:600;letter-spacing:.06em;font-size:.82rem;text-transform:uppercase}
+.lead{color:var(--mut);max-width:660px;font-size:clamp(1rem,1.4vw,1.15rem)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{padding:80px 0 40px;min-height:92vh;display:flex;align-items:center}
+.hero__inner{display:grid;gap:32px;grid-template-columns:1fr;align-items:center;width:100%}
+@media(min-width:900px){.hero__inner{grid-template-columns:1fr 1fr}}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+
+/* 3D ecosystem visual */
+.eco-visual{
+  position:relative;aspect-ratio:1/1;max-width:520px;width:100%;margin:0 auto;
+  border-radius:24px;overflow:hidden;
+  border:1px solid var(--line);
+  background:radial-gradient(circle at 50% 50%,rgba(242,163,58,.10),transparent 60%),var(--card);
+  backdrop-filter:blur(10px);
+}
+.eco-visual canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.eco-visual__fallback{
+  position:absolute;inset:0;display:none;
+  padding:20px;overflow:auto;
+}
+@media(max-width:700px){
+  .eco-visual{aspect-ratio:auto;max-width:none;min-height:340px}
+}
+.eco-visual__label{
+  position:absolute;bottom:14px;left:0;right:0;text-align:center;
+  font-size:.72rem;color:var(--mut);letter-spacing:.12em;text-transform:uppercase;
+  pointer-events:none;
+}
+
+/* ============================================================
+   STATUS BADGES
+   ============================================================ */
+.st{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:4px 10px;border-radius:99px;border:1px solid;
+}
+.st::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.st--available{color:#3ddc84;border-color:rgba(61,220,132,.4);background:rgba(61,220,132,.08)}
+.st--dev{color:#00A1DE;border-color:rgba(0,161,222,.4);background:rgba(0,161,222,.08)}
+.st--soon{color:#f2a33a;border-color:rgba(242,163,58,.4);background:rgba(242,163,58,.08)}
+.st--concept{color:#9aa0a6;border-color:rgba(154,160,166,.35);background:rgba(154,160,166,.06)}
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));margin-top:26px}
+.grid--two{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.grid--three{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+
+.card{
+  display:flex;flex-direction:column;text-decoration:none;background:var(--card);
+  border:1px solid var(--line);border-radius:18px;padding:22px;
+  backdrop-filter:blur(10px);position:relative;overflow:hidden;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.card:hover{transform:translateY(-6px);border-color:rgba(242,163,58,.5);box-shadow:0 12px 32px rgba(200,85,61,.18)}
+.card__icon{
+  width:48px;height:48px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(242,163,58,.15),rgba(200,85,61,.08));
+  border:1px solid rgba(242,163,58,.25);
+  font-size:22px;margin-bottom:14px;
+  transition:transform .4s ease;
+}
+.card:hover .card__icon{transform:rotate(-6deg) scale(1.06)}
+.card__head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
+.card h3{margin:0}
+.card p{color:var(--mut);margin:6px 0;font-size:.94rem}
+.card__meta{margin:12px 0 0;font-size:.8rem;color:var(--mut)}
+.card__meta strong{color:var(--ink);font-weight:600}
+.card__cta{margin-top:auto;padding-top:14px;display:flex;gap:8px;align-items:center}
+
+/* ============================================================
+   FILTERS
+   ============================================================ */
+.filters{display:grid;gap:14px;margin:26px 0 0;padding:20px;background:var(--card);border:1px solid var(--line);border-radius:18px}
+.filter-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filter-row label{font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;margin-right:6px}
+.chip{
+  padding:8px 14px;border-radius:99px;background:rgba(255,255,255,.03);
+  border:1px solid var(--line);color:var(--ink);cursor:pointer;font:inherit;font-size:13px;
+  min-height:38px;transition:all .2s;
+}
+.chip:hover{border-color:rgba(242,163,58,.5)}
+.chip[aria-pressed=true]{background:var(--amb);color:#1a0f05;border-color:var(--amb);font-weight:600}
+
+.search{
+  width:100%;padding:12px 16px;border-radius:12px;border:1px solid var(--line);
+  background:rgba(255,255,255,.04);color:var(--ink);font:inherit;font-size:14px;
+}
+.search::placeholder{color:var(--mut)}
+
+/* ============================================================
+   LAYER STACK (architecture)
+   ============================================================ */
+.stack{display:grid;gap:10px;margin-top:26px}
+.layer{
+  padding:18px 22px;border-radius:14px;border:1px solid var(--line);
+  background:linear-gradient(90deg,rgba(242,163,58,.08),rgba(200,85,61,.03));
+  cursor:pointer;transition:all .3s;position:relative;
+  display:grid;grid-template-columns:40px 1fr;gap:16px;align-items:center;
+}
+.layer:hover{border-color:rgba(242,163,58,.5);transform:translateX(4px);background:linear-gradient(90deg,rgba(242,163,58,.14),rgba(200,85,61,.06))}
+.layer__n{font-size:12px;color:var(--amb);font-weight:700;letter-spacing:.1em}
+.layer b{display:block;font-size:1rem}
+.layer span{font-size:.85rem;color:var(--mut)}
+@media(min-width:700px){
+  .layer{grid-template-columns:60px 140px 1fr;align-items:center}
+}
+
+/* ============================================================
+   JOURNEYS
+   ============================================================ */
+.journey{
+  padding:20px;border-radius:16px;border:1px solid var(--line);
+  background:var(--card);margin-top:14px;
+}
+.journey b{color:var(--amb);font-size:.82rem;text-transform:uppercase;letter-spacing:.08em}
+.journey p{margin:8px 0;color:var(--mut);font-size:.95rem}
+.journey__steps{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;align-items:center;font-size:.85rem}
+.journey__steps span{padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
+.journey__steps i{color:var(--amb);font-style:normal}
+
+/* ============================================================
+   ROADMAP
+   ============================================================ */
+.roadmap{display:grid;gap:16px;margin-top:26px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.phase{padding:22px;border-radius:16px;border:1px solid var(--line);background:var(--card)}
+.phase h3{color:var(--amb);text-transform:uppercase;letter-spacing:.1em;font-size:.85rem;margin:0 0 12px}
+.phase ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.phase li{padding-left:18px;position:relative;color:var(--mut);font-size:.9rem}
+.phase li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:8px;border-radius:50%;background:var(--amb);opacity:.7}
+
+/* ============================================================
+   PRINCIPLES
+   ============================================================ */
+.principles{display:grid;gap:16px;margin-top:26px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.principle{padding:22px;border-radius:16px;border:1px solid var(--line);background:var(--card);transition:transform .3s,border-color .3s}
+.principle:hover{transform:translateY(-4px);border-color:rgba(242,163,58,.4)}
+.principle .n{font-size:24px;font-weight:800;color:var(--amb);letter-spacing:.05em;display:block;margin-bottom:8px}
+
+/* ============================================================
+   HUB / FLOW
+   ============================================================ */
+.hub{display:grid;place-items:center;margin:26px 0 0}
+.hub b{padding:14px 28px;border-radius:99px;border:1px solid var(--amb);background:rgba(242,163,58,.1);letter-spacing:.12em;box-shadow:0 0 40px rgba(242,163,58,.25)}
+
+.flow{list-style:none;padding:0;margin:2rem 0 0;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.flow li{padding:10px 16px;border-radius:99px;background:var(--card);border:1px solid var(--line);font-size:.85rem;color:var(--mut);position:relative}
+.flow li:not(:last-child)::after{content:"→";margin-left:12px;color:var(--amb);position:absolute;right:-10px;top:50%;transform:translateY(-50%)}
+
+/* ============================================================
+   CTA BLOCK
+   ============================================================ */
+.cta-block{
+  padding:44px 28px;border-radius:24px;border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(242,163,58,.10),rgba(200,85,61,.05));
+  text-align:center;
+}
+.cta-block .btn{margin:6px 6px 0}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{border-top:1px solid var(--line);padding:44px 0 28px;color:var(--mut);font-size:.9rem;background:rgba(8,10,15,.85);position:relative;z-index:1}
+footer a{text-decoration:none}
+footer a:hover{color:var(--amb)}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px}
+@media(max-width:780px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr}}
+footer h4{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--mut);margin:0 0 12px}
+footer ul{list-style:none;padding:0;margin:0}
+footer li{margin-bottom:6px}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+[data-reveal]{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+[data-reveal].is-visible{opacity:1;transform:translateY(0)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:900px){
+  nav{display:none}
+  nav.open{
+    display:flex;flex-direction:column;
+    position:absolute;top:68px;left:0;right:0;
+    background:rgba(8,10,15,.97);padding:22px;
+    gap:14px;border-bottom:1px solid var(--line);
+  }
+  #menu{display:block;margin-left:auto}
+  .aurora{filter:blur(60px);opacity:.35}
+}
+@media (max-width:620px){
+  section{padding:64px 0}
+  .hero{padding:60px 0 30px;min-height:auto}
+  .code-frag{display:none}
+  #c{opacity:.5}
+  .grid{gap:12px}
+}
+@media (max-width:380px){
+  h1{font-size:1.9rem}
+  .btn{padding:10px 18px;font-size:13px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  #c,.aurora,.grid-lines,.scanline,.code-frag{display:none}
+}
+</style>
+</head>
+<body>
+
+<div id="bg" aria-hidden="true"></div>
+<canvas id="c" aria-hidden="true"></canvas>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="index.html" aria-label="Ikaze Digital home">
+      <img src="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png" alt="IKAZE Digital sunrise logo" width="56" height="44" />
+      <span>IKAZE DIGITAL<small>Digital Technology &amp; Creative Solutions</small></span>
+    </a>
+    <button id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="ecosystem.html" aria-current="page">Ecosystem</a>
+      <a href="portfolio.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn" href="start-project.html">Start a Project</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="hero">
+  <div class="wrap hero__inner">
+    <div data-reveal>
+      <p class="tag">The Ikaze Digital Ecosystem</p>
+      <h1>One Ecosystem.<br/><span style="color:var(--amb)">Many Possibilities.</span></h1>
+      <p class="lead">
+        Technology, creativity, education, digital services and emerging products connected through one growing ecosystem.
+        Explore the technologies, services, platforms and ideas being developed through IKAZE DIGITAL.
+      </p>
+      <div class="hero__cta">
+        <a class="btn" href="#map">Explore the Ecosystem</a>
+        <a class="btn o" href="start-project.html">Start a Project</a>
+        <a class="btn o" href="services.html">Explore Services</a>
+      </div>
+    </div>
+    <div class="eco-visual" data-reveal>
+      <canvas id="ecoCanvas" aria-label="3D ecosystem visualization"></canvas>
+      <span class="eco-visual__label">Ikaze · Ecosystem</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== INTRO ==================== -->
+<section id="intro">
+  <div class="wrap" style="max-width:780px" data-reveal>
+    <p class="tag">Not Just a Company</p>
+    <h2>More Than a Company. A Connected Digital Ecosystem.</h2>
+    <p class="lead">
+      IKAZE DIGITAL is designed to bring together digital services, technology products, learning, creativity,
+      business tools, creator opportunities, AI, cloud infrastructure, marketplaces, experimentation and innovation.
+    </p>
+    <p style="color:var(--mut)">
+      Not every ecosystem component is currently launched. This page is honest about what exists, what is being built,
+      what is planned and what is still an experiment. Every product card carries an accurate status badge.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== STATUS ==================== -->
+<section id="status" style="padding-top:0">
+  <div class="wrap" data-reveal>
+    <p class="tag">How to Read This Page</p>
+    <h2>Product Status System</h2>
+    <div class="grid grid--three" style="margin-top:22px">
+      <div class="card"><span class="st st--available">Available</span><p style="margin-top:12px">Currently usable today.</p></div>
+      <div class="card"><span class="st st--dev">In Development</span><p style="margin-top:12px">Actively being built.</p></div>
+      <div class="card"><span class="st st--soon">Coming Soon</span><p style="margin-top:12px">Planned for future release.</p></div>
+      <div class="card"><span class="st st--concept">Concept</span><p style="margin-top:12px">An early-stage idea or experimental direction.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ECOSYSTEM MAP ==================== -->
+<section id="map">
+  <div class="wrap" data-reveal>
+    <p class="tag">Explore</p>
+    <h2>Explore the IKAZE DIGITAL Ecosystem</h2>
+    <p class="lead">Filter by category, status or audience — or search for what you need.</p>
+
+    <div class="filters">
+      <input class="search" id="search" type="search" placeholder="Search the ecosystem…" aria-label="Search products and services" />
+      <div class="filter-row" role="group" aria-label="Filter by category">
+        <label>Category</label>
+        <button class="chip" data-f="cat" data-v="all" aria-pressed="true">All</button>
+        <button class="chip" data-f="cat" data-v="technology" aria-pressed="false">Technology</button>
+        <button class="chip" data-f="cat" data-v="business" aria-pressed="false">Business</button>
+        <button class="chip" data-f="cat" data-v="people" aria-pressed="false">People</button>
+        <button class="chip" data-f="cat" data-v="education" aria-pressed="false">Education</button>
+        <button class="chip" data-f="cat" data-v="services" aria-pressed="false">Services</button>
+        <button class="chip" data-f="cat" data-v="innovation" aria-pressed="false">Innovation</button>
+      </div>
+      <div class="filter-row" role="group" aria-label="Filter by status">
+        <label>Status</label>
+        <button class="chip" data-f="st" data-v="all" aria-pressed="true">All</button>
+        <button class="chip" data-f="st" data-v="available" aria-pressed="false">Available</button>
+        <button class="chip" data-f="st" data-v="dev" aria-pressed="false">In Development</button>
+        <button class="chip" data-f="st" data-v="soon" aria-pressed="false">Coming Soon</button>
+        <button class="chip" data-f="st" data-v="concept" aria-pressed="false">Concept</button>
+      </div>
+    </div>
+
+    <div class="grid grid--three" id="ecoGrid" style="margin-top:22px">
+
+      <!-- IKAZE AI -->
+      <article class="card" data-cat="technology" data-st="dev" data-keywords="ai intelligence automation assistants">
+        <div class="card__head">
+          <div class="card__icon" aria-hidden="true">✦</div>
+          <span class="st st--dev">In Development</span>
+        </div>
+        <h3>IKAZE AI</h3>
+        <p>Intelligence for people, businesses and digital products. AI assistants, business automation, content assistance, knowledge systems and education support.</p>
+        <div class="card__meta"><strong>Audience:</strong> Individuals · Businesses · Schools · Creators</div>
+        <div class="card__cta"><a class="btn o" href="ikaze-ai.html">Explore Product</a></div>
+      </article>
+
+      <!-- IKAZE CLOUD -->
+      <article class="card" data-cat="technology" data-st="dev" data-keywords="cloud hosting domains deployment storage">
+        <div class="card__head">
+          <div class="card__icon" aria-hidden="true">☁</div>
+          <span class="st st--dev">In Development</span>
+        </div>
+        <h3>IKAZE Cloud</h3>
+        <p>Digital infrastructure for growing products and organizations. Hosting, storage, domains, deployment, backups and managed environments.</p>
+        <div class="card__meta"><strong>Audience:</strong> Startups · Businesses · Developers</div>
+        <div class="card__cta"><a class="btn o" href="ikaze-cloud.html">Explore Product</a></div>
+      </article>
+
+      <!-- IKAZE LABS -->
+      <article class="card" data-cat="innovation" data-st="concept" data-keywords="labs experiments prototypes research creative coding">
+        <div class="card__head">
+          <div class="card__icon" aria-hidden="true">⚗</div>
+          <span class="st st--concept">Concept</span>
+        </div>
+        <h3>IKAZE Labs</h3>
+        <p>Where experiments become possibilities. Prototypes, experimental AI, creative coding, emerging technologies and new product ideas.</p>
+        <div class="card__meta"><strong>Audience:</strong> Innovators · Developers · Researchers</div>
+        <div class="card__cta"><a class="btn o" href="ikaze-labs.html">Explore Product</a></div>
+      </article>
+
+      <!-- IKAZE FORMS -->
+      <article class="card" data-cat="business" data-st="dev" data-keywords="forms surveys registrations data collection workflows">
+        <div class="card__head">
+          <div class="card__icon" aria-hidden="true">▤</div>
+          <span class="st st--dev">In Development</span>
+        </div>
+        <h3>IKAZE Forms</h3>
+        <p>Build forms, collect information and turn responses into useful workflows. Surveys, registrations, applications and feedback systems.</p>
+        <div class="card__meta"><strong>Audience:</strong> Businesses · Schools · Organizations</div>
+        <div class="card__cta"><a class="btn o" href="ikaze-forms.html">Explore Product</a></div>
+      </article>
+
+      <!-- IKAZE CRM -->
+      <article class="card" data-cat="business" data-st="soon" data-keywords="crm contacts leads clients customers">
+        <div class="card__head">
+          <div class="card__icon" aria-hidden="true">◈</div>
+          <span class="st st--soon">Coming Soon</span>
+        </div>
+        <h3>IKAZE CRM</h3>
+        <p>Organize relationships, customers, projects and communication. Contacts, leads, clients, follow-ups and analytics.</p>
+        <div class="card__meta"><strong>Audience:</strong> Businesses · SMEs · Startups</div>
+        <div class="card__cta"><a class="btn o" href="ikaze-crm.html">Explore Product</a></div>
+      </article>
+
+      <!-- IKAZE MARKETPLACE -->
+      <article class="card" data-cat="business" data-st="soon" data-keywords="marketplace digital products services">
+        <div class="card__head">
+          <div class="card__icon" aria-hidden="true">▣</div>
+          <span class="st st--soon">Coming Soon</span>
+        </div>
+        <h3>IKAZE Marketplace</h3>
+        <p>A digital marketplace for products, services and opportunities. Digital products, creative services, technology services and educational resources.</p>
+        <div class="card__meta"><strong>Audience:</strong> Creators · Businesses · Buyers</div>
+        <div class="card__cta"><a class="btn o" href="ikaze-marketplace.html">Explore Product</a></div>
+      </article>
+
+      <!-- IKAZE CREATOR -->
+      <article class="card" data-cat="people" data-st="dev" data-keywords="creator profiles portfolio publishing collaboration monetization">
+        <div class="card__head">
+          <div class="card__icon" aria-hidden="true">◆</div>
+          <span class="st st--dev">In Development</span>
+        </div>
+        <h3>IKAZE Creator</h3>
+        <p>Tools and opportunities for Africa's creators. Profiles, portfolios, publishing, discovery, collaboration and monetization.</p>
+        <div class="card__meta"><strong>Audience:</strong> Creators · Artists · Musicians · Designers</div>
+        <div class="card__cta"><a class="btn o" href="ikaze-creator.html">Explore Product</a></div>
+      </article>
+
+      <!-- IKAZE JOBS -->
+      <article class="card" data-cat="people" data-st="soon" data-keywords="jobs internships freelance careers opportunities">
+        <div class="card__head">
+          <div class="card__icon" aria-hidden="true">◎</div>
+          <span class="st st--soon">Coming Soon</span>
+        </div>
+        <h3>IKAZE Jobs</h3>
+        <p>Connect talent, opportunities and organizations. Jobs, internships, freelance projects, scholarships and career resources.</p>
+        <div class="card__meta"><strong>Audience:</strong> Students · Professionals · Employers</div>
+        <div class="card__cta"><a class="btn o" href="ikaze-jobs.html">Explore Product</a></div>
+      </article>
+
+      <!-- IKAZE ACADEMY -->
+      <article class="card" data-cat="education" data-st="dev" data-keywords="academy learning courses coding design business">
+        <div class="card__head">
+          <div class="card__icon" aria-hidden="true">✎</div>
+          <span class="st st--dev">In Development</span>
+        </div>
+        <h3>IKAZE Academy</h3>
+        <p>Learn practical digital, creative and technology skills. Coding, AI, design, business, digital skills and entrepreneurship.</p>
+        <div class="card__meta"><strong>Audience:</strong> Students · Teachers · Professionals · Creators</div>
+        <div class="card__cta"><a class="btn o" href="ikaze-academy.html">Explore Product</a></div>
+      </article>
+
+      <!-- Digital Services -->
+      <article class="card" data-cat="services" data-st="available" data-keywords="web software mobile ecommerce branding ui ux">
+        <div class="card__head">
+          <div class="card__icon" aria-hidden="true">◇</div>
+          <span class="st st--available">Available</span>
+        </div>
+        <h3>Digital Services</h3>
+        <p>Web development, software, mobile apps, AI &amp; automation, e-commerce, UI/UX, branding, cloud, cybersecurity and consulting.</p>
+        <div class="card__meta"><strong>Audience:</strong> Everyone — individuals to organizations</div>
+        <div class="card__cta"><a class="btn" href="services.html">Explore Services</a></div>
+      </article>
+
+      <!-- Tools -->
+      <article class="card" data-cat="services" data-st="soon" data-keywords="tools free students teachers developers">
+        <div class="card__head">
+          <div class="card__icon" aria-hidden="true">⚙</div>
+          <span class="st st--soon">Coming Soon</span>
+        </div>
+        <h3>Free Digital Tools</h3>
+        <p>Practical free tools for students, teachers, creators, businesses and developers. Only tools that actually exist will appear here.</p>
+        <div class="card__meta"><strong>Audience:</strong> Everyone</div>
+        <div class="card__cta"><a class="btn o" href="tools.html">View Tools</a></div>
+      </article>
+
+      <!-- Opportunities -->
+      <article class="card" data-cat="people" data-st="soon" data-keywords="opportunities grants scholarships fellowships">
+        <div class="card__head">
+          <div class="card__icon" aria-hidden="true">☼</div>
+          <span class="st st--soon">Coming Soon</span>
+        </div>
+        <h3>Opportunities</h3>
+        <p>Jobs, internships, scholarships, competitions, grants and fellowships for the IKAZE community.</p>
+        <div class="card__meta"><strong>Audience:</strong> Students · Professionals · Creators</div>
+        <div class="card__cta"><a class="btn o" href="opportunities.html">View Opportunities</a></div>
+      </article>
+
+      <!-- Insights -->
+      <article class="card" data-cat="education" data-st="soon" data-keywords="insights blog articles technology ai education">
+        <div class="card__head">
+          <div class="card__icon" aria-hidden="true">✧</div>
+          <span class="st st--soon">Coming Soon</span>
+        </div>
+        <h3>IKAZE Insights</h3>
+        <p>Writing on technology, AI, education, entrepreneurship, African digital transformation and creativity.</p>
+        <div class="card__meta"><strong>Audience:</strong> Everyone</div>
+        <div class="card__cta"><a class="btn o" href="insights.html">View Insights</a></div>
+      </article>
+
+    </div>
+    <p style="color:var(--mut);font-size:.85rem;margin-top:18px">Product pages marked <em>coming soon</em> may not yet exist. Links are provided as the intended route.</p>
+  </div>
+</section>
+
+<!-- ==================== SERVICES NODE ==================== -->
+<section id="services-node">
+  <div class="wrap" data-reveal>
+    <p class="tag">Available Today</p>
+    <h2>IKAZE Digital Services</h2>
+    <p class="lead">The services that are live and available through IKAZE DIGITAL right now.</p>
+    <div class="grid grid--three" style="margin-top:22px">
+      <div class="card"><h3>Web Development</h3><p>Corporate websites, portals, platforms and custom web applications.</p></div>
+      <div class="card"><h3>Software Development</h3><p>Business systems, management platforms and custom software.</p></div>
+      <div class="card"><h3>Mobile Applications</h3><p>Android, iOS and cross-platform solutions.</p></div>
+      <div class="card"><h3>AI &amp; Automation</h3><p>AI assistants, automation and intelligent applications.</p></div>
+      <div class="card"><h3>E-Commerce</h3><p>Online stores, marketplaces and business commerce systems.</p></div>
+      <div class="card"><h3>UI/UX Design</h3><p>User interfaces, experience systems and prototypes.</p></div>
+      <div class="card"><h3>Branding</h3><p>Logo design, visual identity and brand systems.</p></div>
+      <div class="card"><h3>Cloud</h3><p>Hosting, deployment and infrastructure guidance.</p></div>
+      <div class="card"><h3>Digital Transformation</h3><p>Helping organizations move from manual processes to digital systems.</p></div>
+    </div>
+    <div style="margin-top:26px">
+      <a class="btn" href="services.html">Explore All Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ARCHITECTURE STACK ==================== -->
+<section id="architecture">
+  <div class="wrap" data-reveal>
+    <p class="tag">Architecture</p>
+    <h2>How the Ecosystem Is Layered</h2>
+    <p class="lead">From people at the top to intelligence underneath — the same ecosystem seen at different levels.</p>
+    <div class="stack">
+      <div class="layer"><span class="layer__n">01</span><b>People</b><span>Learners · Creators · Businesses · Organizations</span></div>
+      <div class="layer"><span class="layer__n">02</span><b>Services</b><span>Web · Software · Mobile · Branding · Consulting</span></div>
+      <div class="layer"><span class="layer__n">03</span><b>Products</b><span>AI · Cloud · Forms · CRM · Creator · Marketplace · Academy</span></div>
+      <div class="layer"><span class="layer__n">04</span><b>Infrastructure</b><span>Cloud · Deployment · Domains · Hosting</span></div>
+      <div class="layer"><span class="layer__n">05</span><b>Data</b><span>Firestore · Authentication · Storage</span></div>
+      <div class="layer"><span class="layer__n">06</span><b>Intelligence</b><span>AI assistance · Automation · Knowledge systems</span></div>
+      <div class="layer"><span class="layer__n">07</span><b>Innovation</b><span>Labs · Experiments · Emerging technology</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== USER JOURNEYS ==================== -->
+<section id="journeys">
+  <div class="wrap" data-reveal>
+    <p class="tag">Journeys</p>
+    <h2>Pick Your Path</h2>
+    <p class="lead">Different people use the ecosystem in different ways. Here's how each type of visitor typically moves through it.</p>
+
+    <div class="journey">
+      <b>For Individuals</b>
+      <div class="journey__steps">
+        <span>Discover</span><i>→</i><span>Learn</span><i>→</i><span>Create</span><i>→</i><span>Build</span><i>→</i><span>Grow</span>
+      </div>
+    </div>
+
+    <div class="journey">
+      <b>For Businesses</b>
+      <div class="journey__steps">
+        <span>Discover</span><i>→</i><span>Consult</span><i>→</i><span>Build</span><i>→</i><span>Manage</span><i>→</i><span>Grow</span>
+      </div>
+    </div>
+
+    <div class="journey">
+      <b>For Creators</b>
+      <div class="journey__steps">
+        <span>Create</span><i>→</i><span>Publish</span><i>→</i><span>Discover</span><i>→</i><span>Collaborate</span><i>→</i><span>Monetize</span>
+      </div>
+    </div>
+
+    <div class="journey">
+      <b>For Students</b>
+      <div class="journey__steps">
+        <span>Learn</span><i>→</i><span>Practice</span><i>→</i><span>Build</span><i>→</i><span>Certify</span><i>→</i><span>Discover Opportunities</span>
+      </div>
+    </div>
+
+    <div class="journey">
+      <b>For Organizations</b>
+      <div class="journey__steps">
+        <span>Plan</span><i>→</i><span>Transform</span><i>→</i><span>Deploy</span><i>→</i><span>Manage</span><i>→</i><span>Scale</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ALREADY ROOTED ==================== -->
+<section id="roots">
+  <div class="wrap" data-reveal>
+    <p class="tag">Already Rooted</p>
+    <h2>The Ecosystem Already Has Roots</h2>
+    <p class="lead">Real projects already exist that this ecosystem is built on.</p>
+    <div class="grid grid--two" style="margin-top:22px">
+      <div class="card">
+        <span class="st st--available">Live · My Project</span>
+        <h3 style="margin-top:12px">Rwanda Tech Learning Hub</h3>
+        <p>A digital learning ecosystem — courses, e-library, E-Teacher, E-Class, opportunities and community.</p>
+        <div class="card__cta"><a class="btn o" href="https://theonesteniyibigira6-hue.github.io/RWANDA-TECH-LEARNING-HUB./" target="_blank" rel="noopener noreferrer">Visit Project</a></div>
+      </div>
+      <div class="card">
+        <span class="st st--available">Live · My Project</span>
+        <h3 style="margin-top:12px">NIYIBIGIRA Theoneste Portfolio</h3>
+        <p>Personal digital identity connecting music, art, technology and education.</p>
+        <div class="card__cta"><a class="btn o" href="https://theonesteniyibigira6-hue.github.io/NIYIBIGIRA-/" target="_blank" rel="noopener noreferrer">Visit Portfolio</a></div>
+      </div>
+      <div class="card">
+        <span class="st st--available">Live · Collaborative</span>
+        <h3 style="margin-top:12px">TTC Muhanga Connect</h3>
+        <p>A collaborative community and education platform for the TTC Muhanga community.</p>
+        <div class="card__cta"><a class="btn o" href="https://ttc-muhanga-connect.vercel.app/#alumni" target="_blank" rel="noopener noreferrer">Visit Project</a></div>
+      </div>
+      <div class="card">
+        <span class="st st--available">Live · Partner</span>
+        <h3 style="margin-top:12px">iMENA Hub</h3>
+        <p>Partner ecosystem project focused on teacher development and educational technology.</p>
+        <div class="card__cta"><a class="btn o" href="https://imena-hub.vercel.app/" target="_blank" rel="noopener noreferrer">Visit Project</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ROADMAP ==================== -->
+<section id="roadmap">
+  <div class="wrap" data-reveal>
+    <p class="tag">Roadmap</p>
+    <h2>The Ecosystem Roadmap</h2>
+    <p class="lead">Where things stand today and where they are going — no fake dates, just phases.</p>
+    <div class="roadmap">
+      <div class="phase">
+        <h3>Now</h3>
+        <ul>
+          <li>Digital Services (Web, Software, Mobile, Branding)</li>
+          <li>Personal Portfolio</li>
+          <li>Rwanda Tech Learning Hub</li>
+          <li>IKAZE DIGITAL main site</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <h3>Building</h3>
+        <ul>
+          <li>IKAZE AI</li>
+          <li>IKAZE Cloud</li>
+          <li>IKAZE Forms</li>
+          <li>IKAZE Creator</li>
+          <li>IKAZE Academy</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <h3>Next</h3>
+        <ul>
+          <li>IKAZE CRM</li>
+          <li>IKAZE Jobs</li>
+          <li>IKAZE Marketplace</li>
+          <li>Free Digital Tools</li>
+          <li>IKAZE Insights</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <h3>Experimenting</h3>
+        <ul>
+          <li>IKAZE Labs</li>
+          <li>Experimental AI</li>
+          <li>Creative coding</li>
+          <li>Emerging interfaces</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PRINCIPLES ==================== -->
+<section id="principles">
+  <div class="wrap" data-reveal>
+    <p class="tag">Principles</p>
+    <h2>Built Around Five Principles</h2>
+    <div class="principles">
+      <div class="principle"><span class="n">01</span><h3>Useful</h3><p>Technology should solve real problems.</p></div>
+      <div class="principle"><span class="n">02</span><h3>Accessible</h3><p>Digital products should be usable by more people, on more devices.</p></div>
+      <div class="principle"><span class="n">03</span><h3>Connected</h3><p>Products should work together where appropriate — integration is planned over time.</p></div>
+      <div class="principle"><span class="n">04</span><h3>Creative</h3><p>Technology and creativity should reinforce each other.</p></div>
+      <div class="principle"><span class="n">05</span><h3>African</h3><p>The ecosystem reflects African users, creators, businesses and opportunities.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== AFRICA ==================== -->
+<section id="africa">
+  <div class="wrap" style="max-width:780px;text-align:center" data-reveal>
+    <p class="tag">From Rwanda</p>
+    <h2>Rwanda → Africa → The World</h2>
+    <p class="lead" style="margin:0 auto">Built from Rwanda. Designed for wider possibilities. No physical offices claimed abroad — this is a digital-first ecosystem reaching outward from one place.</p>
+  </div>
+</section>
+
+<!-- ==================== FINAL CTA ==================== -->
+<section id="final" style="padding-bottom:6rem">
+  <div class="wrap" data-reveal>
+    <div class="cta-block">
+      <p class="tag">Your Turn</p>
+      <h2>Your Idea Can Become Part of the Ecosystem.</h2>
+      <p class="lead" style="margin-inline:auto">
+        Whether you're building a business, learning a skill, creating something new, or solving a difficult problem — there's a place to begin.
+      </p>
+      <div style="margin-top:24px">
+        <a class="btn" href="start-project.html">Start a Project</a>
+        <a class="btn o" href="services.html">Explore Services</a>
+        <a class="btn o" href="contact.html">Contact IKAZE DIGITAL</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p><strong>IKAZE DIGITAL</strong><br/>Digital Technology &amp; Creative Solutions<br/>Building Africa's Digital Future</p>
+        <p style="font-size:.8rem">Built from Rwanda. Designed for wider possibilities.</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="ecosystem.html">Ecosystem</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Ecosystem</h4>
+        <ul>
+          <li><a href="ikaze-ai.html">IKAZE AI</a></li>
+          <li><a href="ikaze-cloud.html">IKAZE Cloud</a></li>
+          <li><a href="ikaze-forms.html">IKAZE Forms</a></li>
+          <li><a href="ikaze-crm.html">IKAZE CRM</a></li>
+          <li><a href="ikaze-creator.html">IKAZE Creator</a></li>
+          <li><a href="ikaze-jobs.html">IKAZE Jobs</a></li>
+          <li><a href="ikaze-marketplace.html">IKAZE Marketplace</a></li>
+          <li><a href="ikaze-academy.html">IKAZE Academy</a></li>
+          <li><a href="ikaze-labs.html">IKAZE Labs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>NIYIBIGIRA THEONESTE<br/>Founder &amp; Owner — IKAZE DIGITAL</p>
+        <p>
+          <a href="mailto:theonesteniyibigira6@gmail.com">theonesteniyibigira6@gmail.com</a><br/>
+          <a href="tel:+250794204258">+250 794 204 258</a>
+        </p>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--mut);font-size:.8rem">
+      <small>© <span id="year"></span> Ikaze Digital. All rights reserved.</small>
+    </div>
+  </div>
+</footer>
+
+<script>
+(()=>{'use strict';
+
+/* ============ YEAR ============ */
+const yEl = document.getElementById('year');
+if (yEl) yEl.textContent = new Date().getFullYear();
+
+/* ============ FLOATING CODE FRAGMENTS ============ */
+(()=>{
+  if (matchMedia('(max-width:620px)').matches) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const frags = ['<node>','ecosystem()','connect()','=>{}','{link:true}','import','await fetch()','<canvas>','WebGL','ikaze.eco','//build','AI.init()','cloud.sync()','graph.link()','return true;'];
+  for (let i=0;i<12;i++){
+    const el = document.createElement('span');
+    el.className = 'code-frag';
+    el.textContent = frags[Math.floor(Math.random()*frags.length)];
+    el.style.left = (Math.random()*100) + '%';
+    el.style.bottom = '-40px';
+    el.style.animationDuration = (14 + Math.random()*18) + 's';
+    el.style.animationDelay = (-Math.random()*20) + 's';
+    el.style.opacity = (0.25 + Math.random()*0.5).toFixed(2);
+    document.body.appendChild(el);
+  }
+})();
+
+/* ============ REVEAL ON SCROLL ============ */
+(()=>{
+  const els = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(e=>e.classList.add('is-visible')); return; }
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('is-visible'); io.unobserve(en.target);} });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.08});
+  els.forEach(el=>io.observe(el));
+})();
+
+/* ============ MOBILE NAV ============ */
+(()=>{
+  const t = document.getElementById('menu');
+  const n = document.getElementById('nav');
+  if (!t || !n) return;
+  t.addEventListener('click', ()=>{
+    const open = n.classList.toggle('open');
+    t.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('lock', open);
+  });
+  n.addEventListener('click', e => {
+    if (e.target.closest('a')) {
+      n.classList.remove('open');
+      t.setAttribute('aria-expanded','false');
+      document.body.classList.remove('lock');
+    }
+  });
+})();
+
+/* ============ FILTERS + SEARCH ============ */
+(()=>{
+  const grid = document.getElementById('ecoGrid');
+  if (!grid) return;
+  const cards = Array.from(grid.querySelectorAll('.card'));
+  const chips = Array.from(document.querySelectorAll('.chip'));
+  const search = document.getElementById('search');
+
+  const state = { cat: 'all', st: 'all', q: '' };
+
+  const apply = () => {
+    const q = state.q.trim().toLowerCase();
+    cards.forEach(card => {
+      const cat = card.dataset.cat || '';
+      const st = card.dataset.st || '';
+      const kw = (card.dataset.keywords || '') + ' ' + (card.textContent || '');
+      const matchesCat = state.cat === 'all' || cat === state.cat;
+      const matchesSt = state.st === 'all' || st === state.st;
+      const matchesQ = !q || kw.toLowerCase().includes(q);
+      card.style.display = (matchesCat && matchesSt && matchesQ) ? '' : 'none';
+    });
+  };
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const f = chip.dataset.f;
+      const v = chip.dataset.v;
+      if (!f || !v) return;
+      // Reset siblings in the same filter row
+      chips.filter(c => c.dataset.f === f).forEach(c => c.setAttribute('aria-pressed','false'));
+      chip.setAttribute('aria-pressed','true');
+      state[f] = v;
+      apply();
+    });
+  });
+
+  if (search) {
+    search.addEventListener('input', () => {
+      state.q = search.value || '';
+      apply();
+    });
+  }
+})();
+
+/* ============ 3D ECOSYSTEM VISUAL ============ */
+(()=>{
+  const canvas = document.getElementById('ecoCanvas');
+  if (!canvas) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const test = (()=>{try{const c=document.createElement('canvas');return !!(window.WebGLRenderingContext&&(c.getContext('webgl2')||c.getContext('webgl')));}catch{return false;}})();
+  if (!test) return;
+
+  const s = document.createElement('script');
+  s.type = 'module';
+  s.textContent = `
+    import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+
+    const canvas = document.getElementById('ecoCanvas');
+    const parent = canvas.parentElement;
+    const isSmall = matchMedia('(max-width:700px)').matches;
+
+    const renderer = new THREE.WebGLRenderer({canvas, antialias:!isSmall, alpha:true, powerPreference:'high-performance'});
+    renderer.setPixelRatio(Math.min(devicePixelRatio, isSmall ? 1.5 : 2));
+    renderer.setClearColor(0x000000, 0);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 200);
+    camera.position.set(0, 0, 9);
+
+    scene.add(new THREE.AmbientLight(0xf2a33a, 0.4));
+    const key = new THREE.DirectionalLight(0xf2a33a, 1.0); key.position.set(5, 6, 4); scene.add(key);
+    const rim = new THREE.DirectionalLight(0x20603d, 0.7); rim.position.set(-6, -2, -5); scene.add(rim);
+
+    // Center node
+    const centerGeo = new THREE.IcosahedronGeometry(0.75, 2);
+    const centerMat = new THREE.MeshStandardMaterial({
+      color:0xf2a33a, emissive:0xf2a33a, emissiveIntensity:.35,
+      roughness:.4, metalness:.35
+    });
+    const center = new THREE.Mesh(centerGeo, centerMat);
+    scene.add(center);
+
+    // Orbiting nodes (products)
+    const products = ['AI','Cloud','Forms','CRM','Creator','Jobs','Market','Academy','Labs','Services'];
+    const nodes = [];
+    const nodeGeo = new THREE.SphereGeometry(0.14, 20, 20);
+
+    products.forEach((name, i) => {
+      const color = i % 3 === 0 ? 0x00A1DE : i % 3 === 1 ? 0x20603D : 0xFAD201;
+      const mat = new THREE.MeshStandardMaterial({
+        color, emissive:color, emissiveIntensity:.5, roughness:.35, metalness:.4
+      });
+      const mesh = new THREE.Mesh(nodeGeo, mat);
+      const angle = (i / products.length) * Math.PI * 2;
+      const radius = 2.6;
+      const y = Math.sin(i * 1.7) * 0.9;
+      mesh.userData = { angle, radius, y, speed: 0.15 + Math.random()*0.1 };
+      mesh.position.set(Math.cos(angle)*radius, y, Math.sin(angle)*radius);
+      scene.add(mesh);
+      nodes.push(mesh);
+
+      // Connection line from center
+      const lineGeo = new THREE.BufferGeometry().setFromPoints([
+        new THREE.Vector3(0,0,0),
+        mesh.position.clone()
+      ]);
+      const lineMat = new THREE.LineBasicMaterial({
+        color, transparent:true, opacity:.28,
+        blending:THREE.AdditiveBlending
+      });
+      const line = new THREE.Line(lineGeo, lineMat);
+      line.userData = { mesh };
+      scene.add(line);
+      nodes[nodes.length - 1].userData.line = line;
+    });
+
+    // Ambient particles (dust)
+    const pCount = isSmall ? 80 : 180;
+    const pGeo = new THREE.BufferGeometry();
+    const pPos = new Float32Array(pCount * 3);
+    for (let i=0;i<pCount;i++){
+      const r = 3 + Math.random() * 5;
+      const t = Math.random() * Math.PI * 2;
+      const p = Math.acos(2*Math.random()-1);
+      pPos[i*3]   = r*Math.sin(p)*Math.cos(t);
+      pPos[i*3+1] = r*Math.sin(p)*Math.sin(t);
+      pPos[i*3+2] = r*Math.cos(p);
+    }
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+    const pMat = new THREE.PointsMaterial({
+      color:0xf2a33a, size:0.03, transparent:true, opacity:.5,
+      depthWrite:false, blending:THREE.AdditiveBlending
+    });
+    const dust = new THREE.Points(pGeo, pMat);
+    scene.add(dust);
+
+    // Sizing — track container
+    function resize() {
+      const w = parent.clientWidth || 400;
+      const h = parent.clientHeight || 400;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    if ('ResizeObserver' in window) {
+      new ResizeObserver(resize).observe(parent);
+    } else {
+      addEventListener('resize', resize);
+    }
+
+    // Pointer parallax (desktop only)
+    let mx=0, my=0, tx=0, ty=0;
+    if (!isSmall) {
+      parent.addEventListener('pointermove', e => {
+        const r = parent.getBoundingClientRect();
+        tx = ((e.clientX - r.left) / r.width - 0.5) * 0.8;
+        ty = ((e.clientY - r.top) / r.height - 0.5) * 0.8;
+      });
+    }
+
+    // Pause when hidden
+    let running = true;
+    document.addEventListener('visibilitychange', () => { running = !document.hidden; if (running) loop(); });
+
+    const clock = new THREE.Clock();
+    function loop() {
+      if (!running) return;
+      requestAnimationFrame(loop);
+      const t = clock.getElapsedTime();
+
+      // Rotate center
+      center.rotation.y += 0.003;
+      center.rotation.x += 0.0015;
+
+      // Orbit nodes
+      nodes.forEach((node, i) => {
+        const d = node.userData;
+        const angle = d.angle + t * d.speed;
+        node.position.set(Math.cos(angle) * d.radius, d.y + Math.sin(t * 0.6 + i) * 0.12, Math.sin(angle) * d.radius);
+
+        // Update line endpoint
+        if (d.line) {
+          const arr = d.line.geometry.attributes.position.array;
+          arr[3] = node.position.x;
+          arr[4] = node.position.y;
+          arr[5] = node.position.z;
+          d.line.geometry.attributes.position.needsUpdate = true;
+        }
+      });
+
+      // Rotate whole scene slowly + pointer parallax
+      mx += (tx - mx) * 0.06;
+      my += (ty - my) * 0.06;
+      scene.rotation.y = mx;
+      scene.rotation.x = my;
+
+      // Dust rotation
+      dust.rotation.y += 0.0008;
+
+      renderer.render(scene, camera);
+    }
+    loop();
+  `;
+  document.body.appendChild(s);
+})();
+
+/* ============================================================
+   SOURCE-CODE DETERRENTS (not real security)
+   ============================================================ */
+document.addEventListener('contextmenu', e => {
+  const t = e.target;
+  if (t.matches?.('input,textarea,select,[contenteditable="true"]')) return;
+  e.preventDefault();
+});
+
+document.addEventListener('keydown', e => {
+  const k = e.key.toLowerCase();
+  const block =
+    k === 'f12' ||
+    (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+    (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+    (e.ctrlKey && ['u','s'].includes(k)) ||
+    (e.metaKey && ['u','s'].includes(k));
+  if (block) { e.preventDefault(); e.stopPropagation(); return false; }
+}, true);
+
+/* DevTools warning toast */
+(()=>{
+  const toast = document.createElement('div');
+  toast.className = 'devtools-warning';
+  toast.setAttribute('role','alert');
+  toast.setAttribute('aria-live','polite');
+  toast.innerHTML = '<span class="devtools-warning__icon">!</span><span>Developer tools detected — this page is protected.</span>';
+  document.body.appendChild(toast);
+
+  let visible = false, warnUntil = 0;
+  const show = () => { warnUntil = Date.now() + 5000; if (!visible) { visible = true; toast.classList.add('is-visible'); } };
+  const hide = () => { if (visible && Date.now() > warnUntil) { visible = false; toast.classList.remove('is-visible'); } };
+
+  setInterval(() => {
+    const w = window.outerWidth - window.innerWidth;
+    const h = window.outerHeight - window.innerHeight;
+    if (w > 160 || h > 160) show();
+    hide();
+  }, 900);
+
+  document.addEventListener('keydown', e => {
+    const k = e.key.toLowerCase();
+    if (k === 'f12' ||
+        (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+        (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+        (e.ctrlKey && ['u','s'].includes(k)) ||
+        (e.metaKey && ['u','s'].includes(k))) show();
+  }, true);
+})();
+
+/* Console deterrence (production only) */
+if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+  (() => { let n = 0; setInterval(() => { n++; if (n > 1) { console.clear(); n = 0; } }, 2000); })();
+}
+console.log('%c⚠️ STOP', 'color:#ff3b3b;font-size:32px;font-weight:900');
+console.log('%cNo secrets are stored here. If someone told you to paste something here, it is a scam.', 'font-size:13px;color:#ff9');
+
+})();
+</script>
+
+</body>
+</html>
