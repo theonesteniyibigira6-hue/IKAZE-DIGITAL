@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>IKAZE Payments — Secure. Simple. Connected. Global. | IKAZE DIGITAL</title>
+<meta name="description" content="Pay securely for IKAZE services, courses, cloud resources, digital products and subscriptions through one connected payment experience." />
+<meta name="theme-color" content="#080A0F" />
+<link rel="canonical" href="https://ikaze-digital.vercel.app/payments.html" />
+<meta name="robots" content="noindex,nofollow" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><path d='M6 40 24 6l18 34-9-6-9-14-9 14z' fill='%23f2a33a'/><path d='M24 6 42 40l-9-6z' fill='%23c8553d'/><circle cx='24' cy='6' r='4' fill='%23FAD201'/></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --bg:#080A0F; --bg2:#0B1017; --bg3:#10151D;
+  --ink:#f4efe8; --mut:#a9a39b;
+  --amb:#f2a33a; --ter:#c8553d;
+  --blue:#00A1DE; --grn:#20603D; --yel:#FAD201;
+  --card:rgba(255,255,255,.04);
+  --card2:rgba(255,255,255,.06);
+  --line:rgba(255,255,255,.10);
+  --line2:rgba(255,255,255,.16);
+  --radius:14px;
+  --radius-lg:20px;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sidebar-w:250px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(80px + env(safe-area-inset-top,0px))}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.55;
+  overflow-x:hidden;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  font-size:14px;
+  -webkit-font-smoothing:antialiased;
+}
+body.lock{overflow:hidden}
+input,textarea,select,button{-webkit-user-select:text;user-select:text}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+button{font:inherit;cursor:pointer}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px;font-size:.88em;font-family:var(--mono)}
+
+/* ============================================================
+   BACKGROUND — clean, no text elements
+   ============================================================ */
+#bg{
+  position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(60% 50% at 20% 15%,rgba(0,161,222,.18),transparent 70%),
+    radial-gradient(50% 45% at 85% 80%,rgba(32,96,61,.14),transparent 70%),
+    radial-gradient(40% 40% at 50% 50%,rgba(242,163,58,.05),transparent 70%),
+    linear-gradient(#10151D,#080A0F);
+}
+#c{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+
+.aurora{position:fixed;border-radius:50%;filter:blur(100px);opacity:.36;mix-blend-mode:screen;pointer-events:none;z-index:-1}
+.aurora-1{width:520px;height:520px;top:-140px;left:-100px;background:radial-gradient(circle,var(--blue),transparent 70%);animation:float1 24s ease-in-out infinite}
+.aurora-2{width:600px;height:600px;bottom:-200px;right:-120px;background:radial-gradient(circle,var(--grn),transparent 70%);animation:float2 28s ease-in-out infinite}
+.aurora-3{width:420px;height:420px;top:40%;left:50%;background:radial-gradient(circle,var(--yel),transparent 70%);opacity:.12;animation:float3 32s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(60px,50px) scale(1.12)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-60px,-70px) scale(1.15)}}
+@keyframes float3{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-40%,-60%) scale(1.2)}}
+
+.grid-lines{
+  position:fixed;inset:0;opacity:.08;pointer-events:none;z-index:-1;
+  background-image:
+    linear-gradient(rgba(0,161,222,.30) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,161,222,.30) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(circle at 50% 40%,#000 0%,transparent 75%);
+  -webkit-mask-image:radial-gradient(circle at 50% 40%,#000 0%,transparent 75%);
+  animation:gridMove 40s linear infinite;
+}
+@keyframes gridMove{0%{background-position:0 0,0 0}100%{background-position:64px 64px,64px 64px}}
+
+.scanline{
+  position:fixed;left:0;right:0;height:2px;z-index:-1;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--blue),transparent);
+  opacity:.22;filter:blur(1px);
+  animation:scanSweep 9s linear infinite;
+}
+@keyframes scanSweep{0%{top:0}100%{top:100%}}
+
+/* ============================================================
+   DEVTOOLS TOAST — non-blocking warning only
+   ============================================================ */
+.devtools-warning{
+  position:fixed;top:0;left:50%;transform:translate(-50%,-140%);
+  z-index:9999;padding:.85rem 1.4rem;
+  background:linear-gradient(120deg,rgba(200,85,61,.95),rgba(150,40,20,.95));
+  color:#fff;font-weight:600;font-size:.9rem;
+  border-radius:0 0 14px 14px;letter-spacing:.03em;
+  box-shadow:0 14px 40px -10px rgba(200,85,61,.6);
+  display:flex;align-items:center;gap:.7rem;
+  transition:transform .5s cubic-bezier(.2,.7,.2,1);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  max-width:calc(100% - 24px);pointer-events:none;
+}
+.devtools-warning.is-visible{transform:translate(-50%,0)}
+.devtools-warning__icon{
+  width:22px;height:22px;border-radius:50%;
+  background:rgba(255,255,255,.18);
+  display:grid;place-items:center;font-size:13px;flex-shrink:0;
+}
+@media (max-width:620px){.devtools-warning{font-size:.78rem;padding:.7rem 1rem}}
+
+/* ============================================================
+   LOADER
+   ============================================================ */
+#loader{
+  position:fixed;inset:0;z-index:8000;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:var(--bg);gap:22px;
+  transition:opacity .4s ease,visibility .4s;
+}
+#loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-spinner{
+  width:54px;height:54px;border-radius:50%;
+  border:3px solid rgba(255,255,255,.1);
+  border-top-color:var(--blue);
+  border-right-color:var(--yel);
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loader-text{
+  color:var(--mut);font-size:.82rem;letter-spacing:.3em;
+  text-transform:uppercase;font-weight:500;text-align:center;padding:0 20px;
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.wrap--narrow{max-width:820px}
+
+header{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+  backdrop-filter:blur(14px);
+  background:rgba(8,10,15,.78);
+  border-bottom:1px solid var(--line);
+}
+.bar{display:flex;align-items:center;gap:16px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.08em;font-size:14px}
+.logo img{height:44px;width:auto;max-width:56px;object-fit:contain}
+.logo small{display:block;font-weight:500;letter-spacing:0;font-size:10px;color:var(--mut)}
+nav{margin-left:auto;display:flex;gap:14px;align-items:center}
+nav a{text-decoration:none;font-size:13.5px;color:var(--mut);transition:color .2s}
+nav a:hover,nav a[aria-current]{color:var(--blue)}
+
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 22px;border-radius:999px;
+  background:var(--blue);color:#fff;font-weight:700;text-decoration:none;
+  border:0;cursor:pointer;font-size:14px;
+  transition:transform .2s,box-shadow .2s;
+  min-height:44px;white-space:nowrap;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,161,222,.35)}
+.btn.o{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.o:hover{border-color:var(--blue);color:var(--blue)}
+.btn.amb{background:var(--amb);color:#1a0f05}
+.btn.amb:hover{box-shadow:0 8px 28px rgba(242,163,58,.35)}
+.btn.sm{padding:10px 16px;font-size:13px;min-height:40px}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+
+:focus-visible{outline:3px solid var(--yel);outline-offset:2px;border-radius:8px}
+
+#menu{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:12px 16px;min-height:44px;cursor:pointer}
+
+section{padding:70px 0;position:relative;z-index:1}
+h1{font-size:clamp(2rem,6vw,3.6rem);line-height:1.05;margin:0 0 16px;letter-spacing:-.02em}
+h2{font-size:clamp(1.5rem,3.6vw,2.3rem);margin:0 0 12px;letter-spacing:-.01em}
+h3{font-size:1.1rem;margin:6px 0}
+h4{font-size:1rem;margin:14px 0 6px;color:var(--blue)}
+p{margin:0 0 14px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin-bottom:6px}
+.tag{color:var(--blue);font-weight:600;letter-spacing:.06em;font-size:.82rem;text-transform:uppercase}
+.lead{color:var(--mut);max-width:680px;font-size:clamp(1rem,1.4vw,1.12rem)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{padding:60px 0 40px;min-height:80vh;display:flex;align-items:center}
+.hero__inner{display:grid;gap:40px;grid-template-columns:1fr;align-items:center;width:100%}
+@media(min-width:900px){.hero__inner{grid-template-columns:1.1fr .9fr}}
+.hero__cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+
+.payment-visual{
+  position:relative;aspect-ratio:1/1;max-width:500px;width:100%;margin:0 auto;
+  border-radius:24px;overflow:hidden;
+  border:1px solid var(--line);
+  background:radial-gradient(circle at 50% 50%,rgba(0,161,222,.10),transparent 60%),var(--card);
+  backdrop-filter:blur(10px);
+}
+.payment-visual canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.payment-visual__label{
+  position:absolute;bottom:14px;left:0;right:0;text-align:center;
+  font-size:.72rem;color:var(--mut);letter-spacing:.14em;text-transform:uppercase;
+  pointer-events:none;z-index:2;
+}
+
+/* ============================================================
+   STATUS BADGES
+   ============================================================ */
+.st{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:4px 10px;border-radius:99px;border:1px solid;white-space:nowrap;
+}
+.st::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+.st--available{color:#3ddc84;border-color:rgba(61,220,132,.4);background:rgba(61,220,132,.08)}
+.st--dev{color:#00A1DE;border-color:rgba(0,161,222,.4);background:rgba(0,161,222,.08)}
+.st--soon{color:#f2a33a;border-color:rgba(242,163,58,.4);background:rgba(242,163,58,.08)}
+.st--concept{color:#9aa0a6;border-color:rgba(154,160,166,.35);background:rgba(154,160,166,.06)}
+.st--notconfig{color:#c8553d;border-color:rgba(200,85,61,.45);background:rgba(200,85,61,.10)}
+
+/* ============================================================
+   SECTION HEADS
+   ============================================================ */
+.section-head{margin-bottom:32px}
+.section-head--center{text-align:center;max-width:760px;margin-inline:auto}
+
+/* ============================================================
+   CARDS / GRIDS
+   ============================================================ */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.grid--two{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.grid--three{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.grid--four{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;backdrop-filter:blur(8px);
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+  display:flex;flex-direction:column;
+}
+.card:hover{transform:translateY(-5px);border-color:rgba(0,161,222,.4);box-shadow:0 14px 34px rgba(0,85,120,.18)}
+.card__icon{
+  width:48px;height:48px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(0,161,222,.15),rgba(32,96,61,.08));
+  border:1px solid rgba(0,161,222,.25);
+  font-size:22px;color:var(--blue);margin-bottom:14px;
+  transition:transform .4s ease;
+}
+.card:hover .card__icon{transform:rotate(-5deg) scale(1.05)}
+.card h3{margin:6px 0}
+.card p{color:var(--mut);font-size:.93rem;flex-grow:1;margin:0}
+
+/* Feature card */
+.feature-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;display:flex;flex-direction:column;
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+}
+.feature-card:hover{transform:translateY(-5px);border-color:rgba(0,161,222,.5);box-shadow:0 14px 34px rgba(0,85,120,.18)}
+.feature-card__head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}
+.feature-card__icon{
+  width:52px;height:52px;border-radius:14px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(0,161,222,.15),rgba(32,96,61,.08));
+  border:1px solid rgba(0,161,222,.28);
+  font-size:24px;color:var(--blue);flex-shrink:0;
+}
+.feature-card h3{font-size:1.1rem;margin:0}
+.feature-card__tagline{color:var(--blue);font-weight:600;font-size:.85rem;margin:2px 0 8px}
+.feature-card p{color:var(--mut);font-size:.92rem;flex-grow:1;margin:0 0 16px}
+.feature-card__cta{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap}
+
+/* Architecture diagram */
+.arch{
+  margin-top:26px;padding:26px;border-radius:var(--radius-lg);
+  border:1px solid var(--line);background:var(--bg2);
+  overflow:hidden;
+}
+.arch__flow{
+  display:grid;gap:8px;align-items:center;justify-items:center;
+  font-family:var(--mono);font-size:12px;
+}
+.arch__node{
+  padding:10px 18px;border-radius:10px;
+  background:rgba(0,161,222,.08);border:1px solid rgba(0,161,222,.28);
+  color:var(--blue);font-weight:600;letter-spacing:.05em;
+  text-align:center;width:100%;max-width:280px;
+}
+.arch__arrow{color:var(--blue);font-size:1.1rem;font-weight:700}
+.arch__split{
+  display:grid;gap:8px;grid-template-columns:repeat(3,1fr);
+  width:100%;max-width:560px;
+}
+@media(max-width:520px){.arch__split{grid-template-columns:1fr}}
+.arch__leaf{
+  padding:10px 14px;border-radius:10px;
+  background:rgba(32,96,61,.10);border:1px solid rgba(32,96,61,.32);
+  color:#7be2a8;font-weight:600;font-size:11px;text-align:center;
+}
+
+/* Pricing */
+.price-card{
+  padding:28px;border-radius:var(--radius-lg);
+  border:1px solid var(--line);background:var(--card);
+  display:flex;flex-direction:column;
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+}
+.price-card:hover{transform:translateY(-5px);border-color:rgba(0,161,222,.5);box-shadow:0 20px 50px -20px rgba(0,161,222,.35)}
+.price-card--featured{border-color:rgba(242,163,58,.55);box-shadow:0 0 0 1px rgba(242,163,58,.2) inset}
+.price-card__label{
+  display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--amb);margin-bottom:10px;
+}
+.price-card h3{font-size:1.35rem;margin:4px 0 6px}
+.price-card__for{color:var(--mut);font-size:.88rem;margin:0 0 14px}
+.price-card__features{list-style:none;padding:0;margin:14px 0;display:grid;gap:8px;font-size:.9rem}
+.price-card__features li{padding-left:22px;position:relative;color:var(--ink)}
+.price-card__features li::before{content:"✓";position:absolute;left:0;top:0;color:var(--blue);font-weight:700}
+.price-card__cta{margin-top:auto;padding-top:16px}
+
+/* FAQ */
+.faq{margin-top:26px;display:grid;gap:10px}
+.faq__item{border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden}
+.faq__q{
+  width:100%;text-align:left;padding:18px 22px;background:none;border:0;color:var(--ink);
+  font-size:1rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;gap:14px;align-items:center;
+}
+.faq__q::after{content:"+";color:var(--blue);font-size:1.4rem;line-height:1;transition:transform .3s}
+.faq__item[aria-expanded=true] .faq__q::after{transform:rotate(45deg)}
+.faq__a{padding:0 22px 18px;color:var(--mut);font-size:.94rem;display:none}
+.faq__item[aria-expanded=true] .faq__a{display:block}
+
+/* CTA block */
+.cta-block{
+  padding:48px 28px;border-radius:24px;border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(0,161,222,.12),rgba(32,96,61,.06));
+  text-align:center;
+}
+.cta-block .btn{margin:6px 4px 0}
+
+/* Honest banner */
+.honest-banner{
+  margin-top:26px;padding:16px 20px;border-radius:12px;
+  background:rgba(242,163,58,.06);border:1px solid rgba(242,163,58,.24);
+  font-size:.88rem;color:var(--mut);max-width:680px;
+}
+.honest-banner strong{color:var(--amb)}
+
+/* ============================================================
+   DASHBOARD SHELL (shown after auth when Firebase is configured)
+   ============================================================ */
+.dash{
+  display:none;min-height:100vh;
+}
+.dash.ready{display:block}
+.dash__layout{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:900px){
+  .dash__layout{grid-template-columns:var(--sidebar-w) 1fr;gap:28px;padding-top:24px}
+}
+.dash__nav{
+  display:none;
+  position:sticky;top:calc(80px + env(safe-area-inset-top,0px));
+  align-self:start;
+  max-height:calc(100vh - 100px);
+  overflow-y:auto;
+  padding:14px 0;
+  border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--card);
+}
+@media(min-width:900px){.dash__nav{display:block}}
+.dash__nav-group{padding:8px 14px 4px;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--mut);font-weight:700}
+.dash__nav-item{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;color:var(--mut);font-size:13.5px;
+  background:transparent;border:0;text-align:left;width:100%;
+  transition:background .15s,color .15s;
+}
+.dash__nav-item:hover{background:rgba(255,255,255,.04);color:var(--ink)}
+.dash__nav-item.on{background:rgba(0,161,222,.12);color:var(--blue);font-weight:600}
+.dash__nav-item__icon{width:18px;text-align:center;flex-shrink:0}
+
+.dash__main{min-width:0}
+.dash__panel{display:none}
+.dash__panel.on{display:block}
+.dash__head{
+  display:flex;flex-wrap:wrap;align-items:flex-end;
+  justify-content:space-between;gap:14px;margin-bottom:22px;
+}
+.dash__head h1{font-size:1.5rem;margin:0}
+.dash__head p{color:var(--mut);margin:4px 0 0;font-size:.9rem}
+
+/* Dashboard tiles */
+.tile-row{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));margin-bottom:20px}
+.tile{
+  padding:16px;border-radius:var(--radius);
+  background:var(--card);border:1px solid var(--line);
+}
+.tile__label{font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);margin-bottom:6px;font-weight:600}
+.tile__value{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.tile__value.muted{font-size:1rem;color:var(--mut);font-weight:600}
+.tile__sub{font-size:11.5px;color:var(--mut);margin-top:4px}
+
+/* Empty state */
+.empty{
+  padding:52px 24px;text-align:center;
+  border:1px dashed var(--line);border-radius:var(--radius);
+}
+.empty__icon{
+  width:56px;height:56px;border-radius:50%;
+  background:rgba(0,161,222,.08);color:var(--blue);
+  display:grid;place-items:center;margin:0 auto 14px;font-size:22px;
+}
+.empty h3{margin:0 0 6px;font-size:1.02rem}
+.empty p{color:var(--mut);font-size:.9rem;margin:0 0 18px;max-width:460px;margin-inline:auto}
+
+/* Skeleton */
+.skeleton{padding:20px;border-radius:var(--radius);background:var(--card);border:1px solid var(--line)}
+.sk-line{
+  height:12px;border-radius:6px;
+  background:linear-gradient(90deg,rgba(255,255,255,.04),rgba(255,255,255,.09),rgba(255,255,255,.04));
+  background-size:200% 100%;animation:shimmer 1.4s linear infinite;margin-bottom:10px;
+}
+.sk-line.w40{width:40%}.sk-line.w60{width:60%}.sk-line.w80{width:80%}
+.sk-line.h20{height:20px}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+.modal{
+  position:fixed;inset:0;z-index:9100;
+  display:none;align-items:flex-start;justify-content:center;
+  padding:20px;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);
+  overflow-y:auto;
+}
+.modal.open{display:flex}
+.modal__box{
+  background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius-lg);
+  max-width:600px;width:100%;padding:28px;position:relative;
+  box-shadow:0 30px 80px rgba(0,0,0,.7);margin:auto;
+}
+.modal__close{
+  position:absolute;top:14px;right:14px;
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(255,255,255,.05);border:1px solid var(--line);
+  color:var(--ink);display:grid;place-items:center;font-size:16px;
+}
+.modal__close:hover{background:rgba(0,161,222,.15);color:var(--blue)}
+.modal h3{margin:0 0 6px;font-size:1.3rem;padding-right:44px}
+.modal__sub{color:var(--mut);font-size:.9rem;margin:0 0 20px}
+
+/* Auth tabs */
+.auth-tabs{display:flex;gap:4px;padding:4px;border-radius:10px;background:rgba(255,255,255,.03);margin-bottom:20px}
+.auth-tab{
+  flex:1;padding:10px;border-radius:8px;background:transparent;border:0;
+  color:var(--mut);font-size:13px;font-weight:600;transition:all .2s;
+}
+.auth-tab.on{background:var(--blue);color:#fff}
+
+/* Forms */
+.form{display:grid;gap:14px}
+.form .row{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+@media(max-width:520px){.form .row{grid-template-columns:1fr}}
+.form label{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:6px}
+.form input,.form select,.form textarea{
+  width:100%;padding:13px 16px;border-radius:10px;
+  border:1px solid var(--line);background:rgba(255,255,255,.04);
+  color:var(--ink);font-size:14px;min-height:48px;
+}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,161,222,.12)}
+.form select option{background:var(--bg2);color:var(--ink)}
+.form button[type=submit]{justify-self:start}
+.form .consent{display:flex;gap:10px;align-items:flex-start;font-size:.85rem;color:var(--mut)}
+.form .consent input{width:auto;min-height:auto;margin-top:3px;accent-color:var(--blue)}
+.form-status{font-size:.85rem;min-height:1.2em;margin:6px 0 0}
+.form-status.ok{color:#7be2a8}
+.form-status.err{color:#ff9a9a}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{border-top:1px solid var(--line);padding:44px 0 28px;color:var(--mut);font-size:.9rem;background:rgba(8,10,15,.85);position:relative;z-index:1}
+footer a{text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--blue)}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px}
+@media(max-width:780px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr}}
+footer h4{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--mut);margin:0 0 12px}
+footer ul{list-style:none;padding:0;margin:0}
+footer li{margin-bottom:6px;font-size:.88rem}
+
+/* Reveal */
+[data-reveal]{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+[data-reveal].is-visible{opacity:1;transform:translateY(0)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:900px){
+  nav{display:none}
+  nav.open{
+    display:flex;flex-direction:column;
+    position:absolute;top:68px;left:0;right:0;
+    background:rgba(8,10,15,.97);padding:22px;
+    gap:14px;border-bottom:1px solid var(--line);z-index:50;
+  }
+  #menu{display:block;margin-left:auto}
+  .aurora{filter:blur(60px);opacity:.30}
+}
+@media (max-width:620px){
+  section{padding:52px 0}
+  .hero{padding:40px 0 30px;min-height:auto}
+  #c{opacity:.5}
+  h1{font-size:1.85rem}
+  .modal{padding:10px}
+  .modal__box{padding:22px 18px}
+}
+@media (max-width:380px){
+  h1{font-size:1.65rem}
+  .btn{padding:10px 16px;font-size:13px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  #c,.aurora,.grid-lines,.scanline{display:none}
+  [data-reveal]{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== BACKGROUND (no text elements) ==================== -->
+<div id="bg" aria-hidden="true"></div>
+<canvas id="c" aria-hidden="true"></canvas>
+<div class="aurora aurora-1" aria-hidden="true"></div>
+<div class="aurora aurora-2" aria-hidden="true"></div>
+<div class="aurora aurora-3" aria-hidden="true"></div>
+<div class="grid-lines" aria-hidden="true"></div>
+<div class="scanline" aria-hidden="true"></div>
+
+<a class="skip-link" href="#main" style="position:absolute;left:-9999px;background:var(--blue);color:#fff;padding:.6rem 1rem;z-index:1000;font-weight:700">Skip to content</a>
+
+<!-- ==================== LOADER ==================== -->
+<div id="loader">
+  <div class="loader-spinner"></div>
+  <div class="loader-text">IKAZE PAYMENTS<br>Loading…</div>
+</div>
+
+<!-- ==================== HEADER ==================== -->
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="index.html" aria-label="Ikaze Digital home">
+      <img src="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png" alt="IKAZE Digital sunrise logo" width="56" height="44" />
+      <span>IKAZE PAYMENTS<small>Secure · Simple · Connected</small></span>
+    </a>
+    <button id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="payments.html" aria-current="page">Payments</a>
+      <a href="#overview">Overview</a>
+      <a href="#features">Features</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#faq">FAQ</a>
+      <button class="btn o sm" id="signInBtn" type="button">Sign In</button>
+      <button class="btn sm" id="dashboardBtn" type="button">Open Dashboard</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="hero">
+  <div class="wrap hero__inner">
+    <div data-reveal>
+      <p class="tag">IKAZE Payments · Unified Payment Infrastructure</p>
+      <h1>Secure Payments for the <span style="color:var(--blue)">IKAZE Digital Ecosystem.</span></h1>
+      <p class="lead">
+        Pay securely for IKAZE services, courses, cloud resources, digital products, subscriptions
+        and other supported offerings through one connected payment experience.
+      </p>
+      <p class="lead" style="font-size:.95rem">
+        Secure. Simple. Connected. Global.
+      </p>
+      <div class="hero__cta">
+        <button class="btn" id="heroDashboard" type="button">Open Billing Dashboard</button>
+        <a class="btn o" href="#features">Explore Features</a>
+        <a class="btn o" href="index.html">Explore IKAZE</a>
+      </div>
+
+      <div class="honest-banner">
+        <strong>Honest status:</strong> IKAZE Payments is production-oriented infrastructure in active
+        development. No payment provider is currently connected. We do not fake transactions, balances,
+        invoices, subscriptions, refunds or payouts. Every financial state must originate from verified
+        backend data. Features are labelled AVAILABLE, IN DEVELOPMENT, COMING SOON or CONFIGURATION REQUIRED.
+      </div>
+    </div>
+    <div class="payment-visual" data-reveal>
+      <canvas id="paymentCanvas" aria-label="3D payment infrastructure visualization"></canvas>
+      <span class="payment-visual__label">Checkout · Verify · Ledger</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PROVIDER STATUS ==================== -->
+<section id="providers" style="padding-top:20px">
+  <div class="wrap" data-reveal>
+    <div class="section-head section-head--center">
+      <p class="tag">Payment Providers</p>
+      <h2>Provider status — no guessing.</h2>
+      <p class="lead">
+        IKAZE Payments uses a provider adapter architecture. Payment methods only appear for customers
+        when the corresponding provider is actually configured, connected, and tested.
+      </p>
+    </div>
+
+    <div class="grid grid--four">
+      <div class="card">
+        <div class="card__icon">◆</div>
+        <h3>Paystack</h3>
+        <p>African payments — cards, bank, mobile money, USSD, transfers.</p>
+        <div style="margin-top:14px"><span class="st st--notconfig">Configuration Required</span></div>
+      </div>
+      <div class="card">
+        <div class="card__icon">✦</div>
+        <h3>Flutterwave</h3>
+        <p>Multi-country cards, mobile money, bank transfers across Africa.</p>
+        <div style="margin-top:14px"><span class="st st--notconfig">Configuration Required</span></div>
+      </div>
+      <div class="card">
+        <div class="card__icon">◇</div>
+        <h3>Stripe</h3>
+        <p>International cards, wallets, subscriptions and payouts.</p>
+        <div style="margin-top:14px"><span class="st st--notconfig">Configuration Required</span></div>
+      </div>
+      <div class="card">
+        <div class="card__icon">◈</div>
+        <h3>Future Providers</h3>
+        <p>Additional regional and global providers through the same adapter contract.</p>
+        <div style="margin-top:14px"><span class="st st--concept">Concept</span></div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;padding:16px 20px;border-radius:12px;background:rgba(200,85,61,.06);border:1px solid rgba(200,85,61,.24);font-size:.88rem;color:var(--mut);max-width:820px;margin-inline:auto">
+      <strong style="color:var(--ter)">No payment provider is live yet.</strong> Until a provider is actually
+      configured with secret keys stored in Secret Manager and webhooks verified, the checkout shows
+      <strong>"Payment method currently unavailable."</strong> We never simulate a payment.
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FEATURES ==================== -->
+<section id="features">
+  <div class="wrap">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="tag">Payment Features</p>
+      <h2>Every capability, honestly labelled.</h2>
+      <p class="lead">Infrastructure is being built in phases. Each feature below states its actual status.</p>
+    </div>
+
+    <div class="grid grid--three" data-reveal>
+
+      <article class="feature-card">
+        <div class="feature-card__head">
+          <div class="feature-card__icon" aria-hidden="true">◆</div>
+          <span class="st st--dev">In Development</span>
+        </div>
+        <h3>One-time Payments</h3>
+        <p class="feature-card__tagline">Services, courses, digital products, cloud services.</p>
+        <p>Secure checkout initialized on the backend, verified via provider webhooks. Access is granted only after trusted confirmation — never from a browser redirect.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-card__head">
+          <div class="feature-card__icon" aria-hidden="true">◈</div>
+          <span class="st st--dev">In Development</span>
+        </div>
+        <h3>Subscriptions</h3>
+        <p class="feature-card__tagline">Academy, Cloud, Creator memberships.</p>
+        <p>Recurring billing with real provider-managed subscription state. Grace periods, cancellations and plan changes handled by the provider and validated by the backend.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-card__head">
+          <div class="feature-card__icon" aria-hidden="true">▣</div>
+          <span class="st st--dev">In Development</span>
+        </div>
+        <h3>Invoices</h3>
+        <p class="feature-card__tagline">Real invoice records with unique numbers.</p>
+        <p>Draft → issued → paid → overdue → void. Every invoice number is generated by the backend. Clients can pay online or view PDF — issued amounts are immutable.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-card__head">
+          <div class="feature-card__icon" aria-hidden="true">↩</div>
+          <span class="st st--soon">Coming Soon</span>
+        </div>
+        <h3>Refunds</h3>
+        <p class="feature-card__tagline">Backend-controlled, provider-verified.</p>
+        <p>Refund eligibility validated against the original transaction. Full or partial. Never marked successful from the frontend — only from provider confirmation.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-card__head">
+          <div class="feature-card__icon" aria-hidden="true">◇</div>
+          <span class="st st--soon">Coming Soon</span>
+        </div>
+        <h3>Creator Payouts</h3>
+        <p class="feature-card__tagline">Earnings with immutable ledger.</p>
+        <p>Creator marketplace earnings accrued from verified transactions. Payouts requested by the creator, approved by the backend, settled through the provider.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-card__head">
+          <div class="feature-card__icon" aria-hidden="true">◐</div>
+          <span class="st st--soon">Coming Soon</span>
+        </div>
+        <h3>Multi-Currency</h3>
+        <p class="feature-card__tagline">RWF, USD, EUR, KES, and more.</p>
+        <p>Currency only enabled when supported by the connected provider. Original currency, amount, settlement currency and exchange rate are recorded — never silently converted.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-card__head">
+          <div class="feature-card__icon" aria-hidden="true">✦</div>
+          <span class="st st--soon">Coming Soon</span>
+        </div>
+        <h3>Receipts</h3>
+        <p class="feature-card__tagline">Generated only after trusted payment confirmation.</p>
+        <p>Every receipt reflects the backend transaction — customer, transaction ID, invoice, amount, currency, payment method, payment date and status.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-card__head">
+          <div class="feature-card__icon" aria-hidden="true">▲</div>
+          <span class="st st--concept">Concept</span>
+        </div>
+        <h3>Reconciliation</h3>
+        <p class="feature-card__tagline">Compare IKAZE ledger against provider records.</p>
+        <p>Automated detection of missing, duplicate, or mismatched transactions. Admin review queue. Historical financial records are never silently overwritten.</p>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-card__head">
+          <div class="feature-card__icon" aria-hidden="true">⌘</div>
+          <span class="st st--concept">Concept</span>
+        </div>
+        <h3>Admin Finance Center</h3>
+        <p class="feature-card__tagline">Role-gated access to financial operations.</p>
+        <p>Finance role separated from technical admin. Least-privilege access with full audit logs. Every privileged financial action is recorded immutably.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ARCHITECTURE ==================== -->
+<section id="architecture">
+  <div class="wrap">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="tag">Architecture</p>
+      <h2>The flow that protects every transaction.</h2>
+      <p class="lead">The frontend never decides payment success. Only trusted backend state does.</p>
+    </div>
+
+    <div class="arch" data-reveal>
+      <div class="arch__flow">
+        <div class="arch__node">CUSTOMER</div>
+        <div class="arch__arrow">↓</div>
+        <div class="arch__node">IKAZE CHECKOUT</div>
+        <div class="arch__arrow">↓</div>
+        <div class="arch__node">SECURE BACKEND (Cloud Functions)</div>
+        <div class="arch__arrow">↓</div>
+        <div class="arch__node">PAYMENT PROVIDER</div>
+        <div class="arch__arrow">↓</div>
+        <div class="arch__node">WEBHOOK (signed)</div>
+        <div class="arch__arrow">↓</div>
+        <div class="arch__node">TRANSACTION VERIFICATION</div>
+        <div class="arch__arrow">↓</div>
+        <div class="arch__node">IKAZE LEDGER</div>
+        <div class="arch__arrow">↓</div>
+        <div class="arch__split">
+          <div class="arch__leaf">ACADEMY<br>Course access</div>
+          <div class="arch__leaf">CLOUD<br>Service active</div>
+          <div class="arch__leaf">CREATOR<br>Earnings record</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ECOSYSTEM ==================== -->
+<section id="ecosystem">
+  <div class="wrap">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="tag">One Financial Layer</p>
+      <h2>Payments connects the whole IKAZE ecosystem.</h2>
+      <p class="lead">Academy, Cloud and Creator all call the same Payment Engine — none of them touch the ledger directly.</p>
+    </div>
+
+    <div class="grid grid--three" data-reveal>
+      <div class="card">
+        <div class="card__icon">✎</div>
+        <h3>IKAZE Academy</h3>
+        <p>Course purchases, premium learning subscriptions, institutional billing.</p>
+        <div style="margin-top:14px"><a class="btn o sm" href="ikaze-academy.html">Open Academy</a></div>
+      </div>
+      <div class="card">
+        <div class="card__icon">◆</div>
+        <h3>IKAZE Cloud</h3>
+        <p>Hosting, storage, deployments, databases, cloud subscriptions.</p>
+        <div style="margin-top:14px"><a class="btn o sm" href="ikaze-cloud.html">Open Cloud</a></div>
+      </div>
+      <div class="card">
+        <div class="card__icon">✦</div>
+        <h3>IKAZE Creator</h3>
+        <p>Marketplace, digital products, services, memberships, tips, campaigns, payouts.</p>
+        <div style="margin-top:14px"><a class="btn o sm" href="ikaze-creator.html">Open Creator</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== DASHBOARD ==================== -->
+<section id="dashboard" style="padding-top:20px">
+  <div class="wrap">
+    <div class="dash" id="dash">
+      <div class="dash__head">
+        <div>
+          <h1 id="dashTitle">Billing Dashboard</h1>
+          <p id="dashSub">Signed in as <span id="dashUser">—</span></p>
+        </div>
+        <button class="btn o sm" id="dashSignOut" type="button">Sign Out</button>
+      </div>
+
+      <div class="dash__layout">
+        <aside class="dash__nav" aria-label="Dashboard navigation">
+          <div class="dash__nav-group">Billing</div>
+          <button class="dash__nav-item on" data-panel="overview"><span class="dash__nav-item__icon">◈</span>Overview</button>
+          <button class="dash__nav-item" data-panel="payments"><span class="dash__nav-item__icon">◆</span>Payments</button>
+          <button class="dash__nav-item" data-panel="invoices"><span class="dash__nav-item__icon">▣</span>Invoices</button>
+          <button class="dash__nav-item" data-panel="subscriptions"><span class="dash__nav-item__icon">◈</span>Subscriptions</button>
+          <button class="dash__nav-item" data-panel="orders"><span class="dash__nav-item__icon">◇</span>Orders</button>
+          <button class="dash__nav-item" data-panel="refunds"><span class="dash__nav-item__icon">↩</span>Refunds</button>
+          <button class="dash__nav-item" data-panel="receipts"><span class="dash__nav-item__icon">✦</span>Receipts</button>
+
+          <div class="dash__nav-group">Account</div>
+          <button class="dash__nav-item" data-panel="methods"><span class="dash__nav-item__icon">◉</span>Payment Methods</button>
+          <button class="dash__nav-item" data-panel="profile"><span class="dash__nav-item__icon">◎</span>Billing Profile</button>
+
+          <div class="dash__nav-group">Support</div>
+          <button class="dash__nav-item" data-panel="support"><span class="dash__nav-item__icon">?</span>Support</button>
+        </aside>
+
+        <div class="dash__main">
+
+          <!-- OVERVIEW -->
+          <div class="dash__panel on" data-panel="overview">
+            <div class="tile-row">
+              <div class="tile"><div class="tile__label">Total Paid</div><div class="tile__value muted">—</div><div class="tile__sub">From verified transactions</div></div>
+              <div class="tile"><div class="tile__label">Pending</div><div class="tile__value muted">—</div><div class="tile__sub">Awaiting confirmation</div></div>
+              <div class="tile"><div class="tile__label">Outstanding Invoices</div><div class="tile__value muted">—</div><div class="tile__sub">Invoices awaiting payment</div></div>
+              <div class="tile"><div class="tile__label">Active Subscriptions</div><div class="tile__value muted">—</div><div class="tile__sub">Renewing automatically</div></div>
+            </div>
+
+            <div class="empty">
+              <div class="empty__icon">◈</div>
+              <h3>No Billing Data Yet</h3>
+              <p>Your payment history, invoices, subscriptions and receipts will appear here as you make purchases. No fake numbers are shown — only verified backend data.</p>
+              <a class="btn" href="index.html">Explore IKAZE</a>
+            </div>
+          </div>
+
+          <!-- OTHER PANELS — all show honest empty states -->
+          <div class="dash__panel" data-panel="payments">
+            <div class="empty">
+              <div class="empty__icon">◆</div>
+              <h3>No Payments Yet</h3>
+              <p>Completed and pending transactions will appear here. Each payment is verified by the backend before being recorded.</p>
+            </div>
+          </div>
+          <div class="dash__panel" data-panel="invoices">
+            <div class="empty">
+              <div class="empty__icon">▣</div>
+              <h3>No Invoices Yet</h3>
+              <p>Invoices will appear here once they are issued. Invoice amounts are immutable after issuing — contact support if something looks wrong.</p>
+            </div>
+          </div>
+          <div class="dash__panel" data-panel="subscriptions">
+            <div class="empty">
+              <div class="empty__icon">◈</div>
+              <h3>No Active Subscriptions</h3>
+              <p>When you subscribe to IKAZE Academy, Cloud or a Creator membership, your subscription status will appear here.</p>
+            </div>
+          </div>
+          <div class="dash__panel" data-panel="orders">
+            <div class="empty">
+              <div class="empty__icon">◇</div>
+              <h3>No Orders Yet</h3>
+              <p>Marketplace, Academy and Cloud orders will appear here after verified payment.</p>
+            </div>
+          </div>
+          <div class="dash__panel" data-panel="refunds">
+            <div class="empty">
+              <div class="empty__icon">↩</div>
+              <h3>No Refunds</h3>
+              <p>Refund requests and completed refunds will appear here. Refunds are processed by the backend and confirmed by the payment provider.</p>
+            </div>
+          </div>
+          <div class="dash__panel" data-panel="receipts">
+            <div class="empty">
+              <div class="empty__icon">✦</div>
+              <h3>No Receipts Yet</h3>
+              <p>Receipts are generated only after verified payment confirmation. They will appear here automatically.</p>
+            </div>
+          </div>
+          <div class="dash__panel" data-panel="methods">
+            <div class="empty">
+              <div class="empty__icon">◉</div>
+              <h3>No Payment Methods Saved</h3>
+              <p>Saved payment methods are stored by the payment provider, not IKAZE. We never store card numbers or CVV on our infrastructure.</p>
+            </div>
+          </div>
+          <div class="dash__panel" data-panel="profile">
+            <div class="empty">
+              <div class="empty__icon">◎</div>
+              <h3>Billing Profile</h3>
+              <p>Manage your billing name, email, country and tax information. This information is used only for invoices and receipts.</p>
+            </div>
+          </div>
+          <div class="dash__panel" data-panel="support">
+            <div class="empty">
+              <div class="empty__icon">?</div>
+              <h3>Payment Support</h3>
+              <p>For payment issues, please open a support ticket from the IKAZE Support Center. Include your transaction reference if available.</p>
+              <a class="btn" href="support.html">Open Support Center</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section id="faq">
+  <div class="wrap wrap--narrow">
+    <div class="section-head section-head--center" data-reveal>
+      <p class="tag">FAQ</p>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq" id="faqList"></div>
+  </div>
+</section>
+
+<!-- ==================== FINAL CTA ==================== -->
+<section id="final" style="padding-bottom:6rem">
+  <div class="wrap" data-reveal>
+    <div class="cta-block">
+      <p class="tag">Secure. Simple. Connected. Global.</p>
+      <h2>Payments built for the whole IKAZE ecosystem.</h2>
+      <p class="lead" style="margin-inline:auto">
+        One secure, backend-verified payment layer — from IKAZE services and courses to cloud
+        resources, digital products, memberships and creator payouts.
+      </p>
+      <div style="margin-top:22px">
+        <button class="btn" id="finalDashboard" type="button">Open Billing Dashboard</button>
+        <a class="btn o" href="support.html">Contact IKAZE DIGITAL</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p><strong>IKAZE PAYMENTS</strong><br/>Secure · Simple · Connected · Global<br/><span style="font-size:.8rem">Part of IKAZE DIGITAL — Building Africa's Digital Future.</span></p>
+      </div>
+      <div>
+        <h4>Payments</h4>
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#architecture">Architecture</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>IKAZE DIGITAL</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="ikaze-academy.html">Academy</a></li>
+          <li><a href="ikaze-cloud.html">Cloud</a></li>
+          <li><a href="ikaze-creator.html">Creator</a></li>
+          <li><a href="ecosystem.html">Ecosystem</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="terms.html">Refund Policy</a></li>
+        </ul>
+        <p style="font-size:.85rem;margin-top:10px">
+          <a href="mailto:theonosteniyibigira6@gmail.com">theonosteniyibigira6@gmail.com</a>
+        </p>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--mut);font-size:.8rem">
+      <small>© <span id="year"></span> IKAZE Payments · IKAZE DIGITAL. All rights reserved. · IKAZE DIGITAL is not a bank or licensed financial institution. Payments are processed through third-party providers. No fake transactions, balances, invoices, subscriptions, refunds or payouts are ever shown.</small>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== MODAL ==================== -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal__box">
+    <button class="modal__close" id="modalClose" aria-label="Close dialog">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script type="module">
+/* ============================================================
+   IKAZE PAYMENTS — Application Script
+   ============================================================
+
+   SECURITY NOTES
+   ---------------
+   Delivered to the browser, inspectable by anyone. This script
+   does NOT enforce authorization. Real access control is
+   enforced by Firebase Security Rules + trusted backend
+   Cloud Functions.
+
+   NEVER place: provider secret keys, webhook secrets,
+   Firebase Admin credentials, service-account keys,
+   AI secret keys in this file.
+
+   The frontend is NEVER the authority for payment success.
+   ============================================================ */
+
+'use strict';
+
+/* ============================================================
+   FIREBASE CONFIG — replace with your real config
+   ============================================================ */
+const firebaseConfig = {
+  apiKey: "REPLACE_WITH_FIREBASE_API_KEY",
+  authDomain: "REPLACE_WITH.firebaseapp.com",
+  projectId: "REPLACE_WITH_PROJECT_ID",
+  storageBucket: "REPLACE_WITH.appspot.com",
+  messagingSenderId: "REPLACE_WITH",
+  appId: "REPLACE_WITH_APP_ID"
+};
+
+const isConfigured =
+  !firebaseConfig.apiKey.startsWith('REPLACE_WITH') &&
+  !firebaseConfig.projectId.startsWith('REPLACE_WITH');
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+const $  = (s, c=document) => c.querySelector(s);
+const $$ = (s, c=document) => Array.from(c.querySelectorAll(s));
+const escapeHTML = (s) => String(s ?? '').replace(/[&<>"']/g, m => ({
+  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+}[m]));
+const el = (tag, cls, html) => {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (html !== undefined) e.innerHTML = html;
+  return e;
+};
+
+/* ============================================================
+   LOADER
+   ============================================================ */
+function hideLoader(){
+  const l = $('#loader');
+  if (l) l.classList.add('hidden');
+}
+
+/* ============================================================
+   FIREBASE
+   ============================================================ */
+let fb = null;
+let currentUser = null;
+
+async function initFirebase(){
+  if (!isConfigured) return false;
+  try {
+    const appMod = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js');
+    const authMod = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js');
+    const fsMod  = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
+
+    const app = appMod.initializeApp(firebaseConfig);
+    const auth = authMod.getAuth(app);
+    const db = fsMod.initializeFirestore(app, { ignoreUndefinedProperties: true });
+
+    fb = { app, auth, db, ...authMod, ...fsMod };
+    return true;
+  } catch (err) {
+    console.error('[payments] Firebase init failed', err);
+    return false;
+  }
+}
+
+/* ============================================================
+   AUTH
+   ============================================================ */
+async function signInEmail(email, password){
+  const { signInWithEmailAndPassword } = fb;
+  await signInWithEmailAndPassword(fb.auth, email, password);
+}
+async function signUpEmail(email, password, name){
+  const { createUserWithEmailAndPassword, updateProfile, doc, setDoc, serverTimestamp } = fb;
+  const cred = await createUserWithEmailAndPassword(fb.auth, email, password);
+  await updateProfile(cred.user, { displayName: name });
+  await setDoc(doc(fb.db, 'users', cred.user.uid), {
+    fullName: name,
+    email: email,
+    role: 'customer',
+    createdAt: serverTimestamp()
+  }, { merge: true });
+  return cred;
+}
+async function signInGoogle(){
+  const { GoogleAuthProvider, signInWithPopup, doc, getDoc, setDoc, serverTimestamp } = fb;
+  const provider = new GoogleAuthProvider();
+  const cred = await signInWithPopup(fb.auth, provider);
+  const ref = doc(fb.db, 'users', cred.user.uid);
+  const snap = await getDoc(ref);
+  if (!snap.exists()) {
+    await setDoc(ref, {
+      fullName: cred.user.displayName || '',
+      email: cred.user.email || '',
+      role: 'customer',
+      createdAt: serverTimestamp()
+    });
+  }
+  return cred;
+}
+async function sendReset(email){
+  const { sendPasswordResetEmail } = fb;
+  await sendPasswordResetEmail(fb.auth, email);
+}
+async function signOutUser(){
+  const { signOut } = fb;
+  await signOut(fb.auth);
+  currentUser = null;
+  renderAuthState();
+}
+
+/* ============================================================
+   AUTH STATE
+   ============================================================ */
+function renderAuthState(){
+  const sBtn = $('#signInBtn');
+  const dBtn = $('#dashboardBtn');
+  const hDash = $('#heroDashboard');
+  const fDash = $('#finalDashboard');
+  const dash = $('#dash');
+  const dashUser = $('#dashUser');
+
+  if (currentUser) {
+    if (sBtn) { sBtn.textContent = 'Sign Out'; sBtn.onclick = () => signOutUser(); }
+    const openDash = () => {
+      if (dash) dash.classList.add('ready');
+      document.getElementById('dashboard')?.scrollIntoView({ behavior:'smooth', block:'start' });
+    };
+    if (dBtn) { dBtn.textContent = 'Open Dashboard'; dBtn.onclick = openDash; }
+    if (hDash) { hDash.textContent = 'Open Billing Dashboard'; hDash.onclick = openDash; }
+    if (fDash) { fDash.textContent = 'Open Billing Dashboard'; fDash.onclick = openDash; }
+    if (dashUser) dashUser.textContent = currentUser.email || '—';
+  } else {
+    if (sBtn) { sBtn.textContent = 'Sign In'; sBtn.onclick = () => openAuthModal('signin'); }
+    if (dBtn) { dBtn.textContent = 'Open Dashboard'; dBtn.onclick = () => openAuthModal('signin'); }
+    if (hDash) { hDash.textContent = 'Open Billing Dashboard'; hDash.onclick = () => openAuthModal('signin'); }
+    if (fDash) { fDash.textContent = 'Open Billing Dashboard'; fDash.onclick = () => openAuthModal('signin'); }
+    if (dash) dash.classList.remove('ready');
+  }
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+function toast(msg, type='ok'){
+  let wrap = $('#toastWrap');
+  if (!wrap) {
+    wrap = el('div');
+    wrap.id = 'toastWrap';
+    wrap.style.cssText = 'position:fixed;bottom:24px;right:16px;z-index:9500;display:grid;gap:10px;max-width:380px';
+    document.body.appendChild(wrap);
+  }
+  const t = el('div');
+  t.style.cssText = 'padding:14px 18px;border-radius:12px;background:rgba(11,16,23,.97);border:1px solid ' +
+    (type === 'ok' ? 'rgba(61,220,132,.4)' : type === 'err' ? 'rgba(200,85,61,.5)' : 'rgba(242,163,58,.4)') +
+    ';backdrop-filter:blur(10px);box-shadow:0 14px 40px rgba(0,0,0,.5);font-size:.9rem;display:flex;gap:10px;align-items:flex-start';
+  const icon = type === 'ok' ? '✓' : type === 'err' ? '✕' : '!';
+  t.innerHTML = `<span style="flex-shrink:0;font-size:16px">${icon}</span><div>${escapeHTML(msg)}</div>`;
+  wrap.appendChild(t);
+  setTimeout(() => {
+    t.style.transition = 'opacity .3s, transform .3s';
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(20px)';
+    setTimeout(() => t.remove(), 320);
+  }, 4200);
+}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+function openModal(){
+  const m = $('#modal');
+  m.hidden = false;
+  m.classList.add('open');
+  document.body.classList.add('lock');
+}
+function closeModal(){
+  const m = $('#modal');
+  m.classList.remove('open');
+  m.hidden = true;
+  document.body.classList.remove('lock');
+}
+document.addEventListener('click', e => {
+  if (e.target.closest('#modalClose')) closeModal();
+  if (e.target === $('#modal')) closeModal();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && $('#modal').classList.contains('open')) closeModal();
+});
+
+/* ============================================================
+   AUTH MODAL
+   ============================================================ */
+function openAuthModal(mode='signin'){
+  const body = $('#modalBody');
+  body.innerHTML = `
+    <h3 id="modalTitle">${mode === 'signup' ? 'Create Your IKAZE Account' : 'Sign In to IKAZE Payments'}</h3>
+    <p class="modal__sub">${mode === 'signup' ? 'One account works across Creator, Academy, Cloud and Payments.' : 'Welcome back — continue to your billing dashboard.'}</p>
+
+    <div class="auth-tabs" role="tablist">
+      <button class="auth-tab ${mode==='signin'?'on':''}" data-auth-tab="signin" role="tab" aria-selected="${mode==='signin'}">Sign In</button>
+      <button class="auth-tab ${mode==='signup'?'on':''}" data-auth-tab="signup" role="tab" aria-selected="${mode==='signup'}">Create Account</button>
+    </div>
+
+    <form class="form" id="authForm" novalidate>
+      <div data-signup-only style="display:${mode==='signup'?'':'none'}">
+        <label for="authName">Full name</label>
+        <input id="authName" type="text" autocomplete="name" />
+      </div>
+      <div>
+        <label for="authEmail">Email</label>
+        <input id="authEmail" type="email" required autocomplete="email" />
+      </div>
+      <div>
+        <label for="authPassword">Password</label>
+        <input id="authPassword" type="password" required minlength="8" autocomplete="current-password" />
+        <div style="font-size:11.5px;color:var(--mut);margin-top:6px">At least 8 characters.</div>
+      </div>
+      <button class="btn" type="submit" id="authSubmit">${mode==='signup'?'Create Account':'Sign In'}</button>
+      <p class="form-status" id="authStatus" role="status" aria-live="polite"></p>
+    </form>
+
+    <div style="display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.15em">
+      <span style="flex:1;height:1px;background:var(--line)"></span>
+      or
+      <span style="flex:1;height:1px;background:var(--line)"></span>
+    </div>
+
+    <button class="btn o" id="authGoogle" type="button" style="width:100%;justify-content:center">
+      Continue with Google
+    </button>
+
+    <p style="text-align:center;font-size:.82rem;color:var(--mut);margin-top:18px">
+      <a href="#" id="forgotLink" style="color:var(--blue);text-decoration:underline">Forgot password?</a>
+      <span style="margin:0 6px">·</span>
+      <a href="privacy.html" style="color:var(--blue);text-decoration:underline">Privacy</a>
+      <span style="margin:0 6px">·</span>
+      <a href="terms.html" style="color:var(--blue);text-decoration:underline">Terms</a>
+    </p>
+  `;
+  openModal();
+
+  let currentMode = mode;
+  $$('.auth-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      $$('.auth-tab').forEach(t => { t.classList.remove('on'); t.setAttribute('aria-selected','false'); });
+      tab.classList.add('on'); tab.setAttribute('aria-selected','true');
+      currentMode = tab.dataset.authTab;
+      $$('[data-signup-only]').forEach(n => n.style.display = currentMode === 'signup' ? '' : 'none');
+      $('#authSubmit').textContent = currentMode === 'signup' ? 'Create Account' : 'Sign In';
+    });
+  });
+
+  $('#authForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const status = $('#authStatus');
+    status.className = 'form-status';
+    status.textContent = '';
+
+    if (!fb) {
+      status.className = 'form-status err';
+      status.textContent = 'Authentication is not connected yet. Please see the configuration notes on the main site.';
+      return;
+    }
+
+    const email = $('#authEmail').value.trim();
+    const password = $('#authPassword').value;
+    const name = $('#authName') ? $('#authName').value.trim() : '';
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { status.className = 'form-status err'; status.textContent = 'Please enter a valid email.'; return; }
+    if (password.length < 8) { status.className = 'form-status err'; status.textContent = 'Password must be at least 8 characters.'; return; }
+    if (currentMode === 'signup' && !name) { status.className = 'form-status err'; status.textContent = 'Please enter your full name.'; return; }
+
+    $('#authSubmit').disabled = true;
+    try {
+      if (currentMode === 'signup') await signUpEmail(email, password, name);
+      else await signInEmail(email, password);
+      closeModal();
+      toast('Signed in successfully.', 'ok');
+    } catch (err) {
+      status.className = 'form-status err';
+      status.textContent = friendlyAuthError(err);
+    } finally {
+      $('#authSubmit').disabled = false;
+    }
+  });
+
+  $('#authGoogle').addEventListener('click', async () => {
+    if (!fb) { toast('Authentication is not connected yet.', 'warn'); return; }
+    try { await signInGoogle(); closeModal(); toast('Signed in with Google.', 'ok'); }
+    catch (err) { toast(friendlyAuthError(err), 'err'); }
+  });
+
+  $('#forgotLink').addEventListener('click', async (e) => {
+    e.preventDefault();
+    const email = $('#authEmail').value.trim();
+    if (!email) { toast('Enter your email first.', 'warn'); return; }
+    if (!fb) { toast('Authentication is not connected yet.', 'warn'); return; }
+    try { await sendReset(email); toast('If that email exists, a reset link has been sent.', 'ok'); }
+    catch (err) { toast(friendlyAuthError(err), 'err'); }
+  });
+}
+
+function friendlyAuthError(err){
+  const code = (err && err.code) || '';
+  const map = {
+    'auth/invalid-email': 'That email is not valid.',
+    'auth/user-not-found': 'No account with that email.',
+    'auth/wrong-password': 'Incorrect email or password.',
+    'auth/invalid-credential': 'Incorrect email or password.',
+    'auth/email-already-in-use': 'An account with that email already exists.',
+    'auth/weak-password': 'Please choose a stronger password.',
+    'auth/too-many-requests': 'Too many attempts. Wait a moment and try again.',
+    'auth/network-request-failed': 'Network problem. Check your connection.',
+    'auth/popup-closed-by-user': 'Sign-in popup closed.',
+    'auth/operation-not-allowed': 'This sign-in method is not enabled.'
+  };
+  return map[code] || 'Something went wrong. Please try again.';
+}
+
+/* ============================================================
+   DASHBOARD NAV
+   ============================================================ */
+function wireDashNav(){
+  $$('.dash__nav-item').forEach(btn => {
+    btn.addEventListener('click', () => {
+      $$('.dash__nav-item').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      const panel = btn.dataset.panel;
+      $$('.dash__panel').forEach(p => p.classList.toggle('on', p.dataset.panel === panel));
+    });
+  });
+  const signOutBtn = $('#dashSignOut');
+  if (signOutBtn) signOutBtn.addEventListener('click', () => signOutUser());
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+const FAQS = [
+  { q: 'Is IKAZE DIGITAL a bank or payment provider?',
+    a: 'No. IKAZE DIGITAL is a technology company. Payments are processed through third-party providers (such as Paystack, Flutterwave or Stripe). IKAZE builds the platform layer — checkout, invoices, subscriptions, receipts, entitlements — on top of verified provider infrastructure.' },
+  { q: 'Is a payment provider live right now?',
+    a: 'No. No provider is currently connected. Until one is configured with secret keys stored in Secret Manager and webhooks verified, the checkout will show "Payment method currently unavailable" rather than simulate a payment.' },
+  { q: 'How will my payment be verified?',
+    a: 'The frontend never decides payment success. When a provider is connected, the flow is: backend creates the payment → provider processes it → provider sends a signed webhook → our backend verifies signature and transaction → idempotency check → trusted state written to the ledger → entitlement granted.' },
+  { q: 'Will you store my card details?',
+    a: 'No. Card numbers and CVV are never stored on IKAZE infrastructure. Saved payment methods are tokenized references held by the payment provider — IKAZE only stores the token reference.' },
+  { q: 'What currencies will be supported?',
+    a: 'The architecture is built for RWF, USD, EUR, GBP, KES, UGX, TZS, ZAR, CAD and AUD. Actual currencies available at any moment depend on which provider is connected and what that provider supports for the customer\'s country.' },
+  { q: 'How will refunds work?',
+    a: 'Refunds are backend-controlled. A refund is only marked successful after the payment provider confirms it — never from the frontend. Full or partial refunds are supported. Eligibility is validated against the original transaction.' },
+  { q: 'How will creator payouts work?',
+    a: 'Creator earnings accrue from verified marketplace transactions into an immutable ledger. Payouts are requested by the creator, approved by the backend after verification and balance checks, and processed through the payment provider. Creator balance is never editable from the frontend.' },
+  { q: 'How does Payments connect to Academy, Cloud and Creator?',
+    a: 'All three products call the same IKAZE Payment Engine through secure backend functions. None of them touch the financial ledger directly — this is what keeps the ledger consistent and auditable.' },
+  { q: 'What does "Configuration Required" mean on providers?',
+    a: 'It means the provider adapter is ready to be wired up, but the actual provider API keys, webhook secrets and merchant account are not yet configured. Until then, the provider is not offered at checkout.' },
+  { q: 'Where can I report a payment issue?',
+    a: 'Use the IKAZE Support Center at support.html. Include your transaction reference, invoice ID or order ID if you have one — that helps us locate the record quickly.' }
+];
+
+function renderFAQ(){
+  const list = $('#faqList');
+  if (!list) return;
+  list.innerHTML = '';
+  FAQS.forEach((f, i) => {
+    const item = el('div','faq__item');
+    item.setAttribute('aria-expanded','false');
+    const qid = `faq-q-${i}`, aid = `faq-a-${i}`;
+    item.innerHTML = `
+      <button class="faq__q" aria-controls="${aid}" aria-expanded="false" id="${qid}">${escapeHTML(f.q)}</button>
+      <div class="faq__a" role="region" aria-labelledby="${qid}" id="${aid}">${escapeHTML(f.a)}</div>
+    `;
+    const btn = item.querySelector('.faq__q');
+    btn.addEventListener('click', () => {
+      const open = item.getAttribute('aria-expanded') === 'true';
+      item.setAttribute('aria-expanded', String(!open));
+      btn.setAttribute('aria-expanded', String(!open));
+    });
+    list.appendChild(item);
+  });
+}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+function initReveal(){
+  const els = $$('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('is-visible')); return; }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); }
+    });
+  }, { rootMargin:'0px 0px -8% 0px', threshold:0.06 });
+  els.forEach(e => io.observe(e));
+}
+
+/* ============================================================
+   MOBILE NAV
+   ============================================================ */
+function initMobileNav(){
+  const t = $('#menu'), n = $('#nav');
+  if (!t || !n) return;
+  t.addEventListener('click', () => {
+    const open = n.classList.toggle('open');
+    t.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('lock', open);
+  });
+  n.addEventListener('click', e => {
+    if (e.target.closest('a')) {
+      n.classList.remove('open');
+      t.setAttribute('aria-expanded','false');
+      document.body.classList.remove('lock');
+    }
+  });
+}
+
+/* ============================================================
+   3D PAYMENT VISUAL
+   ============================================================ */
+function initPaymentVisual(){
+  const canvas = document.getElementById('paymentCanvas');
+  if (!canvas) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const test = (()=>{try{const c=document.createElement('canvas');return !!(window.WebGLRenderingContext&&(c.getContext('webgl2')||c.getContext('webgl')));}catch{return false;}})();
+  if (!test) return;
+
+  const s = document.createElement('script');
+  s.type = 'module';
+  s.textContent = `
+    import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+    const canvas = document.getElementById('paymentCanvas');
+    const parent = canvas.parentElement;
+    const isSmall = matchMedia('(max-width:700px)').matches;
+
+    const renderer = new THREE.WebGLRenderer({canvas, antialias:!isSmall, alpha:true, powerPreference:'high-performance'});
+    renderer.setPixelRatio(Math.min(devicePixelRatio, isSmall ? 1.5 : 2));
+    renderer.setClearColor(0x000000, 0);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 200);
+    camera.position.set(0, 0, 8);
+
+    scene.add(new THREE.AmbientLight(0x00A1DE, 0.5));
+    const key = new THREE.DirectionalLight(0xffffff, 1.0); key.position.set(4, 6, 4); scene.add(key);
+    const rim = new THREE.DirectionalLight(0x20603D, 0.8); rim.position.set(-5, -3, -4); scene.add(rim);
+    const fill = new THREE.DirectionalLight(0xFAD201, 0.3); fill.position.set(2, -3, 3); scene.add(fill);
+
+    // Central payment card — a rounded, slightly tilted slab
+    const cardGeo = new THREE.BoxGeometry(2.4, 1.5, 0.12);
+    const cardMat = new THREE.MeshStandardMaterial({
+      color: 0x00A1DE, emissive: 0x00A1DE, emissiveIntensity: 0.25,
+      roughness: 0.35, metalness: 0.55
+    });
+    const card = new THREE.Mesh(cardGeo, cardMat);
+    card.rotation.x = -0.15;
+    scene.add(card);
+
+    // Card details — thin amber strips
+    const stripMat = new THREE.MeshBasicMaterial({ color: 0xFAD201, transparent: true, opacity: 0.65 });
+    const strip1 = new THREE.Mesh(new THREE.PlaneGeometry(0.6, 0.05), stripMat);
+    strip1.position.set(-0.65, -0.35, 0.08);
+    card.add(strip1);
+
+    const strip2 = new THREE.Mesh(new THREE.PlaneGeometry(0.35, 0.05), stripMat);
+    strip2.position.set(-0.75, -0.5, 0.08);
+    card.add(strip2);
+
+    // Chip
+    const chipGeo = new THREE.PlaneGeometry(0.28, 0.22);
+    const chipMat = new THREE.MeshBasicMaterial({ color: 0xf2a33a });
+    const chip = new THREE.Mesh(chipGeo, chipMat);
+    chip.position.set(-0.85, 0.35, 0.08);
+    card.add(chip);
+
+    // Soft glow
+    const gc = document.createElement('canvas'); gc.width = gc.height = 256;
+    const gx = gc.getContext('2d');
+    const gg = gx.createRadialGradient(128,128,0,128,128,128);
+    gg.addColorStop(0,'rgba(0,161,222,0.45)');
+    gg.addColorStop(1,'rgba(0,161,222,0)');
+    gx.fillStyle = gg; gx.fillRect(0,0,256,256);
+    const glowTex = new THREE.CanvasTexture(gc);
+    const glowSprite = new THREE.Sprite(new THREE.SpriteMaterial({map:glowTex, transparent:true, blending:THREE.AdditiveBlending, depthWrite:false}));
+    glowSprite.scale.set(4, 4, 1);
+    scene.add(glowSprite);
+
+    // Orbiting verification nodes
+    const nodes = ['✓','◆','◈','▲','◇','●','◆','✦'];
+    const meshes = [];
+    const nodeGeo = new THREE.SphereGeometry(0.13, 20, 20);
+    nodes.forEach((n, i) => {
+      const color = i % 3 === 0 ? 0x00A1DE : i % 3 === 1 ? 0x20603D : 0xFAD201;
+      const mat = new THREE.MeshStandardMaterial({ color, emissive:color, emissiveIntensity: 0.55, roughness: 0.3, metalness: 0.45 });
+      const mesh = new THREE.Mesh(nodeGeo, mat);
+      const angle = (i / nodes.length) * Math.PI * 2;
+      const radius = 2.7;
+      const y = Math.sin(i * 1.7) * 0.85;
+      mesh.userData = { angle, radius, y, speed: 0.14 + Math.random()*0.08 };
+      mesh.position.set(Math.cos(angle)*radius, y, Math.sin(angle)*radius);
+      scene.add(mesh);
+      meshes.push(mesh);
+
+      const lineGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,0,0), mesh.position.clone()]);
+      const lineMat = new THREE.LineBasicMaterial({ color, transparent:true, opacity: 0.26, blending: THREE.AdditiveBlending });
+      const line = new THREE.Line(lineGeo, lineMat);
+      scene.add(line);
+      mesh.userData.line = line;
+    });
+
+    // Particle field
+    const pCount = isSmall ? 70 : 160;
+    const pGeo = new THREE.BufferGeometry();
+    const pPos = new Float32Array(pCount * 3);
+    for (let i = 0; i < pCount; i++) {
+      const r = 2.8 + Math.random() * 4;
+      const t = Math.random() * Math.PI * 2;
+      const p = Math.acos(2 * Math.random() - 1);
+      pPos[i*3]   = r * Math.sin(p) * Math.cos(t);
+      pPos[i*3+1] = r * Math.sin(p) * Math.sin(t);
+      pPos[i*3+2] = r * Math.cos(p);
+    }
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+    const dustMat = new THREE.PointsMaterial({
+      color: 0x00A1DE, size: 0.028, transparent: true, opacity: 0.5,
+      depthWrite: false, blending: THREE.AdditiveBlending
+    });
+    const dust = new THREE.Points(pGeo, dustMat);
+    scene.add(dust);
+
+    function resize(){
+      const w = parent.clientWidth || 400;
+      const h = parent.clientHeight || 400;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    if ('ResizeObserver' in window) new ResizeObserver(resize).observe(parent);
+    else addEventListener('resize', resize);
+
+    let mx = 0, my = 0, tx = 0, ty = 0;
+    if (!isSmall) {
+      parent.addEventListener('pointermove', e => {
+        const r = parent.getBoundingClientRect();
+        tx = ((e.clientX - r.left) / r.width - 0.5) * 0.45;
+        ty = ((e.clientY - r.top) / r.height - 0.5) * 0.45;
+      });
+    }
+
+    let running = true;
+    document.addEventListener('visibilitychange', () => { running = !document.hidden; if (running) loop(); });
+
+    const clock = new THREE.Clock();
+    function loop(){
+      if (!running) return;
+      requestAnimationFrame(loop);
+      const t = clock.getElapsedTime();
+
+      card.rotation.y = Math.sin(t * 0.4) * 0.3;
+      card.rotation.z = Math.sin(t * 0.3) * 0.05;
+      dust.rotation.y += 0.0008;
+
+      meshes.forEach((m, i) => {
+        const d = m.userData;
+        const angle = d.angle + t * d.speed;
+        m.position.set(
+          Math.cos(angle) * d.radius,
+          d.y + Math.sin(t * 0.6 + i) * 0.12,
+          Math.sin(angle) * d.radius
+        );
+        const arr = d.line.geometry.attributes.position.array;
+        arr[3] = m.position.x; arr[4] = m.position.y; arr[5] = m.position.z;
+        d.line.geometry.attributes.position.needsUpdate = true;
+      });
+
+      mx += (tx - mx) * 0.05;
+      my += (ty - my) * 0.05;
+      scene.rotation.y = mx;
+      scene.rotation.x = my;
+
+      renderer.render(scene, camera);
+    }
+    loop();
+  `;
+  document.body.appendChild(s);
+}
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+async function boot(){
+  const y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  renderFAQ();
+  initMobileNav();
+  initPaymentVisual();
+  wireDashNav();
+
+  const ok = await initFirebase();
+  if (ok) {
+    const { onAuthStateChanged } = fb;
+    onAuthStateChanged(fb.auth, (user) => {
+      currentUser = user;
+      renderAuthState();
+    });
+  } else {
+    renderAuthState();
+  }
+
+  initReveal();
+  hideLoader();
+}
+
+boot();
+
+/* ============================================================
+   DEVTOOLS DETERRENTS (deterrents only, not security)
+   ============================================================ */
+document.addEventListener('contextmenu', (e) => {
+  const t = e.target;
+  if (t.matches?.('input,textarea,select,[contenteditable="true"]')) return;
+  e.preventDefault();
+});
+document.addEventListener('keydown', (e) => {
+  const k = e.key.toLowerCase();
+  const block =
+    k === 'f12' ||
+    (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+    (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+    (e.ctrlKey && ['u','s'].includes(k)) ||
+    (e.metaKey && ['u','s'].includes(k));
+  if (block) { e.preventDefault(); e.stopPropagation(); return false; }
+}, true);
+(() => {
+  const toastEl = document.createElement('div');
+  toastEl.className = 'devtools-warning';
+  toastEl.setAttribute('role','alert');
+  toastEl.setAttribute('aria-live','polite');
+  toastEl.innerHTML = '<span class="devtools-warning__icon">!</span><span>Developer tools detected — this page is protected.</span>';
+  document.body.appendChild(toastEl);
+  let visible = false, warnUntil = 0;
+  const show = () => { warnUntil = Date.now() + 5000; if (!visible) { visible = true; toastEl.classList.add('is-visible'); } };
+  const hide = () => { if (visible && Date.now() > warnUntil) { visible = false; toastEl.classList.remove('is-visible'); } };
+  setInterval(() => {
+    const w = window.outerWidth - window.innerWidth;
+    const h = window.outerHeight - window.innerHeight;
+    if (w > 160 || h > 160) show();
+    hide();
+  }, 900);
+  document.addEventListener('keydown', (e) => {
+    const k = e.key.toLowerCase();
+    if (k === 'f12' ||
+        (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+        (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+        (e.ctrlKey && ['u','s'].includes(k)) ||
+        (e.metaKey && ['u','s'].includes(k))) show();
+  }, true);
+})();
+if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+  (() => { let n = 0; setInterval(() => { n++; if (n > 1) { console.clear(); n = 0; } }, 2000); })();
+}
+console.log('%c⚠️ STOP', 'color:#ff3b3b;font-size:32px;font-weight:900');
+console.log('%cThis is IKAZE Payments. Authorization is enforced by Firebase Security Rules and trusted backend Cloud Functions. Modifying this file grants no privileges. No payment secrets, provider keys, or webhook secrets are stored here.', 'font-size:13px;color:#ff9');
+</script>
+
+<!-- ============================================================
+     BACKEND ARCHITECTURE + FIRESTORE SCHEMA + SECURITY RULES
+     ============================================================
+     Deploy these to your Firebase project. All real access
+     control is enforced server-side by these rules and by
+     Cloud Functions. Provider secrets, webhook secrets and
+     Admin SDK credentials live in Secret Manager and are only
+     accessed by Cloud Functions — never in the browser.
+
+     --- FIRESTORE COLLECTIONS --------------------------------
+     payments/{paymentId}
+       userId, customerId, orderId, invoiceId, productId,
+       productType, provider, providerReference, amount,
+       currency, status, paymentType, createdAt, updatedAt,
+       paidAt, failureReason, metadata
+
+     paymentEvents/{eventId}              — webhook event log (immutable)
+     paymentTransactions/{txId}           — immutable ledger
+     paymentOrders/{orderId}
+     paymentCustomers/{uid}               — provider customer reference only
+     paymentMethods/{methodId}            — tokenized refs only, never PAN/CVV
+     invoices/{invoiceId}
+     invoiceItems/{itemId}
+     subscriptions/{subscriptionId}
+     subscriptionEvents/{eventId}
+     refunds/{refundId}
+     payouts/{payoutId}
+     paymentProviders/{providerId}
+     paymentAuditLogs/{logId}
+     creatorTransactions/{txId}
+     creatorEarnings/{earningId}
+     creatorPayouts/{payoutId}
+     academyPurchases/{purchaseId}
+     academySubscriptions/{subscriptionId}
+     academyEntitlements/{entitlementId}
+     cloudSubscriptions/{subscriptionId}
+     cloudUsageRecords/{recordId}
+     cloudInvoices/{invoiceId}
+     cloudEntitlements/{entitlementId}
+
+     --- FIRESTORE SECURITY RULES -----------------------------
+     rules_version = '2';
+     service cloud.firestore {
+       match /databases/{database}/documents {
+
+         function signedIn() { return request.auth != null; }
+         function isSelf(uid) { return signedIn() && request.auth.uid == uid; }
+         function isAdmin() { return signedIn() && request.auth.token.admin == true; }
+         function isFinance() {
+           return signedIn() && (request.auth.token.finance == true || isAdmin());
+         }
+
+         // ============ CUSTOMERS ============
+         // Users can read their own payments, cannot write any financial doc.
+         match /payments/{paymentId} {
+           allow read: if isAdmin() || isFinance()
+                       || (signedIn() && resource.data.userId == request.auth.uid);
+           allow write: if false; // backend only
+         }
+
+         match /paymentEvents/{eventId} {
+           allow read: if isAdmin() || isFinance();
+           allow write: if false;
+         }
+
+         match /paymentTransactions/{txId} {
+           allow read: if isAdmin() || isFinance()
+                       || (signedIn() && resource.data.userId == request.auth.uid);
+           allow write: if false;
+         }
+
+         match /paymentOrders/{orderId} {
+           allow read: if isAdmin() || isFinance()
+                       || (signedIn() && resource.data.userId == request.auth.uid);
+           allow write: if false;
+         }
+
+         match /paymentCustomers/{uid} {
+           allow read: if isAdmin() || isFinance() || isSelf(uid);
+           allow write: if false; // managed by Cloud Functions
+         }
+
+         match /paymentMethods/{methodId} {
+           allow read: if isAdmin() || isFinance()
+                       || (signedIn() && resource.data.userId == request.auth.uid);
+           allow write: if false; // tokenized refs managed via provider portal
+         }
+
+         // ============ INVOICES ============
+         match /invoices/{invoiceId} {
+           allow read: if isAdmin() || isFinance()
+                       || (signedIn() && resource.data.userId == request.auth.uid);
+           allow write: if false; // issued invoices are immutable
+         }
+
+         match /invoiceItems/{itemId} {
+           allow read: if isAdmin() || isFinance()
+                       || (signedIn() && get(/databases/$(database)/documents/invoices/$(resource.data.invoiceId)).data.userId == request.auth.uid);
+           allow write: if false;
+         }
+
+         // ============ SUBSCRIPTIONS ============
+         match /subscriptions/{subscriptionId} {
+           allow read: if isAdmin() || isFinance()
+                       || (signedIn() && resource.data.userId == request.auth.uid);
+           allow write: if false; // backend / provider webhook only
+         }
+
+         match /subscriptionEvents/{eventId} {
+           allow read: if isAdmin() || isFinance();
+           allow write: if false;
+         }
+
+         // ============ REFUNDS ============
+         match /refunds/{refundId} {
+           allow read: if isAdmin() || isFinance()
+                       || (signedIn() && resource.data.userId == request.auth.uid);
+           allow create: if false; // created by backend after request validation
+           allow update: if false;
+         }
+
+         // ============ CREATOR ============
+         match /creatorTransactions/{txId} {
+           allow read: if isAdmin() || isFinance()
+                       || (signedIn() && resource.data.creatorId == request.auth.uid);
+           allow write: if false;
+         }
+
+         match /creatorEarnings/{earningId} {
+           allow read: if isAdmin() || isFinance()
+                       || (signedIn() && resource.data.creatorId == request.auth.uid);
+           allow write: if false;
+         }
+
+         match /creatorPayouts/{payoutId} {
+           allow read: if isAdmin() || isFinance()
+                       || (signedIn() && resource.data.creatorId == request.auth.uid);
+           allow create: if signedIn()
+                       && request.resource.data.creatorId == request.auth.uid
+                       && request.resource.data.status == 'REQUESTED';
+           allow update: if isAdmin() || isFinance();
+         }
+
+         // ============ ACADEMY BILLING ============
+         match /academyPurchases/{purchaseId} {
+           allow read: if isAdmin() || isFinance()
+                       || (signedIn() && resource.data.userId == request.auth.uid);
+           allow write: if false;
+         }
+
+         match /academySubscriptions/{subscriptionId} {
+           allow read: if isAdmin() || isFinance()
+                       || (signedIn() && resource.data.userId == request.auth.uid);
+           allow write: if false;
+         }
+
+         match /academyEntitlements/{entitlementId} {
+           allow read: if isAdmin()
+                       || (signedIn() && resource.data.userId == request.auth.uid);
+           allow write: if false; // granted by backend only
+         }
+
+         // ============ CLOUD BILLING ============
+         match /cloudSubscriptions/{subscriptionId} {
+           allow read: if isAdmin() || isFinance()
+                       || (signedIn() && resource.data.userId == request.auth.uid);
+           allow write: if false;
+         }
+
+         match /cloudUsageRecords/{recordId} {
+           allow read: if isAdmin()
+                       || (signedIn() && resource.data.userId == request.auth.uid);
+           allow write: if false; // backend metering only
+         }
+
+         match /cloudInvoices/{invoiceId} {
+           allow read: if isAdmin() || isFinance()
+                       || (signedIn() && resource.data.userId == request.auth.uid);
+           allow write: if false;
+         }
+
+         match /cloudEntitlements/{entitlementId} {
+           allow read: if isAdmin()
+                       || (signedIn() && resource.data.userId == request.auth.uid);
+           allow write: if false;
+         }
+
+         // ============ PROVIDERS + AUDIT ============
+         match /paymentProviders/{providerId} {
+           allow read: if isAdmin();
+           allow write: if false; // configured via backend + Secret Manager
+         }
+
+         match /paymentAuditLogs/{logId} {
+           allow read: if isAdmin() || isFinance();
+           allow write: if false; // append-only from Cloud Functions
+         }
+
+         // Default deny
+         match /{document=**} { allow read, write: if false; }
+       }
+     }
+
+     --- STORAGE RULES (billing documents) --------------------
+     rules_version = '2';
+     service firebase.storage {
+       match /b/{bucket}/o {
+         match /billing/{userId}/{allPaths=**} {
+           allow read: if request.auth != null
+             && (request.auth.uid == userId
+                 || request.auth.token.admin == true
+                 || request.auth.token.finance == true);
+           allow write: if false; // generated by backend
+         }
+         match /{allPaths=**} { allow read, write: if false; }
+       }
+     }
+
+     --- RECOMMENDED FIRESTORE INDEXES ------------------------
+     {
+       "indexes": [
+         { "collectionGroup": "payments", "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath": "userId", "order": "ASCENDING"},
+             {"fieldPath": "createdAt", "order": "DESCENDING"}
+           ]
+         },
+         { "collectionGroup": "payments", "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath": "status", "order": "ASCENDING"},
+             {"fieldPath": "createdAt", "order": "DESCENDING"}
+           ]
+         },
+         { "collectionGroup": "paymentTransactions", "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath": "userId", "order": "ASCENDING"},
+             {"fieldPath": "createdAt", "order": "DESCENDING"}
+           ]
+         },
+         { "collectionGroup": "invoices", "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath": "userId", "order": "ASCENDING"},
+             {"fieldPath": "status", "order": "ASCENDING"},
+             {"fieldPath": "createdAt", "order": "DESCENDING"}
+           ]
+         },
+         { "collectionGroup": "subscriptions", "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath": "userId", "order": "ASCENDING"},
+             {"fieldPath": "status", "order": "ASCENDING"}
+           ]
+         },
+         { "collectionGroup": "creatorEarnings", "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath": "creatorId", "order": "ASCENDING"},
+             {"fieldPath": "createdAt", "order": "DESCENDING"}
+           ]
+         },
+         { "collectionGroup": "paymentEvents", "queryScope": "COLLECTION",
+           "fields": [
+             {"fieldPath": "provider", "order": "ASCENDING"},
+             {"fieldPath": "receivedAt", "order": "DESCENDING"}
+           ]
+         }
+       ]
+     }
+
+     --- CLOUD FUNCTIONS TO BUILD ------------------------------
+     functions/
+       payments/
+         createPayment          — creates payment intent on provider
+         verifyPayment          — server-side provider verification
+         handleWebhook          — signed webhook receiver + idempotency
+         createInvoice          — generates unique invoice number
+         issueInvoice           — transitions draft → issued
+         refundPayment          — backend-controlled refund via provider
+         createSubscription     — provider subscription creation
+         cancelSubscription     — backend cancellation
+         changeSubscription     — plan change with proration
+         calculateFees          — configurable fee engine
+         recordTransaction      — writes immutable ledger entry
+         reconcilePayment       — scheduled reconciliation job
+         processPayout          — backend payout via provider
+         createCustomer         — provider customer creation
+         updateBillingProfile   — safe profile update
+         grantEntitlement       — sets academy/cloud/creator entitlements
+
+     --- SECRET MANAGER (never in browser) --------------------
+     PAYSTACK_SECRET_KEY
+     PAYSTACK_WEBHOOK_SECRET
+     FLUTTERWAVE_SECRET_KEY
+     FLUTTERWAVE_WEBHOOK_SECRET
+     STRIPE_SECRET_KEY
+     STRIPE_WEBHOOK_SECRET
+     FIREBASE_ADMIN_CREDENTIALS
+
+     --- PROVISIONING (run once, locally) ---------------------
+     const admin = require('firebase-admin');
+     admin.initializeApp({ credential: admin.credential.applicationDefault() });
+
+     // Set admin claim:
+     await admin.auth().setCustomUserClaims('FOUNDER_UID', {
+       admin: true,
+       role: 'founder'
+     });
+
+     // Set finance role:
+     await admin.auth().setCustomUserClaims('FINANCE_UID', {
+       finance: true,
+       role: 'finance'
+     });
+
+     ============================================================
+-->
+</body>
+</html>
