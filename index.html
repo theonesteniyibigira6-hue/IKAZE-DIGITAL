@@ -5,273 +5,1453 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ikaze Digital | Digital Technology & Creative Solutions</title>
 <meta name="description" content="Ikaze Digital builds modern websites, software, mobile apps, AI solutions, e-commerce platforms, branding and digital experiences from Rwanda for Africa and the world.">
-<meta property="og:title" content="Ikaze Digital | Digital Technology & Creative Solutions"><meta property="og:description" content="Building Africa's Digital Future."><meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#080A0F">
+<meta property="og:title" content="Ikaze Digital | Digital Technology & Creative Solutions">
+<meta property="og:description" content="Building Africa's Digital Future.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#080A0F">
+
+<!-- Favicon — same logo, all sizes -->
+<link rel="icon" type="image/png" sizes="512x512" href="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png">
+<link rel="icon" type="image/png" sizes="256x256" href="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png">
+<link rel="icon" type="image/png" sizes="96x96"  href="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png">
+<link rel="icon" type="image/png" sizes="32x32"  href="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png">
+<link rel="icon" type="image/png" sizes="16x16"  href="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png">
+<link rel="mask-icon" href="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png" color="#f2a33a">
+
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Ikaze Digital","slogan":"Building Africa's Digital Future","founder":{"@type":"Person","name":"NIYIBIGIRA Theoneste"}},{"@type":"WebSite","name":"Ikaze Digital"}]}</script>
+
 <style>
-:root{--bg:#080A0F;--ink:#f4efe8;--mut:#a9a39b;--amb:#f2a33a;--ter:#c8553d;--blue:#00A1DE;--grn:#20603D;--yel:#FAD201;--card:rgba(255,255,255,.04);--line:rgba(255,255,255,.1);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --bg:#080A0F; --ink:#f4efe8; --mut:#a9a39b;
+  --amb:#f2a33a; --ter:#c8553d; --blue:#00A1DE; --grn:#20603D; --yel:#FAD201;
+  --card:rgba(255,255,255,.045); --line:rgba(255,255,255,.10);
+  --radius:14px; --radius-lg:20px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
 *,*::before,*::after{box-sizing:inherit}
 html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
-body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  background:var(--bg); color:var(--ink);
+  line-height:1.6; font-size:15.5px;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
 body.lock{overflow:hidden}
-#bg{position:fixed;inset:0;z-index:-2;background:radial-gradient(60% 50% at calc(20% + var(--p,0)*60%) calc(15% + var(--p,0)*40%),rgba(242,163,58,.22),transparent 70%),radial-gradient(50% 45% at 85% 80%,rgba(200,85,61,.18),transparent 70%),linear-gradient(#10151D,#080A0F)}
-#c{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
-a{color:inherit}
-.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;backdrop-filter:blur(14px);background:rgba(8,10,15,.75);border-bottom:1px solid var(--line)}
-.bar{display:flex;align-items:center;gap:16px;height:68px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.08em;font-size:14px}
-.logo img,.logo svg{height:44px;width:auto;max-width:56px;object-fit:contain}
-.logo small{display:block;font-weight:500;letter-spacing:0;font-size:10px;color:var(--mut)}
-nav{margin-left:auto;display:flex;gap:16px;align-items:center}
-nav a{text-decoration:none;font-size:14px;color:var(--mut)}nav a:hover,nav a[aria-current]{color:var(--amb)}
-.btn{display:inline-block;padding:12px 22px;border-radius:999px;background:var(--amb);color:#1a0f05;font-weight:700;text-decoration:none;border:0;cursor:pointer;font:inherit;font-weight:700;transition:transform .2s,box-shadow .2s}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+
+/* ============================================================
+   BACKGROUND
+   ============================================================ */
+#bg{position:fixed;inset:0;z-index:-3;background:
+  radial-gradient(60% 50% at calc(20% + var(--p,0)*60%) calc(15% + var(--p,0)*40%),rgba(242,163,58,.20),transparent 70%),
+  radial-gradient(50% 45% at 85% 80%,rgba(200,85,61,.16),transparent 70%),
+  linear-gradient(#03050a,#0a1220 40%,#10151D 70%,#080A0F)}
+#c{position:fixed;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none}
+#stars{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.9}
+
+/* ============================================================
+   LAYOUT — mobile first, sections reduced
+   ============================================================ */
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+@media(min-width:640px){.wrap{padding:0 24px}}
+
+section{padding:26px 0}
+@media(min-width:640px){section{padding:34px 0}}
+@media(min-width:1024px){section{padding:42px 0}}
+
+h1{font-size:clamp(1.95rem,6vw,4rem);line-height:1.08;margin:0 0 12px;letter-spacing:-.01em}
+h2{font-size:clamp(1.35rem,3.8vw,2.1rem);margin:0 0 8px;letter-spacing:-.01em}
+h3{font-size:1.05rem;margin:6px 0}
+.tag{color:var(--amb);font-weight:600;letter-spacing:.06em;font-size:.85rem}
+.lead{color:var(--mut);max-width:680px;font-size:1rem;margin:0 0 8px}
+.note{font-size:.86rem;color:var(--mut);margin-top:8px}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+header{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:40;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  background:rgba(8,10,15,.82);border-bottom:1px solid var(--line);
+}
+.bar{display:flex;align-items:center;gap:12px;min-height:72px;padding:8px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.05em;font-size:15px;color:var(--ink);flex-shrink:0}
+.logo img{height:54px;width:auto;max-width:72px;object-fit:contain}
+@media(min-width:640px){.logo img{height:60px;max-width:80px}}
+@media(min-width:1024px){.logo img{height:66px;max-width:92px}}
+.logo small{display:block;font-weight:500;letter-spacing:0;font-size:10.5px;color:var(--mut);margin-top:2px}
+@media(max-width:520px){.logo span{display:none}}
+
+/* Top nav — desktop */
+nav.top-nav{display:none;margin-left:auto;gap:4px;align-items:center}
+nav.top-nav a{
+  font-size:14px;color:var(--mut);padding:8px 12px;border-radius:8px;
+  transition:color .2s,background .2s;white-space:nowrap;
+}
+nav.top-nav a:hover,nav.top-nav a[aria-current]{color:var(--amb);background:rgba(242,163,58,.07)}
+nav.top-nav .btn{margin-left:10px}
+
+/* Hamburger — mobile & tablet */
+#menu{
+  display:inline-flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:5px;margin-left:auto;
+  background:rgba(255,255,255,.04);border:1px solid var(--line);
+  color:var(--ink);border-radius:12px;width:46px;height:46px;padding:0;cursor:pointer;
+  transition:border-color .2s;
+}
+#menu:hover{border-color:var(--amb)}
+#menu span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:transform .3s,opacity .3s}
+#menu[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+#menu[aria-expanded="true"] span:nth-child(2){opacity:0}
+#menu[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+@media(min-width:1024px){
+  nav.top-nav{display:flex}
+  #menu{display:none}
+}
+
+/* ============================================================
+   SIDEBAR (More button + hamburger)
+   ============================================================ */
+#sidebar{
+  position:fixed;top:0;right:0;bottom:0;
+  width:min(90vw,380px);
+  background:rgba(8,10,15,.98);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-left:1px solid var(--line);
+  z-index:60;
+  transform:translateX(100%);
+  transition:transform .35s cubic-bezier(.2,.7,.2,1);
+  display:flex;flex-direction:column;
+  box-shadow:-20px 0 60px rgba(0,0,0,.6);
+  overflow:hidden;
+}
+#sidebar.open{transform:translateX(0)}
+#sidebarBackdrop{
+  position:fixed;inset:0;z-index:55;background:rgba(0,0,0,.55);
+  opacity:0;pointer-events:none;transition:opacity .35s;
+  backdrop-filter:blur(4px);
+}
+#sidebarBackdrop.open{opacity:1;pointer-events:auto}
+
+.sidebar-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 20px;border-bottom:1px solid var(--line);flex-shrink:0;
+}
+.sidebar-head strong{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.sidebar-close{
+  width:40px;height:40px;border-radius:12px;
+  background:rgba(255,255,255,.05);border:1px solid var(--line);
+  color:var(--ink);cursor:pointer;font-size:20px;line-height:1;
+  display:grid;place-items:center;
+}
+.sidebar-close:hover{border-color:var(--amb);color:var(--amb)}
+.sidebar-body{flex:1;overflow-y:auto;padding:12px 14px 40px;-webkit-overflow-scrolling:touch}
+.sidebar-group{margin-top:14px}
+.sidebar-group:first-child{margin-top:0}
+.sidebar-group h4{
+  font-size:10.5px;text-transform:uppercase;letter-spacing:.15em;
+  color:var(--mut);margin:0 0 6px 8px;font-weight:700;
+}
+.sidebar-group a{
+  display:flex;align-items:center;gap:10px;
+  padding:11px 12px;border-radius:10px;
+  font-size:15px;color:var(--ink);
+  transition:background .15s,color .15s;
+}
+.sidebar-group a:hover{background:rgba(242,163,58,.08);color:var(--amb)}
+.sidebar-group a .dot{width:6px;height:6px;border-radius:50%;background:var(--amb);opacity:.7;flex-shrink:0}
+.sidebar-group .btn{margin-top:14px;display:block;text-align:center;width:100%}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:12px 20px;border-radius:999px;
+  background:var(--amb);color:#1a0f05;font-weight:700;
+  border:0;cursor:pointer;font:inherit;font-weight:700;
+  font-size:14.5px;min-height:44px;
+  transition:transform .2s,box-shadow .2s;
+}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(242,163,58,.35)}
 .btn.o{background:transparent;color:var(--ink);border:1px solid var(--line)}
-:focus-visible{outline:3px solid var(--yel);outline-offset:2px}
-#menu{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:12px 16px;font:inherit;min-height:44px}
-section{padding:84px 0}
-h1{font-size:clamp(2.2rem,7vw,4.6rem);line-height:1.05;margin:0 0 16px}
-h2{font-size:clamp(1.6rem,4vw,2.5rem);margin:0 0 10px}
-.tag{color:var(--amb);font-weight:600;letter-spacing:.06em}
-.lead{color:var(--mut);max-width:660px}
-.hero{min-height:86vh;display:flex;align-items:center}
-.row{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
-.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));margin-top:26px}
-.card{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;backdrop-filter:blur(10px);transition:transform .25s,border-color .25s,box-shadow .25s}
-.card:hover{transform:translateY(-6px) rotateX(2deg);border-color:var(--amb);box-shadow:0 12px 32px rgba(200,85,61,.18)}
-.card h3{margin:6px 0}.card p{color:var(--mut);margin:6px 0;font-size:.95rem}
-.card .go{color:var(--amb);font-size:.9rem;display:inline-block;transition:transform .2s}.card:hover .go{transform:translateX(5px)}
+.btn.o:hover{border-color:var(--amb);color:var(--amb);box-shadow:none}
+.btn.sm{padding:9px 14px;font-size:13px;min-height:38px}
+:focus-visible{outline:3px solid var(--yel);outline-offset:2px;border-radius:8px}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  min-height:64vh;display:flex;align-items:center;
+  padding-top:40px;padding-bottom:40px;
+}
+@media(min-width:1024px){.hero{min-height:78vh;padding-top:60px;padding-bottom:60px}}
+
+/* ============================================================
+   CARDS / GRIDS
+   ============================================================ */
+.grid{
+  display:grid;gap:12px;margin-top:16px;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));
+}
+.card{
+  display:block;background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius-lg);padding:16px;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.card:hover{transform:translateY(-4px);border-color:var(--amb);box-shadow:0 12px 32px rgba(200,85,61,.18)}
+.card h3{margin:6px 0;font-size:1rem}
+.card p{color:var(--mut);margin:6px 0;font-size:.94rem}
+.card .go{color:var(--amb);font-size:.9rem;display:inline-block;transition:transform .2s}
+.card:hover .go{transform:translateX(5px)}
+.card small{color:var(--mut);font-weight:500}
+
 .st{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.05em}
-.st::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c)}
+.st::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c)}
 .AVAILABLE{--c:#3ddc84}.DEV{--c:var(--blue)}.SOON{--c:var(--amb)}.CONCEPT{--c:#9aa0a6}
-.badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;border:1px solid var(--line);color:var(--amb);margin-right:4px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-.chip{padding:10px 16px;border-radius:99px;background:var(--card);border:1px solid var(--line);color:var(--ink);cursor:pointer;font:inherit;font-size:14px;min-height:44px}
+.badge{
+  display:inline-block;font-size:11px;font-weight:700;
+  padding:3px 10px;border-radius:99px;border:1px solid var(--line);
+  color:var(--amb);margin-right:4px;margin-bottom:4px;
+}
+
+/* ============================================================
+   SMALL CARDS (Industries / Tech / Trust)
+   ============================================================ */
+.small-cards{
+  display:grid;gap:8px;margin-top:14px;
+  grid-template-columns:repeat(auto-fit,minmax(128px,1fr));
+}
+@media(min-width:520px){
+  .small-cards{grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+}
+.small-card{
+  padding:12px;border-radius:12px;
+  background:var(--card);border:1px solid var(--line);
+  text-align:center;font-size:13.5px;font-weight:500;color:var(--ink);
+  transition:transform .2s,border-color .2s,background .2s,box-shadow .2s;
+  display:flex;align-items:center;justify-content:center;
+  min-height:56px;line-height:1.35;
+}
+.small-card:hover{
+  transform:translateY(-3px);border-color:var(--amb);
+  background:rgba(242,163,58,.06);
+  box-shadow:0 10px 24px rgba(200,85,61,.14);
+}
+
+/* ============================================================
+   AUDIENCE CARDS
+   ============================================================ */
+.aud-cards{
+  display:grid;gap:12px;margin-top:16px;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));
+}
+.aud-card{
+  display:flex;flex-direction:column;gap:6px;
+  padding:16px;border-radius:var(--radius);
+  background:var(--card);border:1px solid var(--line);
+  color:var(--ink);
+  transition:transform .2s,border-color .2s,background .2s;
+}
+.aud-card:hover{transform:translateY(-3px);border-color:var(--amb);background:rgba(242,163,58,.06)}
+.aud-card h3{margin:0;font-size:1rem;color:var(--ink);font-weight:700}
+.aud-card p{margin:0;color:var(--mut);font-size:.85rem}
+.aud-card .go{color:var(--amb);font-size:.85rem;margin-top:4px}
+
+/* ============================================================
+   ECOSYSTEM / CHIPS
+   ============================================================ */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{
+  padding:9px 14px;border-radius:99px;
+  background:var(--card);border:1px solid var(--line);
+  color:var(--ink);cursor:pointer;font:inherit;
+  font-size:13.5px;min-height:40px;
+  transition:border-color .2s,color .2s,background .2s;
+}
+.chip:hover{border-color:var(--amb);color:var(--amb)}
 .chip[aria-pressed=true]{background:var(--amb);color:#1a0f05;border-color:var(--amb)}
-.hub{display:grid;place-items:center;margin:26px 0 0}
-.hub b{padding:14px 28px;border-radius:99px;border:1px solid var(--amb);background:rgba(242,163,58,.1);letter-spacing:.12em;box-shadow:0 0 40px rgba(242,163,58,.25)}
-.hub::after{content:"";width:2px;height:28px;background:linear-gradient(var(--amb),transparent)}
-.price{font-size:1.35rem;font-weight:800}.price small,.card small{color:var(--mut);font-weight:500}
-.photo{width:min(280px,80%);aspect-ratio:4/5;border-radius:24px;border:2px solid var(--amb);overflow:hidden;background:linear-gradient(145deg,rgba(242,163,58,.3),rgba(32,96,61,.4));display:grid;place-items:center;font-size:3.4rem;font-weight:800;box-shadow:0 0 0 8px rgba(255,255,255,.04),0 0 70px rgba(242,163,58,.3)}
-.photo img{width:100%;height:100%;object-fit:cover;display:block}
-.founder{display:grid;gap:32px;grid-template-columns:1fr;align-items:center;justify-items:center}
-@media(min-width:800px){.founder{grid-template-columns:300px 1fr;justify-items:start}}
-.steps{counter-reset:s;display:grid;gap:12px;margin-top:24px}
-.step{opacity:.25;transform:translateY(12px);transition:.6s;border-left:3px solid var(--amb);padding:4px 16px}.step.in{opacity:1;transform:none}
+
+.hub{display:grid;place-items:center;margin:16px 0 0}
+.hub b{
+  padding:12px 24px;border-radius:99px;border:1px solid var(--amb);
+  background:rgba(242,163,58,.1);letter-spacing:.12em;font-size:14px;
+  box-shadow:0 0 40px rgba(242,163,58,.25);
+}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px}
+.filters input,.filters select{
+  padding:11px 14px;border-radius:12px;border:1px solid var(--line);
+  background:rgba(255,255,255,.06);color:var(--ink);font:inherit;
+  font-size:14px;min-height:44px;
+}
+.filters input{flex:1;min-width:180px}
+.filters select{min-width:160px}
+.filters select option{color:#000}
+
+/* ============================================================
+   FOUNDER — full photo
+   ============================================================ */
+.founder{display:grid;gap:22px;grid-template-columns:1fr;align-items:center;justify-items:center;margin-top:16px}
+@media(min-width:840px){
+  .founder{grid-template-columns:minmax(260px,360px) 1fr;justify-items:start;gap:32px}
+}
+.photo{
+  width:100%;max-width:340px;border-radius:22px;overflow:hidden;
+  border:2px solid var(--amb);
+  background:linear-gradient(145deg,rgba(242,163,58,.2),rgba(32,96,61,.3));
+  box-shadow:0 0 0 8px rgba(255,255,255,.04),0 0 60px rgba(242,163,58,.28);
+  padding:6px;
+}
+.photo img{width:100%;height:auto;border-radius:16px;display:block}
+
+/* ============================================================
+   STEPS / PROCESS
+   ============================================================ */
+.steps{display:grid;gap:8px;margin-top:14px}
+.step{
+  opacity:.3;transform:translateY(10px);transition:.6s;
+  border-left:3px solid var(--amb);padding:6px 14px;font-size:.95rem;
+}
+.step.in{opacity:1;transform:none}
 .step b{color:var(--amb)}
-form{display:grid;gap:12px;max-width:560px;margin-top:20px}
-input,select,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--ink);font:inherit}
+
+/* ============================================================
+   FORM
+   ============================================================ */
+form{display:grid;gap:12px;max-width:560px;margin-top:16px}
+input,select,textarea{
+  width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);
+  background:rgba(255,255,255,.06);color:var(--ink);font:inherit;
+  font-size:14.5px;
+}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--amb);box-shadow:0 0 0 3px rgba(242,163,58,.15)}
 select option{color:#000}
-label{font-size:13px;color:var(--mut)}
-.note{font-size:.85rem;color:var(--mut);margin-top:14px}
-.soc{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
-.soc a{padding:10px 16px;border:1px solid var(--line);border-radius:99px;text-decoration:none;background:var(--card);min-height:44px;display:inline-flex;align-items:center}.soc a:hover{border-color:var(--amb);color:var(--amb)}
-footer{border-top:1px solid var(--line);padding:44px 0 28px;color:var(--mut);font-size:.9rem;background:rgba(8,10,15,.85)}
-.fg{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}.fg h4{color:var(--ink);margin:0 0 8px}.fg a{display:block;text-decoration:none;padding:3px 0}.fg a:hover{color:var(--amb)}
-.copy{margin-top:28px;padding-top:18px;border-top:1px solid var(--line)}
-@media(max-width:900px){nav{display:none;position:fixed;top:calc(68px + env(safe-area-inset-top,0px));left:0;right:0;bottom:0;flex-direction:column;background:#080A0F;padding:24px;align-items:flex-start;overflow:auto;gap:6px}nav a{font-size:20px;padding:10px 0}nav.open{display:flex}#menu{display:block}section{padding:56px 0}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}.step{opacity:1;transform:none}}
-dialog{background:#10151D;color:var(--ink);border:1px solid var(--line);border-radius:18px;width:min(92vw,420px)}dialog::backdrop{background:rgba(0,0,0,.65)}
-button.card{text-align:left;width:100%;font:inherit;color:inherit;cursor:pointer}
-.opt input{width:auto;margin-right:8px}.opt label{display:flex;align-items:center;color:var(--ink);font-size:15px}
+label{font-size:13.5px;color:var(--mut)}
+
+/* ============================================================
+   SOCIALS
+   ============================================================ */
+.soc{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.soc a{
+  padding:9px 14px;border:1px solid var(--line);border-radius:99px;
+  background:var(--card);min-height:40px;
+  display:inline-flex;align-items:center;font-size:13.5px;
+  transition:border-color .2s,color .2s;
+}
+.soc a:hover{border-color:var(--amb);color:var(--amb)}
+
+/* ============================================================
+   FOOTER — extra bottom padding, sun won't cover it
+   ============================================================ */
+footer{
+  border-top:1px solid var(--line);
+  padding:32px 0 60px;
+  color:var(--mut);font-size:.92rem;
+  background:rgba(8,10,15,.85);
+  position:relative;z-index:20;
+}
+.fg{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.fg h4{color:var(--ink);margin:0 0 8px;font-size:13.5px;letter-spacing:.05em}
+.fg a{display:block;padding:3px 0;color:var(--mut);font-size:14px}
+.fg a:hover{color:var(--amb)}
+.copy{margin-top:20px;padding-top:14px;border-top:1px solid var(--line);font-size:13.5px}
+
+/* ============================================================
+   SECRET SUN — small, background, LEFT corner, mid-height
+   Access shortcut/easter egg only. Admin authorization is
+   enforced by Firebase Auth + custom claims + Security Rules.
+   ============================================================ */
+#secretSun{
+  position:fixed;
+  left:14px;
+  top:36vh;
+  width:34px;height:34px;
+  border-radius:50%;
+  z-index:6;
+  pointer-events:auto;
+  cursor:pointer;
+  background:none;border:0;padding:0;
+  filter:drop-shadow(0 0 10px rgba(250,210,1,.5));
+  animation:sunDrift 24s ease-in-out infinite;
+  transition:filter .3s ease;
+}
+@media(min-width:900px){
+  #secretSun{left:22px;top:34vh;width:42px;height:42px}
+}
+#secretSun:hover{filter:drop-shadow(0 0 18px rgba(250,210,1,.85))}
+#secretSun:focus-visible{outline:3px solid var(--yel);outline-offset:5px;border-radius:50%}
+#secretSun .core{
+  position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle at 50% 45%,
+    #fff7d6 0%, #FAD201 40%, #f2a33a 72%, rgba(242,163,58,0) 100%);
+}
+#secretSun .halo{
+  position:absolute;inset:-55%;border-radius:50%;
+  background:radial-gradient(circle,
+    rgba(250,210,1,.35) 0%, rgba(242,163,58,.12) 45%, transparent 70%);
+  animation:sunPulse 5s ease-in-out infinite;
+}
+#secretSun .rays{
+  position:absolute;inset:-70%;border-radius:50%;
+  background:conic-gradient(from 0deg,
+    rgba(250,210,1,.16),transparent 12%,
+    rgba(242,163,58,.16) 25%,transparent 37%,
+    rgba(250,210,1,.16) 50%,transparent 62%,
+    rgba(242,163,58,.16) 75%,transparent 87%,
+    rgba(250,210,1,.16) 100%);
+  mix-blend-mode:screen;opacity:.5;
+  animation:sunSpin 90s linear infinite;
+}
+@keyframes sunPulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:.95;transform:scale(1.08)}}
+@keyframes sunSpin{to{transform:rotate(360deg)}}
+@keyframes sunDrift{
+  0%,100%{transform:translate(0,0)}
+  25%   {transform:translate(6px,-10px)}
+  50%   {transform:translate(-3px,-16px)}
+  75%   {transform:translate(4px,-6px)}
+}
+
+.sun-flash{
+  position:fixed;inset:0;z-index:9998;pointer-events:none;
+  background:radial-gradient(circle at var(--sx,5%) var(--sy,50%),
+    rgba(250,210,1,.75) 0%, rgba(242,163,58,.3) 20%, transparent 55%);
+  opacity:0;animation:sunFlash .5s ease-out forwards;
+}
+@keyframes sunFlash{0%{opacity:0}20%{opacity:1}100%{opacity:0}}
+
+@media(max-width:520px){
+  #secretSun{top:20vh;left:10px;width:30px;height:30px}
+}
+
+/* ============================================================
+   Reduced motion
+   ============================================================ */
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+  .step{opacity:1;transform:none}
+  #secretSun{animation:none!important}
+  .sun-flash{display:none}
+}
+
+/* ============================================================
+   DEVTOOLS TOAST
+   ============================================================ */
+.devtools-warning{
+  position:fixed;top:0;left:50%;transform:translate(-50%,-140%);
+  z-index:9999;padding:.8rem 1.3rem;
+  background:linear-gradient(120deg,rgba(200,85,61,.95),rgba(150,40,20,.95));
+  color:#fff;font-weight:600;font-size:.85rem;
+  border-radius:0 0 14px 14px;
+  box-shadow:0 14px 40px -10px rgba(200,85,61,.6);
+  display:flex;align-items:center;gap:.6rem;
+  transition:transform .5s cubic-bezier(.2,.7,.2,1);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  max-width:calc(100% - 24px);pointer-events:none;
+}
+.devtools-warning.is-visible{transform:translate(-50%,0)}
+.devtools-warning__icon{
+  width:22px;height:22px;border-radius:50%;
+  background:rgba(255,255,255,.18);
+  display:grid;place-items:center;font-size:13px;flex-shrink:0;
+}
+
+dialog{background:#10151D;color:var(--ink);border:1px solid var(--line);border-radius:18px;width:min(92vw,420px)}
+dialog::backdrop{background:rgba(0,0,0,.65)}
+.opt input{width:auto;margin-right:8px}
+.opt label{display:flex;align-items:center;color:var(--ink);font-size:15px}
 </style>
 </head>
 <body>
-<div id="bg"></div><canvas id="c" aria-hidden="true"></canvas>
-<header><div class="wrap bar">
-<a class="logo" href="#top" aria-label="Ikaze Digital home">
-<img data-fb src="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png" alt="IKAZE Digital sunrise logo" width="56" height="44">
-<svg style="display:none" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 40 24 6l18 34-9-6-9-14-9 14z" fill="#f2a33a"/><path d="M24 6 42 40l-9-6z" fill="#c8553d"/><circle cx="24" cy="6" r="4" fill="#FAD201"/></svg>
-<span>IKAZE DIGITAL<small>Digital Technology & Creative Solutions</small></span></a>
-<button id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
-<nav id="nav" aria-label="Main"><a href="#top">Home</a><a href="#services">Services</a><a href="#solutions">Solutions</a><a href="#ecosystem">Ecosystem</a><a href="#portfolio">Work</a><a href="#founder">About</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a><select id="lang" aria-label="Language" style="width:auto;padding:8px"></select><a class="btn" data-r="hire">Start a Project</a></nav>
-</div></header>
+
+<div id="bg"></div>
+<canvas id="c" aria-hidden="true"></canvas>
+<canvas id="stars" aria-hidden="true"></canvas>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="index.html" aria-label="Ikaze Digital home">
+      <img src="https://i.postimg.cc/dtcq1dj0/IKAZE-Digital-Sunrise-Logo.png" alt="IKAZE Digital sunrise logo">
+      <span>IKAZE DIGITAL<small>Digital Technology & Creative Solutions</small></span>
+    </a>
+
+    <nav class="top-nav" aria-label="Primary">
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="ecosystem.html">Ecosystem</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="academy.html">Academy</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html">Contact</a>
+      <button type="button" id="moreBtn" class="btn o sm" aria-expanded="false" aria-controls="sidebar">More ▾</button>
+      <a class="btn" href="start-project.html">Start a Project</a>
+    </nav>
+
+    <button id="menu" aria-expanded="false" aria-controls="sidebar" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============================================================
+     SIDEBAR
+     ============================================================ -->
+<div id="sidebarBackdrop" aria-hidden="true"></div>
+<aside id="sidebar" role="dialog" aria-modal="true" aria-label="All pages">
+  <div class="sidebar-head">
+    <strong>All Pages</strong>
+    <button class="sidebar-close" id="sidebarClose" aria-label="Close">×</button>
+  </div>
+  <div class="sidebar-body">
+
+    <div class="sidebar-group">
+      <h4>Main</h4>
+      <a href="index.html"><span class="dot"></span>Home</a>
+      <a href="about.html"><span class="dot"></span>About</a>
+      <a href="services.html"><span class="dot"></span>Services</a>
+      <a href="ecosystem.html"><span class="dot"></span>Ecosystem</a>
+      <a href="portfolio.html"><span class="dot"></span>Portfolio</a>
+      <a href="academy.html"><span class="dot"></span>Academy</a>
+      <a href="pricing.html"><span class="dot"></span>Pricing</a>
+      <a href="contact.html"><span class="dot"></span>Contact</a>
+    </div>
+
+    <div class="sidebar-group">
+      <h4>Actions</h4>
+      <a href="start-project.html"><span class="dot"></span>Start a Project</a>
+      <a href="client-portal.html"><span class="dot"></span>Client Portal</a>
+      <a href="payments.html"><span class="dot"></span>Payments</a>
+      <a href="support.html"><span class="dot"></span>Support</a>
+    </div>
+
+    <div class="sidebar-group">
+      <h4>Explore</h4>
+      <a href="tools.html"><span class="dot"></span>Tools</a>
+      <a href="opportunities.html"><span class="dot"></span>Opportunities</a>
+      <a href="product-details.html"><span class="dot"></span>Product Details</a>
+    </div>
+
+    <div class="sidebar-group">
+      <h4>Ecosystem Products</h4>
+      <a href="ikaze-cloud.html"><span class="dot"></span>IKAZE Cloud</a>
+      <a href="ikaze-creator.html"><span class="dot"></span>IKAZE Creator</a>
+      <a href="product-details.html"><span class="dot"></span>IKAZE AI</a>
+      <a href="product-details.html"><span class="dot"></span>IKAZE Forms</a>
+      <a href="product-details.html"><span class="dot"></span>IKAZE CRM</a>
+      <a href="product-details.html"><span class="dot"></span>IKAZE Jobs</a>
+      <a href="product-details.html"><span class="dot"></span>IKAZE Marketplace</a>
+      <a href="product-details.html"><span class="dot"></span>IKAZE Labs</a>
+    </div>
+
+    <div class="sidebar-group">
+      <h4>Legal & Admin</h4>
+      <a href="privacy.html"><span class="dot"></span>Privacy</a>
+      <a href="terms.html"><span class="dot"></span>Terms</a>
+      <a href="admin.html"><span class="dot"></span>Admin Panel</a>
+    </div>
+
+    <div class="sidebar-group">
+      <a class="btn" href="start-project.html">Start a Project</a>
+    </div>
+  </div>
+</aside>
 
 <main id="top">
+
+<!-- ============ HERO ============ -->
 <section class="hero"><div class="wrap">
-<p class="tag">Technology. Creativity. Innovation. Growth.</p>
-<h1>Building Africa's Digital Future</h1>
-<p class="lead">We design and build modern digital experiences, software, AI solutions, mobile applications, e-commerce platforms, brands and technology ecosystems from Rwanda for Africa and the world.</p>
-<div class="row"><a class="btn" data-r="hire">Start a Project</a><a class="btn o" href="#portfolio">Explore Our Work</a><a class="btn o" href="#founder">Meet the Founder</a></div>
+  <p class="tag">Technology. Creativity. Innovation. Growth.</p>
+  <h1>Building Africa's Digital Future</h1>
+  <p class="lead">We design and build modern digital experiences, software, AI solutions, mobile applications, e-commerce platforms, brands and technology ecosystems from Rwanda for Africa and the world.</p>
+  <div class="row">
+    <a class="btn" href="start-project.html">Start a Project</a>
+    <a class="btn o" href="portfolio.html">Explore Our Work</a>
+    <a class="btn o" href="about.html">Meet the Founder</a>
+  </div>
 </div></section>
 
-<section id="services"><div class="wrap"><h2>Services</h2><p class="lead">From idea to launch: practical technology and creative work.</p><div class="grid" id="svc"></div></div></section>
-
-<section id="solutions"><div class="wrap"><h2>Solutions Built Around Real Needs</h2><div class="grid" id="sol"></div></div></section>
-
-<section id="industries"><div class="wrap"><h2>Industries</h2><div class="chips" id="ind"></div></div></section>
-
-<section id="ecosystem"><div class="wrap"><h2>The Ikaze Ecosystem</h2><p class="lead">An honest view of what exists today and what we are building next.</p>
-<div class="hub"><b>IKAZE DIGITAL</b></div>
-<div class="row"><input id="q" type="search" placeholder="Search products, descriptions, categories" aria-label="Search ecosystem" style="max-width:360px"><select id="cat" aria-label="Category" style="max-width:260px"></select><button class="chip" id="clr" type="button">Clear filters</button></div><div class="chips" role="group" aria-label="Filter ecosystem by status" id="ef"></div><div class="grid" id="eco"></div>
-<div class="row"><a class="btn o" data-r="ecosystem">Explore the Ikaze Ecosystem →</a></div></div></section>
-
-<section id="portfolio"><div class="wrap"><h2>Selected Work &amp; Case Studies</h2><p class="lead">Ownership is labelled clearly: my projects, collaborations and partners. No invented outcomes.</p>
-<div class="chips" role="group" aria-label="Filter projects" id="filters"></div><div class="grid" id="proj"></div></div></section>
-
-<section id="aud"><div class="wrap"><h2>Technology for Every Community</h2><p class="lead">Pick who you are to see relevant parts of the ecosystem.</p><div class="chips" id="ac"></div><p class="note" id="ap" role="status">Select an audience above.</p></div></section>
-
-<section id="estimator"><div class="wrap"><h2>Project Estimator</h2><p class="lead">Tick what you need for a starting estimate.</p><div class="grid opt" id="est"></div><label class="opt" style="display:flex;gap:8px;margin-top:12px;color:var(--ink)"><input type="checkbox" id="mt"> Maintenance (from 50,000 RWF/month)</label><p class="price" id="eo" role="status" style="margin-top:14px">Select options to see an estimate.</p>
-<div class="row"><button class="btn" id="eq">Request a Quote</button><button class="btn o" id="ec">Book a Consultation</button></div>
-<p class="note">Prices shown are starting estimates for planning purposes. Final pricing depends on project scope, complexity, integrations, content, hosting, third-party services, timeline and support requirements. A detailed quotation will be provided before development begins.</p></div></section>
-
-<section id="tools"><div class="wrap"><h2>Free Digital Tools</h2><div class="grid"><div class="card"><span class="st AVAILABLE">AVAILABLE</span><h3>Word Counter</h3><textarea id="wc" rows="3" aria-label="Text to count" placeholder="Paste text…"></textarea><p id="wo">0 words · 0 characters</p></div><div id="tl" style="display:contents"></div></div></div></section>
-
-<section id="opps"><div class="wrap"><h2>Global Opportunity Center</h2><p class="lead">Jobs, internships, scholarships, fellowships, grants, hackathons and mentorship.</p><div class="card"><span class="st SOON">COMING SOON</span><p>No verified listings yet. We only publish opportunities with a title, region, eligibility, deadline, application link, source and last-verified date, and we mark expired ones. Nothing here is invented.</p></div></div></section>
-
-<section id="vision"><div class="wrap"><h2>From Rwanda to the World</h2><p class="lead">From Rwanda to the world, IKAZE DIGITAL connects technology, creativity, people, and opportunities to build meaningful digital solutions.</p>
-<svg viewBox="0 0 600 260" role="img" aria-label="Illustrative connection map radiating from Rwanda" style="width:100%;max-width:760px;margin-top:20px"><g stroke="#f2a33a" stroke-opacity=".4" fill="none"><path d="M300 150 120 80M300 150 480 70M300 150 160 200M300 150 470 190M300 150 300 30M300 150 40 150M300 150 560 140"/></g><g fill="#f4efe8"><circle cx="120" cy="80" r="5"/><circle cx="480" cy="70" r="5"/><circle cx="160" cy="200" r="5"/><circle cx="470" cy="190" r="5"/><circle cx="300" cy="30" r="5"/><circle cx="40" cy="150" r="5"/><circle cx="560" cy="140" r="5"/></g><circle cx="300" cy="150" r="12" fill="#f2a33a"/><text x="300" y="182" fill="#f4efe8" font-size="13" text-anchor="middle">Rwanda</text></svg>
-<p class="note">Illustrative concept only. It does not show real offices, customers or partnerships.</p><p class="tag">One Ecosystem. Limitless Possibilities.</p></div></section>
-
-<section id="tech"><div class="wrap"><h2>Technologies We Work With</h2><div class="chips" id="tc"></div></div></section>
-
-<section id="process"><div class="wrap"><h2>Our Process</h2><div class="steps" id="steps"></div></div></section>
-
-<section id="pricing"><div class="wrap"><h2>Pricing</h2><p class="lead">Starting estimates in Rwandan Francs for planning purposes.</p><div class="grid" id="price"></div>
-<div class="row"><a class="btn o" data-r="pricing">View Full Pricing</a></div>
-<p class="note">Prices shown are starting estimates. Final pricing depends on scope, complexity, integrations, content, hosting, third-party services, timeline and support requirements. A detailed quotation will be provided before development begins.</p></div></section>
-
-<section id="founder"><div class="wrap founder">
-<div class="photo"><img data-fb data-t="NT" src="https://i.postimg.cc/tJ9QydF2/Theoneste.png" alt="NIYIBIGIRA Theoneste, Founder of Ikaze Digital" width="280" height="350"></div>
-<div><p class="tag">Meet the Founder</p><h2>NIYIBIGIRA THEONESTE</h2><p><strong>Founder &amp; Owner — Ikaze Digital</strong> · Developer · Designer · Technology Innovator · Educator</p>
-<p class="lead">NIYIBIGIRA Theoneste is a Rwandan technology creator, developer, designer and educator building digital products that connect technology, education, creativity and opportunity.</p>
-<p class="lead">Technology · Design · Education · Creative (music, piano, fine arts)</p>
-<div class="row"><a class="btn" href="https://theonesteniyibigira6-hue.github.io/NIYIBIGIRA-/" target="_blank" rel="noopener noreferrer">View Portfolio</a><a class="btn o" data-r="hire">Work With Me</a></div></div>
+<!-- ============ SERVICES ============ -->
+<section id="services"><div class="wrap">
+  <h2>Services</h2>
+  <p class="lead">From idea to launch: practical technology and creative work.</p>
+  <div class="grid" id="svc"></div>
 </div></section>
 
-<section id="trust"><div class="wrap"><h2>Built With Care</h2><div class="chips" id="tr"></div><p class="note">These are engineering practices we aim for, not certifications or guarantees.</p></div></section>
-
-<section id="start"><div class="wrap"><h2>Have an idea?</h2><p class="lead">Let's turn it into a digital solution.</p>
-<div class="row"><a class="btn" data-r="hire">Start a Project</a><a class="btn o" href="#contact">Talk to Ikaze Digital</a></div>
-<h3 style="margin-top:40px">Not sure what you need?</h3><div class="row" style="margin-top:8px"><a class="btn o" data-r="hire">Find My Solution</a></div></div></section>
-
-<section id="contact"><div class="wrap"><h2>Let's Build Something Powerful</h2>
-<p class="lead">Have an idea, business, school project, digital platform or creative concept? Let's turn it into a professional digital experience.</p>
-<p><strong>NIYIBIGIRA THEONESTE</strong><br>Founder &amp; Owner — Ikaze Digital</p>
-<div class="soc" id="soc"></div>
-<form id="f" novalidate>
-<div><label for="n">Full name</label><input id="n" required maxlength="80" autocomplete="name"></div>
-<div><label for="e">Email</label><input id="e" type="email" required maxlength="120" autocomplete="email"></div>
-<div><label for="s">Service</label><select id="s"></select></div>
-<div><label for="m">Project description</label><textarea id="m" rows="4" required maxlength="1500"></textarea></div>
-<button class="btn" type="submit">Request a Consultation</button><p class="note" id="st" role="status"></p></form>
-<p class="note">The form opens your email app with the details filled in; nothing is stored on this page.</p>
+<!-- ============ ECOSYSTEM ============ -->
+<section id="ecosystem"><div class="wrap">
+  <h2>The Ikaze Ecosystem</h2>
+  <p class="lead">An honest view of what exists today and what we are building next.</p>
+  <div class="hub"><b>IKAZE DIGITAL</b></div>
+  <div class="filters">
+    <input id="q" type="search" placeholder="Search products, descriptions, categories" aria-label="Search ecosystem">
+    <select id="cat" aria-label="Category"></select>
+    <button class="chip" id="clr" type="button">Clear filters</button>
+  </div>
+  <div class="chips" role="group" aria-label="Filter ecosystem by status" id="ef"></div>
+  <div class="grid" id="eco"></div>
+  <div class="row"><a class="btn o" href="ecosystem.html">Explore the Ikaze Ecosystem →</a></div>
 </div></section>
+
+<!-- ============ PORTFOLIO ============ -->
+<section id="portfolio"><div class="wrap">
+  <h2>Selected Work &amp; Case Studies</h2>
+  <p class="lead">Ownership is labelled clearly: my projects, collaborations and partners. No invented outcomes.</p>
+  <div class="chips" role="group" aria-label="Filter projects" id="filters"></div>
+  <div class="grid" id="proj"></div>
+  <div class="row"><a class="btn o" href="portfolio.html">View Full Portfolio →</a></div>
+</div></section>
+
+<!-- ============ INDUSTRIES — small cards ============ -->
+<section id="industries"><div class="wrap">
+  <h2>Industries</h2>
+  <div class="small-cards" id="ind"></div>
+</div></section>
+
+<!-- ============ TECHNOLOGY FOR EVERY COMMUNITY ============ -->
+<section id="aud"><div class="wrap">
+  <h2>Technology for Every Community</h2>
+  <p class="lead">Pick who you are — we'll take you to the right place.</p>
+  <div class="aud-cards" id="ac"></div>
+</div></section>
+
+<!-- ============ ESTIMATOR ============ -->
+<section id="estimator"><div class="wrap">
+  <h2>Project Estimator</h2>
+  <p class="lead">Tick what you need for a starting estimate.</p>
+  <div class="grid opt" id="est"></div>
+  <label class="opt" style="display:flex;gap:8px;margin-top:12px;color:var(--ink);font-size:14.5px">
+    <input type="checkbox" id="mt"> Maintenance (from 50,000 RWF/month)
+  </label>
+  <p id="eo" role="status" style="margin-top:14px;font-size:1.18rem;font-weight:700">Select options to see an estimate.</p>
+  <div class="row">
+    <a class="btn" href="start-project.html">Request a Quote</a>
+    <a class="btn o" href="contact.html">Book a Consultation</a>
+  </div>
+  <p class="note">Prices shown are starting estimates for planning purposes. Final pricing depends on project scope, complexity, integrations, content, hosting, third-party services, timeline and support requirements.</p>
+</div></section>
+
+<!-- ============ TOOLS ============ -->
+<section id="tools"><div class="wrap">
+  <h2>Free Digital Tools</h2>
+  <div class="grid">
+    <div class="card">
+      <span class="st AVAILABLE">AVAILABLE</span>
+      <h3>Word Counter</h3>
+      <textarea id="wc" rows="3" aria-label="Text to count" placeholder="Paste text…"></textarea>
+      <p id="wo">0 words · 0 characters</p>
+    </div>
+    <div id="tl" style="display:contents"></div>
+  </div>
+  <div class="row"><a class="btn o" href="tools.html">View All Tools →</a></div>
+</div></section>
+
+<!-- ============ OPPORTUNITIES ============ -->
+<section id="opps"><div class="wrap">
+  <h2>Global Opportunity Center</h2>
+  <p class="lead">Jobs, internships, scholarships, fellowships, grants, hackathons and mentorship.</p>
+  <div class="card">
+    <span class="st SOON">COMING SOON</span>
+    <p>No verified listings yet. We only publish opportunities with a title, region, eligibility, deadline, application link, source and last-verified date. Nothing here is invented.</p>
+  </div>
+  <div class="row"><a class="btn o" href="opportunities.html">Open Opportunity Center →</a></div>
+</div></section>
+
+<!-- ============ PARTNERSHIP ============ -->
+<section id="partnership"><div class="wrap">
+  <p class="tag">Partnership</p>
+  <h2>Let's build something together.</h2>
+  <p class="lead">We collaborate with organizations, schools, startups, agencies and international partners on technology, education, creative and digital transformation projects. Partnerships are structured around clear scope, honest expectations and shared outcomes.</p>
+  <div class="grid">
+    <a class="card" href="contact.html"><h3>Technology Partnerships</h3><p>Joint products, integrations, platforms and co-built tools.</p><span class="go">Discuss a partnership →</span></a>
+    <a class="card" href="contact.html"><h3>Education Partnerships</h3><p>Schools, training centers and universities building digital learning.</p><span class="go">Talk to us →</span></a>
+    <a class="card" href="contact.html"><h3>Creative &amp; Media Partnerships</h3><p>Joint content, campaigns and creator collaborations.</p><span class="go">Explore collaboration →</span></a>
+    <a class="card" href="contact.html"><h3>Ecosystem &amp; Community Partners</h3><p>Ecosystem programmes, hackathons and community events.</p><span class="go">Get in touch →</span></a>
+  </div>
+  <div class="row"><a class="btn" href="contact.html">Start a Partnership Conversation</a></div>
+</div></section>
+
+<!-- ============ SPONSORSHIP ============ -->
+<section id="sponsorship"><div class="wrap">
+  <p class="tag">Sponsorship</p>
+  <h2>Sponsor digital growth in Africa.</h2>
+  <p class="lead">Support training, opportunity access, creator programmes and technology initiatives that widen access to digital skills. Sponsorships are reviewed together with the sponsor so expectations, deliverables and reporting are clear and honest.</p>
+  <div class="grid">
+    <a class="card" href="contact.html"><h3>Programme Sponsorship</h3><p>Fund specific training, workshops or opportunity tracks.</p><span class="go">Learn more →</span></a>
+    <a class="card" href="contact.html"><h3>Creator Sponsorship</h3><p>Back creators building on the IKAZE ecosystem.</p><span class="go">Learn more →</span></a>
+    <a class="card" href="contact.html"><h3>Event Sponsorship</h3><p>Hackathons, workshops, showcases and community meetups.</p><span class="go">Learn more →</span></a>
+    <a class="card" href="contact.html"><h3>Institutional Sponsorship</h3><p>Long-term sponsorship for institutions, NGOs and governments.</p><span class="go">Learn more →</span></a>
+  </div>
+  <div class="row"><a class="btn" href="contact.html">Become a Sponsor</a></div>
+</div></section>
+
+<!-- ============ VISION ============ -->
+<section id="vision"><div class="wrap">
+  <h2>From Rwanda to the World</h2>
+  <p class="lead">From Rwanda to the world, IKAZE DIGITAL connects technology, creativity, people, and opportunities to build meaningful digital solutions.</p>
+  <svg viewBox="0 0 600 260" role="img" aria-label="Illustrative connection map radiating from Rwanda" style="width:100%;max-width:760px;margin-top:14px">
+    <g stroke="#f2a33a" stroke-opacity=".4" fill="none">
+      <path d="M300 150 120 80M300 150 480 70M300 150 160 200M300 150 470 190M300 150 300 30M300 150 40 150M300 150 560 140"/>
+    </g>
+    <g fill="#f4efe8">
+      <circle cx="120" cy="80" r="5"/><circle cx="480" cy="70" r="5"/>
+      <circle cx="160" cy="200" r="5"/><circle cx="470" cy="190" r="5"/>
+      <circle cx="300" cy="30" r="5"/><circle cx="40" cy="150" r="5"/><circle cx="560" cy="140" r="5"/>
+    </g>
+    <circle cx="300" cy="150" r="12" fill="#f2a33a"/>
+    <text x="300" y="182" fill="#f4efe8" font-size="13" text-anchor="middle">Rwanda</text>
+  </svg>
+  <p class="note">Illustrative concept only. It does not show real offices, customers or partnerships.</p>
+  <p class="tag">One Ecosystem. Limitless Possibilities.</p>
+</div></section>
+
+<!-- ============ TECHNOLOGIES — small cards ============ -->
+<section id="tech"><div class="wrap">
+  <h2>Technologies We Work With</h2>
+  <div class="small-cards" id="tc"></div>
+</div></section>
+
+<!-- ============ PROCESS ============ -->
+<section id="process"><div class="wrap">
+  <h2>Our Process</h2>
+  <div class="steps" id="steps"></div>
+</div></section>
+
+<!-- ============ PRICING ============ -->
+<section id="pricing"><div class="wrap">
+  <h2>Pricing</h2>
+  <p class="lead">Starting estimates in Rwandan Francs for planning purposes.</p>
+  <div class="grid" id="price"></div>
+  <div class="row"><a class="btn o" href="pricing.html">View Full Pricing</a></div>
+  <p class="note">Prices shown are starting estimates. Final pricing depends on scope, complexity, integrations, content, hosting, third-party services, timeline and support requirements.</p>
+</div></section>
+
+<!-- ============ FOUNDER ============ -->
+<section id="founder"><div class="wrap">
+  <p class="tag">Meet the Founder</p>
+  <div class="founder">
+    <div class="photo">
+      <img src="https://i.postimg.cc/tJ9QydF2/Theoneste.png" alt="NIYIBIGIRA Theoneste, Founder of Ikaze Digital">
+    </div>
+    <div>
+      <h2>NIYIBIGIRA THEONESTE</h2>
+      <p><strong>Founder &amp; Owner — Ikaze Digital</strong> · Developer · Designer · Technology Innovator · Educator</p>
+      <p class="lead">NIYIBIGIRA Theoneste is a Rwandan technology creator, developer, designer and educator building digital products that connect technology, education, creativity and opportunity.</p>
+      <p class="lead">Technology · Design · Education · Creative (music, piano, fine arts)</p>
+      <div class="row">
+        <a class="btn" href="https://theonosteniyibigira6-hue.github.io/NIYIBIGIRA-/" target="_blank" rel="noopener noreferrer">View Portfolio</a>
+        <a class="btn o" href="contact.html">Work With Me</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ BUILT WITH CARE — small cards ============ -->
+<section id="trust"><div class="wrap">
+  <h2>Built With Care</h2>
+  <div class="small-cards" id="tr"></div>
+  <p class="note">These are engineering practices we aim for, not certifications or guarantees.</p>
+</div></section>
+
+<!-- ============ START ============ -->
+<section id="start"><div class="wrap">
+  <h2>Have an idea?</h2>
+  <p class="lead">Let's turn it into a digital solution.</p>
+  <div class="row">
+    <a class="btn" href="start-project.html">Start a Project</a>
+    <a class="btn o" href="contact.html">Talk to Ikaze Digital</a>
+  </div>
+</div></section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact"><div class="wrap">
+  <h2>Let's Build Something Powerful</h2>
+  <p class="lead">Have an idea, business, school project, digital platform or creative concept? Let's turn it into a professional digital experience.</p>
+  <p><strong>NIYIBIGIRA THEONESTE</strong><br>Founder &amp; Owner — Ikaze Digital</p>
+  <div class="soc" id="soc"></div>
+  <form id="f" novalidate>
+    <div><label for="n">Full name</label><input id="n" required maxlength="80" autocomplete="name"></div>
+    <div><label for="e">Email</label><input id="e" type="email" required maxlength="120" autocomplete="email"></div>
+    <div><label for="s">Service</label><select id="s"></select></div>
+    <div><label for="m">Project description</label><textarea id="m" rows="4" required maxlength="1500"></textarea></div>
+    <button class="btn" type="submit">Request a Consultation</button>
+    <p class="note" id="st" role="status"></p>
+  </form>
+  <p class="note">The form opens your email app with the details filled in; nothing is stored on this page.</p>
+</div></section>
+
 </main>
 
-<dialog id="dlg" aria-labelledby="dt"><h3 id="dt"></h3><p id="dd" class="note"></p><p><strong>Coming Soon — Join the Early Access List</strong></p><form id="wl"><label for="wm">Email</label><input id="wm" type="email" required maxlength="120"><button class="btn" type="submit">Join Early Access</button></form><p class="note">Opens your email app to send your request.</p><button class="chip" id="dx" type="button">Close</button></dialog>
-<footer><div class="wrap"><div class="fg" id="fg"></div>
-<div class="copy"><strong>IKAZE DIGITAL</strong> — Building Africa's Digital Future<br>NIYIBIGIRA THEONESTE, Founder &amp; Owner<br>© <span id="y">2026</span> IKAZE DIGITAL. All rights reserved.</div></div></footer>
+<dialog id="dlg" aria-labelledby="dt">
+  <h3 id="dt"></h3>
+  <p id="dd" class="note"></p>
+  <p><strong>Coming Soon — Join the Early Access List</strong></p>
+  <form id="wl">
+    <label for="wm">Email</label>
+    <input id="wm" type="email" required maxlength="120">
+    <button class="btn" type="submit">Join Early Access</button>
+  </form>
+  <p class="note">Opens your email app to send your request.</p>
+  <button class="chip" id="dx" type="button">Close</button>
+</dialog>
+
+<footer><div class="wrap">
+  <div class="fg" id="fg"></div>
+  <div class="copy">
+    <strong>IKAZE DIGITAL</strong> — Building Africa's Digital Future<br>
+    NIYIBIGIRA THEONESTE, Founder &amp; Owner<br>
+    © <span id="y">2026</span> IKAZE DIGITAL. All rights reserved.
+  </div>
+</div></footer>
+
+<script type="module">
+export const firebaseConfig = {
+  apiKey: "AIzaSyD5gQg5cRZ0UBNDu3ypGe7vX54b_GuAtmY",
+  authDomain: "ikaze-digital-87814.firebaseapp.com",
+  projectId: "ikaze-digital-87814",
+  storageBucket: "ikaze-digital-87814.firebasestorage.app",
+  messagingSenderId: "104400733024",
+  appId: "1:104400733024:web:3a1e08a26844df8cd79405",
+  measurementId: "G-HRN1RSTVL7"
+};
+window.__IKAZE_FIREBASE__ = firebaseConfig;
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-/* Central config: replace destinations and contact details here. */
-/* Paste each real URL below. null = not connected yet: product cards open a Coming Soon dialog and other links fall back to #contact (no 404s). */
-const IKAZE_ROUTES={ecosystem:null,pricing:null,hire:null,contact:null,about:null,portfolio:null,ai:null,cloud:null,forms:null,crm:null,creator:null,jobs:null,marketplace:null,academy:null,labs:null,support:null,clientPortal:null,digitalAudit:null,businessHub:null,events:null,community:null};
-const CONTACT={email:"theonesteniyibigira@gmail.com",phone:"+250 794 204 582"};
-/* TODO: replace each with the real profile URL. These point to the platforms' home pages until then. */
-const SOCIALS=[["WhatsApp","https://wa.me/"+CONTACT.phone.replace(/\D/g,"")],["Email","mailto:"+CONTACT.email],["Instagram","https://www.instagram.com/"],["LinkedIn","https://www.linkedin.com/"],["Facebook","https://www.facebook.com/"],["X","https://x.com/"],["TikTok","https://www.tiktok.com/"]];
-const $=s=>document.querySelector(s),esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const R=k=>IKAZE_ROUTES[k]||(k=="pricing"?"#pricing":k=="ecosystem"?"#ecosystem":k=="portfolio"?"#portfolio":k=="about"?"#founder":"#contact");
-document.querySelectorAll('[data-r]').forEach(a=>a.href=R(a.dataset.r));
-document.querySelectorAll('img[data-fb]').forEach(i=>{const f=()=>{if(i.dataset.t){i.replaceWith(i.dataset.t)}else{i.style.display='none';i.nextElementSibling.style.display='block'}};i.addEventListener('error',f);if(i.complete&&!i.naturalWidth)f()});
-const SV=[["Web Development","Corporate sites, portals and custom web apps."],["Software Development","Business systems and management platforms."],["Mobile Applications","Android, iOS and cross-platform."],["AI Solutions","Assistants, automation and knowledge systems."],["E-Commerce","Stores, marketplaces and payments."],["UI/UX Design","Interfaces, product design and prototypes."],["Branding","Logos, identity and brand systems."],["Digital Marketing & SEO","Content, campaigns and search visibility."],["Cloud & Hosting","Domains, deployment and infrastructure."],["Cybersecurity","Security-conscious architecture and authorization."],["Education Technology","Digital learning platforms."],["Consulting","Product strategy and digital transformation."]];
-$('#svc').innerHTML=SV.map(([a,b])=>`<a class="card" href="#contact"><h3>${esc(a)}</h3><p>${esc(b)}</p><span class="go">Discuss this →</span></a>`).join('');
-$('#s').innerHTML=SV.map(([a])=>`<option>${esc(a)}</option>`).join('');
-$('#sol').innerHTML=[["Business","Systems that streamline operations."],["Startups","MVPs and product launches."],["Education","Learning platforms and school systems."],["NGOs","Platforms for community impact."],["Creators","Tools for content creators."],["Enterprise","Custom platforms at scale."],["Communities","Spaces that connect people."],["Digital Transformation","From manual processes to digital systems."]].map(([a,b])=>`<a class="card" href="${R('hire')}"><h3>${a}</h3><p>${b}</p><span class="go">Learn more →</span></a>`).join('');
-$('#ind').innerHTML=["Education","Technology","Business","Agriculture","Healthcare","Finance","Hospitality","Tourism","Media","Creative Industries","NGOs","Startups","Professional Services"].map(x=>`<span class="chip">${x}</span>`).join('');
-const EC=[["ai","Ikaze AI","AI assistant, research, summarization and custom business AI agents.","SOON","Artificial Intelligence"],["cloud","Ikaze Cloud","Storage, hosting, backups and deployment tools.","SOON","Cloud and Infrastructure"],["forms","Ikaze Forms","Registration forms, surveys and automated workflows.","SOON","Business Tools"],["crm","Ikaze CRM","Customers, leads, pipelines and invoices.","CONCEPT","Business Tools"],["creator","Ikaze Creator","Creator profiles, portfolios and digital products.","DEV","Creator Economy"],["jobs","Ikaze Jobs","Jobs, internships, scholarships and CV builder.","SOON","Careers"],["marketplace","Ikaze Marketplace","Digital products, services and vendor storefronts.","CONCEPT","Commerce"],["academy","Ikaze Academy","Technology, AI, business and creative learning.","SOON","Education"],["labs","Ikaze Labs","Research, prototypes, hackathons and open source.","DEV","Innovation"],["support","Ikaze Support","Help center, documentation and tickets.","SOON","Digital Services"],["clientPortal","Ikaze Client Portal","Project progress, files, messages and invoices.","SOON","Digital Services"],["digitalAudit","Ikaze Digital Audit","Website, SEO, performance and accessibility reviews.","SOON","Digital Services"],["businessHub","Ikaze Business Hub","Business resources and digital tools.","CONCEPT","Business Tools"],["events","Ikaze Events","Webinars, workshops and challenges.","SOON","Community"],["community","Ikaze Community","Developer, creator and country groups; mentorship.","SOON","Community"]];
-const SL={AVAILABLE:"AVAILABLE",DEV:"IN DEVELOPMENT",SOON:"COMING SOON",CONCEPT:"CONCEPT"};let ef="all";
-let q="",cat="all";const CATS=["all",...new Set(EC.map(e=>e[4]))];
-$('#cat').innerHTML=CATS.map(c=>`<option value="${c}">${c=="all"?"All categories":c}</option>`).join('');
-function re(){const l=EC.filter(e=>(ef=="all"||e[3]==ef)&&(cat=="all"||e[4]==cat)&&(e[1]+" "+e[2]+" "+e[4]).toLowerCase().includes(q));
-$('#eco').innerHTML=l.length?l.map(e=>`<button class="card" data-k="${e[0]}"><span class="st ${e[3]}">${SL[e[3]]}</span> <span class="badge">${e[4]}</span><h3>${e[1]}</h3><p>${e[2]}</p><span class="go">Explore →</span></button>`).join(''):'<p class="note">No products match. Try clearing filters.</p>'}
-$('#ef').innerHTML=["all","AVAILABLE","DEV","SOON","CONCEPT"].map(k=>`<button class="chip" data-k="${k}" aria-pressed="${k==ef}">${k=="all"?"ALL":SL[k]}</button>`).join('');
-const sf=()=>document.querySelectorAll('#ef .chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.k==ef));
-$('#ef').onclick=e=>{const k=e.target.dataset.k;if(!k)return;ef=k;sf();re()};
-$('#q').oninput=e=>{q=e.target.value.toLowerCase().trim();re()};$('#cat').onchange=e=>{cat=e.target.value;re()};
-$('#clr').onclick=()=>{ef="all";cat="all";q="";$('#q').value="";$('#cat').value="all";sf();re()};
-const dlg=$('#dlg');
-$('#eco').onclick=e=>{const b=e.target.closest('[data-k]');if(!b)return;const k=b.dataset.k,u=IKAZE_ROUTES[k];if(u){location.href=u;return}const x=EC.find(i=>i[0]==k);$('#dt').textContent=x[1];$('#dd').textContent=x[2]+" ("+SL[x[3]]+")";dlg.showModal()};
-$('#dx').onclick=()=>dlg.close();
-$('#wl').onsubmit=ev=>{ev.preventDefault();const m=$('#wm').value.trim();if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m))return;location.href="mailto:"+CONTACT.email+"?subject="+encodeURIComponent("Early access: "+$('#dt').textContent)+"&body="+encodeURIComponent("Please add me to the early access list: "+m)};
-re();
-const PJ=[["Personal Portfolio of NIYIBIGIRA Theoneste","My Project","web","Musician, artist, technology innovator and educator portfolio.","https://theonesteniyibigira6-hue.github.io/NIYIBIGIRA-/","Live"],
-["Rwanda Tech E-Learning Hub","My Project","education","A growing digital learning ecosystem: courses, e-library, E-Teacher, E-Class and opportunities.","https://theonesteniyibigira6-hue.github.io/RWANDA-TECH-LEARNING-HUB./","Live"],
-["African Content Creators","My Project","community","Creator-platform project. Status shown per repository state.","","Development / Concept"],
-["TTC Muhanga Connect","Collaborative Project","community","A collaborative digital platform connecting members of the TTC Muhanga community.","https://ttc-muhanga-connect.vercel.app/#alumni","Live"],
-["iMENA Hub","Partner / Ecosystem","community","Featured ecosystem project. Not owned by Ikaze Digital.","https://imena-hub.vercel.app/","Live"]];
-const FL={all:"All",my:"My Projects",collab:"Collaborations",education:"Education",web:"Web",community:"Community"};let cur="all";
-function rp(){$('#proj').innerHTML=PJ.filter(p=>cur=="all"||p[2]==cur||(cur=="my"&&p[1]=="My Project")||(cur=="collab"&&p[1]!="My Project")).map(p=>`<article class="card"><span class="badge">${esc(p[1])}</span><span class="badge">${esc(p[5])}</span><h3>${esc(p[0])}</h3><p>${esc(p[3])}</p>${p[4]?`<a class="go" href="${p[4]}" target="_blank" rel="noopener noreferrer">View Project →</a>`:'<p>Link: coming soon</p>'}</article>`).join('')}
-$('#filters').innerHTML=Object.keys(FL).map(k=>`<button class="chip" data-k="${k}" aria-pressed="${k==cur}">${FL[k]}</button>`).join('');
-$('#filters').onclick=e=>{const k=e.target.dataset.k;if(!k)return;cur=k;document.querySelectorAll('#filters .chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.k==k));rp()};rp();
-$('#tc').innerHTML=["HTML5","CSS3","JavaScript","Three.js","WebGL","Firebase","GitHub","Vercel","APIs","AI services"].map(x=>`<span class="chip">${x}</span>`).join('');
-$('#steps').innerHTML=[["Discover","Understand the problem."],["Plan","Define requirements and architecture."],["Design","Create UX/UI and visual identity."],["Build","Develop the solution."],["Test","Security, performance and usability."],["Launch","Deploy professionally."],["Grow","Maintenance, optimization and new features."]].map((s,i)=>`<div class="step"><b>0${i+1}</b> — ${s[0]}<br><span class="note">${s[1]}</span></div>`).join('');
-const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.4});document.querySelectorAll('.step').forEach(s=>io.observe(s));
-$('#tr').innerHTML=["Security-conscious architecture","Firebase-ready infrastructure","Secure authentication architecture","Privacy-conscious design","Performance optimization","Accessibility","Responsive engineering"].map(x=>`<span class="chip">${x}</span>`).join('');
-const PP=[["Websites","150,000"],["E-Commerce","600,000"],["Mobile Apps","1,500,000"],["Branding","50,000"],["AI Solutions","250,000"],["Digital Audit","100,000"]];
-$('#price').innerHTML=PP.map(([a,b])=>`<article class="card"><h3>${a}</h3><small>From</small><div class="price">${b} <small>RWF</small></div></article>`).join('');
-$('#soc').innerHTML=SOCIALS.map(([a,u])=>`<a href="${u}" ${u.startsWith('http')?'target="_blank" rel="noopener noreferrer"':''}>${a}</a>`).join('')+`<span class="note" style="width:100%;margin:0">${esc(CONTACT.phone)} · ${esc(CONTACT.email)}</span>`;
-const FG={Company:[["About","about"],["Founder","#founder"],["Portfolio","portfolio"],["Partners","#portfolio"]],Services:[["Web, Software & Mobile","#services"],["AI & E-Commerce","#services"],["UI/UX & Branding","#services"],["SEO","#services"]],Ecosystem:[["Ikaze AI","ai"],["Ikaze Cloud","cloud"],["Ikaze Creator","creator"],["Ikaze Academy","academy"],["Ikaze Labs","labs"],["Marketplace","marketplace"]],Explore:[["Opportunities","#opps"],["Community","#aud"],["Free Tools","#tools"],["Support","support"],["Client Portal","clientPortal"]],Contact:[["Email","mailto:"+CONTACT.email],["WhatsApp",SOCIALS[0][1]],["Start a Project","hire"]]};
-$('#fg').innerHTML=Object.entries(FG).map(([h,l])=>`<div><h4>${h}</h4>${l.map(([t,k])=>`<a href="${k[0]=='#'||k.startsWith('mailto')||k.startsWith('http')?k:R(k)}">${t}</a>`).join('')}</div>`).join('');
-$('#y').textContent=new Date().getFullYear();
-$('#f').onsubmit=e=>{e.preventDefault();const n=$('#n').value.trim(),m=$('#m').value.trim(),em=$('#e').value.trim();
-if(!n||!m||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){$('#st').textContent="Please enter your name, a valid email and a description.";return}
-$('#st').textContent="Opening your email app…";location.href="mailto:"+CONTACT.email+"?subject="+encodeURIComponent("Project request: "+$('#s').value)+"&body="+encodeURIComponent(`Name: ${n}\nEmail: ${em}\n\n${m}`)};
-const nv=$('#nav'),mb=$('#menu'),tg=o=>{nv.classList.toggle('open',o);document.body.classList.toggle('lock',o);mb.setAttribute('aria-expanded',o);mb.textContent=o?'Close':'Menu'};
-mb.onclick=()=>tg(!nv.classList.contains('open'));nv.onclick=e=>{if(e.target.tagName=='A')tg(false)};addEventListener('keydown',e=>e.key=='Escape'&&tg(false));
-const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)nv.querySelectorAll('a').forEach(a=>a.toggleAttribute('aria-current',a.getAttribute('href')=='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});document.querySelectorAll('main section[id]').forEach(s=>so.observe(s));
+'use strict';
 
-const AUD={"Students and learners":"Ikaze Academy, Ikaze Jobs, Free Tools","Teachers and educators":"Ikaze Academy, Ikaze Forms, Ikaze Community","Developers":"Ikaze Labs, Ikaze Community, Ikaze Cloud","Designers":"Ikaze Creator, Ikaze Marketplace, Ikaze Community","Creators":"Ikaze Creator, Ikaze Marketplace","Entrepreneurs":"Ikaze Business Hub, Ikaze CRM, Digital Audit","Small businesses":"Ikaze CRM, Ikaze Forms, Websites and E-Commerce","Startups":"Ikaze Labs, Ikaze Cloud, Custom Software","Institutions":"Ikaze Forms, Ikaze Academy, Client Portal","NGOs":"Ikaze Forms, Ikaze Community, Digital Transformation","Organizations":"Ikaze Client Portal, Ikaze CRM, Ikaze AI","Global partners":"Ikaze Labs, Ikaze Events, Contact us","Communities":"Ikaze Community, Ikaze Events"};
-$('#ac').innerHTML=Object.keys(AUD).map(k=>`<button class="chip" data-a="${esc(k)}" aria-pressed="false">${esc(k)}</button>`).join('');
-$('#ac').onclick=e=>{const k=e.target.dataset.a;if(!k)return;document.querySelectorAll('#ac .chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.a==k));$('#ap').textContent=k+": relevant — "+AUD[k]+" (availability varies; see the ecosystem statuses)."};
-const EST=[["Website",150000],["Web application",1500000],["Mobile application",1500000],["E-commerce",600000],["Branding",50000],["AI integration",250000]];
-$('#est').innerHTML=EST.map((x,i)=>`<label><input type="checkbox" value="${i}">${x[0]}&nbsp;<small>from ${x[1].toLocaleString()} RWF</small></label>`).join('');
-const sel=()=>[...document.querySelectorAll('#est input:checked')].map(i=>EST[i.value]);
-function ce(){const c=sel(),t=c.reduce((a,x)=>a+x[1],0),m=$('#mt').checked;$('#eo').textContent=c.length||m?`Combined starting estimate: from ${t.toLocaleString()} RWF${m?" + 50,000 RWF/month":""}`:"Select options to see an estimate."}
-$('#est').onchange=ce;$('#mt').onchange=ce;
-const qm=s=>{location.href="mailto:"+CONTACT.email+"?subject="+encodeURIComponent(s)+"&body="+encodeURIComponent("Interested in: "+(sel().map(x=>x[0]).join(", ")||"to be discussed")+($('#mt').checked?", Maintenance":""))};
-$('#eq').onclick=()=>qm("Quote request");$('#ec').onclick=()=>qm("Consultation booking");
-$('#tl').innerHTML=["QR Code Generator","Color Palette Generator","Image Compressor","CV Builder","Invoice Generator","Website Checklist","SEO Checklist","Accessibility Checklist"].map(t=>`<div class="card"><span class="st SOON">COMING SOON</span><h3>${t}</h3></div>`).join('');
-$('#wc').oninput=e=>{const v=e.target.value.trim();$('#wo').textContent=(v?v.split(/\s+/).length:0)+" words · "+e.target.value.length+" characters"};
-/* Interface languages. Only the navigation and headline are translated so far; other languages are not offered yet. Native-speaker review recommended. */
-const T={en:["Home","Services","Solutions","Ecosystem","Work","About","Pricing","Contact","Start a Project","Building Africa's Digital Future"],fr:["Accueil","Services","Solutions","Écosystème","Projets","À propos","Tarifs","Contact","Démarrer un projet","Bâtir l'avenir numérique de l'Afrique"],sw:["Nyumbani","Huduma","Suluhisho","Mfumo","Kazi","Kuhusu","Bei","Wasiliana","Anza Mradi","Tunajenga Mustakabali wa Kidijitali wa Afrika"],rw:["Ahabanza","Serivisi","Ibisubizo","Urusobe","Imishinga","Abo turi bo","Ibiciro","Twandikire","Tangira Umushinga","Twubaka Ejo Hazaza h'Ikoranabuhanga rya Afurika"]};
-const LN={en:"English",rw:"Kinyarwanda",fr:"Français",sw:"Kiswahili"};
-$('#lang').innerHTML=Object.keys(LN).map(k=>`<option value="${k}">${LN[k]}</option>`).join('');
-function sl(l){const t=T[l]||T.en,a=nv.querySelectorAll('a');a.forEach((x,i)=>{if(t[i])x.textContent=t[i]});$('h1').textContent=t[9];document.documentElement.lang=l;$('#lang').value=l;try{localStorage.setItem('ikl',l)}catch(e){}}
-$('#lang').onchange=e=>sl(e.target.value);let sv="en";try{sv=localStorage.getItem('ikl')||"en"}catch(e){}if(sv!="en")sl(sv);
+const $ = s => document.querySelector(s);
+const esc = t => String(t).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const CONTACT = { email: "theonosteniyibigira6@gmail.com", phone: "+250 794 204 258" };
 
-/* Warm cinematic scene: amber/terracotta glass forms + haze, scroll-driven. Enhancement only. */
-(()=>{
-if(matchMedia('(prefers-reduced-motion:reduce)').matches||typeof THREE==='undefined')return;
-let r;try{r=new THREE.WebGLRenderer({canvas:$('#c'),alpha:true,antialias:false})}catch(e){return}
-const mob=innerWidth<820;r.setPixelRatio(Math.min(devicePixelRatio,mob?1:1.5));
-const sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(60,1,.1,200);
-const cv=document.createElement('canvas');cv.width=cv.height=128;const x=cv.getContext('2d'),g=x.createRadialGradient(64,64,0,64,64,64);
-g.addColorStop(0,'rgba(255,255,255,.8)');g.addColorStop(1,'rgba(255,255,255,0)');x.fillStyle=g;x.fillRect(0,0,128,128);
-const tex=new THREE.CanvasTexture(cv),cols=[0xf2a33a,0xc8553d,0xf4efe8],sp=[];
-for(let i=0;i<(mob?14:34);i++){const s=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,color:cols[i%3],transparent:true,opacity:.06+Math.random()*.1,depthWrite:false}));
-s.position.set((Math.random()-.5)*50,(Math.random()-.5)*14,-Math.random()*90);const k=10+Math.random()*14;s.scale.set(k*1.6,k,1);s.userData.v=.2+Math.random()*.4;sc.add(s);sp.push(s)}
-const ms=[],gm=[new THREE.IcosahedronGeometry(2,1),new THREE.SphereGeometry(1.6,24,24),new THREE.TorusKnotGeometry(1.2,.4,64,8)];
-for(let i=0;i<(mob?4:9);i++){const m=new THREE.Mesh(gm[i%3],new THREE.MeshStandardMaterial({color:i%2?0xc8553d:0xf2a33a,roughness:.15,metalness:.2,transparent:true,opacity:.35}));
-m.position.set((i%2?1:-1)*(8+Math.random()*10),(Math.random()-.5)*10,-8-i*9);m.userData.s=.1+Math.random()*.2;sc.add(m);ms.push(m)}
-sc.add(new THREE.AmbientLight(0xffe2c0,.5));const L=new THREE.PointLight(0xf2a33a,2,80);sc.add(L);
-const pg=new THREE.BufferGeometry(),pn=mob?50:140,pa=new Float32Array(pn*3);for(let i=0;i<pn*3;i+=3){pa[i]=(Math.random()-.5)*40;pa[i+1]=(Math.random()-.5)*20;pa[i+2]=-Math.random()*90}
-pg.setAttribute('position',new THREE.BufferAttribute(pa,3));
-sc.add(new THREE.Points(pg,new THREE.PointsMaterial({color:0xf4efe8,size:.14,transparent:true,opacity:.6})));
-let p=0,run=true,t=0;
-function rs(){r.setSize(innerWidth,innerHeight,false);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix()}rs();addEventListener('resize',rs);
-addEventListener('scroll',()=>{p=scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight);document.body.style.setProperty('--p',p.toFixed(3))},{passive:true});
-document.addEventListener('visibilitychange',()=>{run=!document.hidden;if(run)loop()});
-function loop(){if(!run)return;t+=.01;
-cam.position.set(Math.sin(t*.3)*.6,2-p*4,-p*70);cam.lookAt(cam.position.x,cam.position.y,cam.position.z-10);
-L.position.set(Math.sin(t)*12,6,cam.position.z-8);
-sp.forEach(s=>{s.position.x+=s.userData.v*.01;if(s.position.x>28)s.position.x=-28});
-ms.forEach(m=>{m.rotation.x+=m.userData.s*.01;m.rotation.y+=m.userData.s*.015});
-r.render(sc,cam);requestAnimationFrame(loop)}
-loop();
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+(function(){
+  const sidebar = $('#sidebar');
+  const backdrop = $('#sidebarBackdrop');
+  const closeBtn = $('#sidebarClose');
+  const moreBtn = $('#moreBtn');
+  const menu = $('#menu');
+
+  const setOpen = (open) => {
+    sidebar.classList.toggle('open', open);
+    backdrop.classList.toggle('open', open);
+    document.body.classList.toggle('lock', open);
+    sidebar.setAttribute('aria-hidden', String(!open));
+    if (moreBtn) moreBtn.setAttribute('aria-expanded', String(open));
+    if (menu) menu.setAttribute('aria-expanded', String(open));
+  };
+
+  closeBtn.addEventListener('click', () => setOpen(false));
+  backdrop.addEventListener('click', () => setOpen(false));
+  sidebar.addEventListener('click', e => { if (e.target.tagName === 'A') setOpen(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
+  if (moreBtn) moreBtn.addEventListener('click', () => setOpen(true));
+  if (menu) menu.addEventListener('click', () => setOpen(true));
 })();
+
+/* ============================================================
+   SERVICES
+   ============================================================ */
+const SV = [
+  ["Web Development","Corporate sites, portals and custom web apps."],
+  ["Software Development","Business systems and management platforms."],
+  ["Mobile Applications","Android, iOS and cross-platform."],
+  ["AI Solutions","Assistants, automation and knowledge systems."],
+  ["E-Commerce","Stores, marketplaces and payments."],
+  ["UI/UX Design","Interfaces, product design and prototypes."],
+  ["Branding","Logos, identity and brand systems."],
+  ["Digital Marketing & SEO","Content, campaigns and search visibility."],
+  ["Cloud & Hosting","Domains, deployment and infrastructure."],
+  ["Cybersecurity","Security-conscious architecture and authorization."],
+  ["Education Technology","Digital learning platforms."],
+  ["Consulting","Product strategy and digital transformation."]
+];
+$('#svc').innerHTML = SV.map(([a,b]) => `<a class="card" href="services.html"><h3>${esc(a)}</h3><p>${esc(b)}</p><span class="go">Explore →</span></a>`).join('');
+$('#s').innerHTML = SV.map(([a]) => `<option>${esc(a)}</option>`).join('');
+
+/* ============================================================
+   INDUSTRIES → small cards
+   ============================================================ */
+$('#ind').innerHTML = [
+  "Education","Technology","Business","Agriculture","Healthcare","Finance",
+  "Hospitality","Tourism","Media","Creative Industries","NGOs","Startups",
+  "Professional Services"
+].map(x => `<div class="small-card">${esc(x)}</div>`).join('');
+
+/* ============================================================
+   AUDIENCE — clickable cards
+   ============================================================ */
+const AUD = [
+  ["Students and learners","Learn digital skills and grow.","academy.html"],
+  ["Teachers and educators","Digital tools for classrooms.","academy.html"],
+  ["Developers","Build and deploy on real infrastructure.","ikaze-cloud.html"],
+  ["Designers","Portfolio, marketplace and creator tools.","ikaze-creator.html"],
+  ["Creators","Publish, sell and grow your audience.","ikaze-creator.html"],
+  ["Entrepreneurs","Tools and platforms for founders.","ecosystem.html"],
+  ["Small businesses","Websites, e-commerce and CRM.","services.html"],
+  ["Startups","MVPs, cloud and custom software.","start-project.html"],
+  ["Institutions","Client portal and platform solutions.","client-portal.html"],
+  ["NGOs","Platforms for community impact.","services.html"],
+  ["Organizations","Client portal, CRM and internal tools.","client-portal.html"],
+  ["Global partners","Collaboration, ecosystem and events.","contact.html"],
+  ["Communities","Groups, events and mentorship.","ecosystem.html"]
+];
+$('#ac').innerHTML = AUD.map(([title,desc,link]) =>
+  `<a class="aud-card" href="${link}">
+    <h3>${esc(title)}</h3>
+    <p>${esc(desc)}</p>
+    <span class="go">Open →</span>
+  </a>`
+).join('');
+
+/* ============================================================
+   ECOSYSTEM
+   ============================================================ */
+const EC = [
+  ["ai","Ikaze AI","AI assistant, research, summarization and custom business AI agents.","SOON","Artificial Intelligence","product-details.html"],
+  ["cloud","Ikaze Cloud","Storage, hosting, backups and deployment tools.","SOON","Cloud and Infrastructure","ikaze-cloud.html"],
+  ["forms","Ikaze Forms","Registration forms, surveys and automated workflows.","SOON","Business Tools","product-details.html"],
+  ["crm","Ikaze CRM","Customers, leads, pipelines and invoices.","CONCEPT","Business Tools","product-details.html"],
+  ["creator","Ikaze Creator","Creator profiles, portfolios and digital products.","DEV","Creator Economy","ikaze-creator.html"],
+  ["jobs","Ikaze Jobs","Jobs, internships, scholarships and CV builder.","SOON","Careers","product-details.html"],
+  ["marketplace","Ikaze Marketplace","Digital products, services and vendor storefronts.","CONCEPT","Commerce","product-details.html"],
+  ["academy","Ikaze Academy","Technology, AI, business and creative learning.","SOON","Education","academy.html"],
+  ["labs","Ikaze Labs","Research, prototypes, hackathons and open source.","DEV","Innovation","product-details.html"],
+  ["support","Ikaze Support","Help center, documentation and tickets.","SOON","Digital Services","support.html"],
+  ["clientPortal","Ikaze Client Portal","Project progress, files, messages and invoices.","SOON","Digital Services","client-portal.html"],
+  ["digitalAudit","Ikaze Digital Audit","Website, SEO, performance and accessibility reviews.","SOON","Digital Services","services.html"],
+  ["businessHub","Ikaze Business Hub","Business resources and digital tools.","CONCEPT","Business Tools","ecosystem.html"],
+  ["events","Ikaze Events","Webinars, workshops and challenges.","SOON","Community","ecosystem.html"],
+  ["community","Ikaze Community","Developer, creator and country groups; mentorship.","SOON","Community","ecosystem.html"]
+];
+const SL = { AVAILABLE:"AVAILABLE", DEV:"IN DEVELOPMENT", SOON:"COMING SOON", CONCEPT:"CONCEPT" };
+let ef = "all", q = "", cat = "all";
+const CATS = ["all", ...new Set(EC.map(e => e[4]))];
+$('#cat').innerHTML = CATS.map(c => `<option value="${c}">${c=="all"?"All categories":c}</option>`).join('');
+
+function re() {
+  const l = EC.filter(e =>
+    (ef=="all"||e[3]==ef) &&
+    (cat=="all"||e[4]==cat) &&
+    (e[1]+" "+e[2]+" "+e[4]).toLowerCase().includes(q)
+  );
+  $('#eco').innerHTML = l.length
+    ? l.map(e => `<a class="card" href="${e[5]}"><span class="st ${e[3]}">${SL[e[3]]}</span> <span class="badge">${e[4]}</span><h3>${e[1]}</h3><p>${e[2]}</p><span class="go">Explore →</span></a>`).join('')
+    : '<p class="note">No products match. Try clearing filters.</p>';
+}
+$('#ef').innerHTML = ["all","AVAILABLE","DEV","SOON","CONCEPT"].map(k => `<button class="chip" data-k="${k}" aria-pressed="${k==ef}">${k=="all"?"ALL":SL[k]}</button>`).join('');
+const sf = () => document.querySelectorAll('#ef .chip').forEach(c => c.setAttribute('aria-pressed', c.dataset.k==ef));
+$('#ef').onclick = e => { const k = e.target.dataset.k; if(!k)return; ef = k; sf(); re(); };
+$('#q').oninput = e => { q = e.target.value.toLowerCase().trim(); re(); };
+$('#cat').onchange = e => { cat = e.target.value; re(); };
+$('#clr').onclick = () => { ef="all"; cat="all"; q=""; $('#q').value=""; $('#cat').value="all"; sf(); re(); };
+re();
+
+/* ============================================================
+   PORTFOLIO
+   ============================================================ */
+const PJ = [
+  ["Personal Portfolio of NIYIBIGIRA Theoneste","My Project","web","Musician, artist, technology innovator and educator portfolio.","https://theonosteniyibigira6-hue.github.io/NIYIBIGIRA-/","Live"],
+  ["Rwanda Tech E-Learning Hub","My Project","education","A growing digital learning ecosystem: courses, e-library, E-Teacher, E-Class and opportunities.","https://theonosteniyibigira6-hue.github.io/RWANDA-TECH-LEARNING-HUB./","Live"],
+  ["African Content Creators","My Project","community","Creator-platform project. Status shown per repository state.","","Development / Concept"],
+  ["TTC Muhanga Connect","Collaborative Project","community","A collaborative digital platform connecting members of the TTC Muhanga community.","https://ttc-muhanga-connect.vercel.app/#alumni","Live"],
+  ["iMENA Hub","Partner / Ecosystem","community","Featured ecosystem project. Not owned by Ikaze Digital.","https://imena-hub.vercel.app/","Live"]
+];
+const FL = { all:"All", my:"My Projects", collab:"Collaborations", education:"Education", web:"Web", community:"Community" };
+let cur = "all";
+function rp() {
+  $('#proj').innerHTML = PJ.filter(p =>
+    cur=="all" || p[2]==cur || (cur=="my"&&p[1]=="My Project") || (cur=="collab"&&p[1]!="My Project")
+  ).map(p => `<article class="card"><span class="badge">${esc(p[1])}</span><span class="badge">${esc(p[5])}</span><h3>${esc(p[0])}</h3><p>${esc(p[3])}</p>${p[4]?`<a class="go" href="${p[4]}" target="_blank" rel="noopener noreferrer">View Project →</a>`:'<p class="note" style="margin:6px 0 0">Link: coming soon</p>'}</article>`).join('');
+}
+$('#filters').innerHTML = Object.keys(FL).map(k => `<button class="chip" data-k="${k}" aria-pressed="${k==cur}">${FL[k]}</button>`).join('');
+$('#filters').onclick = e => { const k = e.target.dataset.k; if(!k)return; cur = k; document.querySelectorAll('#filters .chip').forEach(c => c.setAttribute('aria-pressed', c.dataset.k==k)); rp(); };
+rp();
+
+/* ============================================================
+   TECH → small cards
+   ============================================================ */
+$('#tc').innerHTML = [
+  "HTML5","CSS3","JavaScript","Three.js","WebGL","Firebase",
+  "GitHub","Vercel","APIs","AI services"
+].map(x => `<div class="small-card">${esc(x)}</div>`).join('');
+
+/* ============================================================
+   PROCESS
+   ============================================================ */
+$('#steps').innerHTML = [
+  ["Discover","Understand the problem."],
+  ["Plan","Define requirements and architecture."],
+  ["Design","Create UX/UI and visual identity."],
+  ["Build","Develop the solution."],
+  ["Test","Security, performance and usability."],
+  ["Launch","Deploy professionally."],
+  ["Grow","Maintenance, optimization and new features."]
+].map((s,i) => `<div class="step"><b>0${i+1}</b> — ${s[0]}<br><span class="note">${s[1]}</span></div>`).join('');
+const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('in')), { threshold:.4 });
+document.querySelectorAll('.step').forEach(s => io.observe(s));
+
+/* ============================================================
+   BUILT WITH CARE → small cards
+   ============================================================ */
+$('#tr').innerHTML = [
+  "Security-conscious architecture","Firebase-ready infrastructure",
+  "Secure authentication architecture","Privacy-conscious design",
+  "Performance optimization","Accessibility","Responsive engineering"
+].map(x => `<div class="small-card">${esc(x)}</div>`).join('');
+
+/* ============================================================
+   PRICING
+   ============================================================ */
+const PP = [
+  ["Websites","150,000"],["E-Commerce","600,000"],["Mobile Apps","1,500,000"],
+  ["Branding","50,000"],["AI Solutions","250,000"],["Digital Audit","100,000"]
+];
+$('#price').innerHTML = PP.map(([a,b]) =>
+  `<article class="card"><h3>${a}</h3><small>From</small><div style="font-size:1.28rem;font-weight:800">${b} <small>RWF</small></div></article>`
+).join('');
+
+/* ============================================================
+   SOCIALS
+   ============================================================ */
+const SOCIALS = [
+  ["WhatsApp","https://wa.me/250794204258"],
+  ["Email","mailto:"+CONTACT.email],
+  ["Instagram","https://www.instagram.com/"],
+  ["LinkedIn","https://www.linkedin.com/"],
+  ["Facebook","https://www.facebook.com/"],
+  ["X","https://x.com/"],
+  ["TikTok","https://www.tiktok.com/"]
+];
+$('#soc').innerHTML = SOCIALS.map(([a,u]) =>
+  `<a href="${u}" ${u.startsWith('http')?'target="_blank" rel="noopener noreferrer"':''}>${a}</a>`
+).join('') + `<span class="note" style="width:100%;margin:0">${esc(CONTACT.phone)} · ${esc(CONTACT.email)}</span>`;
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+const FG = {
+  Company: [["About","about.html"],["Portfolio","portfolio.html"],["Partnership","#partnership"],["Sponsorship","#sponsorship"]],
+  Services: [["Services","services.html"],["Pricing","pricing.html"],["Start a Project","start-project.html"],["Contact","contact.html"]],
+  Ecosystem: [["Ecosystem","ecosystem.html"],["IKAZE Cloud","ikaze-cloud.html"],["IKAZE Creator","ikaze-creator.html"],["Academy","academy.html"],["Product Details","product-details.html"]],
+  Resources: [["Opportunities","opportunities.html"],["Tools","tools.html"],["Support","support.html"],["Client Portal","client-portal.html"],["Payments","payments.html"]],
+  Legal: [["Privacy","privacy.html"],["Terms","terms.html"],["Admin","admin.html"]],
+  Contact: [["Email","mailto:"+CONTACT.email],["WhatsApp","https://wa.me/250794204258"],["Contact Page","contact.html"]]
+};
+$('#fg').innerHTML = Object.entries(FG).map(([h,l]) =>
+  `<div><h4>${h}</h4>${l.map(([t,k]) => `<a href="${k}">${t}</a>`).join('')}</div>`
+).join('');
+$('#y').textContent = new Date().getFullYear();
+
+/* ============================================================
+   CONTACT FORM
+   ============================================================ */
+$('#f').onsubmit = e => {
+  e.preventDefault();
+  const n = $('#n').value.trim(), m = $('#m').value.trim(), em = $('#e').value.trim();
+  if (!n || !m || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) {
+    $('#st').textContent = "Please enter your name, a valid email and a description.";
+    return;
+  }
+  $('#st').textContent = "Opening your email app…";
+  location.href = "mailto:" + CONTACT.email
+    + "?subject=" + encodeURIComponent("Project request: " + $('#s').value)
+    + "&body=" + encodeURIComponent(`Name: ${n}\nEmail: ${em}\n\n${m}`);
+};
+
+/* ============================================================
+   COMING SOON DIALOG
+   ============================================================ */
+const dlg = $('#dlg');
+$('#dx').onclick = () => dlg.close();
+$('#wl').onsubmit = ev => {
+  ev.preventDefault();
+  const m = $('#wm').value.trim();
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m)) return;
+  location.href = "mailto:" + CONTACT.email
+    + "?subject=" + encodeURIComponent("Early access: " + $('#dt').textContent)
+    + "&body=" + encodeURIComponent("Please add me to the early access list: " + m);
+};
+
+/* ============================================================
+   ESTIMATOR
+   ============================================================ */
+const EST = [
+  ["Website",150000],["Web application",1500000],["Mobile application",1500000],
+  ["E-commerce",600000],["Branding",50000],["AI integration",250000]
+];
+$('#est').innerHTML = EST.map((x,i) =>
+  `<label><input type="checkbox" value="${i}">${x[0]}&nbsp;<small>from ${x[1].toLocaleString()} RWF</small></label>`
+).join('');
+const sel = () => [...document.querySelectorAll('#est input:checked')].map(i => EST[i.value]);
+function ce() {
+  const c = sel(), t = c.reduce((a,x) => a+x[1], 0), m = $('#mt').checked;
+  $('#eo').textContent = (c.length || m)
+    ? `Combined starting estimate: from ${t.toLocaleString()} RWF${m ? " + 50,000 RWF/month" : ""}`
+    : "Select options to see an estimate.";
+}
+$('#est').onchange = ce;
+$('#mt').onchange = ce;
+
+/* ============================================================
+   WORD COUNTER
+   ============================================================ */
+$('#wc').oninput = e => {
+  const v = e.target.value.trim();
+  $('#wo').textContent = (v ? v.split(/\s+/).length : 0) + " words · " + e.target.value.length + " characters";
+};
+
+/* ============================================================
+   TOOLS PREVIEW
+   ============================================================ */
+$('#tl').innerHTML = [
+  "QR Code Generator","Color Palette Generator","Image Compressor","CV Builder",
+  "Invoice Generator","Website Checklist","SEO Checklist","Accessibility Checklist"
+].map(t => `<div class="card"><span class="st SOON">COMING SOON</span><h3>${t}</h3></div>`).join('');
+
+/* ============================================================
+   SECRET SUN
+   Access shortcut only. Admin authorization is enforced by
+   Firebase Auth + custom claims + Security Rules.
+   ============================================================ */
+(function(){
+  const btn = document.createElement('button');
+  btn.id = 'secretSun';
+  btn.type = 'button';
+  btn.setAttribute('aria-label', 'Administrator access');
+  btn.innerHTML = '<span class="rays" aria-hidden="true"></span><span class="halo" aria-hidden="true"></span><span class="core" aria-hidden="true"></span>';
+  document.body.appendChild(btn);
+
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function activate() {
+    try {
+      const r = btn.getBoundingClientRect();
+      const flash = document.createElement('div');
+      flash.className = 'sun-flash';
+      flash.style.setProperty('--sx', (r.left + r.width / 2) + 'px');
+      flash.style.setProperty('--sy', (r.top + r.height / 2) + 'px');
+      document.body.appendChild(flash);
+      setTimeout(() => flash.remove(), 550);
+    } catch(e){}
+    setTimeout(() => { window.location.href = 'admin.html'; }, reduced ? 0 : 180);
+  }
+
+  btn.addEventListener('click', activate);
+  btn.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+  });
+})();
+
+/* ============================================================
+   BACKGROUND — 3D deep-sky dive
+   ============================================================ */
+(function(){
+  if (typeof THREE === 'undefined') return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const canvas3d = document.getElementById('c');
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ canvas: canvas3d, alpha: true, antialias: false }); }
+  catch(e){ return; }
+
+  const mob = innerWidth < 820;
+  renderer.setPixelRatio(Math.min(devicePixelRatio, mob ? 1 : 1.5));
+
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x030814, 0.012);
+
+  const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 400);
+  camera.position.set(0, 0, 0);
+
+  const cv = document.createElement('canvas'); cv.width = cv.height = 128;
+  const gx = cv.getContext('2d');
+  const g = gx.createRadialGradient(64,64,0,64,64,64);
+  g.addColorStop(0,'rgba(255,255,255,.85)');
+  g.addColorStop(1,'rgba(255,255,255,0)');
+  gx.fillStyle = g; gx.fillRect(0,0,128,128);
+  const tex = new THREE.CanvasTexture(cv);
+  const cols = [0xf2a33a, 0xc8553d, 0xf4efe8, 0x00A1DE];
+
+  const sprites = [];
+  const SPRITE_COUNT = mob ? 22 : 60;
+  for (let i = 0; i < SPRITE_COUNT; i++) {
+    const s = new THREE.Sprite(new THREE.SpriteMaterial({
+      map: tex, color: cols[i % cols.length], transparent: true,
+      opacity: 0.05 + Math.random()*0.14, depthWrite: false
+    }));
+    s.position.set((Math.random()-0.5)*60, (Math.random()-0.5)*26, -Math.random()*240);
+    const k = 8 + Math.random()*22;
+    s.scale.set(k*1.6, k, 1);
+    s.userData = { drift: 0.15 + Math.random()*0.4 };
+    scene.add(s);
+    sprites.push(s);
+  }
+
+  const starGeo = new THREE.BufferGeometry();
+  const starCount = mob ? 400 : 1400;
+  const starPos = new Float32Array(starCount * 3);
+  for (let i = 0; i < starCount; i++) {
+    starPos[i*3]   = (Math.random()-0.5)*320;
+    starPos[i*3+1] = (Math.random()-0.5)*160;
+    starPos[i*3+2] = -Math.random()*400;
+  }
+  starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+  scene.add(new THREE.Points(starGeo, new THREE.PointsMaterial({
+    color: 0xffffff, size: 0.4, transparent: true, opacity: 0.85, depthWrite: false
+  })));
+
+  const moons = [];
+  for (let i = 0; i < 3; i++) {
+    const moon = new THREE.Mesh(
+      new THREE.SphereGeometry(1.6 + Math.random()*1.2, 24, 24),
+      new THREE.MeshBasicMaterial({ color: 0xf4efe8, transparent: true, opacity: 0.85 })
+    );
+    moon.position.set((Math.random()-0.5)*70, 4 + Math.random()*10, -30 - i*40);
+    scene.add(moon);
+    const halo = new THREE.Sprite(new THREE.SpriteMaterial({
+      map: tex, color: 0xf4efe8, transparent: true, opacity: 0.25,
+      depthWrite: false, blending: THREE.AdditiveBlending
+    }));
+    halo.scale.set(14, 14, 1);
+    halo.position.copy(moon.position);
+    scene.add(halo);
+    moons.push(moon);
+  }
+
+  const birdCv = document.createElement('canvas');
+  birdCv.width = 64; birdCv.height = 32;
+  const bctx = birdCv.getContext('2d');
+  bctx.strokeStyle = 'rgba(244,239,232,0.9)';
+  bctx.lineWidth = 2.4;
+  bctx.beginPath();
+  bctx.moveTo(4, 20);
+  bctx.quadraticCurveTo(20, 6, 32, 20);
+  bctx.quadraticCurveTo(44, 6, 60, 20);
+  bctx.stroke();
+  const birdTex = new THREE.CanvasTexture(birdCv);
+  const birds = [];
+  const birdCount = mob ? 5 : 11;
+  for (let i = 0; i < birdCount; i++) {
+    const b = new THREE.Sprite(new THREE.SpriteMaterial({ map: birdTex, transparent: true, opacity: 0.75, depthWrite: false }));
+    b.scale.set(2.6, 1.3, 1);
+    b.position.set((Math.random()-0.5)*70, (Math.random()-0.3)*10, -12 - Math.random()*40);
+    b.userData = { vx: 0.4 + Math.random()*0.5, phase: Math.random()*Math.PI*2 };
+    scene.add(b);
+    birds.push(b);
+  }
+
+  function resize() {
+    renderer.setSize(innerWidth, innerHeight, false);
+    camera.aspect = innerWidth / innerHeight;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  addEventListener('resize', resize);
+
+  let progress = 0;
+  addEventListener('scroll', () => {
+    const d = document.documentElement;
+    progress = scrollY / Math.max(1, d.scrollHeight - innerHeight);
+    document.body.style.setProperty('--p', progress.toFixed(3));
+  }, { passive: true });
+
+  let running = true;
+  document.addEventListener('visibilitychange', () => {
+    running = !document.hidden;
+    if (running) loop();
+  });
+
+  let t = 0;
+  function loop() {
+    if (!running) return;
+    requestAnimationFrame(loop);
+    t += 0.008;
+
+    const p = progress;
+    camera.position.x = Math.sin(t*0.25) * 0.6;
+    camera.position.y = 2 - p * 6;
+    camera.position.z = -p * 60;
+    camera.lookAt(camera.position.x * 0.4, camera.position.y - 1.2, camera.position.z - 8);
+
+    sprites.forEach(s => {
+      s.position.x += s.userData.drift * 0.05;
+      if (s.position.x > 34) s.position.x = -34;
+    });
+
+    moons.forEach((m, i) => {
+      m.rotation.y += 0.0025;
+      m.position.x += Math.sin(t + i) * 0.004;
+    });
+
+    birds.forEach(b => {
+      b.position.x += b.userData.vx * 0.08;
+      b.position.y += Math.sin(t*2 + b.userData.phase) * 0.006;
+      if (b.position.x > 38) { b.position.x = -38; b.position.y = (Math.random()-0.3)*10; }
+    });
+
+    renderer.render(scene, camera);
+  }
+  loop();
+})();
+
+/* ============================================================
+   2D canvas overlay — stars + moons + birds
+   ============================================================ */
+(function(){
+  const cv = document.getElementById('stars');
+  if (!cv) return;
+  const ctx = cv.getContext('2d');
+  let stars2d = [], birds2d = [], moons2d = [];
+  let w, h, dpr;
+
+  function build() {
+    dpr = Math.min(devicePixelRatio, 2);
+    w = cv.width = innerWidth * dpr;
+    h = cv.height = innerHeight * dpr;
+    cv.style.width = innerWidth + 'px';
+    cv.style.height = innerHeight + 'px';
+
+    const count = innerWidth < 640 ? 80 : 180;
+    stars2d = Array.from({ length: count }, () => ({
+      x: Math.random()*w, y: Math.random()*h,
+      r: (Math.random()*1.2 + 0.3)*dpr,
+      a: Math.random()*0.7 + 0.2,
+      tw: Math.random()*Math.PI*2
+    }));
+    moons2d = Array.from({ length: 2 }, () => ({
+      x: Math.random()*w, y: Math.random()*h*0.5, r: (18 + Math.random()*14)*dpr
+    }));
+    birds2d = Array.from({ length: 6 }, () => ({
+      x: Math.random()*w, y: Math.random()*h*0.6 + h*0.1,
+      vx: (0.15 + Math.random()*0.3)*dpr,
+      ph: Math.random()*Math.PI*2,
+      s: (0.6 + Math.random()*0.5)*dpr
+    }));
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, w, h);
+
+    for (const s of stars2d) {
+      const a = s.a * (0.6 + 0.4*Math.sin(t*0.001 + s.tw));
+      ctx.globalAlpha = a;
+      ctx.fillStyle = '#f4efe8';
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+      ctx.fill();
+    }
+
+    ctx.globalAlpha = 0.18;
+    for (const m of moons2d) {
+      const g = ctx.createRadialGradient(m.x, m.y, 0, m.x, m.y, m.r);
+      g.addColorStop(0, 'rgba(244,239,232,0.5)');
+      g.addColorStop(1, 'rgba(244,239,232,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.arc(m.x, m.y, m.r, 0, Math.PI*2);
+      ctx.fill();
+    }
+
+    ctx.globalAlpha = 0.32;
+    ctx.strokeStyle = 'rgba(244,239,232,0.85)';
+    ctx.lineWidth = 1.2*dpr;
+    for (const b of birds2d) {
+      const flap = Math.sin(t*0.006 + b.ph);
+      ctx.beginPath();
+      ctx.moveTo(b.x - 8*b.s, b.y + flap*3*b.s);
+      ctx.quadraticCurveTo(b.x, b.y - 3*b.s, b.x + 8*b.s, b.y + flap*3*b.s);
+      ctx.stroke();
+    }
+
+    const scroll = scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight);
+    for (const b of birds2d) {
+      b.x += b.vx;
+      if (b.x > w + 20) b.x = -20;
+      b.y += (scroll - 0.5) * 0.05;
+    }
+  }
+
+  function tick(now) { draw(now); requestAnimationFrame(tick); }
+
+  build();
+  addEventListener('resize', build);
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) requestAnimationFrame(tick);
+  else draw(0);
+})();
+
+/* ============================================================
+   DEVTOOLS DETERRENTS
+   ============================================================ */
+document.addEventListener('contextmenu', e => {
+  const t = e.target;
+  if (t.matches?.('input,textarea,select,[contenteditable="true"]')) return;
+  e.preventDefault();
+});
+document.addEventListener('keydown', e => {
+  const k = e.key.toLowerCase();
+  const block =
+    k === 'f12' ||
+    (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+    (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+    (e.ctrlKey && ['u','s'].includes(k)) ||
+    (e.metaKey && ['u','s'].includes(k));
+  if (block) { e.preventDefault(); e.stopPropagation(); return false; }
+}, true);
+
+(function(){
+  const toastEl = document.createElement('div');
+  toastEl.className = 'devtools-warning';
+  toastEl.setAttribute('role','alert');
+  toastEl.setAttribute('aria-live','polite');
+  toastEl.innerHTML = '<span class="devtools-warning__icon">!</span><span>Developer tools detected — this page is protected.</span>';
+  document.body.appendChild(toastEl);
+  let visible = false, warnUntil = 0;
+  const show = () => { warnUntil = Date.now() + 5000; if (!visible) { visible = true; toastEl.classList.add('is-visible'); } };
+  const hide = () => { if (visible && Date.now() > warnUntil) { visible = false; toastEl.classList.remove('is-visible'); } };
+  setInterval(() => {
+    const w = window.outerWidth - window.innerWidth;
+    const h = window.outerHeight - window.innerHeight;
+    if (w > 160 || h > 160) show();
+    hide();
+  }, 900);
+  document.addEventListener('keydown', e => {
+    const k = e.key.toLowerCase();
+    if (k === 'f12' ||
+        (e.ctrlKey && e.shiftKey && ['i','j','c','k'].includes(k)) ||
+        (e.metaKey && e.altKey && ['i','j','c'].includes(k)) ||
+        (e.ctrlKey && ['u','s'].includes(k)) ||
+        (e.metaKey && ['u','s'].includes(k))) show();
+  }, true);
+})();
+
+if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+  (function(){ let n = 0; setInterval(() => { n++; if (n > 1) { console.clear(); n = 0; } }, 2000); })();
+}
+console.log('%c⚠️ STOP', 'color:#ff3b3b;font-size:32px;font-weight:900');
+console.log('%cThis is a browser console. No secrets are stored here.', 'font-size:13px;color:#ff9');
 </script>
+
 </body>
 </html>
